@@ -410,10 +410,11 @@ ul {
 
 .about__bio p {
   font-family: var(--font-saans-regular);
-  font-size: 17px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.8;
   letter-spacing: -0.01em;
   color: #3a3f47;
+  max-width: 52ch;
 }
 
 .about__stat {
