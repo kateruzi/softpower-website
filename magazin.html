@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>магазин — soft power</title>
+  <meta name="description" content="подарки, наполненные заботой. худи, футболки, карточки с вопросами soft power." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+      --font-saans-variable: 'Inter', system-ui, sans-serif;
+      --font-saans-medium: 'Inter', system-ui, sans-serif;
+      --font-saans-regular: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/page.css" />
+</head>
+<body>
+
+  <nav class="nav nav--scrolled" id="nav">
+    <a href="/" class="nav__logo">soft power</a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
+      <li><a href="magazin.html" class="nav__link--active">магазин</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
+    <a href="magazin.html">магазин</a>
+  </div>
+
+  <!-- ─── Page header ───────────────────────────────────────────────────── -->
+  <section class="shop-header">
+    <div class="container">
+      <h1 class="shop-header__title">soft power gifts</h1>
+      <p class="shop-header__sub">подарки, наполненные заботой</p>
+    </div>
+  </section>
+
+  <!-- ─── Products grid ────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <div class="shop-grid">
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="https://static.tildacdn.net/tild6564-3461-4132-b334-666639353538/IMG_3628.png"
+              alt="графитовый худи soft power"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__badge">new</span>
+            <h3 class="product-card__title">графитовый худи</h3>
+            <p class="product-card__desc">
+              с нежно-розовой надписью<br />
+              magic is a shift in perception.<br />
+              оверсайз, большой капюшон.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">€108</span>
+              <a href="mailto:hello@softpowerspace.com?subject=заказ — графитовый худи" class="btn-ghost btn-ghost--sm">заказать</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="https://static.tildacdn.net/tild3965-3665-4834-a530-313433363639/IMG_3630.png"
+              alt="бежевый худи soft power"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__badge">new</span>
+            <h3 class="product-card__title">бежевый худи</h3>
+            <p class="product-card__desc">
+              с тёмно-синей надписью<br />
+              magic is a shift in perception.<br />
+              оверсайз, большой капюшон.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">€108</span>
+              <a href="mailto:hello@softpowerspace.com?subject=заказ — бежевый худи" class="btn-ghost btn-ghost--sm">заказать</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="https://static.tildacdn.net/tild3166-6439-4134-b565-623937373136/IMG_3017.jpeg"
+              alt="белая футболка soft power"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__title">футболка soft power</h3>
+            <p class="product-card__desc">
+              белая с голубой вышивкой soft power.<br />
+              оверсайз l/xl.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">€75</span>
+              <a href="mailto:hello@softpowerspace.com?subject=заказ — белая футболка" class="btn-ghost btn-ghost--sm">заказать</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__media">
+            <img
+              src="https://static.tildacdn.net/tild6661-3265-4133-b639-376565643961/IMG_3622.jpeg"
+              alt="карточки с вопросами soft power"
+              loading="lazy"
+            />
+          </div>
+          <div class="product-card__body">
+            <span class="product-card__badge">new</span>
+            <h3 class="product-card__title">карточки с вопросами</h3>
+            <p class="product-card__desc">
+              50 карточек с глубокими вопросами.<br />
+              для долгих тёплых вечеров<br />
+              в кругу семьи и друзей.
+            </p>
+            <div class="product-card__footer">
+              <span class="product-card__price">€50</span>
+              <a href="mailto:hello@softpowerspace.com?subject=заказ — карточки с вопросами" class="btn-ghost btn-ghost--sm">заказать</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="shop-note">
+        <p>для оплаты в рублях — выбери «наличными при получении» при оформлении.</p>
+        <p>доставка в твой город рассчитывается индивидуально.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="praktika.html">практика</a>
+        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
+        <a href="magazin.html">магазин</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+    function closeMenu() { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+
+</body>
+</html>

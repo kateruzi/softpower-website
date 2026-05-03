@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>практика — soft power</title>
+  <meta name="description" content="йога, дыхание, медитация. офлайн в Лиссабоне и онлайн по всему миру. в группе или один на один." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+      --font-saans-variable: 'Inter', system-ui, sans-serif;
+      --font-saans-medium: 'Inter', system-ui, sans-serif;
+      --font-saans-regular: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/page.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="/" class="nav__logo">soft power</a>
+    <ul class="nav__links">
+      <li><a href="praktika.html" class="nav__link--active">практика</a></li>
+      <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
+      <li><a href="magazin.html">магазин</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
+    <a href="magazin.html">магазин</a>
+  </div>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="page-hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="images/praktika-poster.jpg">
+      <source src="video/praktika-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__eyebrow">практика</p>
+      <h1 class="page-hero__title">бережное пространство<br />для регулярной практики</h1>
+      <p class="page-hero__sub">офлайн в Лиссабоне · онлайн по всему миру</p>
+    </div>
+  </section>
+
+  <!-- ─── Intro ────────────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <div class="intro-block">
+        <p class="intro-block__text">
+          практика в soft power — это не про результат.<br />
+          это про регулярный контакт с собой.<br />
+          про возвращение к телу, дыханию, ощущению.
+        </p>
+        <p class="intro-block__text">
+          можно начать с одного занятия.<br />
+          можно войти в ритм через абонемент.<br />
+          можно практиковать в своём темпе через канал.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Formats ──────────────────────────────────────────────────────── -->
+  <section class="page-section page-section--alt">
+    <div class="container">
+      <h2 class="section-title">форматы</h2>
+
+      <div class="formats-grid">
+
+        <div class="format-card">
+          <div class="format-card__media">
+            <img src="images/format-group.jpg" alt="групповые занятия" loading="lazy" />
+          </div>
+          <div class="format-card__body">
+            <h3 class="format-card__title">soft power circle</h3>
+            <p class="format-card__desc">
+              мини-группы до 12 человек.<br />
+              4-недельные программы с взаимной поддержкой.<br />
+              офлайн или онлайн.
+            </p>
+            <a href="mailto:hello@softpowerspace.com" class="btn-ghost">записаться</a>
+          </div>
+        </div>
+
+        <div class="format-card">
+          <div class="format-card__media">
+            <img src="images/format-individual.jpg" alt="индивидуальные занятия" loading="lazy" />
+          </div>
+          <div class="format-card__body">
+            <h3 class="format-card__title">один на один</h3>
+            <p class="format-card__desc">
+              индивидуальная работа.<br />
+              офлайн в Лиссабоне или zoom — в любой точке мира.
+            </p>
+            <div class="price-row">
+              <span class="price">от €20 / занятие</span>
+            </div>
+            <a href="mailto:hello@softpowerspace.com" class="btn-ghost">написать</a>
+          </div>
+        </div>
+
+        <div class="format-card">
+          <div class="format-card__media">
+            <img src="images/format-connection.jpg" alt="канал soft power connection" loading="lazy" />
+          </div>
+          <div class="format-card__body">
+            <h3 class="format-card__title">soft power connection</h3>
+            <p class="format-card__desc">
+              телеграм-канал с видео и аудио практиками,<br />
+              дыханием и медитациями.<br />
+              от 5 до 65 минут. в своём ритме.
+            </p>
+            <div class="price-row">
+              <span class="price">€42 / месяц</span>
+              <span class="price-alt">€108 / 3 месяца · €210 / 6 месяцев</span>
+            </div>
+            <a href="https://t.me/softpowerspace" target="_blank" rel="noopener" class="btn-ghost">подключиться</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Pass ─────────────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <div class="pass-block">
+        <div class="pass-block__text">
+          <h2 class="section-title">абонементы</h2>
+          <p class="pass-block__desc">
+            если хочется регулярности —<br />
+            абонемент создаёт ритм.<br />
+            офлайн в Лиссабоне или zoom.
+          </p>
+          <p class="pass-block__desc">
+            каждый абонемент именной.<br />
+            можно подарить.
+          </p>
+        </div>
+        <div class="pass-options">
+          <div class="pass-option">
+            <span class="pass-option__count">3</span>
+            <span class="pass-option__label">занятия</span>
+            <span class="pass-option__price">€60</span>
+            <a href="mailto:hello@softpowerspace.com?subject=абонемент 3 занятия" class="btn-ghost btn-ghost--sm">выбрать</a>
+          </div>
+          <div class="pass-option">
+            <span class="pass-option__count">5</span>
+            <span class="pass-option__label">занятий</span>
+            <span class="pass-option__price">€100</span>
+            <a href="mailto:hello@softpowerspace.com?subject=абонемент 5 занятий" class="btn-ghost btn-ghost--sm">выбрать</a>
+          </div>
+          <div class="pass-option pass-option--featured">
+            <span class="pass-option__count">10</span>
+            <span class="pass-option__label">занятий</span>
+            <span class="pass-option__price">€200</span>
+            <a href="mailto:hello@softpowerspace.com?subject=абонемент 10 занятий" class="btn-ghost btn-ghost--sm">выбрать</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Events / Retreats ─────────────────────────────────────────────── -->
+  <section class="page-section page-section--dark">
+    <div class="container">
+      <h2 class="section-title section-title--light">ивенты и ретриты</h2>
+      <p class="section-sub section-sub--light">
+        уникальный опыт в самых красивых местах планеты.
+      </p>
+
+      <div class="events-grid">
+        <!-- когда появятся ивенты, добавить карточки сюда -->
+        <div class="event-placeholder">
+          <p>скоро объявим следующий ретрит.</p>
+          <p>оставь контакт — напишем первой.</p>
+          <a href="mailto:hello@softpowerspace.com?subject=ретрит — хочу знать первой" class="btn-ghost btn-ghost--light">написать</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="praktika.html">практика</a>
+        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
+        <a href="magazin.html">магазин</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+
+</body>
+</html>

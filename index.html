@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>soft power</title>
+  <meta name="description" content="пространство устойчивости через тело. йога, дыхание и медитация — офлайн в Лиссабоне и онлайн по всему миру." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* font substitutes until custom fonts are added */
+    :root {
+      --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+      --font-saans-variable: 'Inter', system-ui, sans-serif;
+      --font-saans-medium: 'Inter', system-ui, sans-serif;
+      --font-saans-regular: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="/" class="nav__logo">soft power</a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
+      <li><a href="magazin.html">магазин</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- mobile menu -->
+  <div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="навигация">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
+    <a href="magazin.html">магазин</a>
+  </div>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <!-- replace src with actual video file when ready -->
+    <video
+      class="hero__video"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="images/hero-poster.jpg"
+      id="heroVideo"
+    >
+      <source src="video/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <h1 class="hero__title">soft power</h1>
+      <p class="hero__tagline">not only about yoga, but always about love</p>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+    </div>
+
+    <button class="hero__sound" id="soundBtn" aria-label="включить звук">
+      звук ○
+    </button>
+  </section>
+
+  <!-- ─── About ────────────────────────────────────────────────────────── -->
+  <section class="about">
+    <div class="about__inner">
+
+      <div class="about__mosaic">
+        <!-- replace with actual photos of Dasha -->
+        <div class="about__photo about__photo--main">
+          <img src="images/dasha-main.jpg" alt="Даша ведёт практику" loading="lazy" />
+        </div>
+        <div class="about__photo about__photo--left">
+          <img src="images/dasha-portrait.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="about__photo about__photo--right">
+          <img src="images/practice-space.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="about__text">
+        <h2 class="about__name">даша</h2>
+
+        <div class="about__bio">
+          <p>меня зовут Даша.</p>
+          <p>
+            15 лет в wellbeing — от стартапов до международных корпораций.
+            команда Nike. обучение jivamukti yoga в Париже и Барселоне.
+          </p>
+          <p>
+            сейчас живу в Лиссабоне.<br />
+            практикую с людьми по всему миру.
+          </p>
+          <p>
+            soft power — это не про йогу как спорт.<br />
+            это про контакт с собой.<br />
+            про устойчивость, которая рождается через мягкость.
+          </p>
+        </div>
+
+        <div class="about__stat">
+          <span class="about__stat-number">2000+</span>
+          <span class="about__stat-label">практикующих по всему миру</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Paths ─────────────────────────────────────────────────────────── -->
+  <section class="paths">
+    <div class="paths__inner">
+
+      <a href="praktika.html" class="path-card">
+        <div class="path-card__media">
+          <!-- replace with video loop or photo of a class -->
+          <img src="images/path-praktika.jpg" alt="практика — занятие йогой" loading="lazy" />
+        </div>
+        <div class="path-card__body">
+          <span class="path-card__label">для практикующих</span>
+          <h3 class="path-card__title">практика</h3>
+          <p class="path-card__desc">
+            йога, дыхание, медитация.<br />
+            офлайн в Лиссабоне и онлайн — в своём темпе.
+          </p>
+          <span class="path-card__link">войти →</span>
+        </div>
+      </a>
+
+      <a href="dlya-uchiteley-i-komand.html" class="path-card">
+        <div class="path-card__media">
+          <!-- replace with video loop or photo -->
+          <img src="images/path-teachers.jpg" alt="работа с учителями и командами" loading="lazy" />
+        </div>
+        <div class="path-card__body">
+          <span class="path-card__label">для профессионалов</span>
+          <h3 class="path-card__title">для учителей<br />и команд</h3>
+          <p class="path-card__desc">
+            менторинг для преподавателей.<br />
+            well-being программы для бизнеса.
+          </p>
+          <span class="path-card__link">войти →</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ─── Micro-moments (inline video clips) ───────────────────────────── -->
+  <section class="moments">
+    <div class="moments__inner">
+      <p class="moments__label">моменты</p>
+      <div class="moments__track" id="momentsTrack">
+        <!-- replace each with a short looping video clip or photo -->
+        <div class="moment-clip">
+          <img src="images/moment-1.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="moment-clip">
+          <img src="images/moment-2.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="moment-clip">
+          <img src="images/moment-3.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="moment-clip">
+          <img src="images/moment-4.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="moment-clip">
+          <img src="images/moment-5.jpg" alt="" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Testimonials ─────────────────────────────────────────────────── -->
+  <section class="testimonials">
+    <div class="testimonials__inner">
+      <h2 class="testimonials__header">что говорят те, кто уже здесь</h2>
+
+      <div class="testimonials__grid">
+
+        <div class="testimonial">
+          <!-- replace with atmospheric photo (not portrait) -->
+          <div class="testimonial__image">
+            <img src="images/testimonial-1.jpg" alt="" loading="lazy" />
+          </div>
+          <p class="testimonial__text">
+            «мягкость, внимание к себе и опора —
+            именно это я получила на ретрите.
+            каждый день был выстроен с такой заботой,
+            что хотелось остаться навсегда.»
+          </p>
+          <span class="testimonial__author">участница ретрита</span>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial__image">
+            <img src="images/testimonial-2.jpg" alt="" loading="lazy" />
+          </div>
+          <p class="testimonial__text">
+            «занималась с Дашей онлайн, живя в другом часовом поясе.
+            практика стала ритмом, который держит.
+            не спорт — что-то гораздо глубже.»
+          </p>
+          <span class="testimonial__author">практикующая, онлайн</span>
+        </div>
+
+        <div class="testimonial">
+          <div class="testimonial__image">
+            <img src="images/testimonial-3.jpg" alt="" loading="lazy" />
+          </div>
+          <p class="testimonial__text">
+            «работала с Дашей как ментором.
+            она увидела суть того, что я делаю,
+            помогла сформулировать и выстроить.
+            без давления, с настоящим интересом.»
+          </p>
+          <span class="testimonial__author">преподаватель йоги</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav" aria-label="навигация футера">
+        <a href="praktika.html">практика</a>
+        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
+        <a href="magazin.html">магазин</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ──────────────────────────────────────────────────────── -->
+  <script>
+    // nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // burger menu
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // sound toggle (for hero video ambient audio)
+    const soundBtn = document.getElementById('soundBtn');
+    const heroVideo = document.getElementById('heroVideo');
+    let soundOn = false;
+
+    soundBtn.addEventListener('click', () => {
+      soundOn = !soundOn;
+      heroVideo.muted = !soundOn;
+      soundBtn.textContent = soundOn ? 'звук ●' : 'звук ○';
+      soundBtn.setAttribute('aria-label', soundOn ? 'выключить звук' : 'включить звук');
+    });
+
+    // moments track drag scroll
+    const track = document.getElementById('momentsTrack');
+    let isDown = false, startX, scrollLeft;
+
+    track.addEventListener('mousedown', e => {
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
+    track.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      track.scrollLeft = scrollLeft - (x - startX) * 1.5;
+    });
+  </script>
+
+</body>
+</html>

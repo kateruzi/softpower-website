@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>для учителей и команд — soft power</title>
+  <meta name="description" content="менторинг для преподавателей йоги и помогающих практиков. well-being программы для команд и бизнеса." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+      --font-saans-variable: 'Inter', system-ui, sans-serif;
+      --font-saans-medium: 'Inter', system-ui, sans-serif;
+      --font-saans-regular: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/page.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="/" class="nav__logo">soft power</a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="dlya-uchiteley-i-komand.html" class="nav__link--active">для учителей и команд</a></li>
+      <li><a href="magazin.html">магазин</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
+    <a href="magazin.html">магазин</a>
+  </div>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="page-hero">
+    <video class="hero__video" autoplay muted loop playsinline poster="images/teachers-poster.jpg">
+      <source src="video/teachers-hero.mp4" type="video/mp4" />
+    </video>
+    <div class="hero__overlay"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__eyebrow">для учителей и команд</p>
+      <h1 class="page-hero__title">твоя практика<br />может стать устойчивым делом</h1>
+    </div>
+  </section>
+
+  <!-- ─── Tab switcher ─────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <div class="tab-nav">
+        <button class="tab-btn tab-btn--active" data-tab="teachers">для учителей</button>
+        <button class="tab-btn" data-tab="business">для команд</button>
+      </div>
+
+      <!-- teachers tab -->
+      <div class="tab-content" id="tab-teachers">
+        <div class="split-block">
+          <div class="split-block__text">
+            <h2 class="section-title">менторинг для<br />преподавателей</h2>
+            <p class="split-block__desc">
+              бережные консультации и менторинг<br />
+              для тех, кто ведёт других.
+            </p>
+            <p class="split-block__desc">
+              ты знаешь своё дело.<br />
+              иногда нужен человек, который поможет<br />
+              увидеть его снаружи и выстроить.
+            </p>
+
+            <div class="what-list">
+              <p class="what-list__label">с чем работаем</p>
+              <ul class="what-list__items">
+                <li>сформулировать суть своей работы</li>
+                <li>найти сильные стороны и упаковать знания</li>
+                <li>разобраться с аудиторией</li>
+                <li>выстроить стратегию продвижения</li>
+                <li>найти нестандартные пути развития</li>
+                <li>превратить практику в устойчивый бизнес</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="split-block__offers">
+            <div class="offer-card">
+              <div class="offer-card__header">
+                <h3 class="offer-card__title">одна сессия</h3>
+                <span class="offer-card__price">€300</span>
+              </div>
+              <p class="offer-card__desc">
+                120 минут.<br />
+                для конкретного запроса, ясности,<br />
+                принятия решения.
+              </p>
+              <a href="mailto:hello@softpowerspace.com?subject=менторинг — одна сессия" class="btn-ghost">записаться</a>
+            </div>
+
+            <div class="offer-card">
+              <div class="offer-card__header">
+                <h3 class="offer-card__title">курс из 3 сессий</h3>
+                <span class="offer-card__price">€750</span>
+              </div>
+              <p class="offer-card__desc">
+                глубокая работа с ключевыми вопросами.<br />
+                структурированная обратная связь<br />
+                и поддержка между встречами.
+              </p>
+              <a href="mailto:hello@softpowerspace.com?subject=менторинг — курс из 3 сессий" class="btn-ghost">записаться</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- business tab -->
+      <div class="tab-content tab-content--hidden" id="tab-business">
+        <div class="split-block">
+          <div class="split-block__text">
+            <h2 class="section-title">well-being<br />для команд</h2>
+            <p class="split-block__desc">
+              инструменты устойчивости и wellbeing<br />
+              для команд и бизнеса, которые хотят расти осознанно.
+            </p>
+            <p class="split-block__desc">
+              устойчивый бизнес требует заботы<br />
+              о тех, кто его создаёт.<br />
+              wellbeing — не бонус. это часть культуры.
+            </p>
+
+            <div class="what-list">
+              <p class="what-list__label">форматы</p>
+              <ul class="what-list__items">
+                <li>разовые сессии для команды</li>
+                <li>программы на месяц и квартал</li>
+                <li>офлайн или онлайн</li>
+                <li>адаптация под ценности и задачи компании</li>
+              </ul>
+            </div>
+
+            <a href="mailto:hello@softpowerspace.com?subject=well-being для команды" class="btn-ghost">обсудить программу</a>
+          </div>
+
+          <div class="split-block__media">
+            <div class="media-block">
+              <img src="images/business-session.jpg" alt="" loading="lazy" />
+            </div>
+            <div class="credential-list">
+              <p class="credential-list__label">опыт</p>
+              <ul class="credential-list__items">
+                <li>15+ лет в wellbeing — от стартапов до международных корпораций</li>
+                <li>managing director Sektaschool Moscow — команда 50+, 10+ студий</li>
+                <li>команда Nike — международные проекты и запуски</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="praktika.html">практика</a>
+        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
+        <a href="magazin.html">магазин</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+    function closeMenu() { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // tab switcher
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-btn--active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('tab-content--hidden'));
+        btn.classList.add('tab-btn--active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.remove('tab-content--hidden');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>политика конфиденциальности — soft power</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+      --font-saans-variable: 'Inter', system-ui, sans-serif;
+      --font-saans-medium: 'Inter', system-ui, sans-serif;
+      --font-saans-regular: 'Inter', system-ui, sans-serif;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/page.css" />
+</head>
+<body>
+
+  <nav class="nav nav--scrolled" id="nav">
+    <a href="/" class="nav__logo">soft power</a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
+      <li><a href="magazin.html">магазин</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
+    <a href="magazin.html">магазин</a>
+  </div>
+
+  <main class="legal-page">
+    <div class="container">
+      <h1 class="legal-page__title">политика конфиденциальности</h1>
+      <div class="legal-page__content">
+        <!-- placeholder — заменить на актуальный текст политики -->
+        <p>политика конфиденциальности находится в обработке. актуальная версия будет опубликована в ближайшее время.</p>
+        <p>по вопросам: <a href="mailto:hello@softpowerspace.com">hello@softpowerspace.com</a></p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="praktika.html">практика</a>
+        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
+        <a href="magazin.html">магазин</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script>
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
+    function closeMenu() { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+
+</body>
+</html>
