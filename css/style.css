@@ -139,7 +139,7 @@ ul {
 .nav__links a {
   font-family: var(--font-saans-variable);
   font-weight: var(--font-weight-regular);
-  font-size: var(--text-body);
+  font-size: var(--text-subheading);
   letter-spacing: 0.02em;
   color: rgba(255, 255, 255, 0.75);
   transition: color 0.2s ease;
