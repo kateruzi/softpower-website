@@ -27,10 +27,8 @@
 .page-hero__content {
   position: relative;
   z-index: 2;
-  padding: var(--spacing-64) var(--spacing-24);
+  padding: var(--spacing-64) clamp(24px, 5vw, 80px);
   width: 100%;
-  max-width: 1248px;
-  margin: 0 auto;
 }
 
 .page-hero__eyebrow {
@@ -59,7 +57,7 @@
 /* ─── Page sections ─────────────────────────────────────────────────────── */
 
 .page-section {
-  padding: 80px var(--spacing-24);
+  padding: 80px clamp(24px, 5vw, 80px);
 }
 
 .page-section--alt {
@@ -147,7 +145,7 @@
 }
 
 .format-card__body {
-  padding: var(--spacing-24) var(--spacing-24) var(--spacing-32);
+  padding: var(--spacing-24) clamp(24px, 5vw, 80px) var(--spacing-32);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-12);
@@ -193,7 +191,7 @@
 
 .btn-ghost {
   display: inline-block;
-  padding: var(--spacing-12) var(--spacing-24);
+  padding: var(--spacing-12) clamp(24px, 5vw, 80px);
   border: 1px solid rgba(153, 161, 175, 0.4);
   border-radius: var(--radius-full);
   font-family: var(--font-saans-variable);
@@ -251,7 +249,7 @@
   grid-template-columns: 48px 1fr 80px auto;
   align-items: center;
   gap: var(--spacing-16);
-  padding: var(--spacing-20) var(--spacing-24);
+  padding: var(--spacing-20) clamp(24px, 5vw, 80px);
   border: 1px solid rgba(153, 161, 175, 0.2);
   border-radius: var(--radius-2xl);
   transition: border-color 0.2s ease;
@@ -495,7 +493,7 @@
 /* ─── Shop ───────────────────────────────────────────────────────────────── */
 
 .shop-header {
-  padding: 140px var(--spacing-24) 64px;
+  padding: 140px clamp(24px, 5vw, 80px) 64px;
 }
 
 .shop-header__title {
@@ -546,7 +544,7 @@
 }
 
 .product-card__body {
-  padding: var(--spacing-24) var(--spacing-24) var(--spacing-32);
+  padding: var(--spacing-24) clamp(24px, 5vw, 80px) var(--spacing-32);
   display: flex;
   flex-direction: column;
   gap: var(--spacing-10);
@@ -613,7 +611,7 @@
 /* ─── Legal page ────────────────────────────────────────────────────────── */
 
 .legal-page {
-  padding: 140px var(--spacing-24) 96px;
+  padding: 140px clamp(24px, 5vw, 80px) 96px;
   min-height: 60vh;
 }
 
