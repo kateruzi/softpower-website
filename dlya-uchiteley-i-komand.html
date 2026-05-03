@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>для учителей и команд — soft power</title>
-  <meta name="description" content="менторинг для преподавателей йоги и помогающих практиков. well-being программы для команд и бизнеса." />
+  <meta name="description" content="бережные консультации и менторинг для помогающих практиков. well-being программы для команд и бизнеса." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,64 +45,85 @@
 
   <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
   <section class="page-hero">
-    <video class="hero__video" autoplay muted loop playsinline poster="images/teachers-poster.jpg">
-      <source src="video/teachers-hero.mp4" type="video/mp4" />
-    </video>
+    <!-- replace with local file: images/teachers-hero.jpg -->
+    <img
+      class="hero__video"
+      src="https://static.tildacdn.net/tild6136-3836-4065-b939-393731373430/softpower-4325_2.jpg"
+      alt=""
+      id="heroImg"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;"
+    />
     <div class="hero__overlay"></div>
     <div class="page-hero__content">
-      <p class="page-hero__eyebrow">для учителей и команд</p>
-      <h1 class="page-hero__title">твоя практика<br />может стать устойчивым делом</h1>
+      <p class="page-hero__eyebrow" id="heroEyebrow">для учителей</p>
+      <h1 class="page-hero__title" id="heroTitle">бережные консультации<br />и менторинг для помогающих практиков</h1>
     </div>
   </section>
 
   <!-- ─── Tab switcher ─────────────────────────────────────────────────── -->
   <section class="page-section">
     <div class="container">
+
       <div class="tab-nav">
         <button class="tab-btn tab-btn--active" data-tab="teachers">для учителей</button>
         <button class="tab-btn" data-tab="business">для команд</button>
       </div>
 
-      <!-- teachers tab -->
+      <!-- ═══ TAB: для учителей ══════════════════════════════════════════ -->
       <div class="tab-content" id="tab-teachers">
-        <div class="split-block">
-          <div class="split-block__text">
-            <h2 class="section-title">менторинг для<br />преподавателей</h2>
-            <p class="split-block__desc">
-              бережные консультации и менторинг<br />
-              для тех, кто ведёт других.
-            </p>
-            <p class="split-block__desc">
-              ты знаешь своё дело.<br />
-              иногда нужен человек, который поможет<br />
-              увидеть его снаружи и выстроить.
-            </p>
 
-            <div class="what-list">
-              <p class="what-list__label">с чем работаем</p>
-              <ul class="what-list__items">
-                <li>сформулировать суть своей работы</li>
-                <li>найти сильные стороны и упаковать знания</li>
-                <li>разобраться с аудиторией</li>
-                <li>выстроить стратегию продвижения</li>
-                <li>найти нестандартные пути развития</li>
-                <li>превратить практику в устойчивый бизнес</li>
-              </ul>
-            </div>
+        <!-- Intro -->
+        <div class="support-intro">
+          <p class="support-intro__text">
+            мой путь — это сочетание глубокого опыта преподавания и фундаментального бэкграунда в маркетинге и управлении.
+            я работала в стартапах и крупных корпорациях, строила команды, запускала большие проекты
+            и умею превращать идеи в понятный продукт.
+          </p>
+          <p class="support-intro__text">
+            я работаю с йога-тичерами, тренерами и специалистами помогающих профессий,
+            которые хотят не просто делиться знанием,
+            а создать живой, настоящий продукт —
+            упакованный в чёткую форму и наполненный своим смыслом.
+          </p>
+          <div class="support-trust">
+            <p class="support-trust__item">в моём поле безопасно и комфортно расти</p>
+            <p class="support-trust__item">
+              я умею слышать, видеть суть, собирать разрозненное в целое
+              и помогать вырастить ремесло в устойчивый бизнес
+            </p>
           </div>
+        </div>
 
-          <div class="split-block__offers">
+        <!-- What for -->
+        <div class="checklist-block">
+          <h2 class="checklist-block__title">ко мне приходят за тем, чтобы:</h2>
+          <ul class="checklist">
+            <li>сформулировать суть своей работы</li>
+            <li>увидеть свои сильные стороны и упаковать знания в продукт</li>
+            <li>проанализировать свою аудиторию</li>
+            <li>получить структурную обратную связь и поддержку</li>
+            <li>выстроить стратегию продвижения</li>
+            <li>увидеть неочевидные пути развития, опираясь на то, что действительно интересно и хочется делать</li>
+          </ul>
+        </div>
+
+        <!-- Pricing -->
+        <div class="offers-section">
+          <h2 class="section-title">формат консультаций</h2>
+          <div class="offers-grid">
+
             <div class="offer-card">
               <div class="offer-card__header">
-                <h3 class="offer-card__title">одна сессия</h3>
+                <h3 class="offer-card__title">разовая сессия</h3>
                 <span class="offer-card__price">€300</span>
               </div>
+              <p class="offer-card__tag">120 минут</p>
               <p class="offer-card__desc">
-                120 минут.<br />
-                для конкретного запроса, ясности,<br />
-                принятия решения.
+                интенсивный формат для конкретного запроса.<br />
+                если нужно увидеть ситуацию ясно, найти решение,
+                сделать выбор или получить структурную обратную связь.
               </p>
-              <a href="mailto:hello@softpowerspace.com?subject=менторинг — одна сессия" class="btn-ghost">записаться</a>
+              <a href="mailto:hello@softpowerspace.com?subject=менторинг — разовая сессия" class="btn-ghost">записаться</a>
             </div>
 
             <div class="offer-card">
@@ -110,60 +131,197 @@
                 <h3 class="offer-card__title">курс из 3 сессий</h3>
                 <span class="offer-card__price">€750</span>
               </div>
+              <p class="offer-card__tag">75–90 минут каждая</p>
               <p class="offer-card__desc">
-                глубокая работа с ключевыми вопросами.<br />
-                структурированная обратная связь<br />
-                и поддержка между встречами.
+                глубокая работа с вашим запросом и связанными с ним процессами.<br />
+                подходит, если хочется не просто решить задачу,
+                но и переосмыслить подход, найти новые опоры и собрать стратегию.
               </p>
               <a href="mailto:hello@softpowerspace.com?subject=менторинг — курс из 3 сессий" class="btn-ghost">записаться</a>
             </div>
+
+            <div class="offer-card">
+              <div class="offer-card__header">
+                <h3 class="offer-card__title">курс из 5 сессий</h3>
+                <span class="offer-card__price">€1000</span>
+              </div>
+              <p class="offer-card__tag">75–90 минут каждая</p>
+              <p class="offer-card__desc">
+                пространство для тех, кто хочет серьёзно взяться за дело:
+                увидеть, как работает их система, переупаковать знания,
+                настроить продвижение и обрести устойчивость.<br />
+                мы работаем на пересечении стратегии, смыслов и глубокой внутренней работы.
+              </p>
+              <a href="mailto:hello@softpowerspace.com?subject=менторинг — курс из 5 сессий" class="btn-ghost">записаться</a>
+            </div>
+
+            <div class="offer-card offer-card--soft">
+              <div class="offer-card__header">
+                <h3 class="offer-card__title">индивидуальная программа сопровождения</h3>
+                <span class="offer-card__price">по запросу</span>
+              </div>
+              <p class="offer-card__tag">3–12 месяцев</p>
+              <p class="offer-card__desc">
+                долгосрочное, тёплое и устойчивое сопровождение
+                с гибкой программой под ваш ритм, цели и стадии развития.<br />
+                детали и стоимость обсуждаются лично.
+              </p>
+              <a href="mailto:hello@softpowerspace.com?subject=менторинг — индивидуальная программа" class="btn-ghost">записаться</a>
+            </div>
+
           </div>
         </div>
-      </div>
 
-      <!-- business tab -->
+        <!-- Testimonials -->
+        <div class="reviews-section">
+          <h2 class="section-title">отзывы</h2>
+          <div class="reviews-grid">
+
+            <div class="review-card">
+              <p class="review-card__text">
+                «консультация с Дашей помогла мне навести порядок в текущих предложениях моего йога-бизнеса,
+                а также наметить следующие шаги. неожиданно для себя я увидела, как многое уже удалось реализовать,
+                а также получила ценный фидбэк по тем направлениям, где есть потенциал для роста.
+                благодаря редкому сочетанию глубокого понимания йоги, бизнеса и профессионального опыта в маркетинге,
+                Даша создает поддержку, которая вселяет уверенность и помогает выстраивать устойчивый бизнес,
+                по-настоящему значимым на личном уровне.»
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Alya</span>
+                <span class="review-card__role">дживамукти йога тичер, Германия</span>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <p class="review-card__text">
+                «очень классная сессия — структурно, глубоко, с заботой.
+                мы за короткое время разложили всё по полочкам: от сути замысла до первых шагов продвижения.
+                при этом всё было очень по-человечески: тепло, поддерживающе, без давления.
+                много внимания тому, что действительно хочу я (тут вообще разрыв шаблона).
+                чувствую опору и ясность, чего давно не хватало. спасибо тебе большое!»
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Софья Шулыкина</span>
+                <span class="review-card__role">фитнес тренер, Португалия</span>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <p class="review-card__text">
+                «консультация с Дашей очень помогла тем, что показала какой новый рабочий формат онлайн практик
+                можно сделать, как это структурировать и упаковать так, чтобы получился настоящий йога-клуб дома
+                и людям бы захотелось приходить и продлевать участие.»
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Маша Нирка</span>
+                <span class="review-card__role">преподаватель йоги с 9-летним опытом, Красная поляна</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- ═══ end TAB: для учителей ══════════════════════════════════════ -->
+
+
+      <!-- ═══ TAB: для команд ════════════════════════════════════════════ -->
       <div class="tab-content tab-content--hidden" id="tab-business">
-        <div class="split-block">
-          <div class="split-block__text">
-            <h2 class="section-title">well-being<br />для команд</h2>
-            <p class="split-block__desc">
-              инструменты устойчивости и wellbeing<br />
-              для команд и бизнеса, которые хотят расти осознанно.
-            </p>
-            <p class="split-block__desc">
-              устойчивый бизнес требует заботы<br />
-              о тех, кто его создаёт.<br />
-              wellbeing — не бонус. это часть культуры.
-            </p>
 
-            <div class="what-list">
-              <p class="what-list__label">форматы</p>
-              <ul class="what-list__items">
-                <li>разовые сессии для команды</li>
-                <li>программы на месяц и квартал</li>
-                <li>офлайн или онлайн</li>
-                <li>адаптация под ценности и задачи компании</li>
-              </ul>
-            </div>
-
-            <a href="mailto:hello@softpowerspace.com?subject=well-being для команды" class="btn-ghost">обсудить программу</a>
-          </div>
-
-          <div class="split-block__media">
-            <div class="media-block">
-              <img src="images/business-session.jpg" alt="" loading="lazy" />
-            </div>
-            <div class="credential-list">
-              <p class="credential-list__label">опыт</p>
-              <ul class="credential-list__items">
-                <li>15+ лет в wellbeing — от стартапов до международных корпораций</li>
-                <li>managing director Sektaschool Moscow — команда 50+, 10+ студий</li>
-                <li>команда Nike — международные проекты и запуски</li>
-              </ul>
-            </div>
-          </div>
+        <!-- Value proposition -->
+        <div class="support-intro">
+          <h2 class="support-intro__heading">well-being как часть культуры, а не бонус</h2>
+          <p class="support-intro__text">
+            мировая практика и тренды всё яснее показывают:
+            устойчивый бизнес невозможно строить без заботы о тех, кто его создаёт.
+          </p>
+          <p class="support-intro__text">
+            ресурсное состояние и осознанность сотрудников —
+            это не привилегия, а основа продуктивности, креативности и роста.
+          </p>
+          <p class="support-intro__text">
+            soft power business — это пространство, где well-being становится частью культуры компании.
+          </p>
+          <p class="support-intro__text">
+            я создаю индивидуальные форматы поддержки, которые работают глубоко и точно —
+            с уважением к людям, бизнес-целям и ценностям команд.
+            мой подход соединяет бизнес-мышление и практики embodied well-being.
+            я работала внутри международных корпораций и стартапов,
+            вела команды, запускала масштабные проекты
+            и знаю, как важно поддерживать себя, чтобы не выгорать.
+          </p>
         </div>
+
+        <!-- Credentials -->
+        <div class="checklist-block">
+          <h2 class="checklist-block__title">почему именно я</h2>
+          <ul class="checklist">
+            <li>у меня более 15 лет опыта в сфере well-being и спорта — от стартапов до международных корпораций</li>
+            <li>
+              я была генеральным директором московского филиала крупнейшего фитнес-стартапа в России и СНГ — Sektaschool,
+              где построила команду из 50+ человек и открыла более 10 филиалов в Москве
+            </li>
+            <li>
+              затем стала частью бренд-команды Nike, где руководила международными проектами,
+              запускала продукты, развивала партнёрства и управляла большими продакшн-командами
+            </li>
+            <li>
+              сейчас я развиваю собственный бренд и создаю продукты,
+              которые помогают людям соединяться с собой,
+              а командам — становиться устойчивее, сплочённее и эффективнее
+            </li>
+            <li>
+              я говорю на языке бизнеса, работаю с метриками и не понаслышке знаю,
+              что такое высокая нагрузка, дедлайны и запуск компаний с нуля
+            </li>
+            <li>
+              и одновременно с этим — умею слушать и слышать, выявлять истинные боли и потребности,
+              выстраивать живые, работающие системы — с вниманием к людям и бизнес-целям
+            </li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="checklist-block">
+          <h2 class="checklist-block__title">что мы можем реализовать вместе</h2>
+          <ul class="checklist">
+            <li>сессии с телесными практиками, дыханием, медитациями</li>
+            <li>предзаписанные модули и форматы для внутреннего портала</li>
+            <li>челленджи, игры и короткие курсы для включения в заботу о себе</li>
+            <li>корпоративные ретриты и офлайн-дни для перезагрузки и укрепления командной динамики</li>
+            <li>практико-ориентированные лекции и воркшопы: восстановление, работа со стрессом, энергия, внимательность и связь головы с телом</li>
+            <li>любой другой формат под ваш запрос</li>
+          </ul>
+        </div>
+
+        <!-- CTA -->
+        <div class="business-cta">
+          <p class="business-cta__text">
+            если вы хотите, чтобы ваши сотрудники чувствовали себя лучше,
+            работали яснее и взаимодействовали мягче —
+            я помогу это настроить.
+          </p>
+          <a href="mailto:hello@softpowerspace.com?subject=well-being для команды" class="btn-ghost">связаться</a>
+        </div>
+
+        <!-- Photo gallery -->
+        <div class="business-gallery">
+          <img src="https://static.tildacdn.net/tild6461-3862-4262-b638-633666633436/softpower-3920_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3338-3635-4131-a462-663434336538/softpower-4559_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild6365-3930-4738-b734-636638626662/softpower-6276_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3461-3665-4237-a431-323136343964/softpower-5910_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3533-6161-4735-a662-376264663732/softpower-4568_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild6331-3062-4062-a635-646163343763/softpower-4311_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild6161-3565-4333-b239-653862616237/softpower-4255_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3834-3932-4566-a633-333264373630/softpower-4070_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3631-3164-4165-a563-626461323162/softpower-3982_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3536-3836-4666-a635-623564363262/softpower-3978_resiz.jpeg" alt="" loading="lazy" />
+          <img src="https://static.tildacdn.net/tild3862-3238-4634-b635-633164376634/softpower-3832_resiz.jpeg" alt="" loading="lazy" />
+        </div>
+
       </div>
+      <!-- ═══ end TAB: для команд ════════════════════════════════════════ -->
+
     </div>
   </section>
 
@@ -202,13 +360,36 @@
     closeMenuBtn.addEventListener('click', closeMenu);
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-    // tab switcher
+    // tab switcher — also update hero text
+    const heroEyebrow = document.getElementById('heroEyebrow');
+    const heroTitle   = document.getElementById('heroTitle');
+    const heroImg     = document.getElementById('heroImg');
+
+    const heroContent = {
+      teachers: {
+        eyebrow: 'для учителей',
+        title:   'бережные консультации<br />и менторинг для помогающих практиков',
+        img:     'https://static.tildacdn.net/tild6136-3836-4065-b939-393731373430/softpower-4325_2.jpg',
+      },
+      business: {
+        eyebrow: 'для команд',
+        title:   'инструменты устойчивости<br />и well-being для команд и бизнеса',
+        img:     'https://static.tildacdn.net/tild6461-3862-4262-b638-633666633436/softpower-3920_resiz.jpeg',
+      },
+    };
+
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-btn--active'));
         document.querySelectorAll('.tab-content').forEach(c => c.classList.add('tab-content--hidden'));
         btn.classList.add('tab-btn--active');
-        document.getElementById('tab-' + btn.dataset.tab).classList.remove('tab-content--hidden');
+        document.getElementById('tab-' + tab).classList.remove('tab-content--hidden');
+
+        const h = heroContent[tab];
+        heroEyebrow.textContent   = h.eyebrow;
+        heroTitle.innerHTML       = h.title;
+        heroImg.src               = h.img;
       });
     });
   </script>
