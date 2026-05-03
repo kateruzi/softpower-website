@@ -354,20 +354,19 @@ ul {
 
 .about {
   padding: 96px clamp(24px, 5vw, 80px);
+  background-color: #faf9f7;
 }
 
 .about__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-64);
+  grid-template-columns: 2fr 3fr;
+  gap: clamp(40px, 6vw, 96px);
   align-items: start;
 }
 
 .about__mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: var(--spacing-8);
+  position: sticky;
+  top: 100px;
 }
 
 .about__photo {
@@ -385,23 +384,14 @@ ul {
 
 .about__photo--main {
   grid-column: 1 / -1;
-  aspect-ratio: 3 / 4;
-}
-
-.about__photo--left {
-  aspect-ratio: 3 / 4;
-}
-
-.about__photo--right {
-  aspect-ratio: 3 / 4;
-  margin-top: var(--spacing-32);
+  aspect-ratio: 4 / 5;
 }
 
 .about__text {
-  padding-top: var(--spacing-16);
+  padding-top: var(--spacing-8);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-20);
+  gap: var(--spacing-24);
 }
 
 .about__name {
@@ -415,29 +405,28 @@ ul {
 .about__bio {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-12);
+  gap: var(--spacing-16);
 }
 
 .about__bio p {
   font-family: var(--font-saans-regular);
-  font-weight: var(--font-weight-w380);
-  font-size: var(--text-body);
-  line-height: 1.6;
-  letter-spacing: var(--tracking-body);
-  color: var(--color-onyx-shadow);
+  font-size: 17px;
+  line-height: 1.75;
+  letter-spacing: -0.01em;
+  color: #3a3f47;
 }
 
 .about__stat {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-4);
-  padding-top: var(--spacing-8);
+  padding-top: var(--spacing-20);
   border-top: 1px solid rgba(153, 161, 175, 0.2);
 }
 
 .about__stat-number {
   font-family: var(--font-serrif-condensed-regular);
-  font-size: 48px;
+  font-size: 56px;
   line-height: 1;
   letter-spacing: -0.02em;
   color: var(--color-onyx-shadow);
@@ -446,7 +435,8 @@ ul {
 .about__stat-label {
   font-size: var(--text-caption);
   color: var(--color-mist-gray);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
 }
 
 /* ─── Paths ─────────────────────────────────────────────────────────────── */
@@ -738,15 +728,16 @@ ul {
 
   .about__inner {
     grid-template-columns: 1fr;
-    gap: var(--spacing-48);
+    gap: var(--spacing-32);
   }
 
   .about__mosaic {
-    grid-template-columns: 1fr 1fr;
+    position: static;
+    max-width: 480px;
   }
 
-  .about__photo--right {
-    margin-top: 0;
+  .about__photo--main {
+    aspect-ratio: 4 / 3;
   }
 
   .paths__inner {
