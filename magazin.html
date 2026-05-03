@@ -8,14 +8,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --font-serrif-condensed-regular: 'Libre Baskerville', Georgia, serif;
-      --font-saans-variable: 'Inter', system-ui, sans-serif;
-      --font-saans-medium: 'Inter', system-ui, sans-serif;
-      --font-saans-regular: 'Inter', system-ui, sans-serif;
+      --font-saans-variable: 'Libre Baskerville', Georgia, serif;
+      --font-saans-medium: 'Libre Baskerville', Georgia, serif;
+      --font-saans-regular: 'Libre Baskerville', Georgia, serif;
     }
   </style>
 
@@ -25,15 +25,15 @@
 <body>
 
   <nav class="nav nav--scrolled" id="nav">
+    <a href="/" class="nav__logo">
+      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
+      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
+    </a>
     <ul class="nav__links">
       <li><a href="praktika.html">практика</a></li>
       <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
       <li><a href="magazin.html" class="nav__link--active">магазин</a></li>
     </ul>
-    <a href="/" class="nav__logo">
-      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
-      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
-    </a>
     <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
