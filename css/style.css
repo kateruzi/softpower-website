@@ -116,12 +116,12 @@ ul {
   border-bottom: 1px solid rgba(153, 161, 175, 0.15);
 }
 
-/* logo image in center */
+/* logo image on the left */
 .nav__logo {
   display: flex;
   align-items: center;
-  justify-content: center;
-  grid-column: 2;
+  justify-content: flex-start;
+  grid-column: 1;
 }
 
 .nav__logo-img {
@@ -147,13 +147,13 @@ ul {
   display: block;
 }
 
-/* nav links on the left */
+/* nav links in the center */
 .nav__links {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   gap: var(--spacing-32);
-  grid-column: 1;
+  grid-column: 2;
 }
 
 .nav__links a {
