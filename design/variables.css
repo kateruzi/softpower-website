@@ -16,10 +16,10 @@
   --gradient-earthfire-gradient: linear-gradient(rgb(30, 19, 16) 25.1883%, rgb(144, 60, 39) 50.2763%, rgb(228, 108, 68) 76.0487%, rgb(237, 148, 84) 100%);
 
   /* Typography — Font Families */
-  --font-serrif-condensed-regular: 'Serrif Condensed Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-saans-variable: 'Saans Variable', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-saans-medium: 'Saans Medium', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-saans-regular: 'Saans Regular', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serrif-condensed-regular: 'Libre Baskerville', Georgia, serif;
+  --font-saans-variable: 'Libre Baskerville', Georgia, serif;
+  --font-saans-medium: 'Libre Baskerville', Georgia, serif;
+  --font-saans-regular: 'Libre Baskerville', Georgia, serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
