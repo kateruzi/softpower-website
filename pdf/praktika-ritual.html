@@ -9,43 +9,37 @@
   :root{
     --serif:'Libre Baskerville',Georgia,serif;
     --white:#fff;--onyx:#0c1018;--mist:#9e9fa3;--coral:rgb(228,108,68);
-    --earthfire:linear-gradient(110deg,rgb(30,19,16) 0%,rgb(144,60,39) 45%,rgb(228,108,68) 80%,rgb(237,148,84) 100%);
-    --sky:linear-gradient(150deg,rgb(40,14,1) 0%,rgb(24,38,68) 22%,rgb(90,118,159) 44%,rgb(135,161,196) 62%,rgb(193,211,230) 82%,rgb(254,249,225) 100%);
+    --earthfire:linear-gradient(125deg,rgb(30,19,16) 0%,rgb(144,60,39) 45%,rgb(228,108,68) 82%,rgb(237,148,84) 100%);
+    --sky:linear-gradient(155deg,rgb(40,14,1) 0%,rgb(24,38,68) 22%,rgb(90,118,159) 45%,rgb(135,161,196) 64%,rgb(193,211,230) 84%,rgb(254,249,225) 100%);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{-webkit-font-smoothing:antialiased;}
   body{font-family:var(--serif);color:var(--onyx);letter-spacing:.4px;}
 
-  .page{width:210mm;height:297mm;position:relative;overflow:hidden;display:flex;flex-direction:column;background:var(--white);}
+  .page{width:480px;background:var(--white);overflow:hidden;}
 
-  /* ---- HERO BAND ---- */
-  .hero{background:var(--sky);color:var(--white);padding:13mm 16mm 14mm;position:relative;}
-  .hero__top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:9mm;}
-  .logo{font-size:18px;letter-spacing:1px;}
-  .kicker{font-size:9px;letter-spacing:2.8px;text-transform:uppercase;color:rgba(255,255,255,.82);padding-top:4px;}
-  .hero h1{font-weight:400;font-size:33px;line-height:1.1;letter-spacing:.6px;}
-  .hero h1 em{font-style:normal;}
-  .hero__intro{margin-top:6mm;max-width:135mm;font-size:12px;line-height:1.55;letter-spacing:.5px;color:rgba(255,255,255,.92);}
+  /* ---- HERO ---- */
+  .hero{background:var(--sky);color:var(--white);padding:42px 36px 46px;}
+  .hero__top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:34px;}
+  .logo{font-size:22px;letter-spacing:1px;}
+  .kicker{font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:rgba(255,255,255,.85);padding-top:6px;}
+  .hero h1{font-weight:400;font-size:38px;line-height:1.12;letter-spacing:.6px;}
+  .hero__intro{margin-top:22px;font-size:18px;line-height:1.6;letter-spacing:.5px;color:rgba(255,255,255,.94);}
 
   /* ---- STEPS ---- */
-  .steps{padding:12mm 16mm 0;flex:1;display:flex;flex-direction:column;}
-  .steps__eyebrow{font-size:9px;letter-spacing:2.8px;text-transform:uppercase;color:var(--mist);margin-bottom:8mm;}
-  .step{display:grid;grid-template-columns:16mm 1fr;gap:6mm;padding:5mm 0;border-top:1px solid rgba(158,159,163,.34);align-items:baseline;}
+  .steps{padding:40px 36px 4px;}
+  .steps__eyebrow{font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:var(--mist);margin-bottom:30px;}
+  .step{display:grid;grid-template-columns:54px 1fr;gap:20px;padding:22px 0;border-top:1px solid rgba(158,159,163,.34);align-items:baseline;}
   .step:first-of-type{border-top:none;padding-top:0;}
-  .step__num{font-size:27px;line-height:1;color:var(--coral);letter-spacing:1px;}
-  .step__text{font-size:12px;line-height:1.55;letter-spacing:.5px;color:var(--onyx);}
+  .step__num{font-size:36px;line-height:1;color:var(--coral);letter-spacing:1px;}
+  .step__text{font-size:18px;line-height:1.6;letter-spacing:.4px;color:var(--onyx);}
 
-  /* ---- BRIDGE (inset card) ---- */
-  .bridge{
-    background:var(--earthfire);color:var(--white);
-    margin:13mm 16mm 16mm;border-radius:16px;
-    padding:11mm 12mm 9mm;
-    box-shadow:0 14px 40px rgba(144,60,39,.22);
-  }
-  .bridge__eyebrow{font-size:9px;letter-spacing:2.8px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:5mm;}
-  .bridge p{font-weight:400;font-size:15px;line-height:1.5;letter-spacing:.5px;}
+  /* ---- BRIDGE ---- */
+  .bridge{background:var(--earthfire);color:var(--white);margin:36px 28px 40px;border-radius:20px;padding:36px 32px 30px;box-shadow:0 16px 44px rgba(144,60,39,.24);}
+  .bridge__eyebrow{font-size:11px;letter-spacing:2.8px;text-transform:uppercase;color:rgba(255,255,255,.74);margin-bottom:20px;}
+  .bridge p{font-weight:400;font-size:20px;line-height:1.55;letter-spacing:.4px;}
   .bridge p em{font-style:italic;}
-  .bridge__foot{display:flex;justify-content:space-between;align-items:center;margin-top:8mm;padding-top:5mm;border-top:1px solid rgba(255,255,255,.18);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.72);}
+  .bridge__foot{display:flex;justify-content:space-between;align-items:center;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.2);font-size:11px;letter-spacing:2px;color:rgba(255,255,255,.74);}
 </style>
 </head>
 <body>
@@ -56,7 +50,7 @@
         <div class="logo">soft power</div>
         <div class="kicker">гайд&nbsp;·&nbsp;практика&nbsp;дома</div>
       </div>
-      <h1>ежедневная практика<br/>как <em>приятный ритуал</em></h1>
+      <h1>ежедневная практика<br/>как приятный ритуал</h1>
       <p class="hero__intro">эти простые шаги помогут тебе сделать ежедневную практику приятным ритуалом, который, в свою очередь, поможет практике стать привычкой.</p>
     </div>
 
