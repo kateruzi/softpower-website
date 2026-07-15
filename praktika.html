@@ -227,6 +227,22 @@
     }
     closeMenuBtn.addEventListener('click', closeMenu);
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll(
+        '.intro-block__text, .format-card, .pass-option, .event-placeholder'
+      ).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 3) * 70 + 'ms';
+        io.observe(el);
+      });
+    }
   </script>
 
 </body>

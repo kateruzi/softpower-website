@@ -379,6 +379,22 @@
       track.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
 
+    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll(
+        '.about__mosaic, .about__text, .path-card, .moment-clip, .testimonial, .faq-item'
+      ).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 3) * 70 + 'ms';
+        io.observe(el);
+      });
+    }
+
     // faq: keep only one item open at a time
     document.querySelectorAll('.faq-item').forEach(d => {
       d.addEventListener('toggle', () => {
