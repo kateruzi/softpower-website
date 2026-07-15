@@ -16,10 +16,12 @@
   --gradient-earthfire-gradient: linear-gradient(rgb(30, 19, 16) 25.1883%, rgb(144, 60, 39) 50.2763%, rgb(228, 108, 68) 76.0487%, rgb(237, 148, 84) 100%);
 
   /* Typography — Font Families */
-  --font-serrif-condensed-regular: 'Libre Baskerville', Georgia, serif;
-  --font-saans-variable: 'Libre Baskerville', Georgia, serif;
-  --font-saans-medium: 'Libre Baskerville', Georgia, serif;
-  --font-saans-regular: 'Libre Baskerville', Georgia, serif;
+  /* substitutes per DESIGN.md (IBM Plex Serif / Inter) until licensed
+     Serrif Condensed / Saans files are added — swap here only */
+  --font-serrif-condensed-regular: 'IBM Plex Serif', Georgia, serif;
+  --font-saans-variable: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-saans-medium: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-saans-regular: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 12px;
