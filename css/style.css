@@ -291,6 +291,9 @@ ul {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-20);
+  width: 100%;
+  max-width: 720px;
+  padding: 0 clamp(24px, 6vw, 40px);
 }
 
 .hero__title {
@@ -309,13 +312,12 @@ ul {
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
   max-width: 600px;
-  padding: 0 var(--spacing-16);
 }
 
 .hero__tagline {
   font-family: var(--font-saans-variable);
   font-weight: var(--font-weight-light);
-  font-size: var(--text-body);
+  font-size: clamp(13px, 3.4vw, 16px);
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.7);
   margin-top: var(--spacing-8);
