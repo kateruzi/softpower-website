@@ -302,12 +302,23 @@ ul {
   color: var(--color-whisper-white);
 }
 
+.hero__intro {
+  font-family: var(--font-saans-variable);
+  font-weight: var(--font-weight-light);
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+  padding: 0 var(--spacing-16);
+}
+
 .hero__tagline {
   font-family: var(--font-saans-variable);
   font-weight: var(--font-weight-light);
   font-size: var(--text-body);
   letter-spacing: 0.06em;
   color: rgba(255, 255, 255, 0.7);
+  margin-top: var(--spacing-8);
 }
 
 .hero__scroll {
