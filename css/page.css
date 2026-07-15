@@ -17,6 +17,7 @@
 .page-hero {
   position: relative;
   height: 60vh;
+  height: 60svh;
   min-height: 440px;
   display: flex;
   align-items: flex-end;
@@ -40,11 +41,11 @@
 
 .page-hero__title {
   font-family: var(--font-serrif-condensed-regular);
-  font-size: clamp(40px, 5vw, var(--text-display-sm));
-  line-height: var(--leading-display-sm);
-  letter-spacing: var(--tracking-display-sm);
+  font-size: clamp(32px, 5vw, var(--text-display-sm));
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   color: var(--color-whisper-white);
-  max-width: 640px;
+  max-width: 760px;
 }
 
 .page-hero__sub {
@@ -109,7 +110,7 @@
 
 .intro-block__text {
   font-family: var(--font-serrif-condensed-regular);
-  font-size: clamp(28px, 3vw, 40px);
+  font-size: clamp(24px, 3vw, 40px);
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: var(--color-onyx-shadow);
@@ -848,6 +849,12 @@
 
 /* ─── Responsive ─────────────────────────────────────────────────────────── */
 
+@media (max-width: 1024px) {
+  .formats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .formats-grid {
     grid-template-columns: 1fr;
@@ -865,6 +872,8 @@
 @media (max-width: 768px) {
   .page-hero {
     height: 50vh;
+    height: 50svh;
+    min-height: 380px;
   }
 
   .page-section {
