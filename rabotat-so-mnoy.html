@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>работать со мной — soft power</title>
+  <meta name="description" content="архитектура опыта, создание команд, лидерство, менеджмент: события, ретриты и корпоративный wellbeing под ключ — от идеи до последней детали." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/page.css" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <a href="/" class="nav__logo">
+      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
+      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
+    </a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="rabotat-so-mnoy.html" class="nav__link--active">работать со мной</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="rabotat-so-mnoy.html">работать со мной</a>
+  </div>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="page-hero">
+    <img
+      class="hero__video"
+      src="images/softpower-4325_2.jpg"
+      alt=""
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;"
+    />
+    <div class="hero__overlay"></div>
+    <div class="page-hero__content">
+      <p class="page-hero__eyebrow">работать со мной</p>
+      <h1 class="page-hero__title">архитектура опыта, создание команд, лидерство, менеджмент: от идеи до последней детали</h1>
+    </div>
+  </section>
+
+  <!-- ─── Лид ──────────────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <div class="intro-block">
+        <p class="intro-block__text">
+          я умею превращать идею в живой опыт: придумать концепцию,
+          собрать и возглавить команду, выстроить стратегию,
+          визуальный язык и продвижение — и провести человека
+          через глубокий опыт так, чтобы он его запомнил и вернулся снова.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Бэкграунд ────────────────────────────────────────────────────── -->
+  <section class="page-section page-section--alt">
+    <div class="container">
+      <div class="checklist-block">
+        <h2 class="section-title">бэкграунд</h2>
+        <ul class="checklist">
+          <li>более 15 лет в wellbeing и спорте: стартапы, корпорации, собственный бренд</li>
+          <li><strong>sektaschool</strong> — ceo московского филиала: создала команду 50+ человек, открыла больше 10 залов и филиалов в москве, коллаборация с афишей, vogue, condé nast и генеральное партнёрство с nike</li>
+          <li><strong>nike</strong> — 5 лет в бренд-команде: возглавляла nike box msk от этапа проектирования до закрытия центра в 2022. создала и управляла командой, отвечала за все спортивные партнёрства и интеграции, делала большой международный продакшен и приземляла международные компании</li>
+          <li><strong>soft power</strong> — собственный бренд вокруг йоги, телесности и практик: студийная практика, онлайн подписка, ивенты, ретриты, мерч. 5000+ практикующих по всему миру</li>
+          <li>помимо этого: иммерсивный балетный проект для банка бкс, создание спортивной школы и veterbodyschool для журнала veter, концепция, строительство и открытие ресторана 42 на патриках — и ещё многое, что сейчас под nda</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Кейсы ────────────────────────────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+      <h2 class="section-title">кейсы</h2>
+
+      <div class="cases-grid">
+
+        <!-- когда появится публичная ссылка с яндекс.диска (disk.yandex.ru/d/... или yadi.sk/...):
+             обернуть карточку в <a href="ССЫЛКА" target="_blank" rel="noopener" class="case-card">,
+             заменить div.case-card__media--placeholder на <img src="ПРЕВЬЮ"> внутри div.case-card__media
+             и добавить <span class="case-card__link">смотреть →</span> в конец body -->
+        <div class="case-card">
+          <div class="case-card__media case-card__media--placeholder">
+            <span class="case-card__play" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>
+            </span>
+            <span class="case-card__placeholder-note">видео скоро здесь</span>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__label">видео</span>
+            <h3 class="case-card__title">рекап nike box msk</h3>
+            <p class="case-card__desc">центр спорта и культуры nike: от этапа проектирования до международного продакшена.</p>
+          </div>
+        </div>
+
+        <!-- когда появится публичная ссылка с яндекс.диска — см. инструкцию у первой карточки -->
+        <div class="case-card">
+          <div class="case-card__media case-card__media--placeholder">
+            <span class="case-card__play" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>
+            </span>
+            <span class="case-card__placeholder-note">видео скоро здесь</span>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__label">видео</span>
+            <h3 class="case-card__title">рекап иммерсивного онлайн-балета</h3>
+            <p class="case-card__desc">иммерсивный балетный проект для банка бкс.</p>
+          </div>
+        </div>
+
+        <!-- когда появится галерея sektaschool — заменить placeholder на <img> по той же схеме -->
+        <div class="case-card">
+          <div class="case-card__media case-card__media--placeholder">
+            <span class="case-card__placeholder-note">фото скоро здесь</span>
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__label">фото</span>
+            <h3 class="case-card__title">sektaschool</h3>
+            <p class="case-card__desc">команда 50+ человек, больше 10 залов и филиалов в москве.</p>
+          </div>
+        </div>
+
+        <a class="case-card" href="https://www.instagram.com/reel/DRw_kcOCOk0/" target="_blank" rel="noopener">
+          <div class="case-card__media">
+            <img src="images/IMG_3017.jpeg" alt="иммерсивный йога опыт в старинном театре" loading="lazy" />
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__label">instagram</span>
+            <h3 class="case-card__title">soft power: иммерсивный йога опыт в старинном театре</h3>
+            <span class="case-card__link">смотреть в instagram →</span>
+          </div>
+        </a>
+
+        <a class="case-card" href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">
+          <div class="case-card__media">
+            <img src="images/IMG_3622.jpeg" alt="отпуск, задизайненный как уникальный опыт" loading="lazy" />
+          </div>
+          <div class="case-card__body">
+            <span class="case-card__label">instagram</span>
+            <h3 class="case-card__title">даже отпуск для родителей я задизайнила как уникальный опыт</h3>
+            <p class="case-card__desc">от первого шага до последнего.</p>
+            <span class="case-card__link">посмотреть и вдохновиться →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Форматы ──────────────────────────────────────────────────────── -->
+  <section class="page-section page-section--alt">
+    <div class="container">
+      <div class="offers-section">
+        <h2 class="section-title">форматы — что можно заказать</h2>
+        <div class="offers-grid">
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">событие или ретрит под ключ</h3>
+            </div>
+            <p class="offer-card__desc">
+              концепция, программа, команда, площадка, атмосфера, продвижение.
+              вы получаете готовый опыт, который люди заберут с собой и никогда не забудут.
+            </p>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">корпоративный wellbeing</h3>
+            </div>
+            <p class="offer-card__desc">
+              программы для команд, стартапов и корпораций: не «йога в переговорке»,
+              а спроектированный опыт, который реально меняет состояние людей.
+            </p>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">консалтинг и стратегические сессии</h3>
+            </div>
+            <p class="offer-card__desc">
+              для wellbeing-проектов, студий и экспертов: как превратить ремесло в продукт,
+              выстроить бренд и расти.
+            </p>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">выступления, лекции и партнёрства</h3>
+            </div>
+            <p class="offer-card__desc">
+              говорю про архитектуру опыта, wellbeing как систему и мягкую силу в лидерстве.
+            </p>
+          </div>
+
+          <div class="offer-card offer-card--soft">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">есть продукт или идея продукта?</h3>
+            </div>
+            <p class="offer-card__desc">
+              особенно международного, на стыке wellbeing, биохакинга, телесных практик,
+              longevity и ai — давайте поговорим. я открыта к новым проектам
+              и с радостью стану частью чего-то большего.
+            </p>
+            <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener" class="btn-ghost">написать в telegram</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Менторинг для йога-тичеров ───────────────────────────────────── -->
+  <section class="page-section">
+    <div class="container">
+
+      <div class="support-intro">
+        <h2 class="support-intro__heading">менторинг для йога-тичеров</h2>
+        <p class="support-intro__text">
+          я работаю с йога-тичерами, тренерами и специалистами помогающих профессий,
+          которые хотят не просто делиться знанием,
+          а создать живой, настоящий продукт —
+          упакованный в чёткую форму и наполненный своим смыслом.
+        </p>
+        <div class="support-trust">
+          <p class="support-trust__item">в моём поле безопасно и комфортно расти</p>
+          <p class="support-trust__item">
+            я умею слышать, видеть суть, собирать разрозненное в целое
+            и помогать вырастить ремесло в устойчивый бизнес
+          </p>
+        </div>
+      </div>
+
+      <div class="checklist-block">
+        <h2 class="checklist-block__title">ко мне приходят за тем, чтобы:</h2>
+        <ul class="checklist">
+          <li>сформулировать суть своей работы</li>
+          <li>увидеть свои сильные стороны и упаковать знания в продукт</li>
+          <li>проанализировать свою аудиторию</li>
+          <li>получить структурную обратную связь и поддержку</li>
+          <li>выстроить стратегию продвижения</li>
+          <li>увидеть неочевидные пути развития, опираясь на то, что действительно интересно и хочется делать</li>
+        </ul>
+      </div>
+
+      <div class="offers-section">
+        <h2 class="section-title">формат консультаций</h2>
+        <div class="offers-grid">
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">разовая сессия</h3>
+              <span class="offer-card__price">€300</span>
+            </div>
+            <p class="offer-card__tag">120 минут</p>
+            <p class="offer-card__desc">
+              интенсивный формат для конкретного запроса.<br />
+              если нужно увидеть ситуацию ясно, найти решение,
+              сделать выбор или получить структурную обратную связь.
+            </p>
+            <a href="mailto:hello@softpowerspace.com?subject=менторинг — разовая сессия" class="btn-ghost">записаться</a>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">курс из 3 сессий</h3>
+              <span class="offer-card__price">€750</span>
+            </div>
+            <p class="offer-card__tag">75–90 минут каждая</p>
+            <p class="offer-card__desc">
+              глубокая работа с вашим запросом и связанными с ним процессами.<br />
+              подходит, если хочется не просто решить задачу,
+              но и переосмыслить подход, найти новые опоры и собрать стратегию.
+            </p>
+            <a href="mailto:hello@softpowerspace.com?subject=менторинг — курс из 3 сессий" class="btn-ghost">записаться</a>
+          </div>
+
+          <div class="offer-card">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">курс из 5 сессий</h3>
+              <span class="offer-card__price">€1000</span>
+            </div>
+            <p class="offer-card__tag">75–90 минут каждая</p>
+            <p class="offer-card__desc">
+              пространство для тех, кто хочет серьёзно взяться за дело:
+              увидеть, как работает их система, переупаковать знания,
+              настроить продвижение и обрести устойчивость.<br />
+              мы работаем на пересечении стратегии, смыслов и глубокой внутренней работы.
+            </p>
+            <a href="mailto:hello@softpowerspace.com?subject=менторинг — курс из 5 сессий" class="btn-ghost">записаться</a>
+          </div>
+
+          <div class="offer-card offer-card--soft">
+            <div class="offer-card__header">
+              <h3 class="offer-card__title">индивидуальная программа сопровождения</h3>
+              <span class="offer-card__price">по запросу</span>
+            </div>
+            <p class="offer-card__tag">3–12 месяцев</p>
+            <p class="offer-card__desc">
+              долгосрочное, тёплое и устойчивое сопровождение
+              с гибкой программой под ваш ритм, цели и стадии развития.<br />
+              детали и стоимость обсуждаются лично.
+            </p>
+            <a href="mailto:hello@softpowerspace.com?subject=менторинг — индивидуальная программа" class="btn-ghost">записаться</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="reviews-section">
+        <h2 class="section-title">отзывы</h2>
+        <div class="reviews-grid">
+
+          <div class="review-card">
+            <p class="review-card__text">
+              «консультация с Дашей помогла мне навести порядок в текущих предложениях моего йога-бизнеса,
+              а также наметить следующие шаги. неожиданно для себя я увидела, как многое уже удалось реализовать,
+              а также получила ценный фидбэк по тем направлениям, где есть потенциал для роста.
+              благодаря редкому сочетанию глубокого понимания йоги, бизнеса и профессионального опыта в маркетинге,
+              Даша создает поддержку, которая вселяет уверенность и помогает выстраивать устойчивый бизнес,
+              по-настоящему значимым на личном уровне.»
+            </p>
+            <div class="review-card__author">
+              <span class="review-card__name">Alya</span>
+              <span class="review-card__role">дживамукти йога тичер, Германия</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-card__text">
+              «очень классная сессия — структурно, глубоко, с заботой.
+              мы за короткое время разложили всё по полочкам: от сути замысла до первых шагов продвижения.
+              при этом всё было очень по-человечески: тепло, поддерживающе, без давления.
+              много внимания тому, что действительно хочу я (тут вообще разрыв шаблона).
+              чувствую опору и ясность, чего давно не хватало. спасибо тебе большое!»
+            </p>
+            <div class="review-card__author">
+              <span class="review-card__name">Софья Шулыкина</span>
+              <span class="review-card__role">фитнес тренер, Португалия</span>
+            </div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-card__text">
+              «консультация с Дашей очень помогла тем, что показала какой новый рабочий формат онлайн практик
+              можно сделать, как это структурировать и упаковать так, чтобы получился настоящий йога-клуб дома
+              и людям бы захотелось приходить и продлевать участие.»
+            </p>
+            <div class="review-card__author">
+              <span class="review-card__name">Маша Нирка</span>
+              <span class="review-card__role">преподаватель йоги с 9-летним опытом, Красная поляна</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Что я ищу сейчас ─────────────────────────────────────────────── -->
+  <section class="page-section page-section--dark">
+    <div class="container">
+      <h2 class="section-title section-title--light">что я ищу сейчас</h2>
+      <div class="seek-block">
+        <p class="seek-block__lead">
+          проекты, которые хочется прожить и запомнить, а не просто посетить.
+        </p>
+        <p>
+          я по образованию маркетолог и верю в силу продуманного маркетинга —
+          который продаёт не воронками, а через архитектуру опыта:
+          так, что людям самим захочется вернуться.
+        </p>
+        <p>
+          если у тебя есть идея, задача или ощущение
+          «нам нужен человек, который соберёт это целиком» — напиши мне.
+        </p>
+        <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener" class="btn-ghost btn-ghost--light">написать в telegram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="praktika.html">практика</a>
+        <a href="rabotat-so-mnoy.html">работать со мной</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">© 2026 soft power</span>
+      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  </script>
+
+</body>
+</html>
