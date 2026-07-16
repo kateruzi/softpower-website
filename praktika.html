@@ -8,16 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --font-serrif-condensed-regular: 'Libre Baskerville', Georgia, serif;
-      --font-saans-variable: 'Libre Baskerville', Georgia, serif;
-      --font-saans-medium: 'Libre Baskerville', Georgia, serif;
-      --font-saans-regular: 'Libre Baskerville', Georgia, serif;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/page.css" />
@@ -31,8 +22,7 @@
     </a>
     <ul class="nav__links">
       <li><a href="praktika.html" class="nav__link--active">практика</a></li>
-      <li><a href="dlya-uchiteley-i-komand.html">для учителей и команд</a></li>
-      <li><a href="magazin.html">магазин</a></li>
+      <li><a href="rabotat-so-mnoy.html">работать со мной</a></li>
     </ul>
     <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -42,13 +32,12 @@
   <div class="nav__mobile" id="mobileMenu">
     <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
     <a href="praktika.html">практика</a>
-    <a href="dlya-uchiteley-i-komand.html">для учителей<br>и команд</a>
-    <a href="magazin.html">магазин</a>
+    <a href="rabotat-so-mnoy.html">работать со мной</a>
   </div>
 
   <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
   <section class="page-hero">
-    <video class="hero__video" autoplay muted loop playsinline poster="images/IMG_2999.jpeg">
+    <video class="hero__video" autoplay muted loop playsinline poster="images/softpower-3734.jpg">
       <source src="video/praktika-hero.mp4" type="video/mp4" />
     </video>
     <div class="hero__overlay"></div>
@@ -207,8 +196,7 @@
       </div>
       <nav class="footer__nav">
         <a href="praktika.html">практика</a>
-        <a href="dlya-uchiteley-i-komand.html">для учителей и команд</a>
-        <a href="magazin.html">магазин</a>
+        <a href="rabotat-so-mnoy.html">работать со мной</a>
         <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
         <a href="mailto:hello@softpowerspace.com">написать</a>
       </nav>
@@ -239,6 +227,22 @@
     }
     closeMenuBtn.addEventListener('click', closeMenu);
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll(
+        '.intro-block__text, .format-card, .pass-option, .event-placeholder'
+      ).forEach((el, i) => {
+        el.classList.add('reveal');
+        el.style.transitionDelay = (i % 3) * 70 + 'ms';
+        io.observe(el);
+      });
+    }
   </script>
 
 </body>
