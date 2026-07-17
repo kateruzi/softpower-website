@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>soft power — сила может быть мягкой</title>
+  <meta name="description" content="пространство устойчивости через тело. практика, к которой возвращаются: йога, дыхание, медитация. лиссабон и онлайн по всему миру." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ─── Navigation ──────────────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <a href="index.html" class="nav__logo">
+      <img src="../images/logo-dark.svg" alt="soft power" />
+    </a>
+    <ul class="nav__links">
+      <li><a href="praktika.html">практика</a></li>
+      <li><a href="rabotat-so-mnoy.html">работать со мной</a></li>
+    </ul>
+    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="навигация">
+    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+    <a href="praktika.html">практика</a>
+    <a href="rabotat-so-mnoy.html">работать со мной</a>
+  </div>
+
+  <!-- ─── Hero: одно утверждение + одна дверь ──────────────────────────── -->
+  <header class="hero">
+    <h1 class="hero__title">сила может быть мягкой</h1>
+    <p class="hero__sub">
+      soft power — пространство устойчивости через тело.
+      практика, к которой возвращаются: йога, дыхание, медитация.
+    </p>
+    <a href="#pauza" class="hero__cta">попробовать — пауза на 90 секунд</a>
+    <p class="hero__hint">прямо здесь. ничего не нужно уметь.</p>
+  </header>
+
+  <!-- ─── Пауза на 90 секунд ───────────────────────────────────────────── -->
+  <section class="section pause" id="pauza">
+    <div class="section__inner">
+      <p class="eyebrow">пауза</p>
+      <p class="pause__intro">
+        прежде чем читать дальше — подарок.
+        девяносто секунд дыхания.
+        никуда не нужно записываться и ничего не нужно успевать.
+      </p>
+
+      <div class="breath" id="breath">
+        <div class="breath__circle" id="breathCircle">
+          <span class="breath__phase" id="breathPhase">готова?</span>
+        </div>
+        <p class="breath__timer" id="breathTimer"></p>
+        <button class="breath__start" id="breathStart">начать</button>
+      </div>
+
+      <div class="breath__done" id="breathDone">
+        <p class="lead">это уже была практика.</p>
+        <p>
+          так устроено всё в soft power: без давления, не нужно успевать.
+          если захочется продолжить —
+          <a href="praktika.html">практика ждёт здесь</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Фото как пауза ──────────────────────────────────────────────── -->
+  <div class="photo-pause">
+    <img src="../images/ARF03106.jpg" alt="" loading="lazy" />
+  </div>
+
+  <!-- ─── Три двери ───────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="doors">
+
+        <a href="praktika.html" class="door">
+          <span class="door__label">хочется практиковать</span>
+          <h2 class="door__title">практика</h2>
+          <p class="door__desc">
+            офлайн в лиссабоне и онлайн из любой точки мира.
+            в группе, один на один или в своём ритме — через библиотеку практик.
+          </p>
+          <span class="door__link">смотреть форматы →</span>
+        </a>
+
+        <!-- когда появится публичная ссылка на бот — заменить href ниже -->
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener" class="door">
+          <span class="door__label">хочется просто попробовать</span>
+          <h2 class="door__title">якорёк</h2>
+          <p class="door__desc">
+            бесплатный вход: три дня мягкой практики в телеграме.
+            маленькая штучка, которую держишь в кармашке, —
+            когда всё вокруг меняется.
+          </p>
+          <span class="door__link">забрать якорёк →</span>
+        </a>
+
+        <a href="rabotat-so-mnoy.html" class="door">
+          <span class="door__label">есть проект или идея</span>
+          <h2 class="door__title">работать со мной</h2>
+          <p class="door__desc">
+            архитектура опыта: события и ретриты под ключ,
+            корпоративный wellbeing, менторинг для практиков.
+          </p>
+          <span class="door__link">узнать как →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Обо мне ─────────────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="about">
+      <div class="about__photo">
+        <img src="../images/IMG_2922.jpeg" alt="Даша" loading="lazy" />
+      </div>
+      <div class="about__text">
+        <p class="eyebrow">обо мне</p>
+        <p class="lead">
+          я даша. пятнадцать лет я строила проекты в wellbeing и спорте —
+          от sektaschool до бренд-команды nike.
+          в 2022 я ушла из корпорации, сменила страну и выбрала ремесло.
+        </p>
+        <div class="prose">
+          <p>
+            йога — моя ежедневная практика больше пятнадцати лет,
+            моя линия — дживамукти. я учусь у живых учителей по всему миру
+            и передаю дальше то, что прошло через меня.
+            это не методология — это передача.
+          </p>
+          <p>
+            из ремесла вырос soft power — пространство, в котором практикуют
+            больше 5000 человек по всему миру. а из всего, что я делала раньше, —
+            архитектура опыта: я придумываю целостный опыт
+            и провожу через него человека.
+          </p>
+          <p>
+            живу в лиссабоне. работаю по всему миру.
+          </p>
+        </div>
+
+        <div class="numbers">
+          <div class="number">
+            <span class="number__value">15+</span>
+            <span class="number__label">лет ежедневной практики</span>
+          </div>
+          <div class="number">
+            <span class="number__value">5000+</span>
+            <span class="number__label">практикующих по всему миру</span>
+          </div>
+          <div class="number">
+            <span class="number__value">5–65</span>
+            <span class="number__label">минут длится практика</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Голоса практикующих (исследование 2024) ─────────────────────── -->
+  <section class="section section--dark voices">
+    <div class="section__inner">
+      <p class="eyebrow">какими словами об этом говорят</p>
+      <div class="voices__grid">
+
+        <div class="voice">
+          <p class="voice__text">
+            «всё вокруг меняется, мир рушится и строится заново —
+            но есть маленькая штучка, я держу её в кармашке.»
+          </p>
+          <span class="voice__author">даша, практикует онлайн</span>
+        </div>
+
+        <div class="voice">
+          <p class="voice__text">
+            «уютный домик: приходишь, когда тебе не очень хорошо,
+            покопаешься, найдёшь что-то хорошее — о тебе позаботятся.»
+          </p>
+          <span class="voice__author">ксюша, практикует онлайн</span>
+        </div>
+
+        <div class="voice">
+          <p class="voice__text">
+            «как чашка горячего напитка: ты точно знаешь,
+            что тебе станет лучше после того, как ты её попьёшь.»
+          </p>
+          <span class="voice__author">даша, практикует онлайн</span>
+        </div>
+
+      </div>
+      <p class="voices__note">из исследования среди практикующих soft power, 2024</p>
+    </div>
+  </section>
+
+  <!-- ─── Фото как пауза ──────────────────────────────────────────────── -->
+  <div class="photo-pause">
+    <img src="../images/softpower-3734.jpg" alt="" loading="lazy" />
+  </div>
+
+  <!-- ─── Footer ──────────────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <p class="footer__logo">soft power</p>
+        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+      </div>
+      <nav class="footer__nav" aria-label="навигация футера">
+        <a href="praktika.html">практика</a>
+        <a href="rabotat-so-mnoy.html">работать со мной</a>
+        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
+        <a href="mailto:hello@softpowerspace.com">написать</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 soft power</span>
+      <span>
+        <a href="../index.html">первая версия сайта</a>
+        &nbsp;·&nbsp;
+        <a href="../politika.html">политика конфиденциальности</a>
+      </span>
+    </div>
+  </footer>
+
+  <!-- ─── Scripts ─────────────────────────────────────────────────────── -->
+  <script>
+    // nav scroll state
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // burger menu
+    const burgerBtn = document.getElementById('burgerBtn');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    function closeMenu() {
+      mobileMenu.classList.remove('is-open');
+      burgerBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    closeMenuBtn.addEventListener('click', closeMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // ── пауза на 90 секунд ──────────────────────────────────────────
+    // цикл: вдох 4с → пауза 2с → выдох 6с. девять кругов ≈ 90 секунд.
+    const circle = document.getElementById('breathCircle');
+    const phaseEl = document.getElementById('breathPhase');
+    const timerEl = document.getElementById('breathTimer');
+    const startBtn = document.getElementById('breathStart');
+    const doneEl = document.getElementById('breathDone');
+
+    const CYCLE = [
+      { name: 'вдох',  dur: 4000, cls: 'is-breathing-in'  },
+      { name: 'пауза', dur: 2000, cls: 'is-holding'        },
+      { name: 'выдох', dur: 6000, cls: 'is-breathing-out' },
+    ];
+    const TOTAL = 90;
+    let running = false;
+
+    startBtn.addEventListener('click', () => {
+      if (running) return;
+      running = true;
+      startBtn.style.display = 'none';
+      doneEl.classList.remove('is-visible');
+
+      const startedAt = performance.now();
+      let phaseIdx = -1;
+      let phaseEndsAt = 0;
+
+      function tick(now) {
+        const elapsed = (now - startedAt) / 1000;
+        const left = Math.max(0, Math.ceil(TOTAL - elapsed));
+        timerEl.textContent = left + ' сек';
+
+        if (elapsed >= TOTAL) {
+          circle.classList.remove(...CYCLE.map(p => p.cls));
+          phaseEl.textContent = 'вот и всё';
+          timerEl.textContent = '';
+          doneEl.classList.add('is-visible');
+          startBtn.textContent = 'ещё раз';
+          startBtn.style.display = '';
+          running = false;
+          return;
+        }
+
+        if (now >= phaseEndsAt) {
+          phaseIdx = (phaseIdx + 1) % CYCLE.length;
+          const phase = CYCLE[phaseIdx];
+          phaseEndsAt = now + phase.dur;
+          circle.classList.remove(...CYCLE.map(p => p.cls));
+          // перезапуск transition на следующем кадре
+          requestAnimationFrame(() => circle.classList.add(phase.cls));
+          phaseEl.textContent = phase.name;
+        }
+
+        requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+
+    // scroll-reveal (пропускается при reduced motion)
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.door, .about__photo, .about__text, .voice, .number')
+        .forEach((el, i) => {
+          el.classList.add('reveal');
+          el.style.transitionDelay = (i % 3) * 70 + 'ms';
+          io.observe(el);
+        });
+    }
+  </script>
+
+</body>
+</html>
