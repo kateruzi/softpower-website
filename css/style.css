@@ -804,6 +804,25 @@ ul {
   border-top: 1px solid rgba(153, 161, 175, 0.2);
 }
 
+.faq__more {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  font-size: var(--text-caption);
+  letter-spacing: 0.06em;
+  color: var(--color-onyx-shadow);
+  border: 1px solid rgba(153, 161, 175, 0.4);
+  border-radius: var(--radius-pillbuttons);
+  padding: var(--spacing-12) var(--spacing-24);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.faq__more:hover {
+  background-color: rgba(153, 161, 175, 0.08);
+  border-color: rgba(153, 161, 175, 0.65);
+}
+
 .faq-item {
   border-bottom: 1px solid rgba(153, 161, 175, 0.2);
 }
