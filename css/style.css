@@ -415,16 +415,29 @@ ul {
 .about__inner {
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  gap: clamp(40px, 6vw, 96px);
-  align-items: start;
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(40px, 6vw, 96px);
+  row-gap: var(--spacing-24);
+  align-items: stretch;
   max-width: 1280px;
   margin: 0 auto;
 }
 
+.about__eyebrow {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: var(--text-caption);
+  letter-spacing: 0.1em;
+  color: var(--color-mist-gray);
+}
+
 .about__photo {
+  grid-column: 1;
+  grid-row: 2;
   overflow: hidden;
   background-color: #e8e4df;
-  aspect-ratio: 4 / 5;
+  height: 100%;
+  min-height: 420px;
 }
 
 .about__photo img {
@@ -435,15 +448,11 @@ ul {
 }
 
 .about__text {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-24);
-}
-
-.about__eyebrow {
-  font-size: var(--text-caption);
-  letter-spacing: 0.1em;
-  color: var(--color-mist-gray);
 }
 
 .about__lead {
@@ -1011,12 +1020,23 @@ ul {
 
   .about__inner {
     grid-template-columns: 1fr;
-    gap: var(--spacing-32);
+    grid-template-rows: none;
+    column-gap: 0;
+    row-gap: var(--spacing-24);
+  }
+
+  .about__eyebrow,
+  .about__photo,
+  .about__text {
+    grid-column: 1;
+    grid-row: auto;
   }
 
   .about__photo {
     max-width: 460px;
     aspect-ratio: 4 / 5;
+    height: auto;
+    min-height: 0;
   }
 
   .paths__inner {
