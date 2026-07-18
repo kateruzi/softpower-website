@@ -449,9 +449,9 @@ ul {
 .about__lead {
   font-family: var(--font-serrif-condensed-regular);
   font-weight: var(--font-weight-regular);
-  font-size: clamp(23px, 2.7vw, 31px);
-  line-height: 1.32;
-  letter-spacing: -0.02em;
+  font-size: clamp(20px, 2vw, 25px);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--color-onyx-shadow);
 }
 
