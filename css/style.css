@@ -456,6 +456,11 @@ ul {
   max-width: 30ch;
 }
 
+.about__lead-name {
+  display: block;
+  margin-bottom: 0.35em;
+}
+
 .about__prose {
   display: flex;
   flex-direction: column;
