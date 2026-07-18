@@ -372,6 +372,39 @@ ul {
   50% { transform: translateX(-50%) translateY(6px); }
 }
 
+/* ─── Intro lead (кто я + миссия) ───────────────────────────────────────── */
+
+.intro-lead {
+  padding: clamp(80px, 13vw, 150px) clamp(24px, 5vw, 80px);
+}
+
+.intro-lead__inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  text-align: center;
+}
+
+.intro-lead__title {
+  font-family: var(--font-serrif-condensed-regular);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(26px, 3.6vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-onyx-shadow);
+}
+
+.intro-lead__text {
+  font-family: var(--font-saans-regular);
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.7;
+  color: var(--color-steel-glimmer);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
 /* ─── About ─────────────────────────────────────────────────────────────── */
 
 .about {

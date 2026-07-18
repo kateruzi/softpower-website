@@ -56,8 +56,6 @@
 
     <div class="hero__content">
       <h1 class="hero__title">soft power</h1>
-      <p class="hero__intro">я даша — архитектор опыта, продюсер, менеджер, предприниматель, лидер, йога-тичер.</p>
-      <p class="hero__intro">моя миссия — создавать безопасные пространства и проекты, в которых люди встречаются с собой и им становится лучше.</p>
       <p class="hero__tagline">not only about yoga, but always about love</p>
     </div>
 
@@ -70,31 +68,11 @@
     </button>
   </section>
 
-  <!-- ─── About ────────────────────────────────────────────────────────── -->
-  <section class="about">
-    <div class="about__inner">
-
-      <div class="about__mosaic">
-        <div class="about__photo about__photo--main">
-          <img src="images/IMG_2922.jpeg" alt="Даша" loading="lazy" />
-        </div>
-      </div>
-
-      <div class="about__text">
-        <h2 class="about__name">обо мне</h2>
-
-        <div class="about__bio">
-          <p>пятнадцать лет я строила проекты в wellbeing и спорте — в стартапах и корпорациях, от sektaschool до бренд-команды nike. в 2022 я сменила страну и посвятила себя ремеслу и созданию собственного бренда soft power, который строится вокруг йоги — практики, с которой я больше пятнадцати лет. сегодня это пространство, в котором практикуют больше 5000 человек по всему миру.</p>
-          <p>всё, что я делала в жизни — sektaschool, nike, soft power, ретриты и события — было про одно: я придумываю красивый целостный опыт целиком и провожу через него человека. концепция, смыслы, команда, пространство, визуал, музыка, путь человека внутри. это я называю архитектурой опыта.</p>
-          <p>сейчас я базируюсь в лиссабоне и открыта к международным проектам на стыке wellbeing, biohacking, longevity, телесных практик и человеческой трансформации. я адепт баланса между твёрдым и мягким и люблю соединять материальное с духовным.</p>
-        </div>
-
-        <div class="about__stat">
-          <span class="about__stat-number">5000+</span>
-          <span class="about__stat-label">практикующих по всему миру</span>
-        </div>
-      </div>
-
+  <!-- ─── Intro (кто я + миссия) ───────────────────────────────────────── -->
+  <section class="intro-lead">
+    <div class="intro-lead__inner">
+      <p class="intro-lead__title">я даша — архитектор опыта, продюсер, менеджер, предприниматель, лидер, йога-тичер.</p>
+      <p class="intro-lead__text">моя миссия — создавать безопасные пространства и проекты, в которых люди встречаются с собой и им становится лучше.</p>
     </div>
   </section>
 
@@ -133,6 +111,34 @@
           <span class="path-card__link">работать со мной →</span>
         </div>
       </a>
+
+    </div>
+  </section>
+
+  <!-- ─── About ────────────────────────────────────────────────────────── -->
+  <section class="about">
+    <div class="about__inner">
+
+      <div class="about__mosaic">
+        <div class="about__photo about__photo--main">
+          <img src="images/IMG_2922.jpeg" alt="Даша" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="about__text">
+        <h2 class="about__name">обо мне</h2>
+
+        <div class="about__bio">
+          <p>пятнадцать лет я строила проекты в wellbeing и спорте — в стартапах и корпорациях, от sektaschool до бренд-команды nike. в 2022 я сменила страну и посвятила себя ремеслу и созданию собственного бренда soft power, который строится вокруг йоги — практики, с которой я больше пятнадцати лет. сегодня это пространство, в котором практикуют больше 5000 человек по всему миру.</p>
+          <p>всё, что я делала в жизни — sektaschool, nike, soft power, ретриты и события — было про одно: я придумываю красивый целостный опыт целиком и провожу через него человека. концепция, смыслы, команда, пространство, визуал, музыка, путь человека внутри. это я называю архитектурой опыта.</p>
+          <p>сейчас я базируюсь в лиссабоне и открыта к международным проектам на стыке wellbeing, biohacking, longevity, телесных практик и человеческой трансформации. я адепт баланса между твёрдым и мягким и люблю соединять материальное с духовным.</p>
+        </div>
+
+        <div class="about__stat">
+          <span class="about__stat-number">5000+</span>
+          <span class="about__stat-label">практикующих по всему миру</span>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -418,7 +424,7 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll(
-        '.about__mosaic, .about__text, .path-card, .moment-clip, .testimonial, .faq-item, .beyond__intro, .beyond__lead, .beyond__list, .beyond__outro'
+        '.intro-lead__title, .intro-lead__text, .about__mosaic, .about__text, .path-card, .moment-clip, .testimonial, .faq-item, .beyond__intro, .beyond__lead, .beyond__list, .beyond__outro'
       ).forEach((el, i) => {
         el.classList.add('reveal');
         el.style.transitionDelay = (i % 3) * 70 + 'ms';
