@@ -196,6 +196,14 @@
   margin-top: var(--spacing-32);
 }
 
+.section-lead {
+  max-width: 680px;
+  margin-bottom: var(--spacing-48);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-steel-glimmer);
+}
+
 /* ─── Buttons ───────────────────────────────────────────────────────────── */
 
 .btn-ghost {
