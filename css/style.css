@@ -414,10 +414,10 @@ ul {
 
 .about__inner {
   display: grid;
-  grid-template-columns: 0.85fr 1fr;
-  gap: clamp(40px, 6vw, 100px);
+  grid-template-columns: 0.8fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
   align-items: start;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -453,7 +453,6 @@ ul {
   line-height: 1.32;
   letter-spacing: -0.02em;
   color: var(--color-onyx-shadow);
-  max-width: 30ch;
 }
 
 .about__lead-name {
@@ -465,7 +464,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-16);
-  max-width: 54ch;
 }
 
 .about__prose p {
