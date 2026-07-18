@@ -192,6 +192,10 @@
   color: var(--color-mist-gray);
 }
 
+.waitlist-cta {
+  margin-top: var(--spacing-32);
+}
+
 /* ─── Buttons ───────────────────────────────────────────────────────────── */
 
 .btn-ghost {
