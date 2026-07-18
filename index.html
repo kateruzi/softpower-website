@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css?v=3" />
+  <link rel="stylesheet" href="css/style.css?v=4" />
 </head>
 <body>
 
@@ -155,7 +155,7 @@
   <!-- ─── Micro-moments (inline video clips) ───────────────────────────── -->
   <section class="moments">
     <div class="moments__inner">
-      <p class="moments__label">моменты</p>
+      <h2 class="moments__header">моменты</h2>
       <div class="moments__track" id="momentsTrack">
         <!-- replace each with a short looping video clip or photo -->
         <div class="moment-clip">
@@ -433,7 +433,7 @@
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll(
-        '.intro-lead__title, .intro-lead__text, .about__photo, .about__text, .path-card, .moment-clip, .testimonial, .faq-item, .beyond__intro, .beyond__lead, .beyond__list, .beyond__outro'
+        '.intro-lead__title, .intro-lead__text, .about__photo, .about__text, .path-card, .moments__header, .moment-clip, .testimonial, .faq-item, .beyond__intro, .beyond__lead, .beyond__list, .beyond__outro'
       ).forEach((el, i) => {
         el.classList.add('reveal');
         el.style.transitionDelay = (i % 3) * 70 + 'ms';

@@ -605,18 +605,18 @@ ul {
 /* ─── Inline video clips (micro-moments) ────────────────────────────────── */
 
 .moments {
-  padding: 0 clamp(24px, 5vw, 80px) 96px;
+  padding: 96px clamp(24px, 5vw, 80px);
   overflow: hidden;
 }
 
-.moments__inner {
-}
-
-.moments__label {
-  font-size: var(--text-caption);
-  letter-spacing: 0.1em;
-  color: var(--color-mist-gray);
-  margin-bottom: var(--spacing-24);
+.moments__header {
+  font-family: var(--font-serrif-condensed-regular);
+  font-weight: var(--font-weight-regular);
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-onyx-shadow);
+  margin-bottom: var(--spacing-32);
 }
 
 .moments__track {
