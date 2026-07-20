@@ -74,6 +74,9 @@
   .card__media img{width:100%; height:100%; object-fit:cover; display:block;}
   .card__ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--faint); font-size:12px; letter-spacing:.12em; text-transform:uppercase;}
   .card__ph svg{opacity:.5;}
+  .card__play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.42));}
+  .card__play > span{width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s;}
+  .card:hover .card__play > span{transform:scale(1.08); background:#fff;}
   .card__body{padding:26px 28px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .card__label{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
   .card h3{font-size:20px; line-height:1.35;}
@@ -176,9 +179,8 @@
 
     <a class="card" href="https://disk.yandex.ru/i/UfPv990o92Ykyw" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card__media">
-        <span class="card__ph">
-          <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>
-        </span>
+        <img src="images/case-nike.jpg" alt="рекап nike box msk" loading="lazy">
+        <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
       </div>
       <div class="card__body">
         <span class="card__label">видео</span>
@@ -190,9 +192,8 @@
 
     <a class="card" href="https://disk.yandex.ru/i/H-je9Cju_yf8aw" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card__media">
-        <span class="card__ph">
-          <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg>
-        </span>
+        <img src="images/case-ballet.jpg" alt="рекап иммерсивного онлайн-балета «щелкунчик»" loading="lazy">
+        <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
       </div>
       <div class="card__body">
         <span class="card__label">видео</span>
