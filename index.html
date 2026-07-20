@@ -1,377 +1,269 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>soft power</title>
-  <meta name="description" content="архитектор опыта, продюсер, йога-тичер. создаю пространства и проекты, в которых люди встречаются с собой. лиссабон → мир." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>даша простова — архитектор опыта</title>
+<meta name="description" content="архитектор опыта, продюсер, йога-тичер. создаю пространства и проекты, в которых люди встречаются с собой. лиссабон → мир.">
+<style>
+  /* ═══ прототип главной для кати: структура и порядок блоков — по правкам даши.
+     стиль можно докручивать, порядок секций и акценты — сохранить. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+  /* ─ навигация: имя, не логотип soft power ─ */
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em;}
+  nav .links{display:flex; gap:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
 
-  <link rel="stylesheet" href="css/style.css?v=8" />
+  /* ─ hero: сразу про дашу, портрет, миссия, две кнопки ─ */
+  .hero{padding:72px 0 64px;}
+  .hero .wrap{display:grid; grid-template-columns:1.2fr .8fr; gap:56px; align-items:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  h1{font-size:36px; line-height:1.3; letter-spacing:-.01em;}
+  h1 .roles{color:var(--soft);}
+  .mission{margin-top:22px; font-size:19px; font-family:Georgia,serif; line-height:1.65; color:var(--ink);}
+  .hero-btns{margin-top:36px; display:flex; gap:14px; flex-wrap:wrap;}
+  /* все кнопки одного цвета — чёрные (вариант: нежно-розовый #e9cfc9 — просто поменять background и border у .btn) */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink);}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn-dark,.btn-light{/* оставлены для совместимости — стиль единый */}
+  .portrait{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+
+  /* ─ общие секции ─ */
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .prose{max-width:680px;}
+  .prose p{margin-bottom:18px;}
+  .prose p:last-child{margin-bottom:0;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ контекст: разворачиваемая секция ─ */
+  details.context{border:1px solid var(--line); background:var(--card); max-width:760px;}
+  details.context summary{cursor:pointer; list-style:none; padding:24px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px;}
+  details.context summary::-webkit-details-marker{display:none;}
+  details.context summary .s-title{font-family:Georgia,serif; font-size:19px;}
+  details.context summary .s-hint{font-size:13px; color:var(--faint); white-space:nowrap;}
+  details.context[open] summary .s-hint{display:none;}
+  details.context .context-body{padding:0 28px 26px; color:var(--ink);}
+  .context-list{font-size:15px; line-height:1.9; color:var(--soft); margin:14px 0;}
+
+  /* ─ развилка: две дорожки ─ */
+  .paths{display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:860px;}
+  .path{border:1px solid var(--line); background:var(--card); padding:34px 32px; display:flex; flex-direction:column; gap:14px;}
+  .path h3{font-family:Georgia,serif; font-weight:400; font-size:22px;}
+  .path p{color:var(--soft); font-size:15px; flex:1;}
+  .path .btn{align-self:flex-start;}
+
+  /* ─ faq: компактно, сразу развёрнуто ─ */
+  .faq{max-width:760px;}
+  .faq-item{padding:20px 0; border-top:1px solid var(--line);}
+  .faq-item:first-of-type{border-top:none;}
+  .faq-item h4{font-size:15.5px; font-weight:600; margin-bottom:6px;}
+  .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
+  .faq-more{margin-top:24px; font-size:14px;}
+  .faq-more a{color:var(--ink);}
+
+  /* ─ финальный CTA ─ */
+  .cta{background:var(--ink); color:#f4f2ee; text-align:center; padding:88px 24px;}
+  .cta h2{color:#f4f2ee; font-size:30px; max-width:640px; margin:0 auto 16px;}
+  .cta p{color:#b9b6b0; max-width:520px; margin:0 auto 36px; font-size:16px;}
+  .cta .btn{background:transparent; border-color:#f4f2ee; color:#f4f2ee;}
+  .cta .btn:hover{background:#f4f2ee; color:var(--ink);}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9;}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .hero .wrap{grid-template-columns:1fr; gap:36px;}
+    .hero{padding:44px 0;}
+    h1{font-size:28px;}
+    .paths{grid-template-columns:1fr;}
+    nav .links{gap:16px;}
+  }
+</style>
 </head>
 <body>
 
-  <!-- ─── Navigation ──────────────────────────────────────────────────── -->
-  <nav class="nav" id="nav">
-    <a href="/" class="nav__logo">
-      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
-      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
-    </a>
-    <ul class="nav__links">
-      <li><a href="praktika.html">практика</a></li>
-      <li><a href="rabotat-so-mnoy.html">работать со мной</a></li>
-      <li><a href="faq.html">вопросы</a></li>
-    </ul>
-    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </nav>
-
-  <!-- mobile menu -->
-  <div class="nav__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="навигация">
-    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+<!-- навигация: имя даши вместо логотипа soft power -->
+<nav><div class="wrap">
+  <span class="name">даша простова</span>
+  <span class="links">
     <a href="praktika.html">практика</a>
     <a href="rabotat-so-mnoy.html">работать со мной</a>
     <a href="faq.html">вопросы</a>
+    <a href="https://t.me/beloved_dasha">написать</a>
+  </span>
+</div></nav>
+
+<!-- hero: без огромной йога-картинки и логотипа. сразу — кто я, миссия, портрет, две кнопки -->
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="kicker">лиссабон → мир</div>
+    <h1>я даша — <span class="roles">архитектор опыта, продюсер, менеджер, предприниматель, лидер, йога-тичер.</span></h1>
+    <p class="mission">моя миссия — создавать безопасные пространства и проекты, в которых люди встречаются с собой и им становится лучше.</p>
+    <div class="hero-btns">
+      <a class="btn btn-dark" href="rabotat-so-mnoy.html">хочу работать с тобой</a>
+      <a class="btn btn-light" href="praktika.html">хочу к тебе на йогу (в группу / на ивент / на ретрит)</a>
+    </div>
   </div>
+  <div>
+    <!-- портрет даши. катя: заменить на финальное фото из репозитория site-photos -->
+    <img class="portrait" src="https://raw.githubusercontent.com/dariaprostova/site-photos/main/Dasha__823.jpg" alt="даша простова">
+  </div>
+</div></header>
 
-  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
-  <section class="hero">
-    <!-- replace src with actual video file when ready -->
-    <video
-      class="hero__video"
-      autoplay
-      muted
-      loop
-      playsinline
-      poster="images/ARF03106.jpg"
-      id="heroVideo"
-    >
-      <source src="video/hero.mp4" type="video/mp4" />
-    </video>
-    <div class="hero__overlay"></div>
+<div class="wrap"><hr class="hr"></div>
 
-    <div class="hero__content">
-      <h1 class="hero__title">soft power</h1>
-      <p class="hero__tagline">not only about yoga, but always about love</p>
+<!-- обо мне: сразу после hero, без фокуса на йогу.
+     статистику (15+ лет, 5000+, 5–65 минут) на главной НЕ показываем — она уходит на страницу практики.
+     отзывы тоже убраны с главной — на страницы практики и проектов -->
+<section id="about"><div class="wrap">
+  <div class="sec-label">обо мне</div>
+  <div class="prose">
+    <p>пятнадцать лет я строила проекты в wellbeing и спорте — в стартапах и корпорациях, от sektaschool до бренд-команды nike. в 2022 я сменила страну и посвятила себя ремеслу и созданию собственного бренда soft power, который строится вокруг йоги — практики, с которой я больше пятнадцати лет.</p>
+    <p>всё, что я делала в жизни — sektaschool, nike, soft power, ретриты и события — было про одно: я придумываю красивый целостный опыт целиком и провожу через него человека. концепция, смыслы, команда, пространство, визуал, музыка, путь человека внутри. это я называю архитектурой опыта.</p>
+    <p>сейчас я базируюсь в лиссабоне и открыта к международным проектам на стыке wellbeing, biohacking, longevity, телесных практик и человеческой трансформации. я адепт баланса между твёрдым и мягким и люблю соединять материальное с духовным.</p>
+    <!-- катя: вставить ссылки на linkedin и instagram даши -->
+    <p style="margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn btn-light" href="https://www.linkedin.com/">мой linkedin →</a>
+      <a class="btn btn-light" href="https://www.instagram.com/">мой instagram →</a>
+      <a class="btn btn-light" href="https://t.me/beloved_dasha">мой telegram →</a>
+    </p>
+  </div>
+</div></section>
+
+<!-- развилка: две дорожки -->
+<section id="paths" style="padding-top:8px;"><div class="wrap">
+  <div class="sec-label">две дорожки</div>
+  <div class="paths">
+    <div class="path">
+      <h3>как поработать со мной</h3>
+      <p>придумываю, собираю и запускаю опыты под ключ: события, ретриты, корпоративный wellbeing. консалтинг и стратегические сессии — от концепции до последней детали.</p>
+      <p>если вы инвестор, бренд, предприниматель, который ищет партнёра для проекта, или у вас есть идея и нужен консалтинг, который поможет оформить и запустить её в жизнь — напишите мне.</p>
+      <a class="btn btn-dark" href="rabotat-so-mnoy.html">поработать со мной →</a>
     </div>
-
-    <div class="hero__scroll" aria-hidden="true">
-      <div class="hero__scroll-line"></div>
+    <div class="path">
+      <h3>как попрактиковать йогу со мной</h3>
+      <p>
+        регулярная практика офлайн в лиссабоне и онлайн из любой точки мира ·
+        ретриты и уникальные события ·
+        подписка на канал с видео- и аудиопрактиками: йога, медитация, дыхание ·
+        мерч soft power
+      </p>
+      <p>подробности расписания и форматов — по кнопке ниже.</p>
+      <a class="btn btn-light" href="praktika.html">практиковать йогу →</a>
     </div>
+  </div>
+</div></section>
 
-    <button class="hero__sound" id="soundBtn" aria-label="включить звук">
-      звук ○
-    </button>
-  </section>
-
-  <!-- ─── Intro (кто я + миссия) ───────────────────────────────────────── -->
-  <section class="intro-lead">
-    <div class="intro-lead__inner">
-      <p class="intro-lead__title">я даша — архитектор опыта, продюсер, менеджер, предприниматель, лидер, йога-тичер.</p>
-      <p class="intro-lead__text">моя миссия — создавать безопасные пространства и проекты, в которых люди встречаются с собой и им становится лучше.</p>
+<!-- faq: компактно, все ответы сразу развёрнуты (без аккордеонов) -->
+<section id="faq"><div class="wrap">
+  <div class="sec-label">ответы на вопросы, которые вы не задавали</div>
+  <div class="faq">
+    <div class="faq-item">
+      <h4>даша, так ты йога-тичер или менеджер?</h4>
+      <p>йога-тичер, предприниматель, продюсер, менеджер и лидер. пятнадцать лет я строила проекты вокруг wellbeing и спорта, а потом ушла в ремесло и стала преподавать под своим брендом. в какой-то момент я поняла, что не хочу разделять роли: я создаю опыт. иногда он выглядит как класс йоги — иммерсивная практика с живой музыкой в старинном театре. иногда как корпоративная программа или ретрит. форма меняется, суть остаётся.</p>
     </div>
-  </section>
-
-  <!-- ─── Paths ─────────────────────────────────────────────────────────── -->
-  <section class="paths">
-    <div class="paths__inner">
-
-      <a href="praktika.html" class="path-card">
-        <div class="path-card__media">
-          <!-- replace with video loop or photo of a class -->
-          <img src="images/softpower-4341.jpg" alt="практика — занятие йогой" loading="lazy" />
-        </div>
-        <div class="path-card__body">
-          <span class="path-card__label">пришёл за йогой?</span>
-          <h3 class="path-card__title">практика</h3>
-          <p class="path-card__desc">
-            регулярная практика офлайн в лиссабоне и онлайн из любой точки мира,
-            ретриты и события.
-          </p>
-          <span class="path-card__link">soft power yoga →</span>
-        </div>
-      </a>
-
-      <a href="rabotat-so-mnoy.html" class="path-card">
-        <div class="path-card__media">
-          <!-- replace with video loop or photo -->
-          <img src="images/ARF09572-Desktop-2_2.jpg" alt="проекты — работать со мной" loading="lazy" />
-        </div>
-        <div class="path-card__body">
-          <span class="path-card__label">пришёл за проектом?</span>
-          <h3 class="path-card__title">проекты</h3>
-          <p class="path-card__desc">
-            придумываю, собираю и запускаю опыты под ключ: события, ретриты,
-            корпоративный wellbeing. консалтинг — от концепции до последней детали.
-          </p>
-          <span class="path-card__link">работать со мной →</span>
-        </div>
-      </a>
-
+    <div class="faq-item">
+      <h4>что такое soft power?</h4>
+      <p>мой девиз, моя философия и имя ряда моих проектов. мягкая сила — это когда ты меняешь людей не давлением, а пространством, в котором им безопасно меняться самим.</p>
     </div>
-  </section>
-
-  <!-- ─── About ────────────────────────────────────────────────────────── -->
-  <section class="about">
-    <div class="about__inner">
-
-      <p class="about__eyebrow">обо мне</p>
-
-      <div class="about__photo">
-        <img src="images/IMG_2922.jpeg" alt="Даша" loading="lazy" />
-      </div>
-
-      <div class="about__text">
-        <p class="about__lead">пятнадцать лет я строила проекты в wellbeing и спорте — в стартапах и корпорациях, от sektaschool до бренд-команды nike. в 2022 я сменила страну и посвятила себя ремеслу и созданию собственного бренда soft power, который строится вокруг йоги — практики, с которой я больше пятнадцати лет. сегодня это пространство, в котором практикуют больше 5000 человек по всему миру.</p>
-
-        <div class="about__prose">
-          <p>всё, что я делала в жизни — sektaschool, nike, soft power, ретриты и события — было про одно: я придумываю красивый целостный опыт целиком и провожу через него человека. концепция, смыслы, команда, пространство, визуал, музыка, путь человека внутри. это я называю архитектурой опыта.</p>
-          <p>сейчас я базируюсь в лиссабоне и открыта к международным проектам на стыке wellbeing, biohacking, longevity, телесных практик и человеческой трансформации. я адепт баланса между твёрдым и мягким и люблю соединять материальное с духовным.</p>
-        </div>
-
-        <div class="about__numbers">
-          <div class="about__number">
-            <span class="about__number-value">15+</span>
-            <span class="about__number-label">лет ежедневной практики</span>
-          </div>
-          <div class="about__number">
-            <span class="about__number-value">5000+</span>
-            <span class="about__number-label">практикующих по всему миру</span>
-          </div>
-          <div class="about__number">
-            <span class="about__number-value">5–65</span>
-            <span class="about__number-label">минут длится практика</span>
-          </div>
-        </div>
-      </div>
-
+    <div class="faq-item">
+      <h4>что значит «архитектор опыта»?</h4>
+      <p>это человек, который создаёт целостный опыт для продукта или события — онлайн или офлайн — так, чтобы этот опыт действительно изменил человека, который с ним столкнулся. не организатор мероприятий. точка. концепция, смыслы, команда, пространство, визуал, музыка, продвижение и путь человека внутри — всё это одна система.</p>
     </div>
-  </section>
-
-  <!-- ─── Micro-moments (inline video clips) ───────────────────────────── -->
-  <section class="moments">
-    <div class="moments__inner">
-      <h2 class="moments__header">моменты</h2>
-      <div class="moments__track" id="momentsTrack">
-        <!-- replace each with a short looping video clip or photo -->
-        <div class="moment-clip">
-          <img src="images/softpower-5878_resiz.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="moment-clip">
-          <img src="images/softpower-4171_resiz.jpg" alt="" loading="lazy" />
-        </div>
-        <div class="moment-clip">
-          <img src="images/DSCF5567.jpeg" alt="" loading="lazy" />
-        </div>
-        <div class="moment-clip">
-          <img src="images/softpower-4154_resiz.jpeg" alt="" loading="lazy" />
-        </div>
-        <div class="moment-clip">
-          <img src="images/softpower-4423_resiz.jpeg" alt="" loading="lazy" />
-        </div>
-      </div>
+    <div class="faq-item">
+      <h4>вау, и тебя можно попросить сделать это для нашего продукта / бренда / компании?</h4>
+      <p>да. событие или ретрит под ключ, корпоративную wellbeing-программу, консалтинг или стратегическую сессию. а ещё можно позвать меня поговорить о твоём продукте — мы найдём точку взаимодействия, если у нас общие ценности.</p>
     </div>
-  </section>
-
-  <!-- ─── Testimonials ─────────────────────────────────────────────────── -->
-  <section class="testimonials">
-    <div class="testimonials__inner">
-      <h2 class="testimonials__header">что говорят те, кто уже здесь</h2>
-
-      <div class="testimonials__grid">
-
-        <div class="testimonial">
-          <!-- replace with atmospheric photo (not portrait) -->
-          <div class="testimonial__image">
-            <img src="images/DSCF5488.jpg" alt="" loading="lazy" />
-          </div>
-          <p class="testimonial__text">
-            «мягкость, внимание к себе и опора —
-            именно это я получила на ретрите.
-            каждый день был выстроен с такой заботой,
-            что хотелось остаться навсегда.»
-          </p>
-          <span class="testimonial__author">участница ретрита</span>
-        </div>
-
-        <div class="testimonial">
-          <div class="testimonial__image">
-            <img src="images/DSCF5729_1.jpeg" alt="" loading="lazy" />
-          </div>
-          <p class="testimonial__text">
-            «занималась с Дашей онлайн, живя в другом часовом поясе.
-            практика стала ритмом, который держит.
-            не спорт — что-то гораздо глубже.»
-          </p>
-          <span class="testimonial__author">практикующая, онлайн</span>
-        </div>
-
-        <div class="testimonial">
-          <div class="testimonial__image">
-            <img src="images/DSCF5480_2.jpeg" alt="" loading="lazy" />
-          </div>
-          <p class="testimonial__text">
-            «работала с Дашей как ментором.
-            она увидела суть того, что я делаю,
-            помогла сформулировать и выстроить.
-            без давления, с настоящим интересом.»
-          </p>
-          <span class="testimonial__author">преподаватель йоги</span>
-        </div>
-
-      </div>
+    <div class="faq-item">
+      <h4>что ты ищешь сейчас?</h4>
+      <p>международные проекты на стыке wellbeing, longevity, биохакинга, ai, телесных практик и креатива. партнёрства с компаниями и брендами, для которых люди — не строчка в бюджете. события и пространства мирового уровня. и людей, с которыми хочется строить — избирательно, но всем сердцем.</p>
     </div>
-  </section>
+  </div>
+  <p class="faq-more"><a href="faq.html">все вопросы и ответы →</a></p>
+</div></section>
 
-  <!-- ─── FAQ ──────────────────────────────────────────────────────────── -->
-  <section class="faq">
-    <div class="faq__inner">
-      <h2 class="faq__header">ответы на вопросы, которые вы не задавали</h2>
-
-      <div class="faq__list">
-
-        <details class="faq-item">
-          <summary>даша, так ты йога-тичер или менеджер?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>йога-тичер, предприниматель, продюсер, менеджер и лидер. пятнадцать лет я строила проекты вокруг wellbeing и спорта, а потом ушла в ремесло и стала преподавать под своим брендом. в какой-то момент я поняла, что не хочу разделять роли: я создаю опыт. иногда он выглядит как класс йоги — иммерсивная практика с живой музыкой в старинном театре. иногда как корпоративная программа или ретрит. форма меняется, суть остаётся.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>что такое soft power?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>мой бренд и моя философия. мягкая сила — это когда ты меняешь людей не давлением, а пространством, в котором им безопасно меняться самим. под этим именем живут практики в лиссабоне и онлайн, подписка, ретриты, события и мерч. сегодня в soft power практикуют больше 5000 человек по всему миру.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>а что ты делала до йоги?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>пятнадцать лет в wellbeing и спорте. я была ceo московского филиала sektaschool: создавала и управляла командами, открывала залы и филиалы, делала значимые партнёрства — афиша, vogue, condé nast и генеральное партнёрство с nike. затем пять лет была частью бренд-команды nike и руководила проектом nike box msk: команда, ивенты, спортивные партнёрства, интеграции, международный продакшен. в 2022 я ушла из корпорации, переехала в португалию и стала развивать soft power.</p>
-          </div>
-        </details>
-
-        <details class="faq-item">
-          <summary>что значит «архитектор опыта»?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>не организатор мероприятий. точка. моя работа — создать целостный опыт для продукта или события, онлайн или офлайн, так, чтобы этот опыт действительно изменил человека, который с ним столкнулся. концепция, смыслы, команда, пространство, визуал, музыка, продвижение и путь человека внутри — всё это одна система.</p>
-          </div>
-        </details>
-
-      </div>
-
-      <a class="faq__more" href="faq.html">все вопросы и ответы <span aria-hidden="true">→</span></a>
+<!-- контекст: разворачиваемая секция — после faq -->
+<section style="padding-top:0;"><div class="wrap">
+  <details class="context">
+    <summary>
+      <span class="s-title">об этом вы меня точно не спрашивали</span>
+      <span class="s-hint">но это добавит контекста →</span>
+    </summary>
+    <div class="context-body">
+      <p style="font-size:14.5px; color:var(--soft);">об этом не принято говорить на интервью, но я верю: когда мы заходим в общий проект или опыт, важно быть созвучными. так вот, в моём бэкграунде есть:</p>
+      <p class="context-list">10 лет хореографической школы · работа на крупнейших мировых спортивных чемпионатах внутри москомспорта · управление московским филиалом самого большого фитнес-стартапа · менеджмент и продюсирование в международной корпорации · сертифицированное тренерство · лекции перед аудиторией 300+ человек · серийная эмиграция · организация фестивалей, ивентов, ретритов — всего на свете · высшее образование в маркетинге · лидерство и создание команд · 10 лет психотерапии · коучинг · создание продуктов · 15 лет практики йоги, пранаямы и breathwork · тантра и випассана · йога-тичерство и десятки обучений, которые я прохожу постоянно у лучших, расширяясь во все стороны</p>
+      <p style="font-size:14.5px;">мне нравится создавать пространство, где человек через практику может встретиться с собой. мне интересно придумывать уникальный опыт и укутывать в него людей — думать, как сделать полезнее, лучше, красивее и интереснее.</p>
     </div>
-  </section>
+  </details>
+</div></section>
 
-  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div>
-        <p class="footer__logo">soft power</p>
-        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
-      </div>
-      <nav class="footer__nav" aria-label="навигация футера">
-        <a href="praktika.html">практика</a>
-        <a href="rabotat-so-mnoy.html">работать со мной</a>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
-        <a href="mailto:hello@softpowerspace.com">написать</a>
-      </nav>
+<!-- портфолио: опыты, которые я уже собрала -->
+<section id="portfolio"><div class="wrap">
+  <div class="sec-label">портфолио</div>
+  <h2>посмотреть, что я собирала своими руками</h2>
+  <div class="paths" style="max-width:none; grid-template-columns:repeat(2,1fr);">
+    <div class="path">
+      <h3>nike box msk</h3>
+      <p>пять лет: от этапа проектирования до международного продакшена. команда, спортивные партнёрства, интеграции.</p>
+      <!-- катя: вставить публичную ссылку на рекап с яндекс.диска -->
+      <a class="btn btn-light" href="#">смотреть рекап →</a>
     </div>
-    <div class="footer__bottom">
-      <span class="footer__copy">© 2026 soft power</span>
-      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
+    <div class="path">
+      <h3>sektaschool</h3>
+      <p>ceo московского филиала: команда 50+ человек, 10+ залов, партнёрства с афишей, vogue, condé nast и nike.</p>
+      <!-- катя: галерея фото — можно взять из репозитория site-photos -->
+      <a class="btn btn-light" href="#">смотреть фото →</a>
     </div>
-  </footer>
+    <div class="path">
+      <h3>иммерсивный онлайн-балет</h3>
+      <p>балетный проект для банка бкс — целостный иммерсивный опыт в онлайне.</p>
+      <!-- катя: вставить публичную ссылку на рекап с яндекс.диска -->
+      <a class="btn btn-light" href="#">смотреть рекап →</a>
+    </div>
+    <div class="path">
+      <h3>иммерсивный йога-опыт в старинном театре</h3>
+      <p>soft power: практика с живой музыкой в здании старинного театра.</p>
+      <a class="btn btn-light" href="https://www.instagram.com/reel/DRw_kcOCOk0/">смотреть видео →</a>
+    </div>
+    <div class="path">
+      <h3>уникальный опыт — от первого шага до запуска</h3>
+      <p>даже отпуск для родителей я задизайнила как уникальный опыт: маршрут, ритм, впечатления, сюрпризы — от первого шага до последнего.</p>
+      <a class="btn btn-light" href="https://www.instagram.com/p/DXEqY_RiJPp/">посмотреть и вдохновиться →</a>
+    </div>
+  </div>
+</div></section>
 
-  <!-- ─── Scripts ──────────────────────────────────────────────────────── -->
-  <script>
-    // nav scroll state
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    }, { passive: true });
+<!-- финальный CTA: контакт -->
+<section class="cta">
+  <h2>напиши мне, если чувствуешь совпадение по ценностям и энергии</h2>
+  <p>давай обсудим, что мы можем сделать вместе. расскажи, что у тебя за идея, задача или ощущение «нужен человек, который соберёт это целиком и придаст этому форму» — созвонимся на 15 минут и обсудим.</p>
+  <a class="btn btn-light" href="https://t.me/beloved_dasha">написать мне</a>
+</section>
 
-    // burger menu
-    const burgerBtn = document.getElementById('burgerBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('is-open');
-      burgerBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    });
-
-    function closeMenu() {
-      mobileMenu.classList.remove('is-open');
-      burgerBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    closeMenuBtn.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // sound toggle (for hero video ambient audio)
-    const soundBtn = document.getElementById('soundBtn');
-    const heroVideo = document.getElementById('heroVideo');
-    let soundOn = false;
-
-    soundBtn.addEventListener('click', () => {
-      soundOn = !soundOn;
-      heroVideo.muted = !soundOn;
-      soundBtn.textContent = soundOn ? 'звук ●' : 'звук ○';
-      soundBtn.setAttribute('aria-label', soundOn ? 'выключить звук' : 'включить звук');
-    });
-
-    // moments track drag scroll
-    const track = document.getElementById('momentsTrack');
-    let isDown = false, startX, scrollLeft;
-
-    track.addEventListener('mousedown', e => {
-      isDown = true;
-      track.style.cursor = 'grabbing';
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
-    });
-    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mouseup', () => { isDown = false; track.style.cursor = 'grab'; });
-    track.addEventListener('mousemove', e => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - track.offsetLeft;
-      track.scrollLeft = scrollLeft - (x - startX) * 1.5;
-    });
-
-    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll(
-        '.intro-lead__title, .intro-lead__text, .about__photo, .about__text, .path-card, .moments__header, .moment-clip, .testimonial, .faq-item, .faq__more'
-      ).forEach((el, i) => {
-        el.classList.add('reveal');
-        el.style.transitionDelay = (i % 3) * 70 + 'ms';
-        io.observe(el);
-      });
-    }
-
-    // faq: keep only one item open at a time
-    document.querySelectorAll('.faq-item').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) document.querySelectorAll('.faq-item[open]').forEach(o => { if (o !== d) o.open = false; });
-      });
-    });
-  </script>
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <!-- катя: вставить ссылки на instagram и linkedin даши -->
+  <a href="https://t.me/beloved_dasha">telegram</a> · <a href="https://www.instagram.com/">instagram</a> · <a href="https://www.linkedin.com/">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
 
 </body>
 </html>
