@@ -1,230 +1,248 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>практика — soft power</title>
-  <meta name="description" content="soft power yoga: попробуй практику, подписка soft power connection, мини-группы circle, открытые классы в лиссабоне. бережное пространство для регулярной практики." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>практика — soft power yoga</title>
+<meta name="description" content="soft power yoga: короткая практика по видео, подписка soft power connection, мини-группы circle, открытые классы в лиссабоне. бережное пространство для регулярной практики — офлайн, онлайн и в формате подписки.">
+<style>
+  /* ═══ страница «практика». дизайн-система — как на главной (site-prototype).
+     типы блоков — как на softpowerspace.com/practices:
+     hero-обложка · крупное утверждение · видео+текст · разделитель ·
+     карточки форматов с фото · soft power pass · футер. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+  /* ─ навигация: имя, не логотип soft power (как на главной) ─ */
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  nav a.active{color:var(--ink);}
 
-  <link rel="stylesheet" href="css/style.css?v=8" />
-  <link rel="stylesheet" href="css/page.css?v=9" />
+  /* ─ кнопки: единый чёрный + вариант-контур ─ */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); cursor:pointer;}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-outline:hover{background:transparent; border-color:var(--ink);}
+
+  /* ─ hero-обложка: фото + текст (как hero главной) ─ */
+  .phero{padding:64px 0 56px;}
+  .phero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:34px; line-height:1.28; letter-spacing:-.01em;}
+  .phero .sub{margin-top:20px; font-size:15px; letter-spacing:.06em; color:var(--soft); text-transform:lowercase;}
+  .phero .btn{margin-top:32px;}
+  .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
+  /* ─ общие секции ─ */
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .prose{max-width:680px;}
+  .prose p{margin-bottom:18px;}
+  .prose p:last-child{margin-bottom:0;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ крупное утверждение (T119) ─ */
+  .statement{text-align:center;}
+  .statement p{font-family:Georgia,serif; font-size:27px; line-height:1.5; max-width:760px; margin:0 auto; color:var(--ink);}
+  .statement strong{font-weight:400; border-bottom:1px solid var(--faint);}
+
+  /* ─ видео + текст (T230) ─ */
+  .media .wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .media__video{position:relative; width:100%; aspect-ratio:16/9; background:#000;}
+  .media__video iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .media h2{margin-bottom:18px;}
+  .media p{color:var(--soft); margin-bottom:16px;}
+  .media .btn{margin-top:10px;}
+
+  /* ─ карточки форматов с фото (t509) ─ */
+  .fcards{display:flex; flex-direction:column; gap:20px;}
+  .fcard{display:grid; grid-template-columns:.85fr 1.15fr; border:1px solid var(--line); background:var(--card); overflow:hidden;}
+  .fcard__img{min-height:100%;}
+  .fcard__img img{width:100%; height:100%; object-fit:cover; display:block; min-height:300px;}
+  .fcard__body{padding:38px 40px; display:flex; flex-direction:column; gap:14px;}
+  .fcard--rev .fcard__img{order:2;}
+  .fcard h3{font-size:23px;}
+  .fcard__desc{color:var(--soft); font-size:15px;}
+  .fcard__groups{list-style:none; display:flex; flex-direction:column; gap:12px; margin:2px 0;}
+  .fcard__groups li{border-top:1px solid var(--line); padding-top:12px;}
+  .fcard__groups .g-title{font-weight:600; font-size:14.5px;}
+  .fcard__groups .g-meta{color:var(--soft); font-size:13.5px;}
+  .fcard__groups .g-price{color:var(--ink); font-size:13.5px;}
+  .fcard__groups a{color:var(--soft); border-bottom:1px solid var(--line);}
+  .fcard__groups a:hover{color:var(--ink);}
+  .fcard__price{font-size:15px;}
+  .fcard__note{font-size:13.5px; color:var(--faint);}
+  .fcard__note a{color:var(--soft); border-bottom:1px solid var(--line); text-decoration:none;}
+  .fcard__note a:hover{color:var(--ink);}
+  .fcard .btn{align-self:flex-start; margin-top:6px;}
+
+  /* ─ soft power pass (подарить) ─ */
+  .gift .wrap{max-width:760px;}
+  .gift-list{list-style:none; margin:14px 0 8px;}
+  .gift-list li{padding:12px 0 12px 20px; border-top:1px solid var(--line); position:relative; color:var(--soft); font-size:15px;}
+  .gift-list li:before{content:"—"; position:absolute; left:0; color:var(--faint);}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .phero .wrap{grid-template-columns:1fr; gap:32px;}
+    .phero{padding:40px 0;}
+    .phero h1{font-size:27px;}
+    .statement p{font-size:22px;}
+    .media .wrap{grid-template-columns:1fr; gap:28px;}
+    .fcard{grid-template-columns:1fr;}
+    .fcard--rev .fcard__img{order:0;}
+    .fcard__body{padding:28px 26px;}
+    nav .links{gap:16px;}
+  }
+</style>
 </head>
 <body>
 
-  <nav class="nav" id="nav">
-    <a href="/" class="nav__logo">
-      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
-      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
-    </a>
-    <ul class="nav__links">
-      <li><a href="praktika.html" class="nav__link--active">практика</a></li>
-      <li><a href="rabotat-so-mnoy.html">работать со мной</a></li>
-      <li><a href="faq.html">вопросы</a></li>
-    </ul>
-    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="nav__mobile" id="mobileMenu">
-    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
-    <a href="praktika.html">практика</a>
+<!-- навигация: как на главной -->
+<nav><div class="wrap">
+  <a class="name" href="index.html">даша простова</a>
+  <span class="links">
+    <a href="praktika.html" class="active">практика</a>
     <a href="rabotat-so-mnoy.html">работать со мной</a>
     <a href="faq.html">вопросы</a>
+    <a href="https://t.me/beloved_dasha">написать</a>
+  </span>
+</div></nav>
+
+<!-- ── БЛОК 1 · hero-обложка (cover) ── -->
+<header class="phero"><div class="wrap">
+  <div>
+    <div class="kicker">soft power yoga practice</div>
+    <h1>бережное пространство<br>для твоей регулярной практики</h1>
+    <p class="sub">офлайн · онлайн · в формате подписки</p>
+    <a class="btn" href="#formats">смотреть форматы →</a>
   </div>
+  <div>
+    <img class="phero__img" src="images/practice-hero.jpg" alt="soft power yoga — практика">
+  </div>
+</div></header>
 
-  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
-  <section class="page-hero">
-    <video class="hero__video" autoplay muted loop playsinline poster="images/softpower-3734.jpg">
-      <source src="video/praktika-hero.mp4" type="video/mp4" />
-    </video>
-    <div class="hero__overlay"></div>
-    <div class="page-hero__content">
-      <p class="page-hero__eyebrow">soft power yoga practice</p>
-      <h1 class="page-hero__title">бережное пространство<br />для твоей регулярной практики</h1>
-      <p class="page-hero__sub">офлайн · онлайн · в формате подписки</p>
-    </div>
-  </section>
+<!-- ── БЛОК 2 · крупное утверждение ── -->
+<section class="statement"><div class="wrap">
+  <p>пространство для регулярной практики — <strong>офлайн, онлайн и в формате подписки</strong></p>
+</div></section>
 
-  <!-- ─── Попробуй практику со мной ─────────────────────────────────────── -->
-  <section class="page-section">
-    <div class="container">
-      <h2 class="section-title">попробуй практику со мной</h2>
-      <div class="intro-block">
-        <p class="support-intro__text">
-          чтобы понять, подходит ли тебе мой тип преподавания, — сделай короткую практику
-          по предзаписанному видео со мной (больше таких в моём телеграм-канале soft power connection).
-        </p>
-        <p class="support-intro__text">
-          ты можешь возвращаться к ней снова и снова, если у тебя нет времени
-          на полноценное часовое занятие.
-        </p>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener" class="btn-ghost">смотреть практику</a>
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── БЛОК 3 · видео + текст ── -->
+<section class="media"><div class="wrap">
+  <div class="media__video">
+    <iframe src="https://www.youtube.com/embed/6IHWyxu8sUQ" title="попробуй практику со мной" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div>
+    <div class="sec-label">видео-практика</div>
+    <h2>попробуй практику со мной</h2>
+    <p>чтобы понять, подходит ли тебе мой тип преподавания, — сделай короткую практику по предзаписанному видео со мной. больше таких в моём телеграм-канале soft power connection.</p>
+    <p>ты можешь возвращаться к ней снова и снова, если у тебя нет времени на полноценное часовое занятие.</p>
+    <a class="btn btn-outline" href="https://t.me/softpowerspace" target="_blank" rel="noopener">больше практик в telegram →</a>
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── БЛОК 4 · карточки форматов с фото ── -->
+<section id="formats"><div class="wrap">
+  <div class="sec-label">форматы практики</div>
+  <div class="fcards">
+
+    <!-- soft power connection -->
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-connection.jpg" alt="soft power connection" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power connection</h3>
+        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
+        <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
+        <p class="fcard__price"><strong>на месяц 42€ · 3 месяца 108€ · 6 месяцев 210€</strong></p>
+        <p class="fcard__note">можно подарить через <a href="#gift">soft power pass</a></p>
+        <a class="btn" href="https://t.me/softpowerspace_bot/" target="_blank" rel="noopener">купить подписку</a>
       </div>
     </div>
-  </section>
 
-  <!-- ─── soft power connection ────────────────────────────────────────── -->
-  <section class="page-section page-section--alt">
-    <div class="container">
-      <h2 class="section-title">soft power connection</h2>
-      <div class="intro-block">
-        <p class="support-intro__text">
-          это подписка на телеграм-канал, в котором собраны короткие видео и аудио йоги,
-          дыхания и медитации для самостоятельной практики на коврике. каждый месяц я добавляю
-          новые материалы, делюсь своим плейлистом и записываю подкаст про тему месяца.
-        </p>
-        <p class="support-intro__text">
-          такой формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину
-          самостоятельно и не нуждаешься в дополнительной мотивации и ежедневной поддержке
-          учителя и команды. а также если ты хочешь практиковать в любое удобное время из любой точки мира.
-        </p>
-        <p class="support-intro__text"><strong>на месяц 42€ · на 3 месяца 108€ · на 6 месяцев 210€</strong></p>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener" class="btn-ghost">купить подписку</a>
-        <p class="price-alt">можно подарить через soft power pass</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── soft power circle (mini-groups) ──────────────────────────────── -->
-  <section class="page-section">
-    <div class="container">
-      <h2 class="section-title">soft power circle · мини-группы</h2>
-      <p class="section-lead">
-        это работа в команде, где группа до 12 человек занимается по 4-недельной программе,
-        поддерживая друг друга и прогрессируя. такой формат подойдёт, если тебе необходимо
-        общее пространство для практики, внимание и ассисты тичера и поддержка команды.
-        старт в начале каждого месяца.
-      </p>
-      <div class="formats-grid">
-
-        <div class="offer-card">
-          <div class="offer-card__header">
-            <h3 class="offer-card__title">утренняя · лиссабон</h3>
-            <span class="offer-card__price">180€ / мес</span>
-          </div>
-          <p class="offer-card__desc">вторник и пятница · 9:30–10:30<br />студия names</p>
-        </div>
-
-        <div class="offer-card">
-          <div class="offer-card__header">
-            <h3 class="offer-card__title">вечерняя · лиссабон</h3>
-            <span class="offer-card__price">180€ / мес</span>
-          </div>
-          <p class="offer-card__desc">вторник 19:30–20:30 · пятница 18:00–19:00<br />agora yoga lisboa</p>
-        </div>
-
-        <div class="offer-card">
-          <div class="offer-card__header">
-            <h3 class="offer-card__title">worldwide · онлайн</h3>
-            <span class="offer-card__price">150€ / мес</span>
-          </div>
-          <p class="offer-card__desc">вторник и четверг 17:00 · суббота 12:00 (раз в 2 недели)<br />время по лиссабону</p>
-        </div>
-
-      </div>
-      <div class="waitlist-cta">
-        <a href="mailto:hello@softpowerspace.com?subject=soft power circle — waitlist" class="btn-ghost">записаться в waitlist</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── soft power yoga lisbon open ──────────────────────────────────── -->
-  <section class="page-section page-section--alt">
-    <div class="container">
-      <h2 class="section-title">soft power yoga lisbon open</h2>
-      <div class="intro-block">
-        <p class="support-intro__text">
-          я веду открытые групповые практики в лиссабоне дважды в неделю —
-          вечером по средам и днём по субботам. это open level классы для всех желающих
-          с любым уровнем подготовки. стоимость группового занятия 20€. студия om iyengar yoga.
-        </p>
-        <p class="support-intro__text">
-          чтобы получать анонсы классов каждую неделю и удобно записываться — присоединяйся к чату.
-          здесь же появляются анонсы сезонных и тематических ивентов.
-        </p>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener" class="btn-ghost">вступить в чат с анонсами и записью</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Подарить ─────────────────────────────────────────────────────── -->
-  <section class="page-section">
-    <div class="container">
-      <h2 class="section-title">подарить практику</h2>
-      <div class="intro-block">
-        <p class="support-intro__text">любой из форматов практик со мной ты можешь подарить:</p>
-        <ul class="what-list__items">
-          <li>именной цифровой сертификат на 3, 5 или 10 занятий (онлайн или офлайн)</li>
-          <li>подписка на телеграм-канал с аудио и видео записями практик йоги, дыхания и медитаций — soft power connection</li>
+    <!-- soft power circle · мини-группы -->
+    <div class="fcard fcard--rev">
+      <div class="fcard__img"><img src="images/practice-circle.jpg" alt="soft power circle — мини-группы" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power circle · мини-группы</h3>
+        <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
+        <ul class="fcard__groups">
+          <li>
+            <div class="g-title">утренняя · лиссабон</div>
+            <div class="g-meta">вторник и пятница 9:30–10:30 · <a href="https://maps.app.goo.gl/fjirQxk8CHaoAm1z7" target="_blank" rel="noopener">студия names</a></div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">вечерняя · лиссабон</div>
+            <div class="g-meta">вторник 19:30–20:30, пятница 18:00–19:00 · <a href="https://maps.app.goo.gl/VvP1eomxMq3VnQ7BA" target="_blank" rel="noopener">agora yoga lisboa</a></div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">worldwide · онлайн</div>
+            <div class="g-meta">вторник и четверг 17:00, суббота 12:00 (раз в 2 недели) · время по лиссабону</div>
+            <div class="g-price">150€ / мес</div>
+          </li>
         </ul>
-        <a href="mailto:hello@softpowerspace.com?subject=подарить практику" class="btn-ghost">узнать подробнее</a>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdK1orfXXGKEfrEvt_a3NrM4oEhhWz1IedzYQchcl6sDgLaOw/viewform?usp=sharing" target="_blank" rel="noopener">записаться в waitlist</a>
       </div>
     </div>
-  </section>
 
-  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div>
-        <p class="footer__logo">soft power</p>
-        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
+    <!-- soft power yoga lisbon open -->
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="soft power yoga lisbon open" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power yoga lisbon open</h3>
+        <p class="fcard__desc">я веду открытые групповые практики в лиссабоне дважды в неделю — вечером по средам и днём по субботам. это open level классы для всех желающих с любым уровнем подготовки. стоимость занятия 20€ · <a href="https://maps.app.goo.gl/ui7PuZLiNsJ1sU5K6" target="_blank" rel="noopener">om iyengar yoga</a>.</p>
+        <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться — присоединяйся к чату. здесь же появляются анонсы сезонных и тематических ивентов.</p>
+        <a class="btn" href="https://t.me/+8neyHePCmEU4MzEy" target="_blank" rel="noopener">вступить в чат</a>
       </div>
-      <nav class="footer__nav">
-        <a href="praktika.html">практика</a>
-        <a href="rabotat-so-mnoy.html">работать со мной</a>
-        <a href="faq.html">вопросы</a>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
-        <a href="mailto:hello@softpowerspace.com">написать</a>
-      </nav>
     </div>
-    <div class="footer__bottom">
-      <span class="footer__copy">© 2026 soft power</span>
-      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
-    </div>
-  </footer>
 
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    }, { passive: true });
+  </div>
+</div></section>
 
-    const burgerBtn = document.getElementById('burgerBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+<div class="wrap"><hr class="hr"></div>
 
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    });
-    function closeMenu() {
-      mobileMenu.classList.remove('is-open');
-      document.body.style.overflow = '';
-    }
-    closeMenuBtn.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+<!-- ── БЛОК 5 · soft power pass (подарить) ── -->
+<section id="gift" class="gift"><div class="wrap">
+  <div class="sec-label">подарить</div>
+  <h2>soft power pass</h2>
+  <div class="prose">
+    <p>любой из форматов практик со мной ты можешь подарить:</p>
+    <ul class="gift-list">
+      <li>именной цифровой сертификат на 3, 5 или 10 занятий (онлайн или офлайн)</li>
+      <li>подписка soft power connection — канал с аудио- и видеозаписями практик йоги, дыхания и медитаций</li>
+    </ul>
+    <p style="margin-top:24px;"><a class="btn" href="mailto:hello@softpowerspace.com?subject=soft%20power%20pass">узнать подробнее</a></p>
+  </div>
+</div></section>
 
-    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll(
-        '.section-title, .intro-block, .section-lead, .offer-card'
-      ).forEach((el, i) => {
-        el.classList.add('reveal');
-        el.style.transitionDelay = (i % 3) * 70 + 'ms';
-        io.observe(el);
-      });
-    }
-  </script>
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha">telegram</a> · <a href="https://www.instagram.com/">instagram</a> · <a href="https://www.linkedin.com/">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
 
 </body>
 </html>
