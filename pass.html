@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>soft power pass — подарить практику</title>
+<meta name="description" content="soft power pass — подарок, наполненный заботой. именной сертификат на 3, 5 или 10 занятий или подписка soft power connection. оформляется с любовью и отправляется в цифровом виде сразу после оплаты.">
+<style>
+  /* ═══ страница «soft power pass». дизайн-система — как на главной (site-prototype).
+     блоки как на softpowerspace.com/pass: hero · варианты (карточки с ценами) ·
+     утверждение «именной pass» · закрывающая галерея с фразой · футер. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff; --warm:#f3ece4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+
+  /* ─ навигация ─ */
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  nav a.active{color:var(--ink);}
+
+  /* ─ кнопки ─ */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink);}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn-sm{padding:12px 22px; font-size:13px;}
+
+  /* ─ hero: текст + фото ─ */
+  .phero{padding:64px 0 56px;}
+  .phero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:36px; line-height:1.28; letter-spacing:-.01em;}
+  .phero .lead{margin-top:22px; font-size:18px; font-family:Georgia,serif; line-height:1.6; color:var(--ink); max-width:460px;}
+  .phero .btn{margin-top:32px;}
+  .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
+  /* ─ общие секции ─ */
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ варианты подарка ─ */
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .card{border:1px solid var(--line); background:var(--card); padding:32px 30px; display:flex; flex-direction:column; gap:12px;}
+  .card h3{font-size:22px;}
+  .card__desc{color:var(--soft); font-size:14.5px; flex:1;}
+  .card__price{font-family:Georgia,serif; font-size:28px; margin-top:4px;}
+  .card .btn{align-self:flex-start; margin-top:6px;}
+  .card--soft{background:var(--warm); border-color:#e6ddd2;}
+  .card--wide{grid-column:1 / -1; flex-direction:row; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;}
+  .card--wide .card__desc{flex:1 1 320px;}
+  .card--wide .card__price{margin:0;}
+
+  /* ─ утверждение ─ */
+  .statement{text-align:center;}
+  .statement p{font-family:Georgia,serif; font-size:25px; line-height:1.5; max-width:720px; margin:0 auto; color:var(--ink);}
+
+  /* ─ закрывающая галерея ─ */
+  .closing{text-align:center;}
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:40px;}
+  .gallery img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+  .closing h2{font-size:27px; max-width:640px; margin:0 auto;}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .phero .wrap{grid-template-columns:1fr; gap:32px;}
+    .phero{padding:40px 0;}
+    .phero h1{font-size:29px;}
+    .grid{grid-template-columns:1fr;}
+    .card--wide{flex-direction:column; align-items:flex-start;}
+    .statement p{font-size:21px;}
+    .gallery{grid-template-columns:1fr 1fr;}
+    nav .links{gap:16px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- навигация: как на главной -->
+<nav><div class="wrap">
+  <a class="name" href="index.html">даша простова</a>
+  <span class="links">
+    <a href="praktika.html">практика</a>
+    <a href="rabotat-so-mnoy.html">работать со мной</a>
+    <a href="faq.html">вопросы</a>
+    <a href="https://t.me/beloved_dasha">написать</a>
+  </span>
+</div></nav>
+
+<!-- ── hero ── -->
+<header class="phero"><div class="wrap">
+  <div>
+    <div class="kicker">soft power pass</div>
+    <h1>подарок,<br>наполненный заботой</h1>
+    <p class="lead">если ты хочешь подарить близкому человеку не вещь, а состояние — мягкость, внимание к себе и опору — soft power pass может стать этим пространством.</p>
+    <a class="btn" href="#options">выбрать вариант →</a>
+  </div>
+  <div>
+    <img class="phero__img" src="images/pass-hero.jpg" alt="soft power pass — подарок">
+  </div>
+</div></header>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── варианты ── -->
+<section id="options"><div class="wrap">
+  <div class="sec-label">выбери один из вариантов</div>
+  <div class="grid">
+
+    <div class="card">
+      <h3>3 занятия</h3>
+      <p class="card__desc">занятия в формате офлайн в лиссабоне или zoom в любой точке мира.</p>
+      <p class="card__price">60 €</p>
+      <a class="btn btn-sm" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">выбрать</a>
+    </div>
+
+    <div class="card">
+      <h3>5 занятий</h3>
+      <p class="card__desc">занятия в формате офлайн в лиссабоне или zoom в любой точке мира.</p>
+      <p class="card__price">100 €</p>
+      <a class="btn btn-sm" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">выбрать</a>
+    </div>
+
+    <div class="card">
+      <h3>10 занятий</h3>
+      <p class="card__desc">занятия в формате офлайн в лиссабоне или zoom в любой точке мира.</p>
+      <p class="card__price">200 €</p>
+      <a class="btn btn-sm" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">выбрать</a>
+    </div>
+
+    <div class="card card--soft card--wide">
+      <div>
+        <h3>подписка на soft power connection</h3>
+        <p class="card__desc" style="margin-top:8px;">подписка на месяц на телеграм-канал с практиками йоги, дыхания и медитаций.</p>
+      </div>
+      <p class="card__price">42 €</p>
+      <a class="btn btn-sm" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">выбрать</a>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ── утверждение ── -->
+<section class="statement"><div class="wrap">
+  <p>каждый pass — именной, оформлен с любовью и отправляется тебе в цифровом виде сразу после оплаты.</p>
+</div></section>
+
+<!-- ── закрывающая галерея ── -->
+<section class="closing"><div class="wrap">
+  <div class="gallery">
+    <img src="images/pass-1.jpg" alt="" loading="lazy">
+    <img src="images/pass-2.jpg" alt="" loading="lazy">
+    <img src="images/pass-3.jpg" alt="" loading="lazy">
+  </div>
+  <h2>пусть твой подарок станет моментом тишины и силы для кого-то важного</h2>
+</div></section>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha">telegram</a> · <a href="https://www.instagram.com/">instagram</a> · <a href="https://www.linkedin.com/">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
+
+</body>
+</html>
