@@ -30,6 +30,18 @@
   nav .links{display:flex; gap:26px;}
   nav a{color:var(--soft); text-decoration:none; font-size:14px;}
   nav a:hover{color:var(--ink);}
+  .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
+  .burger span{position:absolute; left:0; width:100%; height:1.5px; background:var(--ink); transition:.25s;}
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
+  .mnav.open{transform:translateX(0);}
+  .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav a.active{color:var(--soft);}
+  .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
+  body.mnav-open{overflow:hidden;}
+  body.mnav-open nav{display:none;}
   nav a.active{color:var(--ink);}
 
   /* ─ кнопки ─ */
@@ -85,7 +97,7 @@
     .card--wide{flex-direction:column; align-items:flex-start;}
     .statement p{font-size:21px;}
     .gallery{grid-template-columns:1fr 1fr;}
-    nav .links{gap:16px;}
+    nav .links{display:none;} .burger{display:block;}
   }
 </style>
 </head>
@@ -100,7 +112,16 @@
     <a href="faq.html">вопросы</a>
     <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
   </span>
+  <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="закрыть меню">✕</button>
+  <a href="praktika.html">практика</a>
+  <a href="rabotat-so-mnoy.html">работать со мной</a>
+  <a href="faq.html">вопросы</a>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
+</div>
 
 <!-- ── hero ── -->
 <header class="phero"><div class="wrap">
@@ -176,5 +197,17 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
 
+<script>
+  (function(){
+    var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
+    if(!burger||!mnav) return;
+    function openMenu(){ mnav.classList.add('open'); document.body.classList.add('mnav-open'); burger.setAttribute('aria-expanded','true'); }
+    function hideMenu(){ mnav.classList.remove('open'); document.body.classList.remove('mnav-open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", hideMenu);
+    mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+</script>
 </body>
 </html>
