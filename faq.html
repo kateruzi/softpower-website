@@ -1,239 +1,223 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>вопросы — soft power</title>
-  <meta name="description" content="ответы на вопросы, которые вы не задавали — и немного контекста, о котором вы точно не спрашивали." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>вопросы — soft power</title>
+<meta name="description" content="ответы на вопросы, которые вы не задавали — и немного контекста, о котором вы точно не спрашивали.">
+<style>
+  /* ═══ страница «вопросы». дизайн-система — как на главной (site-prototype).
+     блоки сохранены: hero · faq-аккордеон · «об этом вы меня точно не
+     спрашивали» (контекст) · футер. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+  /* ─ навигация ─ */
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  nav a.active{color:var(--ink);}
 
-  <link rel="stylesheet" href="css/style.css?v=8" />
-  <link rel="stylesheet" href="css/page.css?v=8" />
+  /* ─ кнопки ─ */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink);}
+  .btn:hover{background:#333; border-color:#333;}
+
+  /* ─ hero: текст + фото ─ */
+  .phero{padding:64px 0 48px;}
+  .phero .wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:34px; line-height:1.3; letter-spacing:-.01em;}
+  .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
+  /* ─ общие секции ─ */
+  section{padding:48px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ faq-аккордеон ─ */
+  .faq{max-width:760px; margin:0 auto;}
+  .qa{border-top:1px solid var(--line);}
+  .qa:last-child{border-bottom:1px solid var(--line);}
+  .qa summary{cursor:pointer; list-style:none; padding:22px 4px 22px 0; display:flex; justify-content:space-between; align-items:baseline; gap:24px; font-size:16px; font-weight:600;}
+  .qa summary::-webkit-details-marker{display:none;}
+  .qa .ic{flex:none; color:var(--faint); font-size:22px; font-weight:400; line-height:1; transition:transform .2s;}
+  .qa[open] .ic{transform:rotate(45deg);}
+  .qa .a{padding:0 0 24px; color:var(--soft); font-size:15px; line-height:1.75; max-width:660px;}
+  .qa .a a{color:var(--ink);}
+
+  /* ─ контекст «об этом вы меня точно не спрашивали» ─ */
+  .beyond .wrap{max-width:820px;}
+  .beyond h2{font-size:24px; line-height:1.4; margin-bottom:16px;}
+  .beyond .lead{color:var(--soft); margin-bottom:26px; max-width:700px;}
+  .blist{display:grid; grid-template-columns:1fr 1fr; gap:0 44px; list-style:none; margin-bottom:28px;}
+  .blist li{padding:11px 0 11px 20px; position:relative; color:var(--soft); font-size:14.5px; border-top:1px solid var(--line);}
+  .blist li:before{content:"—"; position:absolute; left:0; color:var(--faint);}
+  .beyond .outro{color:var(--ink); max-width:700px;}
+
+  /* ─ финальный контакт ─ */
+  .contact{text-align:center; border-top:1px solid var(--line);}
+  .contact p{color:var(--soft); max-width:520px; margin:0 auto 26px; font-size:16px;}
+  .contact h2{font-size:24px; margin-bottom:14px;}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .phero .wrap{grid-template-columns:1fr; gap:32px;}
+    .phero{padding:40px 0;}
+    .phero h1{font-size:27px;}
+    .blist{grid-template-columns:1fr;}
+    nav .links{gap:16px;}
+  }
+</style>
 </head>
 <body>
 
-  <nav class="nav" id="nav">
-    <a href="/" class="nav__logo">
-      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
-      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
-    </a>
-    <ul class="nav__links">
-      <li><a href="praktika.html">практика</a></li>
-      <li><a href="rabotat-so-mnoy.html">работать со мной</a></li>
-      <li><a href="faq.html" class="nav__link--active">вопросы</a></li>
-    </ul>
-    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="nav__mobile" id="mobileMenu">
-    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
+<!-- навигация: как на главной -->
+<nav><div class="wrap">
+  <a class="name" href="index.html">даша простова</a>
+  <span class="links">
     <a href="praktika.html">практика</a>
     <a href="rabotat-so-mnoy.html">работать со мной</a>
-    <a href="faq.html">вопросы</a>
+    <a href="faq.html" class="active">вопросы</a>
+    <a href="https://t.me/beloved_dasha">написать</a>
+  </span>
+</div></nav>
+
+<!-- ── hero ── -->
+<header class="phero"><div class="wrap">
+  <div>
+    <div class="kicker">вопросы</div>
+    <h1>ответы на вопросы,<br>которые вы не задавали</h1>
   </div>
+  <div>
+    <img class="phero__img" src="images/softpower-4171_resiz.jpg" alt="soft power">
+  </div>
+</div></header>
 
-  <!-- ─── Hero ─────────────────────────────────────────────────────────── -->
-  <section class="page-hero">
-    <img
-      class="hero__video"
-      src="images/softpower-4171_resiz.jpg"
-      alt=""
-      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.45;"
-    />
-    <div class="hero__overlay"></div>
-    <div class="page-hero__content">
-      <p class="page-hero__eyebrow">вопросы</p>
-      <h1 class="page-hero__title">ответы на вопросы,<br />которые вы не задавали</h1>
-    </div>
-  </section>
+<!-- ── faq-аккордеон ── -->
+<section><div class="wrap">
+  <div class="faq">
 
-  <!-- ─── FAQ ──────────────────────────────────────────────────────────── -->
-  <section class="faq">
-    <div class="faq__inner">
-      <div class="faq__list">
+    <details class="qa">
+      <summary>даша, так ты йога-тичер или менеджер?<span class="ic">+</span></summary>
+      <div class="a">йога-тичер, предприниматель, продюсер, менеджер и лидер. пятнадцать лет я строила проекты вокруг wellbeing и спорта, а потом ушла в ремесло и стала преподавать под своим брендом. в какой-то момент я поняла, что не хочу разделять роли: я создаю опыт. иногда он выглядит как класс йоги — иммерсивная практика с живой музыкой в старинном театре. иногда как корпоративная программа или ретрит. форма меняется, суть остаётся.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>даша, так ты йога-тичер или менеджер?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>йога-тичер, предприниматель, продюсер, менеджер и лидер. пятнадцать лет я строила проекты вокруг wellbeing и спорта, а потом ушла в ремесло и стала преподавать под своим брендом. в какой-то момент я поняла, что не хочу разделять роли: я создаю опыт. иногда он выглядит как класс йоги — иммерсивная практика с живой музыкой в старинном театре. иногда как корпоративная программа или ретрит. форма меняется, суть остаётся.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>что такое soft power?<span class="ic">+</span></summary>
+      <div class="a">мой бренд и моя философия. мягкая сила — это когда ты меняешь людей не давлением, а пространством, в котором им безопасно меняться самим. под этим именем живут практики в лиссабоне и онлайн, подписка, ретриты, события и мерч. сегодня в soft power практикуют больше 5000 человек по всему миру.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>что такое soft power?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>мой бренд и моя философия. мягкая сила — это когда ты меняешь людей не давлением, а пространством, в котором им безопасно меняться самим. под этим именем живут практики в лиссабоне и онлайн, подписка, ретриты, события и мерч. сегодня в soft power практикуют больше 5000 человек по всему миру.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>а что ты делала до йоги?<span class="ic">+</span></summary>
+      <div class="a">пятнадцать лет в wellbeing и спорте. я была ceo московского филиала sektaschool: создавала и управляла командами, открывала залы и филиалы, делала значимые партнёрства — афиша, vogue, condé nast и генеральное партнёрство с nike. затем пять лет была частью бренд-команды nike и руководила проектом nike box msk: команда, ивенты, спортивные партнёрства, интеграции, международный продакшен. в 2022 я ушла из корпорации, переехала в португалию и стала развивать soft power.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>а что ты делала до йоги?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>пятнадцать лет в wellbeing и спорте. я была ceo московского филиала sektaschool: создавала и управляла командами, открывала залы и филиалы, делала значимые партнёрства — афиша, vogue, condé nast и генеральное партнёрство с nike. затем пять лет была частью бренд-команды nike и руководила проектом nike box msk: команда, ивенты, спортивные партнёрства, интеграции, международный продакшен. в 2022 я ушла из корпорации, переехала в португалию и стала развивать soft power.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>что значит «архитектор опыта»?<span class="ic">+</span></summary>
+      <div class="a">не организатор мероприятий. точка. моя работа — создать целостный опыт для продукта или события, онлайн или офлайн, так, чтобы этот опыт действительно изменил человека, который с ним столкнулся. концепция, смыслы, команда, пространство, визуал, музыка, продвижение и путь человека внутри — всё это одна система.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>что значит «архитектор опыта»?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>не организатор мероприятий. точка. моя работа — создать целостный опыт для продукта или события, онлайн или офлайн, так, чтобы этот опыт действительно изменил человека, который с ним столкнулся. концепция, смыслы, команда, пространство, визуал, музыка, продвижение и путь человека внутри — всё это одна система.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>и это можно заказать?<span class="ic">+</span></summary>
+      <div class="a">да. событие или ретрит под ключ, корпоративную wellbeing-программу, консалтинг или стратегическую сессию. а ещё можно позвать меня поговорить о твоём продукте — мы найдём точку взаимодействия, если у нас общие ценности.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>и это можно заказать?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>да. событие или ретрит под ключ, корпоративную wellbeing-программу, консалтинг или стратегическую сессию. а ещё можно позвать меня поговорить о твоём продукте — мы найдём точку взаимодействия, если у нас общие ценности.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>с кем ты работаешь?<span class="ic">+</span></summary>
+      <div class="a">с компаниями, которым нужен не просто тимбилдинг с мастермайндами, а настоящий контакт. с людьми, которые твёрдо стоят на ногах и осознают ценность духовной практики. со студиями и фаундерами wellbeing-проектов. и с теми, кто приходит на коврик.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>с кем ты работаешь?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>с компаниями, которым нужен не просто тимбилдинг с мастермайндами, а настоящий контакт. с людьми, которые твёрдо стоят на ногах и осознают ценность духовной практики. со студиями и фаундерами wellbeing-проектов. и с теми, кто приходит на коврик.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>а йога тогда куда?<span class="ic">+</span></summary>
+      <div class="a">никуда. йога — моя ежедневная практика больше пятнадцати лет. я обучалась у преподавателей по всему миру, участвовала в международных саммитах и tribe gatherings в париже и барселоне, продолжаю учиться постоянно и практикую ежедневно. йога — лишь одна из моих граней.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>а йога тогда куда?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>никуда. йога — моя ежедневная практика больше пятнадцати лет. я обучалась у преподавателей по всему миру, участвовала в международных саммитах и tribe gatherings в париже и барселоне, продолжаю учиться постоянно и практикую ежедневно. йога — лишь одна из моих граней.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>что ты ищешь сейчас?<span class="ic">+</span></summary>
+      <div class="a">международные проекты на стыке wellbeing, longevity, биохакинга, ai, телесных практик и креатива. партнёрства с компаниями и брендами, для которых люди — не строчка в бюджете. события и пространства мирового уровня. и людей, с которыми хочется строить — избирательно, но всем сердцем.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>что ты ищешь сейчас?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>международные проекты на стыке wellbeing, longevity, биохакинга, ai, телесных практик и креатива. партнёрства с компаниями и брендами, для которых люди — не строчка в бюджете. события и пространства мирового уровня. и людей, с которыми хочется строить — избирательно, но всем сердцем.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>говорят, ты даже отпуск проектируешь?<span class="ic">+</span></summary>
+      <div class="a">да. даже отпуск для родителей я задизайнила как уникальный опыт — от первого шага до последнего: маршрут, ритм, впечатления, сюрпризы. <a href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">посмотреть и вдохновиться</a>. архитектура опыта — это не работа, это способ смотреть на мир.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>говорят, ты даже отпуск проектируешь?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>да. даже отпуск для родителей я задизайнила как уникальный опыт — от первого шага до последнего: маршрут, ритм, впечатления, сюрпризы. <a href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">посмотреть и вдохновиться</a>. архитектура опыта — это не работа, это способ смотреть на мир.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>где ты находишься?<span class="ic">+</span></summary>
+      <div class="a">базируюсь в лиссабоне, работаю по всему миру: онлайн, гибридно или прилечу — если проект того стоит.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>где ты находишься?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>базируюсь в лиссабоне, работаю по всему миру: онлайн, гибридно или прилечу — если проект того стоит.</p>
-          </div>
-        </details>
+    <details class="qa">
+      <summary>я не собирался всё это читать. как с тобой связаться?<span class="ic">+</span></summary>
+      <div class="a">проще всего — телеграм: <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">t.me/beloved_dasha</a>. расскажи, что у тебя за идея или задача, — отвечу лично.</div>
+    </details>
 
-        <details class="faq-item">
-          <summary>я не собирался всё это читать. как с тобой связаться?<span class="faq-item__icon">+</span></summary>
-          <div class="faq-item__answer">
-            <p>проще всего — телеграм: <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">t.me/beloved_dasha</a>. расскажи, что у тебя за идея или задача, — отвечу лично.</p>
-          </div>
-        </details>
+  </div>
+</div></section>
 
-      </div>
-    </div>
-  </section>
+<!-- ── контекст: об этом вы меня точно не спрашивали ── -->
+<section class="beyond"><div class="wrap">
+  <div class="sec-label">и немного контекста</div>
+  <h2>об этом вы меня точно не спрашивали — но, может быть, это добавит немного контекста.</h2>
+  <p class="lead">об этом не принято говорить на интервью, но я верю: когда мы заходим в общий проект или опыт, важно быть созвучными. так вот, в моём бэкграунде есть:</p>
+  <ul class="blist">
+    <li>10 лет хореографической школы</li>
+    <li>работа на крупнейших мировых спортивных чемпионатах внутри москомспорта</li>
+    <li>управление московским филиалом самого большого фитнес-стартапа</li>
+    <li>менеджмент и продюсирование в международной корпорации</li>
+    <li>сертифицированное тренерство</li>
+    <li>лекции перед аудиторией 300+ человек</li>
+    <li>серийная эмиграция</li>
+    <li>организация фестивалей, ивентов, ретритов — всего на свете</li>
+    <li>высшее образование в маркетинге</li>
+    <li>лидерство и создание команд</li>
+    <li>10 лет психотерапии</li>
+    <li>коучинг</li>
+    <li>создание продуктов</li>
+    <li>15 лет практики йоги, пранаямы и breathwork</li>
+    <li>тантра и випассана</li>
+    <li>йога-тичерство и десятки обучений, которые я прохожу постоянно у лучших, расширяясь во все стороны</li>
+  </ul>
+  <p class="outro">мне нравится создавать пространство, где человек через практику может встретиться с собой. мне интересно придумывать уникальный опыт и укутывать в него людей — думать, как сделать полезнее, лучше, красивее и интереснее.</p>
+</div></section>
 
-  <!-- ─── Beyond (об этом вы меня точно не спрашивали) ──────────────────── -->
-  <section class="beyond">
-    <div class="beyond__inner">
-      <h2 class="beyond__intro">об этом вы меня точно не спрашивали — но, может быть, это добавит немного контекста.</h2>
-      <p class="beyond__lead">об этом не принято говорить на интервью, но я верю: когда мы заходим в общий проект или опыт, важно быть созвучными. так вот, в моём бэкграунде есть:</p>
+<!-- ── финальный контакт ── -->
+<section class="contact"><div class="wrap">
+  <h2>остались вопросы?</h2>
+  <p>напиши мне — расскажи, что у тебя за идея, задача или ощущение, и обсудим лично.</p>
+  <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать в telegram</a>
+</div></section>
 
-      <ul class="beyond__list">
-        <li>10 лет хореографической школы</li>
-        <li>работа на крупнейших мировых спортивных чемпионатах внутри москомспорта</li>
-        <li>управление московским филиалом самого большого фитнес-стартапа</li>
-        <li>менеджмент и продюсирование в международной корпорации</li>
-        <li>сертифицированное тренерство</li>
-        <li>лекции перед аудиторией 300+ человек</li>
-        <li>серийная эмиграция</li>
-        <li>организация фестивалей, ивентов, ретритов — всего на свете</li>
-        <li>высшее образование в маркетинге</li>
-        <li>лидерство и создание команд</li>
-        <li>10 лет психотерапии</li>
-        <li>коучинг</li>
-        <li>создание продуктов</li>
-        <li>15 лет практики йоги, пранаямы и breathwork</li>
-        <li>тантра и випассана</li>
-        <li>йога-тичерство и десятки обучений, которые я прохожу постоянно у лучших, расширяясь во все стороны</li>
-      </ul>
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha">telegram</a> · <a href="https://www.instagram.com/">instagram</a> · <a href="https://www.linkedin.com/">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
 
-      <div class="beyond__outro">
-        <p>мне нравится создавать пространство, где человек через практику может встретиться с собой. мне интересно придумывать уникальный опыт и укутывать в него людей — думать, как сделать полезнее, лучше, красивее и интереснее.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Footer ───────────────────────────────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div>
-        <p class="footer__logo">soft power</p>
-        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
-      </div>
-      <nav class="footer__nav" aria-label="навигация футера">
-        <a href="praktika.html">практика</a>
-        <a href="rabotat-so-mnoy.html">работать со мной</a>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
-        <a href="mailto:hello@softpowerspace.com">написать</a>
-      </nav>
-    </div>
-    <div class="footer__bottom">
-      <span class="footer__copy">© 2026 soft power</span>
-      <a href="politika.html" class="footer__policy">политика конфиденциальности</a>
-    </div>
-  </footer>
-
-  <script>
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
-    }, { passive: true });
-
-    const burgerBtn = document.getElementById('burgerBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('is-open');
-      burgerBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
+<script>
+  // аккордеон: открыт только один вопрос
+  document.querySelectorAll('.qa').forEach(d => {
+    d.addEventListener('toggle', () => {
+      if (d.open) document.querySelectorAll('.qa[open]').forEach(o => { if (o !== d) o.open = false; });
     });
-    function closeMenu() {
-      mobileMenu.classList.remove('is-open');
-      burgerBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-    closeMenuBtn.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // faq: keep only one item open at a time
-    document.querySelectorAll('.faq-item').forEach(d => {
-      d.addEventListener('toggle', () => {
-        if (d.open) document.querySelectorAll('.faq-item[open]').forEach(o => { if (o !== d) o.open = false; });
-      });
-    });
-
-    // scroll-reveal (skipped for reduced motion / no IntersectionObserver)
-    if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.classList.add('reveal--visible'); io.unobserve(e.target); }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll(
-        '.faq-item, .beyond__intro, .beyond__lead, .beyond__list, .beyond__outro'
-      ).forEach((el, i) => {
-        el.classList.add('reveal');
-        el.style.transitionDelay = (i % 3) * 70 + 'ms';
-        io.observe(el);
-      });
-    }
-  </script>
+  });
+</script>
 
 </body>
 </html>
