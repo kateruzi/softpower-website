@@ -77,6 +77,19 @@
   .card__play{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.42));}
   .card__play > span{width:56px; height:56px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; color:var(--ink); transition:.2s;}
   .card:hover .card__play > span{transform:scale(1.08); background:#fff;}
+  button.card{appearance:none; -webkit-appearance:none; font-family:inherit; text-align:left; cursor:pointer; width:100%;}
+  .card__count{position:absolute; left:14px; bottom:14px; background:rgba(20,20,20,.72); color:#fff; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:6px 12px;}
+
+  /* ─ лайтбокс галереи ─ */
+  .lb{position:fixed; inset:0; z-index:200; background:rgba(18,18,18,.94); display:none; overflow-y:auto; padding:64px 20px 40px;}
+  .lb.open{display:block;}
+  body.lb-open{overflow:hidden;}
+  body.lb-open nav{display:none;}
+  .lb__inner{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:16px;}
+  .lb__title{color:#f4f2ee; text-align:center; font-family:Georgia,serif; font-size:22px; margin-bottom:8px;}
+  .lb img{width:100%; height:auto; display:block;}
+  .lb__close{position:fixed; top:16px; right:22px; background:none; border:none; color:#f4f2ee; font-size:30px; line-height:1; cursor:pointer; padding:6px;}
+  .lb__close:hover{opacity:.7;}
   .card__body{padding:26px 28px; display:flex; flex-direction:column; gap:10px; flex:1;}
   .card__label{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
   .card h3{font-size:20px; line-height:1.35;}
@@ -203,20 +216,22 @@
       </div>
     </a>
 
-    <div class="card">
+    <button class="card card--gallery" type="button" id="sektaCard">
       <div class="card__media">
-        <span class="card__ph">фото скоро здесь</span>
+        <img src="images/sekta-1.jpg" alt="sektaschool" loading="lazy">
+        <span class="card__count">галерея · 5 фото</span>
       </div>
       <div class="card__body">
         <span class="card__label">фото</span>
         <h3>sektaschool</h3>
         <p>команда 50+ человек, больше 10 залов и филиалов в москве.</p>
+        <span class="card__link">смотреть фото →</span>
       </div>
-    </div>
+    </button>
 
     <a class="card" href="https://www.instagram.com/reel/DRw_kcOCOk0/" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card__media">
-        <img src="images/IMG_3017.jpeg" alt="иммерсивный йога опыт в старинном театре" loading="lazy">
+        <img src="images/immersive-yoga.jpg" alt="иммерсивный йога опыт в старинном театре" loading="lazy">
       </div>
       <div class="card__body">
         <span class="card__label">instagram</span>
@@ -381,11 +396,40 @@
   <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать в telegram</a>
 </div></section>
 
+<!-- ── лайтбокс: галерея sektaschool ── -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="sektaschool — фото">
+  <button class="lb__close" id="lbClose" aria-label="закрыть галерею">✕</button>
+  <div class="lb__inner">
+    <p class="lb__title">sektaschool</p>
+    <img src="images/sekta-1.jpg" alt="sektaschool" loading="lazy">
+    <img src="images/sekta-2.jpg" alt="" loading="lazy">
+    <img src="images/sekta-3.jpg" alt="" loading="lazy">
+    <img src="images/sekta-4.jpg" alt="" loading="lazy">
+    <img src="images/sekta-5.jpg" alt="" loading="lazy">
+  </div>
+</div>
+
 <footer><div class="wrap">
   даша простова · лиссабон → мир<br>
   soft power — мой девиз и имя моих проектов<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
+
+<script>
+  // галерея sektaschool: открытие/закрытие лайтбокса
+  (function(){
+    var card = document.getElementById('sektaCard');
+    var lb = document.getElementById('lightbox');
+    var close = document.getElementById('lbClose');
+    if(!card || !lb) return;
+    function open(){ lb.classList.add('open'); document.body.classList.add('lb-open'); lb.scrollTop = 0; }
+    function hide(){ lb.classList.remove('open'); document.body.classList.remove('lb-open'); }
+    card.addEventListener('click', open);
+    close.addEventListener('click', hide);
+    lb.addEventListener('click', function(e){ if(e.target === lb) hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hide(); });
+  })();
+</script>
 
 </body>
 </html>
