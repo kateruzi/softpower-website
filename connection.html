@@ -70,17 +70,17 @@
   .plan__price{color:var(--soft); font-size:16px; margin-bottom:16px;}
   .plan .btn{margin-top:auto; align-self:center;}
 
-  .reviews{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
   .review{border:1px solid var(--line); background:var(--card); padding:30px 32px;}
   .review p{font-family:Georgia,serif; font-size:17px; line-height:1.65; color:var(--ink);}
-  .review .who{margin-top:14px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:13px; color:var(--faint);}
 
-  .reviews-row{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch;}
+  .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:26px;}
+  .reviews-head h2{margin-bottom:0;}
+  .reviews-arrows{display:flex; gap:10px; flex-shrink:0;}
+  .rarrow{width:44px; height:44px; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:18px; cursor:pointer; transition:.2s; line-height:1;}
+  .rarrow:hover{border-color:var(--ink);}
+  .reviews-row{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+  .reviews-row::-webkit-scrollbar{display:none;}
   .reviews-row .review{flex:0 0 330px; scroll-snap-align:start; display:flex; align-items:center;}
-  .reviews-row::-webkit-scrollbar{height:6px;}
-  .reviews-row::-webkit-scrollbar-track{background:var(--line);}
-  .reviews-row::-webkit-scrollbar-thumb{background:var(--faint);}
-  .reviews-hint{margin-top:10px; font-size:13px; color:var(--faint);}
 
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
   footer a{color:var(--soft);}
@@ -91,7 +91,7 @@
     .inside .wrap{grid-template-columns:1fr; gap:28px;}
     .inside__imgs img{aspect-ratio:3/4; height:auto;}
     .plans{grid-template-columns:1fr;}
-    .reviews{grid-template-columns:1fr;}
+    .reviews-row .review{flex-basis:280px;}
     nav .links{display:none;} .burger{display:block;}
   }
 </style>
@@ -184,8 +184,14 @@
 
 <section><div class="wrap">
   <div class="sec-label">о канале</div>
-  <h2>каким канал видят практикующие</h2>
-  <div class="reviews">
+  <div class="reviews-head">
+    <h2>каким канал видят практикующие</h2>
+    <div class="reviews-arrows">
+      <button class="rarrow" id="revPrev" type="button" aria-label="назад">←</button>
+      <button class="rarrow" id="revNext" type="button" aria-label="вперёд">→</button>
+    </div>
+  </div>
+  <div class="reviews-row" id="reviewsRow">
 
     <div class="review">
       <p>маленький якорь, который всегда с собой: как бы ни менялся мир вокруг, есть место, куда можно вернуться и выдохнуть</p>
@@ -212,44 +218,6 @@
     </div>
 
   </div>
-  <p style="margin-top:24px; font-size:13.5px; color:var(--faint);">по мотивам разговоров с подписчиками канала</p>
-</div></section>
-
-<div class="wrap"><hr class="hr"></div>
-
-<!-- вариант 2 (на сравнение): карточки в один ряд, листаются вбок -->
-<section><div class="wrap">
-  <div class="sec-label">о канале · вариант 2</div>
-  <h2>каким канал видят практикующие</h2>
-  <div class="reviews-row">
-
-    <div class="review">
-      <p>маленький якорь, который всегда с собой: как бы ни менялся мир вокруг, есть место, куда можно вернуться и выдохнуть</p>
-    </div>
-
-    <div class="review">
-      <p>тёплый дом, куда приходишь, когда непросто: побыть в заботе, ненадолго выпасть из шума и вернуться к себе</p>
-    </div>
-
-    <div class="review">
-      <p>никакой позиции сверху и никакой обязаловки — практика легко встраивается в день, между чашкой кофе и делами</p>
-    </div>
-
-    <div class="review">
-      <p>набор инструментов на каждый день: даже когда нет сил на целое занятие, десять минут практики заметно меняют состояние</p>
-    </div>
-
-    <div class="review">
-      <p>мягкое приглашение вместо давления: «попробуй, если хочешь» — и именно поэтому хочется возвращаться</p>
-    </div>
-
-    <div class="review">
-      <p>как чашка горячего напитка в руках: заранее знаешь, что после станет лучше</p>
-    </div>
-
-  </div>
-  <p class="reviews-hint">листай вбок →</p>
-  <p style="margin-top:14px; font-size:13.5px; color:var(--faint);">по мотивам разговоров с подписчиками канала</p>
 </div></section>
 
 <footer><div class="wrap">
@@ -268,6 +236,13 @@
     closeBtn.addEventListener("click", hideMenu);
     mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+  (function(){
+    var row=document.getElementById('reviewsRow'), prev=document.getElementById('revPrev'), next=document.getElementById('revNext');
+    if(!row||!prev||!next) return;
+    function step(){ var card=row.querySelector('.review'); return card ? card.offsetWidth+20 : 350; }
+    prev.addEventListener('click', function(){ row.scrollBy({left:-step(), behavior:'smooth'}); });
+    next.addEventListener('click', function(){ row.scrollBy({left:step(), behavior:'smooth'}); });
   })();
 </script>
 </body>
