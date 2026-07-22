@@ -6,10 +6,6 @@
 <title>практика — soft power yoga</title>
 <meta name="description" content="soft power yoga: короткая практика по видео, подписка soft power connection, мини-группы circle, открытые классы в лиссабоне. бережное пространство для регулярной практики — офлайн, онлайн и в формате подписки.">
 <style>
-  /* ═══ страница «практика». дизайн-система — как на главной (site-prototype).
-     типы блоков — как на softpowerspace.com/practices:
-     hero-обложка · крупное утверждение · видео+текст · разделитель ·
-     карточки форматов с фото · soft power pass · футер. ═══ */
   :root{
     --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
     --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
@@ -24,7 +20,6 @@
   .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
   h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  /* ─ навигация: имя, не логотип soft power (как на главной) ─ */
   nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
   nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
@@ -45,13 +40,11 @@
   body.mnav-open nav{display:none;}
   nav a.active{color:var(--ink);}
 
-  /* ─ кнопки: единый чёрный + вариант-контур ─ */
   .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); cursor:pointer;}
   .btn:hover{background:#333; border-color:#333;}
   .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--line);}
   .btn-outline:hover{background:transparent; border-color:var(--ink);}
 
-  /* ─ hero-обложка: фото + текст (как hero главной) ─ */
   .phero{padding:64px 0 56px;}
   .phero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
   .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
@@ -60,7 +53,6 @@
   .phero .btn{margin-top:32px;}
   .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
 
-  /* ─ общие секции ─ */
   section{padding:56px 0;}
   .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
   h2{font-size:26px; margin-bottom:22px;}
@@ -69,12 +61,10 @@
   .prose p:last-child{margin-bottom:0;}
   .hr{border:none; border-top:1px solid var(--line); margin:0;}
 
-  /* ─ крупное утверждение (T119) ─ */
   .statement{text-align:center;}
   .statement p{font-family:Georgia,serif; font-size:27px; line-height:1.5; max-width:760px; margin:0 auto; color:var(--ink);}
   .statement strong{font-weight:400; border-bottom:1px solid var(--faint);}
 
-  /* ─ видео + текст (T230) ─ */
   .media .wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
   .media__video{position:relative; width:100%; aspect-ratio:16/9; background:#000;}
   .media__video iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
@@ -82,7 +72,6 @@
   .media p{color:var(--soft); margin-bottom:16px;}
   .media .btn{margin-top:10px;}
 
-  /* ─ карточки форматов с фото (t509) ─ */
   .fcards{display:flex; flex-direction:column; gap:20px;}
   .fcard{display:grid; grid-template-columns:.85fr 1.15fr; border:1px solid var(--line); background:var(--card); overflow:hidden;}
   .fcard__img{min-height:100%;}
@@ -104,7 +93,6 @@
   .fcard__note a:hover{color:var(--ink);}
   .fcard .btn{align-self:flex-start; margin-top:6px;}
 
-  /* ─ soft power pass (подарить) ─ */
   .gift .wrap{max-width:760px;}
   .gift-list{list-style:none; margin:14px 0 8px;}
   .gift-list li{padding:12px 0 12px 20px; border-top:1px solid var(--line); position:relative; color:var(--soft); font-size:15px;}
@@ -128,7 +116,6 @@
 </head>
 <body>
 
-<!-- навигация: как на главной -->
 <nav><div class="wrap">
   <a class="name" href="index.html">даша простова</a>
   <span class="links">
@@ -148,7 +135,6 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
 </div>
 
-<!-- ── БЛОК 1 · hero-обложка (cover) ── -->
 <header class="phero"><div class="wrap">
   <div>
     <div class="kicker">soft power yoga practice</div>
@@ -161,14 +147,12 @@
   </div>
 </div></header>
 
-<!-- ── БЛОК 2 · крупное утверждение ── -->
 <section class="statement"><div class="wrap">
   <p>пространство для регулярной практики — <strong>офлайн, онлайн и в формате подписки</strong></p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── БЛОК 3 · видео + текст ── -->
 <section class="media"><div class="wrap">
   <div class="media__video">
     <iframe src="https://www.youtube.com/embed/6IHWyxu8sUQ" title="попробуй практику со мной" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -184,12 +168,10 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── БЛОК 4 · карточки форматов с фото ── -->
 <section id="formats"><div class="wrap">
   <div class="sec-label">форматы практики</div>
   <div class="fcards">
 
-    <!-- soft power connection -->
     <div class="fcard">
       <div class="fcard__img"><img src="images/practice-connection.jpg" alt="soft power connection" loading="lazy"></div>
       <div class="fcard__body">
@@ -202,7 +184,6 @@
       </div>
     </div>
 
-    <!-- soft power circle · мини-группы -->
     <div class="fcard fcard--rev">
       <div class="fcard__img"><img src="images/practice-circle.jpg" alt="soft power circle — мини-группы" loading="lazy"></div>
       <div class="fcard__body">
@@ -211,17 +192,17 @@
         <ul class="fcard__groups">
           <li>
             <div class="g-title">утренняя · лиссабон</div>
-            <div class="g-meta">вторник и пятница 9:30–10:30 · <a href="https://maps.app.goo.gl/fjirQxk8CHaoAm1z7" target="_blank" rel="noopener">студия names</a></div>
+            <div class="g-meta">вторник и четверг 9:30–10:30 · <a href="https://maps.app.goo.gl/fjirQxk8CHaoAm1z7" target="_blank" rel="noopener">студия names</a></div>
             <div class="g-price">180€ / мес</div>
           </li>
           <li>
             <div class="g-title">вечерняя · лиссабон</div>
-            <div class="g-meta">вторник 19:30–20:30, пятница 18:00–19:00 · <a href="https://maps.app.goo.gl/VvP1eomxMq3VnQ7BA" target="_blank" rel="noopener">agora yoga lisboa</a></div>
+            <div class="g-meta">вторник и четверг 19:30–20:30 · <a href="https://maps.app.goo.gl/VvP1eomxMq3VnQ7BA" target="_blank" rel="noopener">agora yoga lisboa</a></div>
             <div class="g-price">180€ / мес</div>
           </li>
           <li>
             <div class="g-title">worldwide · онлайн</div>
-            <div class="g-meta">вторник и четверг 17:00, суббота 12:00 (раз в 2 недели) · время по лиссабону</div>
+            <div class="g-meta">вторник и четверг 17:00 + трансляции из всех студий · время по лиссабону</div>
             <div class="g-price">150€ / мес</div>
           </li>
         </ul>
@@ -229,7 +210,6 @@
       </div>
     </div>
 
-    <!-- soft power yoga lisbon open -->
     <div class="fcard">
       <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="soft power yoga lisbon open" loading="lazy"></div>
       <div class="fcard__body">
@@ -245,7 +225,6 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── БЛОК 5 · soft power pass (подарить) ── -->
 <section id="gift" class="gift"><div class="wrap">
   <div class="sec-label">подарить</div>
   <h2>soft power pass</h2>
@@ -260,7 +239,7 @@
 </div></section>
 
 <footer><div class="wrap">
-  даша простова · лиссабон → мир<br>
+  даша простова · лиссабон → европа → мир<br>
   soft power — мой девиз и имя моих проектов<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>

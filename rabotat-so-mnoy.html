@@ -4,12 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>работать со мной — soft power</title>
-<meta name="description" content="архитектура опыта, создание команд, лидерство, менеджмент: события, ретриты и корпоративный wellbeing под ключ — от идеи до последней детали. менторинг для йога-тичеров.">
+<meta name="description" content="архитектура опыта, создание команд, лидерство, менеджмент: события, ретриты и корпоративный wellbeing под ключ — от идеи до последней детали. менторинг для помогающих практиков.">
 <style>
-  /* ═══ страница «работать со мной». дизайн-система — как на главной (site-prototype).
-     типы блоков сохранены: hero · лид · бэкграунд · кейсы · форматы ·
-     менторинг (интро + чеклист + форматы консультаций + отзывы) ·
-     «что я ищу сейчас» (тёмный) · футер. ═══ */
   :root{
     --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
     --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff; --warm:#f3ece4;
@@ -24,7 +20,6 @@
   .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
   h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  /* ─ навигация ─ */
   nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
   nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
@@ -45,14 +40,12 @@
   body.mnav-open nav{display:none;}
   nav a.active{color:var(--ink);}
 
-  /* ─ кнопки ─ */
   .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); cursor:pointer;}
   .btn:hover{background:#333; border-color:#333;}
   .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--line);}
   .btn-outline:hover{background:transparent; border-color:var(--ink);}
   .btn-sm{padding:12px 22px; font-size:13px;}
 
-  /* ─ hero: текст + фото ─ */
   .phero{padding:64px 0 56px;}
   .phero .wrap{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
   .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
@@ -60,7 +53,6 @@
   .phero .btn{margin-top:32px;}
   .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
 
-  /* ─ общие секции ─ */
   section{padding:56px 0;}
   .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
   h2{font-size:26px; margin-bottom:22px;}
@@ -69,17 +61,14 @@
   .prose p:last-child{margin-bottom:0;}
   .hr{border:none; border-top:1px solid var(--line); margin:0;}
 
-  /* ─ лид (крупное утверждение) ─ */
   .statement{text-align:center;}
   .statement p{font-family:Georgia,serif; font-size:24px; line-height:1.55; max-width:780px; margin:0 auto; color:var(--ink);}
 
-  /* ─ список с разделителями (бэкграунд / чеклист) ─ */
   .rlist{list-style:none; max-width:820px;}
   .rlist li{border-top:1px solid var(--line); padding:16px 0 16px 22px; position:relative; color:var(--soft); font-size:15.5px;}
   .rlist li:before{content:""; position:absolute; left:0; top:24px; width:8px; height:1px; background:var(--faint);}
   .rlist li strong{color:var(--ink); font-weight:600;}
 
-  /* ─ сетка карточек ─ */
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
   .card{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column; overflow:hidden;}
   .card__media{aspect-ratio:16/10; background:#ece8e2; position:relative; overflow:hidden;}
@@ -92,7 +81,6 @@
   button.card{appearance:none; -webkit-appearance:none; font-family:inherit; text-align:left; cursor:pointer; width:100%;}
   .card__count{position:absolute; left:14px; bottom:14px; background:rgba(20,20,20,.72); color:#fff; font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:6px 12px;}
 
-  /* ─ лайтбокс галереи ─ */
   .lb{position:fixed; inset:0; z-index:200; background:rgba(18,18,18,.94); display:none; overflow-y:auto; padding:64px 20px 40px;}
   .lb.open{display:block;}
   body.lb-open{overflow:hidden;}
@@ -114,12 +102,10 @@
   .card--soft{background:var(--warm); border-color:#e6ddd2;}
   .card--wide{grid-column:1 / -1;}
 
-  /* ─ менторинг: доверие ─ */
   .trust{display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:820px; margin-top:24px;}
   .trust p{border-top:1px solid var(--line); padding-top:14px; color:var(--soft); font-size:14.5px;}
   .sub-label{font-size:15px; font-weight:600; margin-bottom:16px;}
 
-  /* ─ отзывы ─ */
   .reviews{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
   .review{border:1px solid var(--line); background:var(--card); padding:28px 26px; display:flex; flex-direction:column;}
   .review p{color:var(--ink); font-size:14.5px; line-height:1.7;}
@@ -127,7 +113,6 @@
   .review__name{font-weight:600; font-size:14px;}
   .review__role{color:var(--faint); font-size:12.5px;}
 
-  /* ─ тёмный блок «что я ищу сейчас» ─ */
   .dark{background:var(--ink); color:#f4f2ee; text-align:center;}
   .dark .wrap{padding:84px 24px;}
   .dark .sec-label{color:#8b8680;}
@@ -154,7 +139,6 @@
 </head>
 <body>
 
-<!-- навигация: как на главной -->
 <nav><div class="wrap">
   <a class="name" href="index.html">даша простова</a>
   <span class="links">
@@ -174,7 +158,6 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
 </div>
 
-<!-- ── hero ── -->
 <header class="phero"><div class="wrap">
   <div>
     <div class="kicker">работать со мной</div>
@@ -186,26 +169,23 @@
   </div>
 </div></header>
 
-<!-- ── лид ── -->
 <section class="statement"><div class="wrap">
   <p>я умею превращать идею в живой опыт: придумать концепцию, собрать и возглавить команду, выстроить стратегию, визуальный язык и продвижение — и провести человека через глубокий опыт так, чтобы он его запомнил и вернулся снова.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── бэкграунд ── -->
 <section><div class="wrap">
   <div class="sec-label">бэкграунд</div>
   <ul class="rlist">
     <li>более 15 лет в wellbeing и спорте: стартапы, корпорации, собственный бренд</li>
-    <li><strong>sektaschool</strong> — ceo московского филиала: создала команду 50+ человек, открыла больше 10 залов и филиалов в москве, коллаборация с афишей, vogue, condé nast и генеральное партнёрство с nike</li>
-    <li><strong>nike</strong> — 5 лет в бренд-команде: возглавляла nike box msk от этапа проектирования до закрытия центра в 2022. создала и управляла командой, отвечала за все спортивные партнёрства и интеграции, делала большой международный продакшен и приземляла международные компании</li>
+    <li><strong>Sektaschool</strong> — ceo московского филиала: создала команду 50+ человек, открыла больше 10 залов и филиалов в москве, коллаборация с Афишей, Vogue, Condé Nast и генеральное партнёрство с Nike</li>
+    <li><strong>Nike</strong> — 5 лет в бренд-команде: возглавляла Nike Box MSK от этапа проектирования до закрытия центра в 2022. создала и управляла командой, отвечала за все спортивные партнёрства и интеграции, делала большой международный продакшен и приземляла международные компании</li>
     <li><strong>soft power</strong> — собственный бренд вокруг йоги, телесности и практик: студийная практика, онлайн подписка, ивенты, ретриты, мерч. 5000+ практикующих по всему миру</li>
-    <li>помимо этого: иммерсивный балетный проект для банка бкс, создание спортивной школы и veterbodyschool для журнала veter, концепция, строительство и открытие ресторана 42 на патриках — и ещё многое, что сейчас под nda</li>
+    <li>помимо этого: иммерсивный балетный проект для банка БКС, создание проекта Veterbodyschool для журнала Veter, концепция, строительство и открытие ресторана 42 на патриках — и ещё многое, что находится под nda</li>
   </ul>
 </div></section>
 
-<!-- ── кейсы ── -->
 <section><div class="wrap">
   <div class="sec-label">кейсы</div>
   <h2>посмотреть, что я собирала своими руками</h2>
@@ -213,39 +193,39 @@
 
     <a class="card" href="https://disk.yandex.ru/i/UfPv990o92Ykyw" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card__media">
-        <img src="images/case-nike.jpg" alt="рекап nike box msk" loading="lazy">
+        <img src="images/case-nike.jpg" alt="рекап Nike Box MSK" loading="lazy">
         <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
       </div>
       <div class="card__body">
         <span class="card__label">видео</span>
-        <h3>рекап nike box msk</h3>
-        <p>центр спорта и культуры nike: от этапа проектирования до международного продакшена.</p>
+        <h3>рекап Nike Box MSK</h3>
+        <p>5 лет в бренд-команде: возглавляла Nike Box MSK от этапа проектирования до закрытия центра в 2022. создала и управляла командой, отвечала за все спортивные партнёрства и интеграции, делала большой международный продакшен и приземляла международные компании.</p>
         <span class="card__link">смотреть рекап →</span>
       </div>
     </a>
 
     <a class="card" href="https://disk.yandex.ru/i/H-je9Cju_yf8aw" target="_blank" rel="noopener" style="text-decoration:none;">
       <div class="card__media">
-        <img src="images/case-ballet.jpg" alt="рекап иммерсивного онлайн-балета «щелкунчик»" loading="lazy">
+        <img src="images/case-ballet.jpg" alt="рекап иммерсивного онлайн-балета «Щелкунчик»" loading="lazy">
         <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
       </div>
       <div class="card__body">
         <span class="card__label">видео</span>
         <h3>рекап иммерсивного онлайн-балета</h3>
-        <p>«щелкунчик» — иммерсивный балетный проект для банка бкс.</p>
+        <p>«Щелкунчик» — балетный проект для банка БКС — целостный иммерсивный онлайн-опыт с труппой Мариинки.</p>
         <span class="card__link">смотреть рекап →</span>
       </div>
     </a>
 
     <button class="card card--gallery" type="button" id="sektaCard">
       <div class="card__media">
-        <img src="images/sekta-1.jpg" alt="sektaschool" loading="lazy">
+        <img src="images/sekta-1.jpg" alt="Sektaschool" loading="lazy">
         <span class="card__count">галерея · 5 фото</span>
       </div>
       <div class="card__body">
         <span class="card__label">фото</span>
-        <h3>sektaschool</h3>
-        <p>команда 50+ человек, больше 10 залов и филиалов в москве.</p>
+        <h3>Sektaschool</h3>
+        <p>2013–2016. лидировала создание филиала от 0 до 1: команда 50+ человек, больше 10 залов и филиалов в москве. коллаборация с Афишей, Vogue, Condé Nast и генеральное партнёрство с Nike.</p>
         <span class="card__link">смотреть фото →</span>
       </div>
     </button>
@@ -256,7 +236,7 @@
       </div>
       <div class="card__body">
         <span class="card__label">instagram</span>
-        <h3>soft power: иммерсивный йога опыт в старинном театре</h3>
+        <h3>soft power: целостный спродюсированный опыт вокруг практики с живой музыкой в здании старинного театра</h3>
         <span class="card__link">смотреть в instagram →</span>
       </div>
     </a>
@@ -268,7 +248,7 @@
       <div class="card__body">
         <span class="card__label">instagram</span>
         <h3>даже отпуск для родителей я задизайнила как уникальный опыт</h3>
-        <p>от первого шага до последнего.</p>
+        <p>вэлком-пэк, маршрут, ритм, впечатления, сюрпризы — от первого шага до последнего.</p>
         <span class="card__link">посмотреть и вдохновиться →</span>
       </div>
     </a>
@@ -278,20 +258,19 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── форматы — что можно заказать ── -->
 <section><div class="wrap">
   <div class="sec-label">форматы</div>
   <h2>что можно заказать</h2>
   <div class="grid">
 
     <div class="card"><div class="card__body">
-      <h3>событие или ретрит под ключ</h3>
+      <h3>проект, событие или ретрит под ключ</h3>
       <p>концепция, программа, команда, площадка, атмосфера, продвижение. вы получаете готовый опыт, который люди заберут с собой и никогда не забудут.</p>
     </div></div>
 
     <div class="card"><div class="card__body">
       <h3>корпоративный wellbeing</h3>
-      <p>программы для команд, стартапов и корпораций: не «йога в переговорке», а спроектированный опыт, который реально меняет состояние людей.</p>
+      <p>программы для команд, стартапов и корпораций: не «йога в переговорке», а спроектированный опыт, который меняет состояние людей.</p>
     </div></div>
 
     <div class="card"><div class="card__body">
@@ -306,7 +285,7 @@
 
     <div class="card card--soft card--wide"><div class="card__body">
       <h3>есть продукт или идея продукта?</h3>
-      <p>особенно международного, на стыке wellbeing, биохакинга, телесных практик, longevity и ai — давайте поговорим. я открыта к новым проектам и с радостью стану частью чего-то большего.</p>
+      <p>напиши мне! я открыта к международным проектам на стыке wellbeing, биохакинга, телесных практик, longevity и ai. с радостью стану частью чего-то большего.</p>
       <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать в telegram</a>
     </div></div>
 
@@ -315,9 +294,8 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── менторинг для йога-тичеров ── -->
 <section><div class="wrap">
-  <div class="sec-label">менторинг для йога-тичеров</div>
+  <div class="sec-label">менторинг для помогающих практиков</div>
   <h2>вырастить ремесло в устойчивый продукт</h2>
   <div class="prose">
     <p>я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят не просто делиться знанием, а создать живой, настоящий продукт — упакованный в чёткую форму и наполненный своим смыслом.</p>
@@ -340,43 +318,14 @@
   </ul>
 </div></section>
 
-<!-- формат консультаций -->
 <section style="padding-top:0;"><div class="wrap">
   <div class="sec-label">формат консультаций</div>
-  <div class="grid">
-
-    <div class="card"><div class="card__body">
-      <div class="card__head"><h3>разовая сессия</h3><span class="card__price">€300</span></div>
-      <p class="card__tag">120 минут</p>
-      <p>интенсивный формат для конкретного запроса. если нужно увидеть ситуацию ясно, найти решение, сделать выбор или получить структурную обратную связь.</p>
-      <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг%20—%20разовая%20сессия">записаться</a>
-    </div></div>
-
-    <div class="card"><div class="card__body">
-      <div class="card__head"><h3>курс из 3 сессий</h3><span class="card__price">€750</span></div>
-      <p class="card__tag">75–90 минут каждая</p>
-      <p>глубокая работа с вашим запросом и связанными с ним процессами. подходит, если хочется не просто решить задачу, но и переосмыслить подход, найти новые опоры и собрать стратегию.</p>
-      <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг%20—%20курс%20из%203%20сессий">записаться</a>
-    </div></div>
-
-    <div class="card"><div class="card__body">
-      <div class="card__head"><h3>курс из 5 сессий</h3><span class="card__price">€1000</span></div>
-      <p class="card__tag">75–90 минут каждая</p>
-      <p>пространство для тех, кто хочет серьёзно взяться за дело: увидеть, как работает их система, переупаковать знания, настроить продвижение и обрести устойчивость. мы работаем на пересечении стратегии, смыслов и глубокой внутренней работы.</p>
-      <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг%20—%20курс%20из%205%20сессий">записаться</a>
-    </div></div>
-
-    <div class="card card--soft"><div class="card__body">
-      <div class="card__head"><h3>индивидуальная программа сопровождения</h3><span class="card__price">по запросу</span></div>
-      <p class="card__tag">3–12 месяцев</p>
-      <p>долгосрочное, тёплое и устойчивое сопровождение с гибкой программой под ваш ритм, цели и стадии развития. детали и стоимость обсуждаются лично.</p>
-      <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг%20—%20индивидуальная%20программа">записаться</a>
-    </div></div>
-
-  </div>
+  <div class="card card--soft card--wide"><div class="card__body">
+    <p style="font-size:16px; color:var(--ink);">разовая сессия или долгосрочная плотная работа в моём поле — напиши мне, и подберём оптимальный вариант под твой запрос и бюджет.</p>
+    <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг">записаться</a>
+  </div></div>
 </div></section>
 
-<!-- отзывы -->
 <section style="padding-top:0;"><div class="wrap">
   <div class="sec-label">отзывы</div>
   <div class="reviews">
@@ -408,7 +357,6 @@
   </div>
 </div></section>
 
-<!-- ── что я ищу сейчас ── -->
 <section class="dark"><div class="wrap">
   <div class="sec-label">что я ищу сейчас</div>
   <p class="lead">проекты, которые хочется прожить и запомнить, а не просто посетить.</p>
@@ -417,12 +365,11 @@
   <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать в telegram</a>
 </div></section>
 
-<!-- ── лайтбокс: галерея sektaschool ── -->
-<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="sektaschool — фото">
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Sektaschool — фото">
   <button class="lb__close" id="lbClose" aria-label="закрыть галерею">✕</button>
   <div class="lb__inner">
-    <p class="lb__title">sektaschool</p>
-    <img src="images/sekta-1.jpg" alt="sektaschool" loading="lazy">
+    <p class="lb__title">Sektaschool</p>
+    <img src="images/sekta-1.jpg" alt="Sektaschool" loading="lazy">
     <img src="images/sekta-2.jpg" alt="" loading="lazy">
     <img src="images/sekta-3.jpg" alt="" loading="lazy">
     <img src="images/sekta-4.jpg" alt="" loading="lazy">
@@ -431,13 +378,12 @@
 </div>
 
 <footer><div class="wrap">
-  даша простова · лиссабон → мир<br>
+  даша простова · лиссабон → европа → мир<br>
   soft power — мой девиз и имя моих проектов<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
 
 <script>
-  // галерея sektaschool: открытие/закрытие лайтбокса
   (function(){
     var card = document.getElementById('sektaCard');
     var lb = document.getElementById('lightbox');
