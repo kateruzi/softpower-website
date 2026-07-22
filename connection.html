@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>soft power connection</title>
+<meta name="description" content="soft power connection — телеграм канал с видео и аудио практиками, дыханием и медитациями. подписка на месяц, 3 или 6 месяцев.">
+<style>
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
+  .burger span{position:absolute; left:0; width:100%; height:1.5px; background:var(--ink); transition:.25s;}
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
+  .mnav.open{transform:translateX(0);}
+  .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
+  body.mnav-open{overflow:hidden;}
+  body.mnav-open nav{display:none;}
+
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); cursor:pointer;}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn-outline{background:transparent; color:var(--ink); border:1px solid var(--line);}
+  .btn-outline:hover{background:transparent; border-color:var(--ink);}
+
+  .phero{padding:72px 0 56px; text-align:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:38px; line-height:1.28; letter-spacing:-.01em;}
+  .phero .sub{margin-top:22px; color:var(--soft); max-width:640px; margin-left:auto; margin-right:auto;}
+  .phero .btn{margin-top:32px;}
+
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  .inside .wrap{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .inside__imgs{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .inside__imgs img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+  .inside h2{margin-bottom:18px;}
+  .inside-list{list-style:none; margin-top:6px;}
+  .inside-list li{padding:12px 0 12px 20px; border-top:1px solid var(--line); position:relative; color:var(--soft); font-size:15px;}
+  .inside-list li:before{content:"—"; position:absolute; left:0; color:var(--faint);}
+
+  .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  .plan{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column;}
+  .plan img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+  .plan__body{padding:26px 26px 30px; display:flex; flex-direction:column; gap:8px; flex:1; text-align:center;}
+  .plan h3{font-size:20px;}
+  .plan__price{color:var(--soft); font-size:16px; margin-bottom:16px;}
+  .plan .btn{margin-top:auto; align-self:center;}
+
+  .rub{text-align:center;}
+  .rub p{font-family:Georgia,serif; font-size:24px; line-height:1.5; max-width:640px; margin:0 auto 28px;}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .phero{padding:48px 0 40px;}
+    .phero h1{font-size:29px;}
+    .inside .wrap{grid-template-columns:1fr; gap:28px;}
+    .plans{grid-template-columns:1fr;}
+    .rub p{font-size:20px;}
+    nav .links{display:none;} .burger{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="index.html">даша простова</a>
+  <span class="links">
+    <a href="praktika.html">практика</a>
+    <a href="rabotat-so-mnoy.html">работать со мной</a>
+    <a href="faq.html">вопросы</a>
+    <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
+  </span>
+  <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="закрыть меню">✕</button>
+  <a href="praktika.html">практика</a>
+  <a href="rabotat-so-mnoy.html">работать со мной</a>
+  <a href="faq.html">вопросы</a>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
+</div>
+
+<header class="phero"><div class="wrap">
+  <div class="kicker">подписка</div>
+  <h1>soft power connection</h1>
+  <p class="sub">телеграм канал с видео и аудио практиками, дыханием и медитациями<br><br>подходит, если хочешь практиковать в своём ритме — без привязки к расписанию, группе и часовым зонам</p>
+  <a class="btn" href="#plans">купить подписку</a>
+</div></header>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section class="inside"><div class="wrap">
+  <div class="inside__imgs">
+    <img src="images/connection-1.jpg" alt="soft power connection — практика">
+    <img src="images/connection-2.jpg" alt="soft power connection — практика">
+  </div>
+  <div>
+    <div class="sec-label">что внутри</div>
+    <h2>всё что нужно, чтобы движение стало привычкой — уже внутри</h2>
+    <ul class="inside-list">
+      <li>практики от 5 до 65 минут, заботливо отсортированные по времени, задаче и уровню нагрузки</li>
+      <li>дыхание и медитации</li>
+      <li>подкаст с темой месяца</li>
+      <li>не хочется выбирать — бот подберёт под твоё состояние</li>
+    </ul>
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section id="plans"><div class="wrap">
+  <div class="sec-label">тарифы</div>
+  <h2 style="text-align:center; margin-bottom:40px;">выбери свой вариант</h2>
+  <div class="plans">
+
+    <div class="plan">
+      <img src="images/connection-plan-1.jpg" alt="подписка на месяц" loading="lazy">
+      <div class="plan__body">
+        <h3>подписка на месяц</h3>
+        <p class="plan__price">42 €</p>
+        <a class="btn btn-outline" href="https://t.me/softpowerspace_bot?start=buy_1" target="_blank" rel="noopener">купить</a>
+      </div>
+    </div>
+
+    <div class="plan">
+      <img src="images/connection-plan-3.jpg" alt="подписка на 3 месяца" loading="lazy">
+      <div class="plan__body">
+        <h3>подписка на 3 месяца</h3>
+        <p class="plan__price">108 €</p>
+        <a class="btn btn-outline" href="https://t.me/softpowerspace_bot?start=buy_3" target="_blank" rel="noopener">купить</a>
+      </div>
+    </div>
+
+    <div class="plan">
+      <img src="images/connection-plan-6.jpg" alt="подписка на 6 месяцев" loading="lazy">
+      <div class="plan__body">
+        <h3>подписка на 6 месяцев</h3>
+        <p class="plan__price">210 €</p>
+        <a class="btn btn-outline" href="https://t.me/softpowerspace_bot?start=buy_6" target="_blank" rel="noopener">купить</a>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section class="rub"><div class="wrap">
+  <p>для оплаты в рублях свяжись с нами в телеграм по кнопке ниже</p>
+  <a class="btn" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">связаться</a>
+</div></section>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → европа → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
+    if(!burger||!mnav) return;
+    function openMenu(){ mnav.classList.add('open'); document.body.classList.add('mnav-open'); burger.setAttribute('aria-expanded','true'); }
+    function hideMenu(){ mnav.classList.remove('open'); document.body.classList.remove('mnav-open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", hideMenu);
+    mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+</script>
+</body>
+</html>
