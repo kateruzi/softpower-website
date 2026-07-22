@@ -84,7 +84,8 @@
   .hscroll{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
   .hscroll::-webkit-scrollbar{display:none;}
   .hscroll .review{flex:0 0 420px; scroll-snap-align:start;}
-  .gallery .hscroll img{flex:0 0 auto; height:420px; width:auto; display:block; scroll-snap-align:start;}
+  .gallery .hscroll{scroll-snap-type:none;}
+  .gallery .hscroll img{flex:0 0 auto; height:420px; width:auto; display:block;}
   .gallery .reviews-head{margin-bottom:0;}
 
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
@@ -314,6 +315,12 @@
   }
   hookArrows('reviewsRow','revPrev','revNext','.review');
   hookArrows('galleryRow','galPrev','galNext','img');
+  (function(){
+    var rows=[document.getElementById('reviewsRow'), document.getElementById('galleryRow')];
+    function reset(){ rows.forEach(function(r){ if(r) r.scrollLeft=0; }); }
+    reset();
+    window.addEventListener('load', reset);
+  })();
 </script>
 </body>
 </html>
