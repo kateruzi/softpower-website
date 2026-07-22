@@ -113,6 +113,29 @@
   .review__name{font-weight:600; font-size:14px;}
   .review__role{color:var(--faint); font-size:12.5px;}
 
+  .mentoring{padding:42px 0 36px;}
+  .mentoring h2{margin-bottom:14px;}
+  .mentoring__intro{max-width:720px; color:var(--soft); font-size:15px; margin-bottom:22px;}
+  .mentoring__grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:28px; align-items:start;}
+  .mentoring__note{border-top:1px solid var(--line); padding-top:13px; color:var(--soft); font-size:14px;}
+  .mentoring__note strong{display:block; color:var(--ink); font-weight:600; margin-bottom:5px;}
+  .mentoring .rlist li{padding-top:10px; padding-bottom:10px; font-size:14px;}
+  .mentoring .rlist li:before{top:19px;}
+  .mentoring__formats{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px;}
+  .mentoring__formats .btn{padding:9px 15px; font-size:12px; background:transparent; color:var(--ink); border-color:var(--line);}
+  .mentoring__formats .btn:hover{border-color:var(--ink);}
+  .mentoring__cta{margin-top:14px; font-size:13px; color:var(--soft);}
+  .mentoring__cta a{color:var(--ink); text-underline-offset:3px;}
+
+  .reviews-section{padding:36px 0 46px;}
+  .reviews-section .sec-label{margin-bottom:14px;}
+  .reviews{gap:12px;}
+  .review{padding:20px 18px;}
+  .review p{font-size:13.25px; line-height:1.55;}
+  .review__author{margin-top:13px;}
+  .review__name{font-size:13px;}
+  .review__role{font-size:11.5px; line-height:1.45;}
+
   .dark{background:var(--ink); color:#f4f2ee; text-align:center;}
   .dark .wrap{padding:84px 24px;}
   .dark .sec-label{color:#8b8680;}
@@ -133,6 +156,7 @@
     .grid{grid-template-columns:1fr;}
     .trust{grid-template-columns:1fr;}
     .reviews{grid-template-columns:1fr;}
+    .mentoring__grid{grid-template-columns:1fr; gap:18px;}
     nav .links{display:none;} .burger{display:block;}
   }
 </style>
@@ -241,9 +265,9 @@
       </div>
     </a>
 
-    <a class="card card--wide" href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card__media" style="aspect-ratio:auto;">
-        <img src="images/IMG_3622.jpeg" alt="отпуск, задизайненный как уникальный опыт" loading="lazy" style="max-height:420px;">
+    <a class="card" href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="card__media">
+        <img src="images/IMG_3622.jpeg" alt="отпуск, задизайненный как уникальный опыт" loading="lazy">
       </div>
       <div class="card__body">
         <span class="card__label">instagram</span>
@@ -260,7 +284,7 @@
 
 <section><div class="wrap">
   <div class="sec-label">форматы</div>
-  <h2>что можно заказать</h2>
+  <h2>как можно поработать со мной?</h2>
   <div class="grid">
 
     <div class="card"><div class="card__body">
@@ -294,39 +318,33 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section><div class="wrap">
+<section class="mentoring"><div class="wrap">
   <div class="sec-label">менторинг для помогающих практиков</div>
   <h2>вырастить ремесло в устойчивый продукт</h2>
-  <div class="prose">
-    <p>я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят не просто делиться знанием, а создать живой, настоящий продукт — упакованный в чёткую форму и наполненный своим смыслом.</p>
+  <p class="mentoring__intro">я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят превратить знание и ремесло в живой, устойчивый продукт со своим смыслом.</p>
+  <div class="mentoring__grid">
+    <div class="mentoring__note">
+      <strong>в моём поле безопасно и комфортно расти</strong>
+      я умею слышать, видеть суть и собирать разрозненное в целое — с опорой на то, что тебе действительно интересно и хочется делать.
+    </div>
+    <div>
+      <p class="sub-label">ко мне приходят, чтобы:</p>
+      <ul class="rlist">
+        <li>сформулировать суть своей работы и увидеть сильные стороны</li>
+        <li>упаковать знания в продукт и лучше понять аудиторию</li>
+        <li>получить структурную обратную связь и поддержку</li>
+        <li>выстроить стратегию продвижения и увидеть новые пути развития</li>
+      </ul>
+    </div>
   </div>
-  <div class="trust">
-    <p>в моём поле безопасно и комфортно расти</p>
-    <p>я умею слышать, видеть суть, собирать разрозненное в целое и помогать вырастить ремесло в устойчивый бизнес</p>
+  <div class="mentoring__formats" aria-label="форматы консультаций">
+    <a class="btn" href="mailto:hello@softpowerspace.com?subject=разовая сессия">разовая сессия</a>
+    <a class="btn" href="mailto:hello@softpowerspace.com?subject=долгосрочный менторинг">долгосрочная плотная работа в моём поле</a>
   </div>
+  <p class="mentoring__cta">подберём вариант под твой запрос и бюджет — <a href="mailto:hello@softpowerspace.com?subject=менторинг">напиши мне</a></p>
 </div></section>
 
-<section style="padding-top:0;"><div class="wrap">
-  <p class="sub-label">ко мне приходят за тем, чтобы:</p>
-  <ul class="rlist">
-    <li>сформулировать суть своей работы</li>
-    <li>увидеть свои сильные стороны и упаковать знания в продукт</li>
-    <li>проанализировать свою аудиторию</li>
-    <li>получить структурную обратную связь и поддержку</li>
-    <li>выстроить стратегию продвижения</li>
-    <li>увидеть неочевидные пути развития, опираясь на то, что действительно интересно и хочется делать</li>
-  </ul>
-</div></section>
-
-<section style="padding-top:0;"><div class="wrap">
-  <div class="sec-label">формат консультаций</div>
-  <div class="card card--soft card--wide"><div class="card__body">
-    <p style="font-size:16px; color:var(--ink);">разовая сессия или долгосрочная плотная работа в моём поле — напиши мне, и подберём оптимальный вариант под твой запрос и бюджет.</p>
-    <a class="btn btn-outline btn-sm" href="mailto:hello@softpowerspace.com?subject=менторинг">записаться</a>
-  </div></div>
-</div></section>
-
-<section style="padding-top:0;"><div class="wrap">
+<section class="reviews-section"><div class="wrap">
   <div class="sec-label">отзывы</div>
   <div class="reviews">
 
