@@ -72,6 +72,7 @@
 
   .review{border:1px solid var(--line); background:var(--card); padding:30px 32px;}
   .review p{font-family:Georgia,serif; font-size:17px; line-height:1.65; color:var(--ink);}
+  .review .who{margin-top:14px; font-size:13px; color:var(--faint);}
 
   .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:26px;}
   .reviews-head h2{margin-bottom:0;}
@@ -80,7 +81,7 @@
   .rarrow:hover{border-color:var(--ink);}
   .reviews-row{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
   .reviews-row::-webkit-scrollbar{display:none;}
-  .reviews-row .review{flex:0 0 330px; scroll-snap-align:start; display:flex; align-items:center;}
+  .reviews-row .review{flex:0 0 330px; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
 
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
   footer a{color:var(--soft);}
@@ -194,27 +195,33 @@
   <div class="reviews-row" id="reviewsRow">
 
     <div class="review">
-      <p>маленький якорь, который всегда с собой: как бы ни менялся мир вокруг, есть место, куда можно вернуться и выдохнуть</p>
+      <p>«якорёк в кармашке. всё вокруг меняется, мир рушится и строится заново, но есть маленькая штучка, я держу её в кармашке, я знаю, что если что, я сюда могу»</p>
+      <div class="who">— даша, москва</div>
     </div>
 
     <div class="review">
-      <p>тёплый дом, куда приходишь, когда непросто: побыть в заботе, ненадолго выпасть из шума и вернуться к себе</p>
+      <p>«уютный домик, в который ты приходишь, когда, возможно, тебе не очень хорошо. там покопаешься, найдёшь что-то хорошее, послушаешь, о тебе там позаботятся, чуть-чуть выпадешь из мира, побудешь в тепле»</p>
+      <div class="who">— ксюша, лиссабон</div>
     </div>
 
     <div class="review">
-      <p>никакой позиции сверху и никакой обязаловки — практика легко встраивается в день, между чашкой кофе и делами</p>
+      <p>«для меня очень важно то, что нет позиции сверху-вниз. эмоционально комфортно, без давления, без назидания, без обязаловки — это то, что можно легко интегрировать в свой день между чашкой кофе и сбором куда-нибудь»</p>
+      <div class="who">— маша, москва</div>
     </div>
 
     <div class="review">
-      <p>набор инструментов на каждый день: даже когда нет сил на целое занятие, десять минут практики заметно меняют состояние</p>
+      <p>«у меня есть теперь инструменты. если мне лень делать целую тренировку, я хотя бы сделаю magic 10 на 10 минут, и мне уже намного лучше станет»</p>
+      <div class="who">— ксюша, лиссабон</div>
     </div>
 
     <div class="review">
-      <p>мягкое приглашение вместо давления: «попробуй, если хочешь» — и именно поэтому хочется возвращаться</p>
+      <p>«даша мне нравится тем, что она как-то очень мягко предлагает. „попробуй, если хочешь“ — вот это не насильственно очень происходит»</p>
+      <div class="who">— света, черногория</div>
     </div>
 
     <div class="review">
-      <p>как чашка горячего напитка в руках: заранее знаешь, что после станет лучше</p>
+      <p>«чашка горячего напитка — кофе, какао, зелёный чай или матча. ты её берёшь в руки, она тебя греет, от неё исходит приятный пар. ты точно знаешь, что тебе станет лучше, после того как ты её попьёшь»</p>
+      <div class="who">— даша, москва</div>
     </div>
 
   </div>
