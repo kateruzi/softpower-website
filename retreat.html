@@ -84,6 +84,8 @@
   .hscroll{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
   .hscroll::-webkit-scrollbar{display:none;}
   .hscroll .review{flex:0 0 420px; scroll-snap-align:start;}
+  .gallery .hscroll img{flex:0 0 auto; height:420px; width:auto; display:block; scroll-snap-align:start;}
+  .gallery .reviews-head{margin-bottom:0;}
 
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
   footer a{color:var(--soft);}
@@ -97,6 +99,7 @@
     .vcard__overlay h2{font-size:24px;}
     .cta p{font-size:20px;}
     .hscroll .review{flex-basis:300px;}
+    .gallery .hscroll img{height:320px;}
     nav .links{display:none;} .burger{display:block;}
   }
 </style>
@@ -244,6 +247,43 @@
   </div>
 </div></section>
 
+<div class="wrap"><hr class="hr"></div>
+
+<section class="gallery"><div class="wrap">
+  <div class="reviews-head">
+    <div class="sec-label" style="margin-bottom:0;">фото</div>
+    <div class="reviews-arrows">
+      <button class="rarrow" id="galPrev" type="button" aria-label="назад">←</button>
+      <button class="rarrow" id="galNext" type="button" aria-label="вперёд">→</button>
+    </div>
+  </div>
+  <div class="hscroll" id="galleryRow" style="margin-top:18px;">
+    <img src="images/retreat-g01.jpg" alt="soft power retreat" loading="lazy">
+    <img src="images/retreat-g02.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g03.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g04.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g05.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g06.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g07.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g08.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g09.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g10.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g11.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g12.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g13.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g14.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g15.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g16.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g17.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g18.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g19.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g20.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g21.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g22.jpg" alt="" loading="lazy">
+    <img src="images/retreat-g23.jpg" alt="" loading="lazy">
+  </div>
+</div></section>
+
 <section class="cta" style="padding-top:24px;"><div class="wrap">
   <a class="btn" href="https://forms.gle/zZDHyX3NgDSzvyad8" target="_blank" rel="noopener">хочу узнать первым о новых ретритах</a>
 </div></section>
@@ -273,6 +313,7 @@
     next.addEventListener('click', function(){ row.scrollBy({left:step(), behavior:'smooth'}); });
   }
   hookArrows('reviewsRow','revPrev','revNext','.review');
+  hookArrows('galleryRow','galPrev','galNext','img');
 </script>
 </body>
 </html>
