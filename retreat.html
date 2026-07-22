@@ -73,7 +73,8 @@
   .review{border:1px solid var(--line); background:var(--card); padding:30px 32px;}
   .review p{font-size:15px; line-height:1.7; color:var(--ink);}
   .review p + p{margin-top:12px;}
-  .review .who{margin-top:16px; font-size:13px; color:var(--faint);}
+  .review .who{margin-top:18px; font-size:13px; color:var(--faint); display:flex; align-items:center; gap:12px;}
+  .review .who img{width:52px; height:52px; object-fit:cover; border-radius:50%; display:block;}
 
   .reviews-head{display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:26px;}
   .reviews-head h2{margin-bottom:0;}
@@ -83,8 +84,6 @@
   .hscroll{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
   .hscroll::-webkit-scrollbar{display:none;}
   .hscroll .review{flex:0 0 420px; scroll-snap-align:start;}
-
-  .gallery .hscroll img{flex:0 0 auto; height:420px; width:auto; display:block; scroll-snap-align:start;}
 
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
   footer a{color:var(--soft);}
@@ -98,7 +97,6 @@
     .vcard__overlay h2{font-size:24px;}
     .cta p{font-size:20px;}
     .hscroll .review{flex-basis:300px;}
-    .gallery .hscroll img{height:320px;}
     nav .links{display:none;} .burger{display:block;}
   }
 </style>
@@ -175,7 +173,7 @@
       <p>Даша, спасибо большое за потрясающий ретрит! немного волновалась перед поездкой, так как это был мой первый выезд в подобном формате, но все окружающее пространство и люди были как пазлики из одной коробки. жить в таком красивом месте, наслаждаться вкусной едой, купаться в реке, неспешно просыпаться на йогу и отправляться в хайк — все было настолько гармонично, что и добавить нечего</p>
       <p>отдельным моим открытием был вейк: желтая лодка на фоне хвойного леса, громкая музыка и амазонка Вера, которая проезжая на фоне моста откинула голову назад — я плакала от красоты момента БУКВАЛЬНО!</p>
       <p>спасибо тебе за этот уникальный опыт 🤍</p>
-      <div class="who">— Аня Чуркина</div>
+      <div class="who"><img src="images/retreat-p1.jpg" alt="Аня Чуркина" loading="lazy"><span>Аня Чуркина</span></div>
     </div>
 
     <div class="review">
@@ -184,7 +182,7 @@
       <p>помимо этого еще и гибкость в расписании и возможность подстроиться под желания группы</p>
       <p>отдельное супер то, что на выходе еще и куча очень атмосферных фото, Надя классная</p>
       <p>ощущения после такие, что очень хочется обратно, сегодня проснулась под шум машин за окном с мыслями «я где вообще» 💔</p>
-      <div class="who">— Маша Иванова</div>
+      <div class="who"><img src="images/retreat-p2.jpg" alt="Маша Иванова" loading="lazy"><span>Маша Иванова</span></div>
     </div>
 
     <div class="review">
@@ -193,19 +191,19 @@
       <p>вечерняя практика субботы одновременно и превратилась в мгновение, и растянулась в пространстве и времени) не хотелось, чтобы она заканчивалась!</p>
       <p>вейк — это сплошное удовольствие — все озеро было наше, хайк вдоль реки — все клементины для нас)</p>
       <p>тебе спасибо за создание атмосферы — карточки осени, подарки, темы для разговоров, твоя мягкость, внимание и чуткость, я это чувствовала!</p>
-      <div class="who">— Вера Смирнова</div>
+      <div class="who"><img src="images/retreat-p3.jpg" alt="Вера Смирнова" loading="lazy"><span>Вера Смирнова</span></div>
     </div>
 
     <div class="review">
       <p>мне очень понравился ретрит и я с удовольствием поеду ещё как только Даша организует его в следующий раз! потому что всё очень гармонично организовано: и то сколько времени мы практиковали йогу и как углубляли определенные асаны, и то время которое было отведено на другие активности и те люди которые каким-то магическим образом собираются вокруг Даши по своей созвучности, ну и место конечно! очень понравилось что ещё до начала ретрита Даша спросила что бы каждый хотел проработать из йоги чтобы она подготовилась и помогла углубиться. мне было супер классно встать на вэйк борд и получилось уверенно покататься на волнах! были очень душевные вечера у камина с уютными разговорами! всем рекомендую хоть раз попробовать!</p>
-      <div class="who">— Катя Сыроватская</div>
+      <div class="who"><img src="images/retreat-p4.jpg" alt="Катя Сыроватская" loading="lazy"><span>Катя Сыроватская</span></div>
     </div>
 
     <div class="review">
       <p>мне очень понравился этот ретрит! место мне уже было знакомо, но оно все такое же прекрасное и уютное, а девочки приветливы и дружелюбны. еда — отличный выбор, я не оставалась голодной (что бывает не так уж и просто с моими аппетитами!)</p>
       <p>программа была сбалансированной (особенно спасибо за послеобеденный сон!). йоги было достаточно, я даже научилась не бояться и правильно падать из пинчи — это результат. вейксерфинг — супер! я даже не ожидала, что буду кататься все три дня, и это оказалось отличным решением. хайк был тоже классным, особенно с учетом бесконечных растущих фруктов вдоль пути!</p>
       <p>в целом, я не могу даже придумать, что можно было бы улучшить. мне удалось переключиться и отдохнуть, и это главное. большое спасибо 🙏🏻</p>
-      <div class="who">— Оля Ржанова</div>
+      <div class="who"><img src="images/retreat-p5.jpg" alt="Оля Ржанова" loading="lazy"><span>Оля Ржанова</span></div>
     </div>
 
     <div class="review">
@@ -216,18 +214,18 @@
       <p>программа была насыщенной, но при этом совершенно не перегружала. я чувствовала себя в потоке, в котором все шло естественно и гармонично</p>
       <p>каждое мгновение этого выезда доставляло удовольствие, все было настолько на своем месте</p>
       <p>рекомендую всем, кто хочет по-настоящему погрузиться в практику, восстановить силы и обрести внутренний покой. спасибо Даша 🩵</p>
-      <div class="who">— Валерия Поташко</div>
+      <div class="who"><img src="images/retreat-p6.jpg" alt="Валерия Поташко" loading="lazy"><span>Валерия Поташко</span></div>
     </div>
 
     <div class="review">
       <p>побывал на йога-ретрите, и это было очень круто! приятная компания и душевное общение, место атмосферное — идеально для расслабления и перезагрузки. йога оказалась настоящим открытием, каждая сессия приносила ощущение лёгкости и внутреннего спокойствия. активности вне йоги тоже очень понравились. уехал вдохновлённый и наполненный. очень рекомендую и сам с удовольствием повторю!</p>
-      <div class="who">— Михаил Мясников</div>
+      <div class="who"><img src="images/retreat-p7.jpg" alt="Михаил Мясников" loading="lazy"><span>Михаил Мясников</span></div>
     </div>
 
     <div class="review">
       <p>мне очень понравился ретрит) локация и место — супер, расписание и организация тоже, оптимально по нагрузке и разгрузке 🍃 впервые в жизни у меня случилось 5 йога практик за 4 дня, понравилось) вейк серф с Рут и Джоанной — восторг, благодарна девчонкам за вклад в технику катания и классное времяпрепровождение</p>
       <p>спасибо тебе большое за эти выходные, за заботу, за внимание к деталям 🫶🏻 И отдельное спасибо за чудесные фото от Нади) с удовольствием поехала бы еще!</p>
-      <div class="who">— Вита</div>
+      <div class="who"><img src="images/retreat-p8.jpg" alt="Вита" loading="lazy"><span>Вита</span></div>
     </div>
 
     <div class="review">
@@ -240,47 +238,9 @@
       <p>и еще — запахи, вкусы, текстуры и звуки — это все сложилось!</p>
       <p>спасибо за невероятное место и девочки, которые его создали — просто любовь!</p>
       <p>Даша, ты делаешь магию! спасибо 🫶</p>
-      <div class="who">— Наталья Полунина</div>
+      <div class="who"><img src="images/retreat-p9.jpg" alt="Наталья Полунина" loading="lazy"><span>Наталья Полунина</span></div>
     </div>
 
-  </div>
-</div></section>
-
-<div class="wrap"><hr class="hr"></div>
-
-<section class="gallery"><div class="wrap">
-  <div class="sec-label">фото</div>
-  <div class="reviews-head">
-    <h2>как это выглядит</h2>
-    <div class="reviews-arrows">
-      <button class="rarrow" id="galPrev" type="button" aria-label="назад">←</button>
-      <button class="rarrow" id="galNext" type="button" aria-label="вперёд">→</button>
-    </div>
-  </div>
-  <div class="hscroll" id="galleryRow">
-    <img src="images/retreat-g01.jpg" alt="soft power retreat" loading="lazy">
-    <img src="images/retreat-g02.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g03.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g04.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g05.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g06.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g07.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g08.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g09.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g10.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g11.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g12.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g13.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g14.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g15.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g16.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g17.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g18.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g19.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g20.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g21.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g22.jpg" alt="" loading="lazy">
-    <img src="images/retreat-g23.jpg" alt="" loading="lazy">
   </div>
 </div></section>
 
@@ -313,7 +273,6 @@
     next.addEventListener('click', function(){ row.scrollBy({left:step(), behavior:'smooth'}); });
   }
   hookArrows('reviewsRow','revPrev','revNext','.review');
-  hookArrows('galleryRow','galPrev','galNext','img');
 </script>
 </body>
 </html>
