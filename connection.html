@@ -75,6 +75,13 @@
   .review p{font-family:Georgia,serif; font-size:17px; line-height:1.65; color:var(--ink);}
   .review .who{margin-top:14px; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; font-size:13px; color:var(--faint);}
 
+  .reviews-row{display:flex; gap:20px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:14px; -webkit-overflow-scrolling:touch;}
+  .reviews-row .review{flex:0 0 330px; scroll-snap-align:start; display:flex; align-items:center;}
+  .reviews-row::-webkit-scrollbar{height:6px;}
+  .reviews-row::-webkit-scrollbar-track{background:var(--line);}
+  .reviews-row::-webkit-scrollbar-thumb{background:var(--faint);}
+  .reviews-hint{margin-top:10px; font-size:13px; color:var(--faint);}
+
   footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
   footer a{color:var(--soft);}
 
@@ -206,6 +213,43 @@
 
   </div>
   <p style="margin-top:24px; font-size:13.5px; color:var(--faint);">по мотивам разговоров с подписчиками канала</p>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- вариант 2 (на сравнение): карточки в один ряд, листаются вбок -->
+<section><div class="wrap">
+  <div class="sec-label">о канале · вариант 2</div>
+  <h2>каким канал видят практикующие</h2>
+  <div class="reviews-row">
+
+    <div class="review">
+      <p>маленький якорь, который всегда с собой: как бы ни менялся мир вокруг, есть место, куда можно вернуться и выдохнуть</p>
+    </div>
+
+    <div class="review">
+      <p>тёплый дом, куда приходишь, когда непросто: побыть в заботе, ненадолго выпасть из шума и вернуться к себе</p>
+    </div>
+
+    <div class="review">
+      <p>никакой позиции сверху и никакой обязаловки — практика легко встраивается в день, между чашкой кофе и делами</p>
+    </div>
+
+    <div class="review">
+      <p>набор инструментов на каждый день: даже когда нет сил на целое занятие, десять минут практики заметно меняют состояние</p>
+    </div>
+
+    <div class="review">
+      <p>мягкое приглашение вместо давления: «попробуй, если хочешь» — и именно поэтому хочется возвращаться</p>
+    </div>
+
+    <div class="review">
+      <p>как чашка горячего напитка в руках: заранее знаешь, что после станет лучше</p>
+    </div>
+
+  </div>
+  <p class="reviews-hint">листай вбок →</p>
+  <p style="margin-top:14px; font-size:13.5px; color:var(--faint);">по мотивам разговоров с подписчиками канала</p>
 </div></section>
 
 <footer><div class="wrap">
