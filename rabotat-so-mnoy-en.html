@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>work with me soft power</title>
-<meta name="description" content="experience architecture, team building, leadership, management: turnkey events, retreats and corporate wellbeing — from the idea to the last detail. mentoring for helping practitioners.">
+<meta name="description" content="experience architecture, team building, leadership, management: events, retreats and corporate wellbeing turnkey — from the idea to the last detail. mentoring for helping practitioners.">
 <style>
   :root{
     --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
@@ -70,10 +70,13 @@
   .rlist li{border-top:1px solid var(--line); padding:16px 0 16px 22px; position:relative; color:var(--soft); font-size:15.5px;}
   .rlist li:before{content:""; position:absolute; left:0; top:24px; width:8px; height:1px; background:var(--faint);}
   .rlist li strong{color:var(--ink); font-weight:600;}
+  .career-date{display:block; margin-bottom:5px; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint);}
 
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .formats-grid{align-items:start;}
   .card{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column; overflow:hidden;}
   .card__media{aspect-ratio:16/10; background:#ece8e2; position:relative; overflow:hidden;}
+  .card__media-link{display:block; color:var(--ink); text-decoration:none;}
   .card__media img{width:100%; height:100%; object-fit:cover; display:block;}
   .card__ph{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; color:var(--faint); font-size:12px; letter-spacing:.12em; text-transform:uppercase;}
   .card__ph svg{opacity:.5;}
@@ -100,7 +103,6 @@
   .card__head{display:flex; justify-content:space-between; align-items:baseline; gap:14px;}
   .card__price{font-family:Georgia,serif; font-size:21px; white-space:nowrap;}
   .card__tag{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
-  .card__media-link{display:block; color:var(--ink); text-decoration:none;}
   .card__link{margin-top:auto; padding-top:6px; font-size:13.5px; color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
   .card .btn{align-self:flex-start; margin-top:8px;}
 
@@ -115,21 +117,18 @@
   .review__name{font-weight:600; font-size:14px;}
   .review__role{color:var(--faint); font-size:12.5px;}
 
-  .mentoring{padding:42px 0 36px;}
-  .mentoring h2{margin-bottom:14px;}
-  .mentoring__intro{max-width:720px; color:var(--soft); font-size:15px; margin-bottom:22px;}
-  .mentoring__content{max-width:760px;}
-  .mentoring__note{color:var(--soft); font-size:14px;}
+  .card--mentoring .mentoring__intro{color:var(--soft); font-size:13.5px;}
+  .mentoring__note{color:var(--soft); font-size:13.5px;}
   .mentoring__note strong{display:block; color:var(--ink); font-weight:600; margin-bottom:5px;}
-  .mentoring__divider{border:0; border-top:1px solid var(--line); margin:22px 0 0;}
-  .mentoring__requests{padding-top:18px;}
-  .mentoring .rlist li{padding-top:10px; padding-bottom:10px; font-size:14px;}
-  .mentoring .rlist li:before{top:19px;}
-  .mentoring__cta{margin-top:14px; font-size:13px; color:var(--soft);}
-  .mentoring__cta a{color:var(--ink); text-underline-offset:3px;}
+  .card__reviews-btn{align-self:flex-start; margin-top:auto;}
 
-  .reviews-section{padding:36px 0 46px;}
-  .reviews-section .sec-label{margin-bottom:14px;}
+  .reviews-modal{position:fixed; inset:0; z-index:210; background:rgba(18,18,18,.94); display:none; overflow-y:auto; padding:64px 20px 40px;}
+  .reviews-modal.open{display:block;}
+  body.reviews-open{overflow:hidden;}
+  body.reviews-open nav{display:none;}
+  .reviews-modal__inner{max-width:1040px; margin:0 auto;}
+  .reviews-modal__title{color:#f4f2ee; font-family:Georgia,serif; font-size:30px; margin-bottom:24px;}
+  .reviews-modal__close{position:fixed; top:16px; right:22px; background:none; border:none; color:#f4f2ee; font-size:30px; line-height:1; cursor:pointer; padding:6px;}
   .reviews{gap:12px;}
   .review{padding:20px 18px;}
   .review p{font-size:13.25px; line-height:1.55;}
@@ -175,7 +174,7 @@
 </div></nav>
 
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="menu">
-  <button class="mnav__close" id="mnavClose" type="button" aria-label="close menu">✕</button>
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="close the menu">✕</button>
   <a href="rabotat-so-mnoy-en.html" class="active">work with me</a>
   <a href="praktika-en.html">practice with me</a>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
@@ -185,7 +184,7 @@
 <header class="phero"><div class="wrap">
   <div>
     <div class="kicker">work with me</div>
-    <h1>experience architecture, team building, leadership, management  from the idea to the last detail</h1>
+    <h1>experience architecture, team building, leadership, management from the idea to the last detail</h1>
     <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me →</a>
   </div>
   <div>
@@ -194,7 +193,7 @@
 </div></header>
 
 <section class="statement"><div class="wrap">
-  <p>i know how to turn an idea into a living experience: dream up a concept, gather and lead a team, build the strategy, visual language and promotion  and guide a person through a deep experience so that they remember it and come back again</p>
+  <p>i know how to turn an idea into a living experience: create the concept, gather and lead the team, build the strategy, the visual language and the promotion and take a person through a deep experience so that they remember it and come back again</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
@@ -203,16 +202,17 @@
   <div class="sec-label">background</div>
   <ul class="rlist">
     <li>more than 15 years in wellbeing and sport: startups, corporations, my own brand</li>
-    <li><strong>Sektaschool</strong>: ceo of the moscow branch, built a team of 50+ people, opened more than 10 studios and branches in moscow, collaborations with Afisha, Vogue, Condé Nast and a general partnership with Nike</li>
-    <li><strong>Nike</strong>: 5 years on the brand team, led Nike Box MSK from the design stage to the closing of the center in 2022. built and managed the team, was responsible for all sport partnerships and integrations, ran big international productions and landed international campaigns</li>
-    <li><strong>soft power</strong>: my own brand around yoga, embodiment and practices, studio practice, online subscription, events, retreats, merch. 5000+ practitioners around the world</li>
-    <li>beyond that: an immersive ballet project for BCS bank, creating the Veterbodyschool project for Veter magazine, the concept, construction and opening of restaurant 42 on patriki  and much more that is under nda</li>
+    <li>i'm a marketer by education and i believe in the power of thoughtful, beautiful, respectful marketing that sells not through funnels but through experience architecture and the quality of the product: so that people themselves want to come back</li>
+    <li><span class="career-date">2013 to 2016</span><strong>Sektaschool</strong>: ceo of the moscow branch, built a team of 50+ people, opened more than 10 studios and branches in moscow, collaborations with Afisha, Vogue, Condé Nast and a general partnership with Nike</li>
+    <li><span class="career-date">2017 to 2022</span><strong>Nike</strong>: 5 years on the brand team, led Nike Box MSK from the design stage to the closing of the center in 2022. built and managed the team, was responsible for all sport partnerships and integrations, ran big international productions and landed global campaigns</li>
+    <li><span class="career-date">2022 to infinity</span><strong>soft power</strong>: my own brand around yoga, embodiment and practices, studio practice, online subscription, events, retreats, merch. 5000+ practitioners around the world</li>
+    <li>beyond that: an immersive ballet project for BCS bank, creating Veterbodyschool for Veter magazine, the concept, construction and opening of restaurant 42 on patriki and much more that stays under nda</li>
   </ul>
 </div></section>
 
 <section><div class="wrap">
   <div class="sec-label">cases</div>
-  <h2>see what i've built with my own hands</h2>
+  <h2>see what i built with my own hands</h2>
   <div class="grid">
 
     <div class="card">
@@ -223,8 +223,7 @@
       <div class="card__body">
         <span class="card__label">video</span>
         <h3><a href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">Nike Box MSK recap</a></h3>
-        <p>5 years on the brand team: led Nike Box MSK from the design stage to the closing of the center in 2022. built and managed the team, was responsible for all sport partnerships and integrations, ran big international productions and landed international campaigns</p>
-        <a class="card__link" href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">watch the recap →</a>
+        <p>5 years on the brand team: led Nike Box MSK from the design stage to the closing of the center in 2022. built and managed the team, was responsible for all sport partnerships and integrations, ran big international productions and landed global campaigns</p>
       </div>
     </div>
 
@@ -236,31 +235,29 @@
       <div class="card__body">
         <span class="card__label">video</span>
         <h3><a href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">immersive online ballet recap</a></h3>
-        <p>«The Nutcracker»: a ballet project for BCS bank, a complete immersive online experience with the Mariinsky troupe</p>
-        <a class="card__link" href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">watch the recap →</a>
+        <p>«The Nutcracker»: a ballet project for BCS bank, a whole immersive online experience with the Mariinsky theatre troupe</p>
       </div>
     </div>
 
-    <button class="card card--gallery" type="button" id="sektaCard">
-      <div class="card__media">
+    <div class="card card--gallery">
+      <a class="card__media card__media-link sekta-trigger" href="#lightbox" aria-label="open the Sektaschool gallery">
         <img src="images/sekta-1.jpg" alt="Sektaschool" loading="lazy">
         <span class="card__count">gallery · 5 photos</span>
-      </div>
+      </a>
       <div class="card__body">
         <span class="card__label">photo</span>
-        <h3>Sektaschool</h3>
+        <h3><a class="sekta-trigger" href="#lightbox">Sektaschool</a></h3>
         <p>2013–2016. led the creation of the branch from 0 to 1: a team of 50+ people, more than 10 studios and branches in moscow. collaborations with Afisha, Vogue, Condé Nast and a general partnership with Nike</p>
-        <span class="card__link">see the photos →</span>
       </div>
-    </button>
+    </div>
 
     <div class="card">
       <div class="card__media">
-        <img src="images/immersive-yoga.jpg" alt="immersive yoga experience in an old theater" loading="lazy">
+        <img src="images/immersive-yoga.jpg" alt="immersive yoga experience in an old theatre" loading="lazy">
       </div>
       <div class="card__body">
         <span class="card__label">instagram</span>
-        <h3><a href="https://www.instagram.com/reel/DRw_kcOCOk0/" target="_blank" rel="noopener">soft power</a>: a fully produced experience around practice with live music in an old theater building</h3>
+        <h3><a href="https://www.instagram.com/reel/DRw_kcOCOk0/" target="_blank" rel="noopener">soft power</a>: a whole produced experience around practice with live music in an old theatre building</h3>
       </div>
     </div>
 
@@ -270,8 +267,8 @@
       </div>
       <div class="card__body">
         <span class="card__label">instagram</span>
-        <h3>i even designed a <a href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">vacation for my parents</a> as a unique experience</h3>
-        <p>welcome pack, route, rhythm, impressions, surprises  from the first step to the last</p>
+        <h3>even <a href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">a vacation for my parents</a> i designed as a unique experience</h3>
+        <p>a welcome pack, the route, the rhythm, impressions and surprises from the first step to the last</p>
       </div>
     </div>
 
@@ -283,16 +280,16 @@
 <section><div class="wrap">
   <div class="sec-label">formats</div>
   <h2>how can we work together?</h2>
-  <div class="grid">
+  <div class="grid formats-grid">
 
     <div class="card"><div class="card__body">
       <h3>a turnkey project, event or retreat</h3>
-      <p>concept, program, team, venue, atmosphere, promotion. you get a ready experience that people will take with them and never forget</p>
+      <p>concept, program, team, venue, atmosphere, promotion. you get a complete experience that people take with them and never forget</p>
     </div></div>
 
     <div class="card"><div class="card__body">
       <h3>corporate wellbeing</h3>
-      <p>programs for teams, startups and corporations: not «yoga in the meeting room» but a designed experience that changes how people feel</p>
+      <p>programs for teams, startups and corporations: not «yoga in a meeting room» but a designed experience that changes how people feel</p>
     </div></div>
 
     <div class="card"><div class="card__body">
@@ -301,10 +298,19 @@
     </div></div>
 
     <div class="card"><div class="card__body">
-      <h3>you can invite me into a project that resonates</h3>
-      <h3>have a product or a product idea?</h3>
-      <p>i can become a project partner or invest in an idea. if you've read this and thought: «i want to create together with Dasha» text me. we'll get on a call and feel out a shared path if we match in direction and values</p>
-      <a class="card__link" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me →</a>
+      <h3>talks, lectures and partnerships</h3>
+      <p>i speak about experience architecture, wellbeing as a system and soft power in leadership</p>
+    </div></div>
+
+    <div class="card"><div class="card__body">
+      <h3>partnership or investment</h3>
+      <p>you can invite me to become a partner in a project or to invest in my idea. if you read this and thought: «i want to create together with Dasha» - text me. we'll get on a call and feel out a shared path, if we match in direction and values</p>
+    </div></div>
+
+    <div class="card card--mentoring"><div class="card__body">
+      <h3>mentoring for helping practitioners</h3>
+      <p class="mentoring__intro">i work with yoga teachers, trainers and specialists in helping professions who want to turn knowledge and craft into a living, sustainable product with its own meaning. my field is a safe and comfortable place to grow. i know how to listen, to see the essence and to gather scattered pieces into a whole with support in what you're truly interested in and want to do</p>
+      <button class="btn btn-outline btn-sm card__reviews-btn" id="reviewsOpen" type="button">read the reviews</button>
     </div></div>
 
   </div>
@@ -312,35 +318,14 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section class="mentoring"><div class="wrap">
-  <div class="sec-label">mentoring for helping practitioners</div>
-  <h2>grow a craft into a sustainable product</h2>
-  <p class="mentoring__intro">i work with yoga teachers, coaches and helping professionals who want to turn their knowledge and craft into a living, sustainable product with its own meaning</p>
-  <div class="mentoring__content">
-    <div class="mentoring__note">
-      <strong>my field is a safe and comfortable place to grow</strong>
-      i know how to listen, see the essence and gather the scattered into a whole  grounded in what you truly find interesting and want to do
-    </div>
-    <hr class="mentoring__divider">
-    <div class="mentoring__requests">
-      <p class="sub-label">people come to me to:</p>
-      <ul class="rlist">
-        <li>articulate the essence of their work and see their strengths</li>
-        <li>package their knowledge into a product and understand their audience better</li>
-        <li>get structured feedback and support</li>
-        <li>build a promotion strategy and see new paths for growth</li>
-      </ul>
-    </div>
-    <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=mentoring">text me</a> and we'll find the format that fits your request and budget</p>
-  </div>
-</div></section>
-
-<section class="reviews-section"><div class="wrap">
-  <div class="sec-label">reviews</div>
+<div class="reviews-modal" id="reviewsModal" role="dialog" aria-modal="true" aria-labelledby="reviewsTitle">
+  <button class="reviews-modal__close" id="reviewsClose" type="button" aria-label="close the reviews">✕</button>
+  <div class="reviews-modal__inner">
+  <h2 class="reviews-modal__title" id="reviewsTitle">reviews</h2>
   <div class="reviews">
 
     <div class="review">
-      <p>«a consultation with Dasha helped me bring order to the current offerings of my yoga business and map out the next steps. unexpectedly, i saw how much i had already managed to accomplish, and i also got valuable feedback on the areas with potential for growth. thanks to a rare combination of a deep understanding of yoga, business and professional experience in marketing, Dasha creates support that inspires confidence and helps build a sustainable business that is truly meaningful on a personal level»</p>
+      <p>«working with Dasha helped me bring order to the current offerings of my yoga business and outline the next steps. unexpectedly for myself i saw how much has already been done, and i got valuable feedback on the areas with potential for growth. thanks to a rare combination of a deep understanding of yoga, business and professional experience in marketing, Dasha creates support that gives confidence and helps build a sustainable business that is truly meaningful on a personal level»</p>
       <div class="review__author">
         <span class="review__name">Alya</span>
         <span class="review__role">jivamukti yoga teacher, Germany</span>
@@ -348,34 +333,45 @@
     </div>
 
     <div class="review">
-      <p>«a really great session structured, deep, full of care. in a short time we sorted everything out: from the essence of the idea to the first steps of promotion. and it all felt very human: warm, supportive, no pressure. so much attention to what i actually want (that alone completely broke my patterns). i feel grounded and clear, which i'd been missing for a long time. thank you so much!»</p>
+      <p>«a really great session structured, deep, with care. in a short time we sorted everything out: from the essence of the idea to the first steps of promotion. and it all felt very human: warm, supportive, without pressure. a lot of attention to what i actually want (that alone broke my patterns). i feel grounded and clear, something i'd been missing for a long time. thank you so much!»</p>
       <div class="review__author">
         <span class="review__name">Sofya Shulykina</span>
-        <span class="review__role">fitness coach, Portugal</span>
+        <span class="review__role">fitness trainer, Portugal</span>
       </div>
     </div>
 
     <div class="review">
-      <p>«the consultation with Dasha really helped by showing me what new working format of online practices i could create, how to structure and package it so that it becomes a real yoga club at home and people would want to come back and renew their membership»</p>
+      <p>«the session with Dasha really helped me see what new working format of online practices i could create, how to structure and package it so that it becomes a real yoga club at home and people want to come back and renew their membership»</p>
       <div class="review__author">
         <span class="review__name">Masha Nirka</span>
-        <span class="review__role">yoga teacher with 9 years of experience, Krasnaya polyana</span>
+        <span class="review__role">yoga teacher with 9 years of experience, Krasnaya Polyana</span>
       </div>
     </div>
 
   </div>
-</div></section>
+  </div>
+</div>
+
+<template id="mentoringExtraCopy">
+  <p>people come to me to:</p>
+  <ul>
+    <li>formulate the essence of their work and see their strengths</li>
+    <li>package knowledge into a product and understand their audience better</li>
+    <li>get structured feedback and support</li>
+    <li>build a promotion strategy and see new paths of development</li>
+  </ul>
+  <p>text me and we'll find the option that fits your request and budget</p>
+</template>
 
 <section class="dark"><div class="wrap">
   <div class="sec-label">and what am i looking for now?</div>
   <p class="lead">new projects, collaborations, partnerships, investments</p>
-  <p class="dtext">i'm a marketer by education and i believe in the power of thoughtful marketing  the kind that sells not through funnels but through experience architecture: so that people themselves want to come back</p>
-  <p class="dtext">if you have an idea, a task or a feeling of «we need someone who can put this whole thing together»  text me</p>
+  <p class="dtext">if you have an idea, a task or a feeling of «we need someone who will put this together as a whole» text me</p>
   <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me on telegram</a>
 </div></section>
 
 <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Sektaschool — photos">
-  <button class="lb__close" id="lbClose" aria-label="close gallery">✕</button>
+  <button class="lb__close" id="lbClose" aria-label="close the gallery">✕</button>
   <div class="lb__inner">
     <p class="lb__title">Sektaschool</p>
     <img src="images/sekta-1.jpg" alt="Sektaschool" loading="lazy">
@@ -388,19 +384,36 @@
 
 <footer><div class="wrap">
   dasha prostova · lisbon → europe → world<br>
-  soft power  my motto and the name of my projects<br>
+  soft power my motto and the name of my projects<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">email</a> · © 2026
 </div></footer>
 
 <script>
   (function(){
-    var card = document.getElementById('sektaCard');
+    var openBtn = document.getElementById('reviewsOpen');
+    var modal = document.getElementById('reviewsModal');
+    var closeBtn = document.getElementById('reviewsClose');
+    if(!openBtn || !modal || !closeBtn) return;
+    function openReviews(){ modal.classList.add('open'); document.body.classList.add('reviews-open'); modal.scrollTop = 0; closeBtn.focus(); }
+    function closeReviews(){ modal.classList.remove('open'); document.body.classList.remove('reviews-open'); openBtn.focus(); }
+    openBtn.addEventListener('click', openReviews);
+    closeBtn.addEventListener('click', closeReviews);
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeReviews(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) closeReviews(); });
+  })();
+</script>
+
+<script>
+  (function(){
+    var triggers = document.querySelectorAll('.sekta-trigger');
     var lb = document.getElementById('lightbox');
     var close = document.getElementById('lbClose');
-    if(!card || !lb) return;
+    if(!triggers.length || !lb) return;
     function open(){ lb.classList.add('open'); document.body.classList.add('lb-open'); lb.scrollTop = 0; }
     function hide(){ lb.classList.remove('open'); document.body.classList.remove('lb-open'); }
-    card.addEventListener('click', open);
+    triggers.forEach(function(trigger){
+      trigger.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    });
     close.addEventListener('click', hide);
     lb.addEventListener('click', function(e){ if(e.target === lb) hide(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hide(); });
