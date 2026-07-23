@@ -70,6 +70,7 @@
   .rlist li strong{color:var(--ink); font-weight:600;}
 
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .formats-grid{align-items:start;}
   .card{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column; overflow:hidden;}
   .card__media{aspect-ratio:16/10; background:#ece8e2; position:relative; overflow:hidden;}
   .card__media-link{display:block; color:var(--ink); text-decoration:none;}
@@ -113,17 +114,14 @@
   .review__name{font-weight:600; font-size:14px;}
   .review__role{color:var(--faint); font-size:12.5px;}
 
-  .mentoring{padding:42px 0 36px;}
-  .mentoring h2{margin-bottom:14px;}
-  .mentoring__intro{max-width:720px; color:var(--soft); font-size:15px; margin-bottom:22px;}
-  .mentoring__content{max-width:760px;}
-  .mentoring__note{color:var(--soft); font-size:14px;}
+  .card--mentoring .mentoring__intro{color:var(--soft); font-size:13.5px;}
+  .mentoring__note{color:var(--soft); font-size:13.5px;}
   .mentoring__note strong{display:block; color:var(--ink); font-weight:600; margin-bottom:5px;}
-  .mentoring__divider{border:0; border-top:1px solid var(--line); margin:22px 0 0;}
-  .mentoring__requests{padding-top:18px;}
-  .mentoring .rlist li{padding-top:10px; padding-bottom:10px; font-size:14px;}
-  .mentoring .rlist li:before{top:19px;}
-  .mentoring__cta{margin-top:14px; font-size:13px; color:var(--soft);}
+  .mentoring__divider{border:0; border-top:1px solid var(--line); margin:8px 0 0;}
+  .mentoring__requests{padding-top:4px;}
+  .card--mentoring .rlist li{padding-top:8px; padding-bottom:8px; font-size:12.5px;}
+  .card--mentoring .rlist li:before{top:17px;}
+  .mentoring__cta{margin-top:auto; font-size:13px; color:var(--soft);}
   .mentoring__cta a{color:var(--ink); text-underline-offset:3px;}
 
   .reviews-section{padding:36px 0 46px;}
@@ -281,7 +279,7 @@
 <section><div class="wrap">
   <div class="sec-label">форматы</div>
   <h2>как можно поработать со мной?</h2>
-  <div class="grid">
+  <div class="grid formats-grid">
 
     <div class="card"><div class="card__body">
       <h3>проект, событие или ретрит под ключ</h3>
@@ -299,39 +297,42 @@
     </div></div>
 
     <div class="card"><div class="card__body">
+      <h3>выступления, лекции и партнёрства</h3>
+      <p>говорю про архитектуру опыта, wellbeing как систему и мягкую силу в лидерстве</p>
+    </div></div>
+
+    <div class="card"><div class="card__body">
       <h3>меня можно пригласить в созвучный проект</h3>
       <h3>есть продукт или идея продукта?</h3>
       <p>могу стать партнёром проекта или инвестировать в идею. если ты прочитал это и подумал: «хочу создавать вместе с Дашей» напиши мне. созвонимся и нащупаем общий путь, если совпадём по направлению и ценностям</p>
       <a class="card__link" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне →</a>
     </div></div>
 
+    <div class="card card--mentoring"><div class="card__body">
+      <span class="card__label">менторинг для помогающих практиков</span>
+      <h3>вырастить ремесло в устойчивый продукт</h3>
+      <p class="mentoring__intro">я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят превратить знание и ремесло в живой, устойчивый продукт со своим смыслом</p>
+      <div class="mentoring__note">
+        <strong>в моём поле безопасно и комфортно расти</strong>
+        я умею слышать, видеть суть и собирать разрозненное в целое с опорой на то, что тебе действительно интересно и хочется делать
+      </div>
+      <hr class="mentoring__divider">
+      <div class="mentoring__requests">
+        <p class="sub-label">ко мне приходят, чтобы:</p>
+        <ul class="rlist">
+          <li>сформулировать суть своей работы и увидеть сильные стороны</li>
+          <li>упаковать знания в продукт и лучше понять аудиторию</li>
+          <li>получить структурную обратную связь и поддержку</li>
+          <li>выстроить стратегию продвижения и увидеть новые пути развития</li>
+        </ul>
+      </div>
+      <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=менторинг">напиши мне</a>, и мы подберём вариант под твой запрос и бюджет</p>
+    </div></div>
+
   </div>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
-
-<section class="mentoring"><div class="wrap">
-  <div class="sec-label">менторинг для помогающих практиков</div>
-  <h2>вырастить ремесло в устойчивый продукт</h2>
-  <p class="mentoring__intro">я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят превратить знание и ремесло в живой, устойчивый продукт со своим смыслом</p>
-  <div class="mentoring__content">
-    <div class="mentoring__note">
-      <strong>в моём поле безопасно и комфортно расти</strong>
-      я умею слышать, видеть суть и собирать разрозненное в целое с опорой на то, что тебе действительно интересно и хочется делать
-    </div>
-    <hr class="mentoring__divider">
-    <div class="mentoring__requests">
-      <p class="sub-label">ко мне приходят, чтобы:</p>
-      <ul class="rlist">
-        <li>сформулировать суть своей работы и увидеть сильные стороны</li>
-        <li>упаковать знания в продукт и лучше понять аудиторию</li>
-        <li>получить структурную обратную связь и поддержку</li>
-        <li>выстроить стратегию продвижения и увидеть новые пути развития</li>
-      </ul>
-    </div>
-    <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=менторинг">напиши мне</a>, и мы подберём вариант под твой запрос и бюджет</p>
-  </div>
-</div></section>
 
 <section class="reviews-section"><div class="wrap">
   <div class="sec-label">отзывы</div>
