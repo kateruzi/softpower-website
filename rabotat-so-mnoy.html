@@ -222,7 +222,6 @@
         <span class="card__label">видео</span>
         <h3><a href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">рекап Nike Box MSK</a></h3>
         <p>5 лет в бренд-команде: возглавляла Nike Box MSK от этапа проектирования до закрытия центра в 2022. создала и управляла командой, отвечала за все спортивные партнёрства и интеграции, делала большой международный продакшен и приземляла международные компании</p>
-        <a class="card__link" href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">смотреть рекап →</a>
       </div>
     </div>
 
@@ -235,22 +234,20 @@
         <span class="card__label">видео</span>
         <h3><a href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">рекап иммерсивного онлайн-балета</a></h3>
         <p>«Щелкунчик»: балетный проект для банка БКС, целостный иммерсивный онлайн-опыт с труппой Мариинки</p>
-        <a class="card__link" href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">смотреть рекап →</a>
       </div>
     </div>
 
-    <button class="card card--gallery" type="button" id="sektaCard">
-      <div class="card__media">
+    <div class="card card--gallery">
+      <a class="card__media card__media-link sekta-trigger" href="#lightbox" aria-label="открыть галерею Sektaschool">
         <img src="images/sekta-1.jpg" alt="Sektaschool" loading="lazy">
         <span class="card__count">галерея · 5 фото</span>
-      </div>
+      </a>
       <div class="card__body">
         <span class="card__label">фото</span>
-        <h3>Sektaschool</h3>
+        <h3><a class="sekta-trigger" href="#lightbox">Sektaschool</a></h3>
         <p>2013–2016. лидировала создание филиала от 0 до 1: команда 50+ человек, больше 10 залов и филиалов в москве. коллаборация с Афишей, Vogue, Condé Nast и генеральное партнёрство с Nike</p>
-        <span class="card__link">смотреть фото →</span>
       </div>
-    </button>
+    </div>
 
     <div class="card">
       <div class="card__media">
@@ -413,13 +410,15 @@
 
 <script>
   (function(){
-    var card = document.getElementById('sektaCard');
+    var triggers = document.querySelectorAll('.sekta-trigger');
     var lb = document.getElementById('lightbox');
     var close = document.getElementById('lbClose');
-    if(!card || !lb) return;
+    if(!triggers.length || !lb) return;
     function open(){ lb.classList.add('open'); document.body.classList.add('lb-open'); lb.scrollTop = 0; }
     function hide(){ lb.classList.remove('open'); document.body.classList.remove('lb-open'); }
-    card.addEventListener('click', open);
+    triggers.forEach(function(trigger){
+      trigger.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    });
     close.addEventListener('click', hide);
     lb.addEventListener('click', function(e){ if(e.target === lb) hide(); });
     document.addEventListener('keydown', function(e){ if(e.key === 'Escape') hide(); });
