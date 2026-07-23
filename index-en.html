@@ -24,6 +24,7 @@
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
   nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em;}
   nav .links{display:flex; gap:26px;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
   nav a{color:var(--soft); text-decoration:none; font-size:14px;}
   nav a:hover{color:var(--ink);}
   .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
@@ -35,6 +36,7 @@
   .mnav.open{transform:translateX(0);}
   .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
   .mnav a.active{color:var(--soft);}
+  .mnav a.lang{margin-top:10px; border-top:1px solid var(--line); padding-top:22px; align-self:stretch;}
   .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
   body.mnav-open{overflow:hidden;}
   body.mnav-open nav{display:none;}
@@ -101,7 +103,7 @@
     <a href="rabotat-so-mnoy-en.html">work with me</a>
     <a href="praktika-en.html">practice with me</a>
     <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
-    <a href="index.html">ru</a>
+    <a class="lang" href="index.html">ru</a>
   </span>
   <button class="burger" id="burger" type="button" aria-label="menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
@@ -111,7 +113,7 @@
   <a href="rabotat-so-mnoy-en.html">work with me</a>
   <a href="praktika-en.html">practice with me</a>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
-  <a href="index.html">ru</a>
+  <a class="lang" href="index.html">ru</a>
 </div>
 
 <header class="hero"><div class="wrap">

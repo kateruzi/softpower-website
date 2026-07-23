@@ -24,6 +24,7 @@
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
   nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
   nav .links{display:flex; gap:26px;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
   nav a{color:var(--soft); text-decoration:none; font-size:14px;}
   nav a:hover{color:var(--ink);}
   .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
@@ -34,6 +35,7 @@
   .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
   .mnav.open{transform:translateX(0);}
   .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav a.lang{margin-top:10px; border-top:1px solid var(--line); padding-top:22px; align-self:stretch;}
   .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
   body.mnav-open{overflow:hidden;}
   body.mnav-open nav{display:none;}
@@ -102,20 +104,20 @@
 <nav><div class="wrap">
   <a class="name" href="index.html">даша простова</a>
   <span class="links">
-    <a href="praktika.html">практика</a>
     <a href="rabotat-so-mnoy.html">работать со мной</a>
+    <a href="praktika.html">практика</a>
     <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
-      <a href="connection-en.html">en</a>
+    <a class="lang" href="connection-en.html">en</a>
   </span>
   <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
 </div></nav>
 
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
   <button class="mnav__close" id="mnavClose" type="button" aria-label="закрыть меню">✕</button>
-  <a href="praktika.html">практика</a>
   <a href="rabotat-so-mnoy.html">работать со мной</a>
+  <a href="praktika.html">практика</a>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать</a>
-  <a href="connection-en.html">en</a>
+  <a class="lang" href="connection-en.html">en</a>
 </div>
 
 <header class="phero"><div class="wrap">
