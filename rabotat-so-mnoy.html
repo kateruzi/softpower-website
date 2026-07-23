@@ -119,15 +119,15 @@
   .card--mentoring .mentoring__intro{color:var(--soft); font-size:13.5px;}
   .mentoring__note{color:var(--soft); font-size:13.5px;}
   .mentoring__note strong{display:block; color:var(--ink); font-weight:600; margin-bottom:5px;}
-  .mentoring__divider{border:0; border-top:1px solid var(--line); margin:8px 0 0;}
-  .mentoring__requests{padding-top:4px;}
-  .card--mentoring .rlist li{padding-top:8px; padding-bottom:8px; font-size:12.5px;}
-  .card--mentoring .rlist li:before{top:17px;}
-  .mentoring__cta{margin-top:auto; font-size:13px; color:var(--soft);}
-  .mentoring__cta a{color:var(--ink); text-underline-offset:3px;}
+  .card__reviews-btn{align-self:flex-start; margin-top:auto;}
 
-  .reviews-section{padding:36px 0 46px;}
-  .reviews-section .sec-label{margin-bottom:14px;}
+  .reviews-modal{position:fixed; inset:0; z-index:210; background:rgba(18,18,18,.94); display:none; overflow-y:auto; padding:64px 20px 40px;}
+  .reviews-modal.open{display:block;}
+  body.reviews-open{overflow:hidden;}
+  body.reviews-open nav{display:none;}
+  .reviews-modal__inner{max-width:1040px; margin:0 auto;}
+  .reviews-modal__title{color:#f4f2ee; font-family:Georgia,serif; font-size:30px; margin-bottom:24px;}
+  .reviews-modal__close{position:fixed; top:16px; right:22px; background:none; border:none; color:#f4f2ee; font-size:30px; line-height:1; cursor:pointer; padding:6px;}
   .reviews{gap:12px;}
   .review{padding:20px 18px;}
   .review p{font-size:13.25px; line-height:1.55;}
@@ -311,24 +311,13 @@
     </div></div>
 
     <div class="card card--mentoring"><div class="card__body">
-      <span class="card__label">менторинг для помогающих практиков</span>
-      <h3>вырастить ремесло в устойчивый продукт</h3>
+      <h3>менторинг для помогающих практиков</h3>
       <p class="mentoring__intro">я работаю с йога-тичерами, тренерами и специалистами помогающих профессий, которые хотят превратить знание и ремесло в живой, устойчивый продукт со своим смыслом</p>
       <div class="mentoring__note">
         <strong>в моём поле безопасно и комфортно расти</strong>
         я умею слышать, видеть суть и собирать разрозненное в целое с опорой на то, что тебе действительно интересно и хочется делать
       </div>
-      <hr class="mentoring__divider">
-      <div class="mentoring__requests">
-        <p class="sub-label">ко мне приходят, чтобы:</p>
-        <ul class="rlist">
-          <li>сформулировать суть своей работы и увидеть сильные стороны</li>
-          <li>упаковать знания в продукт и лучше понять аудиторию</li>
-          <li>получить структурную обратную связь и поддержку</li>
-          <li>выстроить стратегию продвижения и увидеть новые пути развития</li>
-        </ul>
-      </div>
-      <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=менторинг">напиши мне</a>, и мы подберём вариант под твой запрос и бюджет</p>
+      <button class="btn btn-outline btn-sm card__reviews-btn" id="reviewsOpen" type="button">читать отзывы</button>
     </div></div>
 
   </div>
@@ -336,8 +325,10 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section class="reviews-section"><div class="wrap">
-  <div class="sec-label">отзывы</div>
+<div class="reviews-modal" id="reviewsModal" role="dialog" aria-modal="true" aria-labelledby="reviewsTitle">
+  <button class="reviews-modal__close" id="reviewsClose" type="button" aria-label="закрыть отзывы">✕</button>
+  <div class="reviews-modal__inner">
+  <h2 class="reviews-modal__title" id="reviewsTitle">отзывы</h2>
   <div class="reviews">
 
     <div class="review">
@@ -365,7 +356,19 @@
     </div>
 
   </div>
-</div></section>
+  </div>
+</div>
+
+<template id="mentoringExtraCopy">
+  <p>ко мне приходят, чтобы:</p>
+  <ul>
+    <li>сформулировать суть своей работы и увидеть сильные стороны</li>
+    <li>упаковать знания в продукт и лучше понять аудиторию</li>
+    <li>получить структурную обратную связь и поддержку</li>
+    <li>выстроить стратегию продвижения и увидеть новые пути развития</li>
+  </ul>
+  <p>напиши мне, и мы подберём вариант под твой запрос и бюджет</p>
+</template>
 
 <section class="dark"><div class="wrap">
   <div class="sec-label">а что я ищу сейчас?</div>
@@ -392,6 +395,21 @@
   soft power мой девиз и имя моих проектов<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
+
+<script>
+  (function(){
+    var openBtn = document.getElementById('reviewsOpen');
+    var modal = document.getElementById('reviewsModal');
+    var closeBtn = document.getElementById('reviewsClose');
+    if(!openBtn || !modal || !closeBtn) return;
+    function openReviews(){ modal.classList.add('open'); document.body.classList.add('reviews-open'); modal.scrollTop = 0; closeBtn.focus(); }
+    function closeReviews(){ modal.classList.remove('open'); document.body.classList.remove('reviews-open'); openBtn.focus(); }
+    openBtn.addEventListener('click', openReviews);
+    closeBtn.addEventListener('click', closeReviews);
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeReviews(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && modal.classList.contains('open')) closeReviews(); });
+  })();
+</script>
 
 <script>
   (function(){
