@@ -98,7 +98,8 @@
   .card__head{display:flex; justify-content:space-between; align-items:baseline; gap:14px;}
   .card__price{font-family:Georgia,serif; font-size:21px; white-space:nowrap;}
   .card__tag{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
-  .card__link{margin-top:auto; padding-top:6px; font-size:13.5px; color:var(--ink);}
+  .card__media-link{display:block; color:var(--ink); text-decoration:none;}
+  .card__link{margin-top:auto; padding-top:6px; font-size:13.5px; color:var(--ink); text-decoration:underline; text-underline-offset:3px;}
   .card .btn{align-self:flex-start; margin-top:8px;}
 
   .trust{display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:820px; margin-top:24px;}
@@ -212,31 +213,31 @@
   <h2>see what i've built with my own hands</h2>
   <div class="grid">
 
-    <a class="card" href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card__media">
+    <div class="card">
+      <a class="card__media card__media-link" href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener" aria-label="watch the Nike Box MSK recap">
         <img src="images/case-nike.jpg" alt="Nike Box MSK recap" loading="lazy">
         <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
-      </div>
+      </a>
       <div class="card__body">
         <span class="card__label">video</span>
-        <h3>Nike Box MSK recap</h3>
+        <h3><a href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">Nike Box MSK recap</a></h3>
         <p>5 years on the brand team: led Nike Box MSK from the design stage to the closing of the center in 2022. built and managed the team, was responsible for all sport partnerships and integrations, ran big international productions and landed international campaigns</p>
-        <span class="card__link">watch the recap →</span>
+        <a class="card__link" href="https://youtu.be/3haW1zE8Fx0" target="_blank" rel="noopener">watch the recap →</a>
       </div>
-    </a>
+    </div>
 
-    <a class="card" href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener" style="text-decoration:none;">
-      <div class="card__media">
+    <div class="card">
+      <a class="card__media card__media-link" href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener" aria-label="watch the immersive online ballet recap">
         <img src="images/case-ballet.jpg" alt="recap of the immersive online ballet «The Nutcracker»" loading="lazy">
         <span class="card__play"><span><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M4 2.5v11l9-5.5z"/></svg></span></span>
-      </div>
+      </a>
       <div class="card__body">
         <span class="card__label">video</span>
-        <h3>immersive online ballet recap</h3>
+        <h3><a href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">immersive online ballet recap</a></h3>
         <p>«The Nutcracker»: a ballet project for BCS bank, a complete immersive online experience with the Mariinsky troupe</p>
-        <span class="card__link">watch the recap →</span>
+        <a class="card__link" href="https://youtu.be/oTWI87UVINc" target="_blank" rel="noopener">watch the recap →</a>
       </div>
-    </a>
+    </div>
 
     <button class="card card--gallery" type="button" id="sektaCard">
       <div class="card__media">
