@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>превью: варианты карточек практики</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+  section{padding:48px 0;}
+  .variant-label{font-family:Georgia,serif; font-size:24px; margin-bottom:6px;}
+  .variant-note{color:var(--soft); font-size:14px; margin-bottom:26px; max-width:640px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); cursor:pointer;}
+  .btn:hover{background:#333; border-color:#333;}
+
+  .fcards{display:flex; flex-direction:column; gap:20px;}
+  .fcard{border:1px solid var(--line); background:var(--card); overflow:hidden;}
+  .fcard__body{padding:38px 40px; display:flex; flex-direction:column; gap:14px;}
+  .fcard h3{font-size:23px;}
+  .fcard__desc{color:var(--soft); font-size:15px;}
+  .fcard__groups{list-style:none; display:flex; flex-direction:column; gap:12px; margin:2px 0;}
+  .fcard__groups li{border-top:1px solid var(--line); padding-top:12px;}
+  .fcard__groups .g-title{font-weight:600; font-size:14.5px;}
+  .fcard__groups .g-meta{color:var(--soft); font-size:13.5px;}
+  .fcard__groups .g-price{color:var(--ink); font-size:13.5px;}
+  .fcard__price{font-size:15px;}
+  .fcard .btn{align-self:flex-start; margin-top:6px;}
+
+  /* вариант 1: фото 4:5, прижато к краю карточки, по центру по вертикали */
+  .v1 .fcard{display:grid; grid-template-columns:300px 1fr; align-items:center;}
+  .v1 .fcard--rev{grid-template-columns:1fr 300px;}
+  .v1 .fcard--rev .fcard__img{order:2;}
+  .v1 .fcard__img img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
+  /* вариант 2: квадратное фото с воздухом, как паспарту */
+  .v2 .fcard{display:grid; grid-template-columns:336px 1fr; align-items:center;}
+  .v2 .fcard--rev{grid-template-columns:1fr 336px;}
+  .v2 .fcard--rev .fcard__img{order:2;}
+  .v2 .fcard__img{padding:28px;}
+  .v2 .fcard__img img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block;}
+
+  /* вариант 3: фото 3:4 покрупнее, прижато к верху карточки */
+  .v3 .fcard{display:grid; grid-template-columns:320px 1fr; align-items:start;}
+  .v3 .fcard--rev{grid-template-columns:1fr 320px;}
+  .v3 .fcard--rev .fcard__img{order:2;}
+  .v3 .fcard__img img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+
+  @media(max-width:760px){
+    .v1 .fcard, .v2 .fcard, .v3 .fcard,
+    .v1 .fcard--rev, .v2 .fcard--rev, .v3 .fcard--rev{grid-template-columns:1fr;}
+    .v1 .fcard--rev .fcard__img, .v2 .fcard--rev .fcard__img, .v3 .fcard--rev .fcard__img{order:0;}
+    .fcard__body{padding:28px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<section><div class="wrap">
+  <div class="variant-label">вариант 1 — фото 4:5, к краю карточки</div>
+  <div class="variant-note">все фото ровно одного размера (вертикальные 4:5), прижаты к краю без рамки и стоят по центру карточки. в длинной карточке circle фото остаётся спокойного размера, вокруг него воздух.</div>
+  <div class="fcards v1">
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power connection</h3>
+        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
+        <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
+        <p class="fcard__price"><strong>на месяц 42€ · 3 месяца 108€ · 6 месяцев 210€</strong></p>
+        <a class="btn" href="#">купить подписку</a>
+      </div>
+    </div>
+
+    <div class="fcard fcard--rev">
+      <div class="fcard__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power circle · мини-группы</h3>
+        <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
+        <ul class="fcard__groups">
+          <li>
+            <div class="g-title">утренняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">вечерняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 19:30–20:30 · agora yoga lisboa</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">worldwide · онлайн</div>
+            <div class="g-meta">вторник и четверг 17:00 + трансляции из всех студий · время по лиссабону</div>
+            <div class="g-price">150€ / мес</div>
+          </li>
+        </ul>
+        <a class="btn" href="#">записаться в waitlist</a>
+      </div>
+    </div>
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power yoga lisbon open</h3>
+        <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки</p>
+        <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
+        <a class="btn" href="#">вступить в чат</a>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section><div class="wrap">
+  <div class="variant-label">вариант 2 — квадратное фото с воздухом</div>
+  <div class="variant-note">все фото квадратные, одного размера, с отступом от краёв карточки — как паспарту у фотографии в раме. самый лёгкий и «галерейный» вид.</div>
+  <div class="fcards v2">
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power connection</h3>
+        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
+        <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
+        <p class="fcard__price"><strong>на месяц 42€ · 3 месяца 108€ · 6 месяцев 210€</strong></p>
+        <a class="btn" href="#">купить подписку</a>
+      </div>
+    </div>
+
+    <div class="fcard fcard--rev">
+      <div class="fcard__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power circle · мини-группы</h3>
+        <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
+        <ul class="fcard__groups">
+          <li>
+            <div class="g-title">утренняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">вечерняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 19:30–20:30 · agora yoga lisboa</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">worldwide · онлайн</div>
+            <div class="g-meta">вторник и четверг 17:00 + трансляции из всех студий · время по лиссабону</div>
+            <div class="g-price">150€ / мес</div>
+          </li>
+        </ul>
+        <a class="btn" href="#">записаться в waitlist</a>
+      </div>
+    </div>
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power yoga lisbon open</h3>
+        <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки</p>
+        <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
+        <a class="btn" href="#">вступить в чат</a>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section><div class="wrap">
+  <div class="variant-label">вариант 3 — фото 3:4, к верхнему краю</div>
+  <div class="variant-note">фото чуть крупнее (3:4), одного размера, прижаты к верхнему углу карточки без рамки. внизу длинных карточек остаётся белое поле.</div>
+  <div class="fcards v3">
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power connection</h3>
+        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
+        <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
+        <p class="fcard__price"><strong>на месяц 42€ · 3 месяца 108€ · 6 месяцев 210€</strong></p>
+        <a class="btn" href="#">купить подписку</a>
+      </div>
+    </div>
+
+    <div class="fcard fcard--rev">
+      <div class="fcard__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power circle · мини-группы</h3>
+        <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
+        <ul class="fcard__groups">
+          <li>
+            <div class="g-title">утренняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">вечерняя · лиссабон</div>
+            <div class="g-meta">вторник и четверг 19:30–20:30 · agora yoga lisboa</div>
+            <div class="g-price">180€ / мес</div>
+          </li>
+          <li>
+            <div class="g-title">worldwide · онлайн</div>
+            <div class="g-meta">вторник и четверг 17:00 + трансляции из всех студий · время по лиссабону</div>
+            <div class="g-price">150€ / мес</div>
+          </li>
+        </ul>
+        <a class="btn" href="#">записаться в waitlist</a>
+      </div>
+    </div>
+
+    <div class="fcard">
+      <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power yoga lisbon open</h3>
+        <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки</p>
+        <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
+        <a class="btn" href="#">вступить в чат</a>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+</body>
+</html>
