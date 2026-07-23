@@ -100,8 +100,6 @@
   .card__tag{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--faint);}
   .card__link{margin-top:auto; padding-top:6px; font-size:13.5px; color:var(--ink);}
   .card .btn{align-self:flex-start; margin-top:8px;}
-  .card--soft{background:var(--warm); border-color:#e6ddd2;}
-  .card--wide{grid-column:1 / -1;}
 
   .trust{display:grid; grid-template-columns:1fr 1fr; gap:18px; max-width:820px; margin-top:24px;}
   .trust p{border-top:1px solid var(--line); padding-top:14px; color:var(--soft); font-size:14.5px;}
@@ -117,9 +115,11 @@
   .mentoring{padding:42px 0 36px;}
   .mentoring h2{margin-bottom:14px;}
   .mentoring__intro{max-width:720px; color:var(--soft); font-size:15px; margin-bottom:22px;}
-  .mentoring__grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:28px; align-items:start;}
-  .mentoring__note{border-top:1px solid var(--line); padding-top:13px; color:var(--soft); font-size:14px;}
+  .mentoring__content{max-width:760px;}
+  .mentoring__note{color:var(--soft); font-size:14px;}
   .mentoring__note strong{display:block; color:var(--ink); font-weight:600; margin-bottom:5px;}
+  .mentoring__divider{border:0; border-top:1px solid var(--line); margin:22px 0 0;}
+  .mentoring__requests{padding-top:18px;}
   .mentoring .rlist li{padding-top:10px; padding-bottom:10px; font-size:14px;}
   .mentoring .rlist li:before{top:19px;}
   .mentoring__cta{margin-top:14px; font-size:13px; color:var(--soft);}
@@ -154,7 +154,6 @@
     .grid{grid-template-columns:1fr;}
     .trust{grid-template-columns:1fr;}
     .reviews{grid-template-columns:1fr;}
-    .mentoring__grid{grid-template-columns:1fr; gap:18px;}
     nav .links{display:none;} .burger{display:block;}
   }
 </style>
@@ -299,20 +298,10 @@
     </div></div>
 
     <div class="card"><div class="card__body">
-      <h3>talks, lectures and partnerships</h3>
-      <p>i speak about experience architecture, wellbeing as a system and soft power in leadership</p>
-    </div></div>
-
-    <div class="card card--soft card--wide"><div class="card__body">
+      <h3>you can invite me into a project that resonates</h3>
       <h3>have a product or a product idea?</h3>
-      <p>text me! i'm open to international projects at the intersection of wellbeing, biohacking, embodiment practices, longevity and ai i'd love to become part of something bigger</p>
-      <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me on telegram</a>
-    </div></div>
-
-    <div class="card card--soft card--wide"><div class="card__body">
-      <h3>you can also invite me into a project that resonates as a partner or invest in my ideas</h3>
-      <p>if you've read all this and thought «i want to create together with Dasha» - text me! we'll get on a call and feel out a shared path if we match in direction and values</p>
-      <a class="btn" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
+      <p>i can become a project partner or invest in an idea if you've read this and thought «i want to create together with Dasha» we'll get on a call and feel out a shared path if we match in direction and values</p>
+      <a class="card__link" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me →</a>
     </div></div>
 
   </div>
@@ -324,12 +313,13 @@
   <div class="sec-label">mentoring for helping practitioners</div>
   <h2>grow a craft into a sustainable product</h2>
   <p class="mentoring__intro">i work with yoga teachers, coaches and helping professionals who want to turn their knowledge and craft into a living, sustainable product with its own meaning</p>
-  <div class="mentoring__grid">
+  <div class="mentoring__content">
     <div class="mentoring__note">
       <strong>my field is a safe and comfortable place to grow</strong>
       i know how to listen, see the essence and gather the scattered into a whole  grounded in what you truly find interesting and want to do
     </div>
-    <div>
+    <hr class="mentoring__divider">
+    <div class="mentoring__requests">
       <p class="sub-label">people come to me to:</p>
       <ul class="rlist">
         <li>articulate the essence of their work and see their strengths</li>
@@ -338,8 +328,8 @@
         <li>build a promotion strategy and see new paths for growth</li>
       </ul>
     </div>
+    <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=mentoring">text me</a> and we'll find the format that fits your request and budget</p>
   </div>
-  <p class="mentoring__cta"><a href="mailto:hello@softpowerspace.com?subject=mentoring">text me</a> and we'll find the format that fits your request and budget</p>
 </div></section>
 
 <section class="reviews-section"><div class="wrap">
