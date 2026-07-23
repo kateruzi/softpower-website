@@ -17,6 +17,7 @@
     -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  .wrap-wide{max-width:1200px; margin:0 auto; padding:0 24px;}
   h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
   section{padding:48px 0;}
   .variant-label{font-family:Georgia,serif; font-size:24px; margin-bottom:6px;}
@@ -28,50 +29,55 @@
 
   .fcards{display:flex; flex-direction:column; gap:20px;}
   .fcard{border:1px solid var(--line); background:var(--card); overflow:hidden;}
-  .fcard__body{padding:38px 40px; display:flex; flex-direction:column; gap:14px;}
+  .fcard__body{padding:34px 40px; display:flex; flex-direction:column; gap:14px;}
   .fcard h3{font-size:23px;}
   .fcard__desc{color:var(--soft); font-size:15px;}
-  .fcard__groups{list-style:none; display:flex; flex-direction:column; gap:12px; margin:2px 0;}
-  .fcard__groups li{border-top:1px solid var(--line); padding-top:12px;}
-  .fcard__groups .g-title{font-weight:600; font-size:14.5px;}
-  .fcard__groups .g-meta{color:var(--soft); font-size:13.5px;}
-  .fcard__groups .g-price{color:var(--ink); font-size:13.5px;}
   .fcard__price{font-size:15px;}
   .fcard .btn{align-self:flex-start; margin-top:6px;}
+  .g-title{font-weight:600; font-size:14.5px;}
+  .g-meta{color:var(--soft); font-size:13.5px;}
+  .g-price{color:var(--ink); font-size:13.5px; margin-top:2px;}
 
-  /* вариант 1: фото 4:5, прижато к краю карточки, по центру по вертикали */
-  .v1 .fcard{display:grid; grid-template-columns:300px 1fr; align-items:center;}
-  .v1 .fcard--rev{grid-template-columns:1fr 300px;}
-  .v1 .fcard--rev .fcard__img{order:2;}
-  .v1 .fcard__img img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+  /* группы в три колонки — режет высоту карточки circle */
+  .groups-row{list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin:4px 0 2px;}
+  .groups-row li{border-top:1px solid var(--line); padding-top:12px;}
 
-  /* вариант 2: квадратное фото с воздухом, как паспарту */
-  .v2 .fcard{display:grid; grid-template-columns:336px 1fr; align-items:center;}
-  .v2 .fcard--rev{grid-template-columns:1fr 336px;}
-  .v2 .fcard--rev .fcard__img{order:2;}
-  .v2 .fcard__img{padding:28px;}
-  .v2 .fcard__img img{width:100%; aspect-ratio:1/1; object-fit:cover; display:block;}
+  /* вариант 4: широкие карточки, фото во всю высоту, шахматный порядок */
+  .v4 .fcard{display:grid; grid-template-columns:340px 1fr;}
+  .v4 .fcard--rev{grid-template-columns:1fr 340px;}
+  .v4 .fcard--rev .fcard__img{order:2;}
+  .v4 .fcard__img{min-height:100%;}
+  .v4 .fcard__img img{width:100%; height:100%; object-fit:cover; display:block; min-height:280px;}
 
-  /* вариант 3: фото 3:4 покрупнее, прижато к верху карточки */
-  .v3 .fcard{display:grid; grid-template-columns:320px 1fr; align-items:start;}
-  .v3 .fcard--rev{grid-template-columns:1fr 320px;}
-  .v3 .fcard--rev .fcard__img{order:2;}
-  .v3 .fcard__img img{width:100%; aspect-ratio:3/4; object-fit:cover; display:block;}
+  /* вариант 5: фото лентой сверху, текст под ним */
+  .v5 .fcard__img img{width:100%; aspect-ratio:8/3; object-fit:cover; display:block;}
+  .v5 .fcard__body{padding:30px 40px 34px;}
+
+  /* вариант 6: без карточек — чередующиеся блоки с фото 4:5 */
+  .v6 .row{display:grid; grid-template-columns:340px 1fr; gap:52px; align-items:start; padding:40px 0;}
+  .v6 .row--rev{grid-template-columns:1fr 340px;}
+  .v6 .row--rev .row__img{order:2;}
+  .v6 .row__img img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+  .v6 .row + .row{border-top:1px solid var(--line);}
+  .v6 .row__body{display:flex; flex-direction:column; gap:14px;}
+  .v6 h3{font-size:23px;}
 
   @media(max-width:760px){
-    .v1 .fcard, .v2 .fcard, .v3 .fcard,
-    .v1 .fcard--rev, .v2 .fcard--rev, .v3 .fcard--rev{grid-template-columns:1fr;}
-    .v1 .fcard--rev .fcard__img, .v2 .fcard--rev .fcard__img, .v3 .fcard--rev .fcard__img{order:0;}
+    .v4 .fcard, .v4 .fcard--rev{grid-template-columns:1fr;}
+    .v4 .fcard--rev .fcard__img{order:0;}
+    .v6 .row, .v6 .row--rev{grid-template-columns:1fr; gap:24px;}
+    .v6 .row--rev .row__img{order:0;}
+    .groups-row{grid-template-columns:1fr;}
     .fcard__body{padding:28px 26px;}
   }
 </style>
 </head>
 <body>
 
-<section><div class="wrap">
-  <div class="variant-label">вариант 1 — фото 4:5, к краю карточки</div>
-  <div class="variant-note">все фото ровно одного размера (вертикальные 4:5), прижаты к краю без рамки и стоят по центру карточки. в длинной карточке circle фото остаётся спокойного размера, вокруг него воздух.</div>
-  <div class="fcards v1">
+<section><div class="wrap-wide">
+  <div class="variant-label">вариант 4 — шире и ниже</div>
+  <div class="variant-note">блок расширен до 1200px, текст длиннее. расписание групп в circle выстроено в три колонки — карточка стала сильно ниже, и фото во всю высоту больше не выглядит огромным. высоты карточек почти одинаковые, ничего не «скачет». шахматный порядок сохранён.</div>
+  <div class="fcards v4">
 
     <div class="fcard">
       <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
@@ -89,7 +95,7 @@
       <div class="fcard__body">
         <h3>soft power circle · мини-группы</h3>
         <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
-        <ul class="fcard__groups">
+        <ul class="groups-row">
           <li>
             <div class="g-title">утренняя · лиссабон</div>
             <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
@@ -125,28 +131,27 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section><div class="wrap">
-  <div class="variant-label">вариант 2 — квадратное фото с воздухом</div>
-  <div class="variant-note">все фото квадратные, одного размера, с отступом от краёв карточки — как паспарту у фотографии в раме. самый лёгкий и «галерейный» вид.</div>
-  <div class="fcards v2">
+<section><div class="wrap-wide">
+  <div class="variant-label">вариант 5 — фото лентой сверху</div>
+  <div class="variant-note">горизонтальное фото во всю ширину карточки, текст под ним. все фото идеально одинаковые, карточки низкие. шахматного порядка здесь нет по определению — зато максимально ровно и спокойно.</div>
+  <div class="fcards v5">
 
     <div class="fcard">
       <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
       <div class="fcard__body">
         <h3>soft power connection</h3>
-        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
-        <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
+        <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца. формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
         <p class="fcard__price"><strong>на месяц 42€ · 3 месяца 108€ · 6 месяцев 210€</strong></p>
         <a class="btn" href="#">купить подписку</a>
       </div>
     </div>
 
-    <div class="fcard fcard--rev">
+    <div class="fcard">
       <div class="fcard__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
       <div class="fcard__body">
         <h3>soft power circle · мини-группы</h3>
         <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
-        <ul class="fcard__groups">
+        <ul class="groups-row">
           <li>
             <div class="g-title">утренняя · лиссабон</div>
             <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
@@ -171,8 +176,7 @@
       <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
       <div class="fcard__body">
         <h3>soft power yoga lisbon open</h3>
-        <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки</p>
-        <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
+        <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки. чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
         <a class="btn" href="#">вступить в чат</a>
       </div>
     </div>
@@ -182,14 +186,14 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section><div class="wrap">
-  <div class="variant-label">вариант 3 — фото 3:4, к верхнему краю</div>
-  <div class="variant-note">фото чуть крупнее (3:4), одного размера, прижаты к верхнему углу карточки без рамки. внизу длинных карточек остаётся белое поле.</div>
-  <div class="fcards v3">
+<section><div class="wrap-wide">
+  <div class="variant-label">вариант 6 — без карточек, свободные блоки</div>
+  <div class="variant-note">рамки убраны совсем: блоки идут в шахматном порядке и разделены тонкими линиями. фото строго одного размера (4:5), текст широкий. нет карточки — нет и проблемы с «дырами» внутри неё.</div>
+  <div class="v6">
 
-    <div class="fcard">
-      <div class="fcard__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
-      <div class="fcard__body">
+    <div class="row">
+      <div class="row__img"><img src="images/practice-connection.jpg" alt="" loading="lazy"></div>
+      <div class="row__body">
         <h3>soft power connection</h3>
         <p class="fcard__desc">подписка на телеграм-канал: короткие видео и аудио — йога, дыхание и медитации для самостоятельной практики на коврике. каждый месяц я добавляю новые материалы, делюсь плейлистом и записываю подкаст про тему месяца.</p>
         <p class="fcard__desc">формат подойдёт, если ты хочешь выстроить несложную, но важную ежедневную рутину самостоятельно — в любое удобное время из любой точки мира.</p>
@@ -198,12 +202,12 @@
       </div>
     </div>
 
-    <div class="fcard fcard--rev">
-      <div class="fcard__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
-      <div class="fcard__body">
+    <div class="row row--rev">
+      <div class="row__img"><img src="images/practice-circle.jpg" alt="" loading="lazy"></div>
+      <div class="row__body">
         <h3>soft power circle · мини-группы</h3>
         <p class="fcard__desc">работа в команде: группа до 12 человек занимается по 4-недельной программе, поддерживая друг друга и прогрессируя. подойдёт, если тебе нужно общее пространство для практики, внимание и ассисты тичера и поддержка команды. старт в начале каждого месяца.</p>
-        <ul class="fcard__groups">
+        <ul class="groups-row">
           <li>
             <div class="g-title">утренняя · лиссабон</div>
             <div class="g-meta">вторник и четверг 9:30–10:30 · студия names</div>
@@ -224,9 +228,9 @@
       </div>
     </div>
 
-    <div class="fcard">
-      <div class="fcard__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
-      <div class="fcard__body">
+    <div class="row">
+      <div class="row__img"><img src="images/practice-lisbon.jpg" alt="" loading="lazy"></div>
+      <div class="row__body">
         <h3>soft power yoga lisbon open</h3>
         <p class="fcard__desc">я и моя команда ведём открытые групповые практики в лиссабоне, в разных студиях и парках. это open-level классы для всех желающих с любым уровнем подготовки</p>
         <p class="fcard__desc">чтобы получать анонсы классов каждую неделю и удобно записываться, присоединяйся к чату</p>
