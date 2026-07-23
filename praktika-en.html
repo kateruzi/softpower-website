@@ -75,11 +75,12 @@
   .media .btn{margin-top:10px;}
 
   .fcards{display:flex; flex-direction:column; gap:20px;}
-  .fcard{display:grid; grid-template-columns:.85fr 1.15fr; border:1px solid var(--line); background:var(--card); overflow:hidden;}
+  .fcard{display:grid; grid-template-columns:300px 1fr; border:1px solid var(--line); background:var(--card); overflow:hidden;}
   .fcard__img{min-height:100%;}
-  .fcard__img img{width:100%; height:100%; object-fit:cover; display:block; min-height:300px;}
+  .fcard__img img{width:100%; height:100%; object-fit:cover; display:block; min-height:240px;}
+  .fcard__img--natural{display:flex; align-items:center;}
+  .fcard__img--natural img{height:auto; min-height:0; object-fit:contain;}
   .fcard__body{padding:38px 40px; display:flex; flex-direction:column; gap:14px;}
-  .fcard--rev .fcard__img{order:2;}
   .fcard h3{font-size:23px;}
   .fcard__desc{color:var(--soft); font-size:15px;}
   .fcard__groups{list-style:none; display:flex; flex-direction:column; gap:12px; margin:2px 0;}
@@ -110,7 +111,6 @@
     .statement p{font-size:22px;}
     .media .wrap{grid-template-columns:1fr; gap:28px;}
     .fcard{grid-template-columns:1fr;}
-    .fcard--rev .fcard__img{order:0;}
     .fcard__body{padding:28px 26px;}
     nav .links{display:none;} .burger{display:block;}
   }
@@ -186,7 +186,7 @@
       </div>
     </div>
 
-    <div class="fcard fcard--rev">
+    <div class="fcard">
       <div class="fcard__img"><img src="images/practice-circle.jpg" alt="soft power circle — mini-groups" loading="lazy"></div>
       <div class="fcard__body">
         <h3>soft power circle · mini-groups</h3>
@@ -227,15 +227,19 @@
 
 <div class="wrap"><hr class="hr"></div>
 
-<section id="retreat" class="media"><div class="wrap">
-  <div>
-    <img src="images/retreat-teaser.jpg" alt="soft power retreat" loading="lazy" style="width:100%; height:auto; display:block;">
-  </div>
-  <div>
-    <div class="sec-label">retreats</div>
-    <h2>soft power retreat</h2>
-    <p>a unique, whole experience, thought through to the smallest detail, that i create in the most beautiful places on our planet: practice, nature, care and people gathered by resonance.</p>
-    <a class="btn btn-outline" href="retreat-en.html">more about retreats →</a>
+<section id="retreat"><div class="wrap">
+  <div class="sec-label">retreats</div>
+  <div class="fcards">
+
+    <div class="fcard">
+      <div class="fcard__img fcard__img--natural"><img src="images/retreat-teaser.jpg" alt="soft power retreat" loading="lazy"></div>
+      <div class="fcard__body">
+        <h3>soft power retreat</h3>
+        <p class="fcard__desc">a unique, whole experience, thought through to the smallest detail, that i create in the most beautiful places on our planet: practice, nature, care and people gathered by resonance.</p>
+        <a class="btn btn-outline" href="retreat-en.html">more about retreats →</a>
+      </div>
+    </div>
+
   </div>
 </div></section>
 
