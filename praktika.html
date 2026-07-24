@@ -21,7 +21,7 @@
   .wrap-wide{max-width:1080px; margin:0 auto; padding:0 24px;}
   h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line);}
   nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
   nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
   nav .links{display:flex; gap:26px;}
@@ -33,6 +33,8 @@
   .burger span:nth-child(1){top:0;}
   .burger span:nth-child(2){top:8px;}
   .burger span:nth-child(3){top:16px;}
+  .mtools{display:none; align-items:center; gap:18px;}
+  .lang-m{font-size:13px; letter-spacing:.08em; border:1px solid var(--line); border-radius:999px; padding:5px 11px; line-height:1;}
   .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
   .mnav.open{transform:translateX(0);}
   .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
@@ -115,7 +117,7 @@
     .fcard--rev .fcard__img{order:0;}
     .fcard__groups{grid-template-columns:1fr; gap:12px;}
     .fcard__body{padding:28px 26px;}
-    nav .links{display:none;} .burger{display:block;}
+    nav .links{display:none;} .mtools{display:flex;} .burger{display:block;}
   }
 </style>
 </head>
@@ -129,7 +131,7 @@
     <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать мне</a>
     <a class="lang" href="praktika-en">en</a>
   </span>
-  <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  <span class="mtools"><a class="lang-m" href="praktika-en">en</a><button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button></span>
 </div></nav>
 
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
