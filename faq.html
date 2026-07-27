@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ даша простова</title>
+<meta name="description" content="ответы на вопросы о даше простовой, архитектуре опыта, soft power, работе и практике">
+<style>
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+
+  nav{position:sticky; top:0; z-index:50; background:rgba(251,250,248,.95); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; color:var(--ink); text-decoration:none;}
+  nav .links{display:flex; gap:26px;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover,nav a.active{color:var(--ink);}
+  .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
+  .burger span{position:absolute; left:0; width:100%; height:1.5px; background:var(--ink); transition:.25s;}
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
+  .mnav.open{transform:translateX(0);}
+  .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav a.active{color:var(--soft);}
+  .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
+  body.mnav-open{overflow:hidden;}
+  body.mnav-open nav{display:none;}
+
+  .hero{padding:72px 0 54px;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h1{font-size:38px; line-height:1.3; letter-spacing:-.01em; max-width:760px;}
+  section{padding:46px 0;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  .faq{max-width:760px;}
+  .faq-item{padding:20px 0; border-top:1px solid var(--line);}
+  .faq-item:first-of-type{border-top:none;}
+  .faq-item h2{font-family:inherit; font-size:15.5px; line-height:1.5; font-weight:600; margin-bottom:6px;}
+  .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
+  .faq-item a{color:var(--ink); text-underline-offset:3px;}
+
+  .context{border-top:1px solid var(--line); max-width:760px; padding-top:30px;}
+  .context h2{font-size:25px; margin-bottom:18px;}
+  .context p{font-size:14.5px; margin-bottom:16px;}
+  .context-list{font-size:15px!important; line-height:1.9; color:var(--soft);}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    .hero{padding:44px 0 34px;}
+    h1{font-size:29px;}
+    nav .links{display:none;}
+    .burger{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="/">даша простова</a>
+  <span class="links">
+    <a href="rabotat-so-mnoy">работать со мной</a>
+    <a href="praktika">практиковать со мной</a>
+    <a href="faq" class="active">FAQ</a>
+    <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать мне</a>
+    <a class="lang" href="index-en">en</a>
+  </span>
+  <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="закрыть меню">✕</button>
+  <a href="rabotat-so-mnoy">работать со мной</a>
+  <a href="praktika">практиковать со мной</a>
+  <a href="faq" class="active">FAQ</a>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать мне</a>
+  <a class="lang" href="index-en">en</a>
+</div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">FAQ</div>
+  <h1>ответы на вопросы, которые вы не задавали</h1>
+</div></header>
+
+<div class="wrap"><hr class="hr"></div>
+
+<section><div class="wrap">
+  <div class="faq">
+    <div class="faq-item">
+      <h2>даша, так ты йога-тичер или менеджер?</h2>
+      <p>йога-тичер, архитектор опыта, предприниматель, продюсер, менеджер. 15 лет я строила проекты вокруг wellbeing и спорта, а потом ушла в ремесло и стала преподавать йогу под своим брендом. в какой-то момент я поняла, что не хочу разделять роли: я создаю опыт. иногда он выглядит как класс йоги иммерсивная практика с живой музыкой в старинном театре. иногда как корпоративная программа или ретрит. форма меняется, суть остаётся</p>
+    </div>
+    <div class="faq-item">
+      <h2>что такое soft power?</h2>
+      <p>мой девиз, моя философия и имя моего бренда. мягкая сила это когда ты меняешь людей не давлением, а пространством, в котором им безопасно меняться самим</p>
+    </div>
+    <div class="faq-item">
+      <h2>что значит «архитектор опыта»?</h2>
+      <p>это человек, который создаёт целостный опыт для продукта или события онлайн или офлайн так, чтобы этот опыт действительно изменил человека, который с ним столкнулся. концепция, смыслы, команда, пространство, визуал, музыка, продвижение и путь человека внутри всё это одна система</p>
+    </div>
+    <div class="faq-item">
+      <h2>вау, и тебя можно попросить сделать это для нашего продукта / бренда / компании?</h2>
+      <p>да. событие или ретрит под ключ, корпоративную wellbeing-программу, консалтинг или стратегическую сессию. а ещё можно позвать меня поговорить о твоём продукте. мы найдём точку взаимодействия, если у нас общие ценности</p>
+    </div>
+    <div class="faq-item">
+      <h2>что ты ищешь сейчас?</h2>
+      <p>международные проекты на стыке wellbeing, longevity, биохакинга, ai, телесных практик и креатива. партнёрства с компаниями и брендами, для которых люди не строчка в бюджете. события и пространства мирового уровня. и людей, с которыми хочется строить новый мир</p>
+    </div>
+    <div class="faq-item">
+      <h2>с кем ты работаешь?</h2>
+      <p>с компаниями, которым нужен не просто тимбилдинг с мастермайндами, а настоящий контакт. с людьми, которые твёрдо стоят на ногах и осознают ценность духовной практики. со студиями и фаундерами wellbeing-проектов. и с теми, кто приходит на коврик</p>
+    </div>
+    <div class="faq-item">
+      <h2>а йога тогда куда?</h2>
+      <p>никуда. йога моя ежедневная практика больше 15 лет. я обучалась у преподавателей по всему миру, участвовала в международных саммитах и tribe gatherings в париже и барселоне, продолжаю учиться постоянно и практикую ежедневно. йога лишь одна из моих граней</p>
+    </div>
+    <div class="faq-item">
+      <h2>говорят, ты даже отпуск проектируешь?</h2>
+      <p>да, мне не важно, что проектировать)) даже отпуск для родителей я задизайнила как уникальный опыт от первого шага до последнего: маршрут, ритм, впечатления, сюрпризы <a href="https://www.instagram.com/p/DXEqY_RiJPp/" target="_blank" rel="noopener">посмотреть и вдохновиться</a>. архитектура опыта это не работа, это способ смотреть на мир</p>
+    </div>
+    <div class="faq-item">
+      <h2>где ты находишься?</h2>
+      <p>базируюсь в лиссабоне, работаю по всему миру: онлайн, гибридно или прилечу если проект того стоит</p>
+    </div>
+    <div class="faq-item">
+      <h2>я не собирался всё это читать. как с тобой связаться?</h2>
+      <p>проще всего <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a>. расскажи, что у тебя за идея или задача. свяжемся и обсудим</p>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding-top:0;"><div class="wrap">
+  <div class="context">
+    <h2>об этом вы меня точно не спрашивали</h2>
+    <p>об этом не принято говорить на интервью, но я верю: когда мы заходим в общий проект или опыт, важно быть созвучными. так вот, в моём бэкграунде есть:</p>
+    <p class="context-list">10 лет хореографической школы · работа на крупнейших мировых спортивных чемпионатах внутри Москомспорта · управление московским филиалом самого большого фитнес-стартапа · менеджмент и продюсирование в международной корпорации · сертифицированное тренерство · лекции перед аудиторией 300+ человек · серийная эмиграция · организация фестивалей, ивентов, ретритов всего на свете · высшее образование в маркетинге · лидерство и создание команд · 10 лет психотерапии · коучинг · создание продуктов · 15 лет практики йоги, пранаямы и breathwork · тантра и випассана · йога-тичерство и десятки обучений, которые я прохожу постоянно у лучших, расширяясь во все стороны</p>
+    <p>мне нравится создавать пространство, где человек через практику может встретиться с собой. мне интересно придумывать уникальный опыт и укутывать в него людей. думать, как сделать полезнее, лучше, красивее и интереснее</p>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → европа → мир<br>
+  soft power мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
+
+<script>
+  (function(){
+    var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
+    if(!burger||!mnav) return;
+    function openMenu(){ mnav.classList.add('open'); document.body.classList.add('mnav-open'); burger.setAttribute('aria-expanded','true'); }
+    function hideMenu(){ mnav.classList.remove('open'); document.body.classList.remove('mnav-open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", hideMenu);
+    mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+</script>
+</body>
+</html>
