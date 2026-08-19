@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>soft power merch — прототип магазина</title>
+<meta name="robots" content="noindex">
+<style>
+  /* ═══ ПРОТОТИП страницы «soft power merch» — вариант 2 (своя корзина + stripe checkout).
+     дизайн-система страницы взята из pass.html без изменений: тёплая бумага,
+     волосяные линии, georgia в заголовках, чёрные прямоугольные кнопки, брейкпоинт 760.
+
+     что здесь настоящее: вёрстка, выбор вариантов, корзина, счётчик, localStorage.
+     что заглушка: кнопка «оформить заказ» — вместо перехода в stripe показывает
+     запрос, который в бою уйдёт на POST /api/checkout. цены в разметке —
+     только для показа; в бою источник правды — price id на сервере. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff; --warm:#f3ece4;
+    --scrim:rgba(20,20,20,.4);   /* новый токен: подложка выезжающей корзины */
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+
+  /* ─ плашка «это прототип» (в бою удаляется) ─ */
+  .protobar{background:var(--ink); color:#f4f2ee; font-size:12px; letter-spacing:.06em; text-align:center; padding:9px 24px;}
+
+  /* ─ навигация ─ */
+  nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px; align-items:center;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
+  .burger span{position:absolute; left:0; width:100%; height:1.5px; background:var(--ink); transition:.25s;}
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .mtools{display:none; align-items:center; gap:18px;}
+  .lang-m{font-size:14px;}
+  .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
+  .mnav.open{transform:translateX(0);}
+  .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
+  body.mnav-open{overflow:hidden;}
+  body.mnav-open nav{display:none;}
+  nav a.active{color:var(--ink);}
+
+  /* кнопка корзины живёт в навигации и выглядит как её пункт */
+  .cartbtn{background:none; border:none; padding:0; font:inherit; font-size:14px; color:var(--soft); cursor:pointer; transition:.2s;}
+  .cartbtn:hover{color:var(--ink);}
+  .cartbtn.has{color:var(--ink);}
+
+  /* ─ кнопки ─ */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); font-family:inherit; cursor:pointer;}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn-sm{padding:12px 22px; font-size:13px;}
+  .btn-outline{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-outline:hover{background:transparent; border-color:var(--ink);}
+
+  /* ─ hero ─ */
+  .phero{padding:64px 0 56px;}
+  .phero .wrap{display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:36px; line-height:1.28; letter-spacing:-.01em;}
+  .phero .lead{margin-top:22px; font-size:18px; font-family:Georgia,serif; line-height:1.6; color:var(--ink); max-width:460px;}
+  .phero .btn{margin-top:32px;}
+  .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
+  /* ─ общие секции ─ */
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ сетка товаров ─ */
+  .pgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .pcard{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column;}
+  .pcard__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
+  .pcard__body{padding:24px 24px 26px; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .pcard h3{font-size:20px; line-height:1.35;}
+  .pcard__desc{color:var(--soft); font-size:14.5px; line-height:1.6;}
+  .pcard__meta{font-size:12.5px; color:var(--faint);}
+
+  /* выбор варианта */
+  .opt{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .opt__label{width:100%; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:2px;}
+  .chip{border:1px solid var(--line); background:transparent; padding:7px 14px; font:inherit; font-size:13px; line-height:1.2; color:var(--soft); cursor:pointer; transition:.2s;}
+  .chip:hover{border-color:#c9c5be; color:var(--ink);}
+  .chip.on{border-color:var(--ink); color:var(--ink);}
+
+  .pcard__foot{margin-top:auto; padding-top:8px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+  .pcard__price{font-family:Georgia,serif; font-size:24px;}
+  .pcard .btn{white-space:nowrap;}
+
+  /* ─ утверждение ─ */
+  .statement{text-align:center;}
+  .statement p{font-family:Georgia,serif; font-size:25px; line-height:1.5; max-width:720px; margin:0 auto;}
+
+  /* ─ как это работает ─ */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:860px;}
+  .step{border-top:1px solid var(--line); padding-top:18px;}
+  .step h3{font-size:17px; margin-bottom:8px;}
+  .step p{font-size:14.5px; color:var(--soft); line-height:1.6;}
+
+  /* ─ корзина ─ */
+  .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
+  .scrim.on{opacity:1; visibility:visible;}
+  .drawer{position:fixed; top:0; right:0; height:100%; width:400px; max-width:100%; background:var(--bg); border-left:1px solid var(--line); z-index:80; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .3s ease;}
+  .drawer.on{transform:translateX(0);}
+  .drawer__head{display:flex; align-items:center; justify-content:space-between; padding:22px 26px; border-bottom:1px solid var(--line);}
+  .drawer__head h3{font-size:20px;}
+  .drawer__close{background:none; border:none; font-size:22px; line-height:1; color:var(--ink); cursor:pointer; padding:0;}
+  .drawer__body{flex:1; overflow-y:auto; padding:0 26px;}
+  .drawer__foot{border-top:1px solid var(--line); padding:22px 26px 26px;}
+
+  .citem{display:grid; grid-template-columns:60px 1fr auto; gap:14px; padding:20px 0; border-bottom:1px solid var(--line); align-items:start;}
+  .citem:last-child{border-bottom:none;}
+  .citem img{width:60px; aspect-ratio:4/5; object-fit:cover; display:block;}
+  .citem__t{font-size:14.5px; line-height:1.45;}
+  .citem__o{font-size:12.5px; color:var(--faint); margin-top:3px;}
+  .qty{display:inline-flex; border:1px solid var(--line); margin-top:10px;}
+  .qty button{width:28px; height:28px; background:none; border:none; cursor:pointer; color:var(--soft); font-size:15px; line-height:1; font-family:inherit; transition:.2s;}
+  .qty button:hover{color:var(--ink);}
+  .qty span{min-width:30px; text-align:center; font-size:13.5px; line-height:28px;}
+  .citem__right{text-align:right;}
+  .citem__p{font-family:Georgia,serif; font-size:16px; white-space:nowrap;}
+  .citem__x{background:none; border:none; padding:0; margin-top:10px; font:inherit; font-size:12.5px; color:var(--faint); cursor:pointer; transition:.2s;}
+  .citem__x:hover{color:var(--ink);}
+  .empty{padding:48px 0; color:var(--faint); font-size:14.5px;}
+
+  .sum{display:flex; align-items:baseline; justify-content:space-between;}
+  .sum span{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint);}
+  .sum b{font-family:Georgia,serif; font-size:26px; font-weight:400;}
+  .drawer__note{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:8px;}
+  .drawer .btn{display:block; width:100%; text-align:center; margin-top:18px;}
+
+  /* ─ заглушка чекаута ─ */
+  .co{position:fixed; inset:0; z-index:90; background:rgba(18,18,18,.94); display:none; align-items:flex-start; justify-content:center; padding:40px 24px; overflow-y:auto;}
+  .co.on{display:flex;}
+  .co__box{background:var(--bg); width:100%; max-width:620px; padding:34px 34px 30px;}
+  .co__box h3{font-size:23px; margin-bottom:14px;}
+  .co__box p{font-size:14.5px; color:var(--soft); line-height:1.65; margin-bottom:16px;}
+  .co__box pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; line-height:1.6; background:#fff; border:1px solid var(--line); padding:16px; overflow-x:auto;}
+  .co__box .btn{margin-top:22px;}
+  body.no-scroll{overflow:hidden;}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    nav .links{display:none;} .mtools{display:flex;} .burger{display:block;}
+    .phero{padding:40px 0;}
+    .phero .wrap{grid-template-columns:1fr; gap:32px;}
+    .phero h1{font-size:29px;}
+    .pgrid,.steps{grid-template-columns:1fr;}
+    .statement p{font-size:21px;}
+    .drawer{width:100%; border-left:none;}
+    .mtools{gap:14px;}
+    .mtools .cartbtn{font-size:13px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- плашка прототипа — в боевой версии удаляется -->
+<div class="protobar">прототип · оплата не подключена, кнопка «оформить заказ» показывает, что уйдёт в stripe</div>
+
+<nav><div class="wrap">
+  <a class="name" href="/">даша простова</a>
+  <span class="links">
+    <a href="rabotat-so-mnoy">работать со мной</a>
+    <a href="praktika">практиковать со мной</a>
+    <a href="faq">FAQ</a>
+    <button class="cartbtn" id="cartBtn" type="button">корзина (<span id="cartN">0</span>)</button>
+    <a class="lang" href="#">en</a>
+  </span>
+  <span class="mtools">
+    <button class="cartbtn" id="cartBtnM" type="button">корзина (<span id="cartNM">0</span>)</button>
+    <a class="lang-m" href="#">en</a>
+    <button class="burger" id="burger" type="button" aria-label="меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </span>
+</div></nav>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="меню">
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="закрыть меню">✕</button>
+  <a href="rabotat-so-mnoy">работать со мной</a>
+  <a href="praktika">практиковать со мной</a>
+  <a href="faq">FAQ</a>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать мне</a>
+</div>
+
+<!-- ── hero ── -->
+<header class="phero"><div class="wrap">
+  <div>
+    <div class="kicker">soft power merch</div>
+    <h1>вещи, в которых<br>остаётся тепло</h1>
+    <p class="lead">худи, футболки и карточки с вопросами. небольшой тираж, плотный хлопок, надписи, которые хочется перечитывать.</p>
+    <a class="btn" href="#shop">посмотреть →</a>
+  </div>
+  <div>
+    <img class="phero__img" src="images/merch-tee-graphite.jpg" alt="футболка soft power">
+  </div>
+</div></header>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── товары ──
+     каждая карточка — обычный html, который можно править руками.
+     data-id / data-price читает скрипт корзины; на бою цена приходит
+     со стороны сервера по stripe price id, здесь она только для показа. -->
+<section id="shop"><div class="wrap">
+  <div class="sec-label">что есть сейчас</div>
+  <div class="pgrid">
+
+    <article class="pcard" data-id="hoodie" data-title="худи «magic is a shift in perception»" data-price="108">
+      <img class="pcard__img" src="images/merch-hoodie-graphite.jpg" alt="худи magic is a shift in perception">
+      <div class="pcard__body">
+        <h3>худи «magic is a shift in perception»</h3>
+        <p class="pcard__desc">оверсайз с большим удобным капюшоном, без подкладки. надпись на спине.</p>
+        <div class="opt" data-opt="цвет">
+          <span class="opt__label">цвет</span>
+          <button class="chip on" type="button" data-val="графит" data-img="images/merch-hoodie-graphite.jpg">графит</button>
+          <button class="chip" type="button" data-val="молочный" data-img="images/merch-hoodie-beige.jpg">молочный</button>
+        </div>
+        <div class="opt" data-opt="размер">
+          <span class="opt__label">размер</span>
+          <button class="chip on" type="button" data-val="s/m">s/m</button>
+          <button class="chip" type="button" data-val="l/xl">l/xl</button>
+        </div>
+        <div class="pcard__foot">
+          <span class="pcard__price">108 €</span>
+          <button class="btn btn-sm add" type="button">в корзину</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard" data-id="tee" data-title="футболка soft power" data-price="75">
+      <img class="pcard__img" src="images/merch-tee-white.jpg" alt="футболка soft power">
+      <div class="pcard__body">
+        <h3>футболка soft power</h3>
+        <p class="pcard__desc">оверсайз, вышивка soft power на груди. идеальный крой и плотность.</p>
+        <div class="opt" data-opt="цвет">
+          <span class="opt__label">цвет</span>
+          <button class="chip on" type="button" data-val="белая" data-img="images/merch-tee-white.jpg">белая</button>
+          <button class="chip" type="button" data-val="графитовая" data-img="images/merch-tee-graphite.jpg">графитовая</button>
+        </div>
+        <p class="pcard__meta">один размер — оверсайз l/xl</p>
+        <div class="pcard__foot">
+          <span class="pcard__price">75 €</span>
+          <button class="btn btn-sm add" type="button">в корзину</button>
+        </div>
+      </div>
+    </article>
+
+    <article class="pcard" data-id="cards" data-title="карточки с вопросами" data-price="50">
+      <img class="pcard__img" src="images/merch-cards.jpg" alt="карточки с вопросами soft power">
+      <div class="pcard__body">
+        <h3>карточки с вопросами</h3>
+        <p class="pcard__desc">50 карточек с глубокими вопросами — для долгих тёплых вечеров в кругу семьи и друзей.</p>
+        <p class="pcard__meta">50 карточек в коробке</p>
+        <div class="pcard__foot">
+          <span class="pcard__price">50 €</span>
+          <button class="btn btn-sm add" type="button">в корзину</button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div></section>
+
+<!-- ── утверждение ── -->
+<section class="statement"><div class="wrap">
+  <p>каждая вещь уезжает из лиссабона упакованной вручную — с запиской.</p>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── как это работает ── -->
+<section><div class="wrap">
+  <div class="sec-label">как это работает</div>
+  <div class="steps">
+    <div class="step">
+      <h3>оплата</h3>
+      <p>картой на защищённой странице stripe. данные карты не проходят через сайт.</p>
+    </div>
+    <div class="step">
+      <h3>доставка</h3>
+      <p>условия и стоимость — уточняются. пока пусть будет этот текст-заглушка.</p>
+    </div>
+    <div class="step">
+      <h3>обмен и возврат</h3>
+      <p>14 дней с момента получения. напиши мне, и мы всё решим.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power — мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
+
+<!-- ── корзина ── -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="корзина">
+  <div class="drawer__head">
+    <h3>корзина</h3>
+    <button class="drawer__close" id="drawerClose" type="button" aria-label="закрыть корзину">✕</button>
+  </div>
+  <div class="drawer__body" id="cartBody"></div>
+  <div class="drawer__foot">
+    <div class="sum"><span>итого</span><b id="cartSum">0 €</b></div>
+    <p class="drawer__note">доставка считается на следующем шаге, после ввода адреса.</p>
+    <button class="btn" id="checkout" type="button">оформить заказ</button>
+  </div>
+</aside>
+
+<!-- ── заглушка чекаута (в бою здесь редирект на stripe) ── -->
+<div class="co" id="co">
+  <div class="co__box">
+    <h3>здесь открывается оплата stripe</h3>
+    <p>в боевой версии этот клик отправляет на сервер только id товаров и количество — цены сервер берёт сам, из своих stripe price id. в ответ приходит ссылка на checkout, и браузер уходит на неё.</p>
+    <pre id="coJson"></pre>
+    <button class="btn btn-outline" id="coClose" type="button">закрыть</button>
+  </div>
+</div>
+
+<script>
+/* ── бургер-меню (как на остальных страницах) ── */
+(function(){
+  var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
+  if(!burger||!mnav) return;
+  function openMenu(){ mnav.classList.add('open'); document.body.classList.add('mnav-open'); burger.setAttribute('aria-expanded','true'); }
+  function hideMenu(){ mnav.classList.remove('open'); document.body.classList.remove('mnav-open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', hideMenu);
+  mnav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', hideMenu); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') hideMenu(); });
+})();
+
+/* ── корзина ── */
+(function(){
+  var KEY='sp_cart_v1';
+  var cart=[];
+  try{ cart=JSON.parse(localStorage.getItem(KEY))||[]; }catch(e){ cart=[]; }
+
+  var body=document.getElementById('cartBody'),
+      sumEl=document.getElementById('cartSum'),
+      scrim=document.getElementById('scrim'),
+      drawer=document.getElementById('drawer'),
+      counters=[document.getElementById('cartN'), document.getElementById('cartNM')],
+      buttons=[document.getElementById('cartBtn'), document.getElementById('cartBtnM')];
+
+  function save(){ localStorage.setItem(KEY, JSON.stringify(cart)); }
+  function money(n){ return n+' €'; }
+  function optsText(o){ return Object.keys(o).map(function(k){ return o[k]; }).join(' · '); }
+  /* sku — то, чем товар опознаётся и в корзине, и на сервере */
+  function skuOf(id,o){ return [id].concat(Object.keys(o).sort().map(function(k){ return k+':'+o[k]; })).join('|'); }
+
+  function render(){
+    var total=0, count=0;
+    body.innerHTML='';
+    if(!cart.length){
+      body.innerHTML='<p class="empty">пока пусто. выбери что-нибудь на странице.</p>';
+    }
+    cart.forEach(function(it,i){
+      total+=it.price*it.qty; count+=it.qty;
+      var el=document.createElement('div');
+      el.className='citem';
+      el.innerHTML=
+        '<img src="'+it.img+'" alt="">'+
+        '<div><div class="citem__t">'+it.title+'</div>'+
+        (optsText(it.opts) ? '<div class="citem__o">'+optsText(it.opts)+'</div>' : '')+
+        '<div class="qty"><button type="button" data-a="-">−</button><span>'+it.qty+'</span><button type="button" data-a="+">+</button></div></div>'+
+        '<div class="citem__right"><div class="citem__p">'+money(it.price*it.qty)+'</div>'+
+        '<button class="citem__x" type="button" data-a="x">убрать</button></div>';
+      el.addEventListener('click', function(e){
+        var a=e.target.getAttribute('data-a');
+        if(!a) return;
+        if(a==='+') cart[i].qty++;
+        if(a==='-') cart[i].qty>1 ? cart[i].qty-- : cart.splice(i,1);
+        if(a==='x') cart.splice(i,1);
+        save(); render();
+      });
+      body.appendChild(el);
+    });
+    sumEl.textContent=money(total);
+    counters.forEach(function(c){ if(c) c.textContent=count; });
+    buttons.forEach(function(b){ if(b) b.classList.toggle('has', count>0); });
+  }
+
+  function open(){ drawer.classList.add('on'); scrim.classList.add('on'); document.body.classList.add('no-scroll'); }
+  function close(){ drawer.classList.remove('on'); scrim.classList.remove('on'); document.body.classList.remove('no-scroll'); }
+  buttons.forEach(function(b){ if(b) b.addEventListener('click', open); });
+  scrim.addEventListener('click', close);
+  document.getElementById('drawerClose').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  /* выбор варианта: подсветка + подмена фото карточки */
+  document.querySelectorAll('.opt').forEach(function(group){
+    group.addEventListener('click', function(e){
+      var chip=e.target.closest('.chip');
+      if(!chip) return;
+      group.querySelectorAll('.chip').forEach(function(c){ c.classList.remove('on'); });
+      chip.classList.add('on');
+      var img=chip.getAttribute('data-img');
+      if(img) group.closest('.pcard').querySelector('.pcard__img').src=img;
+    });
+  });
+
+  /* «в корзину» */
+  document.querySelectorAll('.pcard').forEach(function(card){
+    card.querySelector('.add').addEventListener('click', function(){
+      var opts={};
+      card.querySelectorAll('.opt').forEach(function(g){
+        opts[g.getAttribute('data-opt')]=g.querySelector('.chip.on').getAttribute('data-val');
+      });
+      var id=card.getAttribute('data-id'), sku=skuOf(id,opts);
+      var found=cart.filter(function(x){ return x.sku===sku; })[0];
+      if(found){ found.qty++; }
+      else cart.push({
+        sku:sku, id:id, opts:opts, qty:1,
+        title:card.getAttribute('data-title'),
+        price:parseFloat(card.getAttribute('data-price')),
+        img:card.querySelector('.pcard__img').getAttribute('src')
+      });
+      save(); render();
+      var btn=this, was=btn.textContent;
+      btn.textContent='добавлено';
+      setTimeout(function(){ btn.textContent=was; }, 1200);
+    });
+  });
+
+  /* заглушка оформления: показываем ровно тот запрос, что уйдёт на сервер */
+  var co=document.getElementById('co');
+  document.getElementById('checkout').addEventListener('click', function(){
+    if(!cart.length) return;
+    document.getElementById('coJson').textContent=
+      'POST /api/checkout\n\n'+JSON.stringify({
+        items: cart.map(function(i){ return {sku:i.sku, qty:i.qty}; }),
+        locale:'ru'
+      }, null, 2);
+    co.classList.add('on');
+  });
+  document.getElementById('coClose').addEventListener('click', function(){ co.classList.remove('on'); });
+  co.addEventListener('click', function(e){ if(e.target===co) co.classList.remove('on'); });
+
+  render();
+})();
+</script>
+</body>
+</html>
