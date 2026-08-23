@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>спасибо за заказ — soft power merch</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  /* ═══ страница «спасибо за заказ». сюда попадают двумя путями:
+     после оплаты картой (stripe возвращает сюда) и после заказа
+     с оплатой при встрече. номер заказа приходит в адресе. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff; --warm:#f3ece4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; min-height:100vh;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+  nav{border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  main{flex:1; display:flex; align-items:center; text-align:center; padding:80px 0;}
+  main .wrap{max-width:640px;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  h1{font-size:34px; line-height:1.3;}
+  .lead{margin-top:22px; font-size:18px; font-family:Georgia,serif; line-height:1.6;}
+  .num{display:inline-block; margin-top:26px; border:1px solid var(--line); background:var(--warm); padding:11px 20px; font-size:14px; letter-spacing:.04em;}
+  .num b{font-weight:400; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
+  .back{display:inline-block; margin-top:32px; font-size:14px; color:var(--soft); text-decoration:none;}
+  .back:hover{color:var(--ink);}
+  footer{padding:36px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+  @media(max-width:760px){ h1{font-size:27px;} main{padding:56px 0;} }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="name" href="/">даша простова</a>
+  <a href="merch">← вернуться в мерч</a>
+</div></nav>
+
+<main><div class="wrap">
+  <div class="kicker">soft power merch</div>
+  <h1>спасибо, заказ у меня</h1>
+  <p class="lead" id="lead">я напишу тебе в ближайшее время — договоримся, когда и где удобно забрать.</p>
+  <p class="num" id="num" hidden>заказ <b></b></p>
+  <br>
+  <a class="back" href="https://t.me/kate_ruzi" target="_blank" rel="noopener">написать мне в телеграм →</a>
+</div></main>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
+
+<script>
+  /* номер заказа приходит в адресе: ?order=… после заказа при встрече,
+     ?session_id=… после возврата со страницы оплаты stripe */
+  (function(){
+    var q = new URLSearchParams(location.search);
+    var order = q.get('order');
+    if(order){
+      var box = document.getElementById('num');
+      box.querySelector('b').textContent = order;
+      box.hidden = false;
+    }
+    if(q.get('session_id')){
+      document.getElementById('lead').textContent =
+        'оплата прошла. я напишу тебе в ближайшее время — договоримся, когда и где удобно забрать.';
+    }
+  })();
+</script>
+</body>
+</html>

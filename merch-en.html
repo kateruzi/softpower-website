@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>soft power merch</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+  /* ═══ страница «soft power merch». дизайн-система целиком из pass.html:
+     тёплая бумага, волосяные линии, georgia в заголовках, чёрные
+     прямоугольные кнопки, брейкпоинт 760. новое здесь — только витрина,
+     корзина и оформление заказа.
+
+     товары лежат в js/merch-catalog.js — тексты витрины правятся здесь,
+     а товары, цены и фотографии там. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --card:#ffffff; --warm:#f3ece4;
+    --scrim:rgba(20,20,20,.4);   /* новый токен: подложка под корзиной */
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  body.no-scroll{overflow:hidden;}
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
+
+  /* ─ навигация ─ */
+  nav{position:sticky; top:0; z-index:50; background:var(--bg); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px; align-items:center;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
+  .burger{display:none; background:none; border:none; cursor:pointer; width:26px; height:18px; position:relative; padding:0;}
+  .burger span{position:absolute; left:0; width:100%; height:1.5px; background:var(--ink); transition:.25s;}
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:8px;}
+  .burger span:nth-child(3){top:16px;}
+  .mtools{display:none; align-items:center; gap:18px;}
+  .lang-m{font-size:14px;}
+  .mnav{position:fixed; inset:0; z-index:60; background:var(--bg); display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:6px; padding:0 40px; transform:translateX(100%); transition:transform .3s ease;}
+  .mnav.open{transform:translateX(0);}
+  .mnav a{font-family:Georgia,serif; font-size:27px; color:var(--ink); text-decoration:none; padding:12px 0;}
+  .mnav__close{position:absolute; top:20px; right:24px; background:none; border:none; font-size:28px; color:var(--ink); cursor:pointer; line-height:1;}
+  body.mnav-open{overflow:hidden;}
+  body.mnav-open nav{display:none;}
+
+  /* кнопка корзины стоит в навигации и выглядит как обычный её пункт */
+  .cartbtn{background:none; border:none; padding:0; font:inherit; font-size:14px; color:var(--soft); cursor:pointer; transition:.2s;}
+  .cartbtn:hover{color:var(--ink);}
+  .cartbtn.has{color:var(--ink);}
+
+  /* ─ кнопки ─ */
+  .btn{display:inline-block; text-decoration:none; font-size:14px; letter-spacing:.04em; padding:15px 28px; transition:.2s; background:var(--ink); color:#fff; border:1px solid var(--ink); font-family:inherit; cursor:pointer;}
+  .btn:hover{background:#333; border-color:#333;}
+  .btn:disabled{opacity:.5; cursor:default;}
+  .btn-sm{padding:12px 22px; font-size:13px;}
+  .btn-outline{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn-outline:hover{background:transparent; border-color:var(--ink);}
+
+  /* ─ hero ─
+     пока без фотографии: текст по центру. когда появится снимок мерча,
+     раскомментируй блок с картинкой в разметке ниже — вёрстка сама
+     перестроится в две колонки, как на pass. */
+  .phero{padding:74px 0 62px; text-align:center;}
+  .phero .wrap{max-width:760px;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  .phero h1{font-size:38px; line-height:1.28; letter-spacing:-.01em;}
+  .phero .lead{margin:22px auto 0; font-size:18px; font-family:Georgia,serif; line-height:1.6; max-width:520px;}
+  .phero .btn{margin-top:32px;}
+  .phero__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+  /* как только в шапке появляется фото, она сама встаёт в две колонки */
+  .phero .wrap:has(.phero__img){max-width:960px; display:grid; grid-template-columns:1.05fr .95fr; gap:56px; align-items:center; text-align:left;}
+  .phero .wrap:has(.phero__img) .lead{margin-left:0; margin-right:0;}
+
+  /* ─ общие секции ─ */
+  section{padding:56px 0;}
+  .sec-label{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--faint); margin-bottom:18px;}
+  h2{font-size:26px; margin-bottom:22px;}
+  .hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ─ витрина ─ */
+  .pgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  .pgrid--2{grid-template-columns:repeat(2,1fr); max-width:640px;}
+  .pgrid--1{grid-template-columns:1fr; max-width:720px;}
+  .pcard{border:1px solid var(--line); background:var(--card); display:flex; flex-direction:column;}
+  .pcard__img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block; border-bottom:1px solid var(--line);}
+  /* заглушка вместо фотографии — тёплый прямоугольник в тон бумаге */
+  .pcard__ph{width:100%; aspect-ratio:4/5; border-bottom:1px solid var(--line); background:var(--warm); display:flex; align-items:center; justify-content:center; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
+  .pcard__body{padding:26px 26px 28px; display:flex; flex-direction:column; gap:12px; flex:1;}
+  .pcard h3{font-size:20px; line-height:1.35;}
+  .pcard__desc{color:var(--soft); font-size:14.5px; line-height:1.6;}
+  .pcard__meta{font-size:12.5px; color:var(--faint);}
+  .pcard__foot{margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+  .pcard__price{font-family:Georgia,serif; font-size:24px;}
+  .pcard__out{font-size:13px; color:var(--faint);}
+  .pcard--out .pcard__img,.pcard--out .pcard__ph{opacity:.45;}
+
+  /* одна позиция — широкая карточка, иначе она болтается в пустой сетке */
+  .pgrid--1 .pcard{display:grid; grid-template-columns:300px 1fr;}
+  .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{height:100%; min-height:360px; aspect-ratio:auto; border-bottom:none; border-right:1px solid var(--line);}
+  .pgrid--1 .pcard__body{padding:32px 34px 34px;}
+
+  /* выбор варианта */
+  .opt{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .opt__label{width:100%; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:2px;}
+  .chip{border:1px solid var(--line); background:transparent; padding:7px 14px; font:inherit; font-size:13px; line-height:1.2; color:var(--soft); cursor:pointer; transition:.2s;}
+  .chip:hover{border-color:#c9c5be; color:var(--ink);}
+  .chip.on{border-color:var(--ink); color:var(--ink);}
+
+  /* ─ утверждение ─ */
+  .statement{text-align:center;}
+  .statement p{font-family:Georgia,serif; font-size:25px; line-height:1.5; max-width:720px; margin:0 auto;}
+
+  /* ─ как это работает ─ */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:860px;}
+  .step{border-top:1px solid var(--line); padding-top:18px;}
+  .step h3{font-size:17px; margin-bottom:8px;}
+  .step p{font-size:14.5px; color:var(--soft); line-height:1.6;}
+  .step a{color:var(--soft);}
+
+  /* ─ корзина ─ */
+  .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
+  .scrim.on{opacity:1; visibility:visible;}
+  .drawer{position:fixed; top:0; right:0; height:100%; width:400px; max-width:100%; background:var(--bg); border-left:1px solid var(--line); z-index:80; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .3s ease;}
+  .drawer.on{transform:translateX(0);}
+  .drawer__head{display:flex; align-items:center; justify-content:space-between; padding:22px 26px; border-bottom:1px solid var(--line);}
+  .drawer__head h3{font-size:20px;}
+  .drawer__close{background:none; border:none; font-size:22px; line-height:1; color:var(--ink); cursor:pointer; padding:0;}
+  .drawer__body{flex:1; overflow-y:auto; padding:0 26px;}
+  .drawer__foot{border-top:1px solid var(--line); padding:20px 26px 26px;}
+  .drawer__note{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:10px;}
+  .empty{padding:48px 0; color:var(--faint); font-size:14.5px;}
+
+  .citem{display:grid; grid-template-columns:60px 1fr auto; gap:14px; padding:20px 0; border-bottom:1px solid var(--line); align-items:start;}
+  .citem:last-child{border-bottom:none;}
+  .citem img{width:60px; aspect-ratio:4/5; object-fit:cover; display:block;}
+  .citem__ph{width:60px; aspect-ratio:4/5; background:var(--warm);}
+  .citem__t{font-size:14.5px; line-height:1.45;}
+  .citem__o{font-size:12.5px; color:var(--faint); margin-top:3px;}
+  .qty{display:inline-flex; border:1px solid var(--line); margin-top:10px;}
+  .qty button{width:28px; height:28px; background:none; border:none; cursor:pointer; color:var(--soft); font-size:15px; line-height:1; font-family:inherit; transition:.2s;}
+  .qty button:hover{color:var(--ink);}
+  .qty span{min-width:30px; text-align:center; font-size:13.5px; line-height:28px;}
+  .citem__right{text-align:right;}
+  .citem__p{font-family:Georgia,serif; font-size:16px; white-space:nowrap;}
+  .citem__x{background:none; border:none; padding:0; margin-top:10px; font:inherit; font-size:12.5px; color:var(--faint); cursor:pointer; transition:.2s;}
+  .citem__x:hover{color:var(--ink);}
+
+  .sum{display:flex; align-items:baseline; justify-content:space-between;}
+  .sum span{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--faint);}
+  .sum b{font-family:Georgia,serif; font-size:26px; font-weight:400;}
+
+  /* выбор способа оплаты */
+  .pay{margin:18px 0 4px;}
+  .pay__label{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
+  .pay__row{display:flex; gap:12px; align-items:flex-start; width:100%; text-align:left; background:none; border:1px solid var(--line); padding:13px 15px; font:inherit; cursor:pointer; transition:.2s; margin-bottom:8px;}
+  .pay__row:hover{border-color:#c9c5be;}
+  .pay__row.on{border-color:var(--ink);}
+  .pay__dot{flex:none; width:13px; height:13px; border:1px solid var(--faint); border-radius:50%; margin-top:5px; transition:.2s;}
+  .pay__row.on .pay__dot{border-color:var(--ink); background:var(--ink); box-shadow:inset 0 0 0 3px var(--bg);}
+  .pay__t{display:block; font-size:14px; color:var(--ink);}
+  .pay__n{display:block; font-size:12px; color:var(--faint); line-height:1.5; margin-top:2px;}
+
+  /* форма заказа */
+  .backlink{background:none; border:none; padding:16px 0 4px; font:inherit; font-size:13px; color:var(--faint); cursor:pointer; transition:.2s;}
+  .backlink:hover{color:var(--ink);}
+  .form{display:flex; flex-direction:column; gap:16px; padding:10px 0 24px;}
+  .fld{display:block;}
+  .fld__l{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;}
+  .fld__l i{font-style:normal; text-transform:none; letter-spacing:0;}
+  .fld input,.fld textarea{width:100%; background:var(--card); border:1px solid var(--line); padding:11px 13px; font:inherit; font-size:15px; color:var(--ink); resize:vertical;}
+  .fld input:focus,.fld textarea:focus{outline:none; border-color:var(--ink);}
+  .fld__e{display:block; font-size:12px; color:var(--faint); margin-top:5px;}
+  .fld.bad input,.fld.bad textarea{border-color:#b4544b;}
+  .fld.bad .fld__e{color:#b4544b;}
+
+  /* окно поверх всего: пояснение или ошибка */
+  .modal{position:fixed; inset:0; z-index:90; background:rgba(18,18,18,.94); display:none; align-items:flex-start; justify-content:center; padding:40px 24px; overflow-y:auto;}
+  .modal.on{display:flex;}
+  .modal__box{background:var(--bg); width:100%; max-width:620px; padding:34px 34px 30px;}
+  .modal__box h3{font-size:23px; margin-bottom:14px;}
+  .modal__box p{font-size:14.5px; color:var(--soft); line-height:1.65; margin-bottom:16px;}
+  .modal__box a{color:var(--ink);}
+  .modal__box pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12.5px; line-height:1.6; background:var(--card); border:1px solid var(--line); padding:16px; overflow-x:auto; margin-bottom:16px;}
+  .modal__box .btn{margin-top:6px;}
+
+  footer{padding:44px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+
+  @media(max-width:760px){
+    nav .links{display:none;} .mtools{display:flex; gap:14px;} .burger{display:block;}
+    .mtools .cartbtn{font-size:13px;}
+    .phero{padding:48px 0 40px;}
+    .phero h1{font-size:30px;}
+    .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
+    .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
+    .pgrid--1 .pcard{display:flex;}
+    .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
+    .pgrid--1 .pcard__body{padding:26px 26px 28px;}
+    .statement p{font-size:21px;}
+    .drawer{width:100%; border-left:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- навигация: как на остальных страницах, плюс корзина.
+     ссылки «мерч» здесь намеренно нет — страница пока не показывается на сайте -->
+<nav><div class="wrap">
+  <a class="name" href="index-en">dasha prostova</a>
+  <span class="links">
+    <a href="rabotat-so-mnoy-en">work with me</a>
+    <a href="praktika-en">practice with me</a>
+    <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
+    <button class="cartbtn" id="cartBtn" type="button">cart (<span id="cartN">0</span>)</button>
+    <a class="lang" href="merch">ru</a>
+  </span>
+  <span class="mtools">
+    <button class="cartbtn" id="cartBtnM" type="button">cart (<span id="cartNM">0</span>)</button>
+    <a class="lang-m" href="merch">ru</a>
+    <button class="burger" id="burger" type="button" aria-label="menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </span>
+</div></nav>
+
+<div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="menu">
+  <button class="mnav__close" id="mnavClose" type="button" aria-label="close menu">✕</button>
+  <a href="rabotat-so-mnoy-en">work with me</a>
+  <a href="praktika-en">practice with me</a>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">text me</a>
+</div>
+
+<!-- ── hero ── -->
+<header class="phero"><div class="wrap">
+  <div>
+    <div class="kicker">soft power merch</div>
+    <h1>things that hold<br>the warmth</h1>
+    <p class="lead">a small run, heavy cotton and words you want to read again.</p>
+    <a class="btn" href="#shop">have a look →</a>
+  </div>
+
+  <!-- ФОТО В ШАПКУ: положи снимок в images/, раскомментируй строку ниже
+       и впиши имя файла. шапка сама встанет в две колонки, как на pass.
+  <div><img class="phero__img" src="images/merch-hero.jpg" alt="soft power merch"></div>
+  -->
+</div></header>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── витрина ──
+     карточки рисуются из js/merch-catalog.js — там же товары, цены и фото -->
+<section id="shop"><div class="wrap">
+  <div class="sec-label">what there is right now</div>
+  <div class="pgrid" id="shopGrid"></div>
+</div></section>
+
+<!-- ── утверждение ── -->
+<section class="statement"><div class="wrap">
+  <p>every piece is handed over in person — packed by hand, with a note inside.</p>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── как это работает ── -->
+<section><div class="wrap">
+  <div class="sec-label">how it works</div>
+  <div class="steps">
+    <div class="step">
+      <h3>payment</h3>
+      <p>by card on a secure stripe page — or in cash when we meet, if that suits you better. card details never pass through this site.</p>
+    </div>
+    <div class="step">
+      <h3>picking it up</h3>
+      <p>in person in lisbon — at a practice or however we agree. i will write to you right after the order.</p>
+    </div>
+    <div class="step">
+      <h3>if you are not in lisbon</h3>
+      <p><a href="https://t.me/kate_ruzi" target="_blank" rel="noopener">write to me</a> and we will find a way to get it to you.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  dasha prostova · lisbon → world<br>
+  soft power — my motto and the name of my projects<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">email</a> · © 2026
+</div></footer>
+
+<!-- ── корзина и оформление ── -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="cart">
+  <div class="drawer__head">
+    <h3 id="drawerTitle">cart</h3>
+    <button class="drawer__close" id="drawerClose" type="button" aria-label="close cart">✕</button>
+  </div>
+  <div class="drawer__body" id="drawerBody"></div>
+  <div class="drawer__foot" id="drawerFoot"></div>
+</aside>
+<div class="modal" id="modal"></div>
+
+<script>
+  /* бургер-меню — как на остальных страницах */
+  (function(){
+    var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
+    if(!burger||!mnav) return;
+    function openMenu(){ mnav.classList.add('open'); document.body.classList.add('mnav-open'); burger.setAttribute('aria-expanded','true'); }
+    function hideMenu(){ mnav.classList.remove('open'); document.body.classList.remove('mnav-open'); burger.setAttribute('aria-expanded','false'); }
+    burger.addEventListener("click", openMenu);
+    closeBtn.addEventListener("click", hideMenu);
+    mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+  var MERCH_LANG = 'en';
+</script>
+<script src="js/merch-catalog.js"></script>
+<script src="js/merch-shop.js"></script>
+</body>
+</html>
