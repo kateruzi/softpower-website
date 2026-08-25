@@ -16,17 +16,53 @@
     "В options слева id варианта (как в js/merch-catalog.js), справа подпись —",
     "она попадёт в письмо о заказе, чтобы было видно «размер: l/xl», а не «size: lxl»."
   ],
-
   "currency": "eur",
-
   "products": {
     "hoodie": {
-      "title_ru": "худи soft power",
-      "title_en": "soft power hoodie",
+      "title_ru": "худи «magic is a shift in perception»",
+      "title_en": "hoodie «magic is a shift in perception»",
       "price_eur": 108,
       "options": {
-        "size": { "ru": "размер", "en": "size", "values": { "sm": "s/m", "lxl": "l/xl" } }
+        "color": {
+          "ru": "цвет",
+          "en": "color",
+          "values": {
+            "graphite": "графит",
+            "milk": "молочный"
+          }
+        },
+        "size": {
+          "ru": "размер",
+          "en": "size",
+          "values": {
+            "sm": "s/m",
+            "lxl": "l/xl"
+          }
+        }
       },
+      "stock": null
+    },
+    "tee": {
+      "title_ru": "футболка soft power",
+      "title_en": "soft power tee",
+      "price_eur": 75,
+      "options": {
+        "color": {
+          "ru": "цвет",
+          "en": "color",
+          "values": {
+            "white": "белая",
+            "graphite": "графитовая"
+          }
+        }
+      },
+      "stock": null
+    },
+    "cards": {
+      "title_ru": "карточки с вопросами",
+      "title_en": "cards with questions",
+      "price_eur": 50,
+      "options": {},
       "stock": null
     }
   }

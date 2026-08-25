@@ -34,49 +34,94 @@ var MERCH_CATALOG = [
 
   {
     id: 'hoodie',        // латиницей, уникально — попадает в номер заказа
-    price: 108,          // ← ЗАГЛУШКА: поставь настоящую цену
-    photo: null,         // ← ЗАГЛУШКА: 'images/merch-hoodie.jpg'
+    price: 108,
+    photo: 'images/merch-hoodie-graphite.jpg',
     hidden: false,
     sold_out: false,
 
     ru: {
-      title: 'худи soft power',
-      desc:  'оверсайз, плотный хлопок, большой капюшон.',
+      title: 'худи «magic is a shift in perception»',
+      desc:  'оверсайз с большим удобным капюшоном, без подкладки. надпись на спине.',
       note:  ''          // мелкая строчка под описанием, можно оставить пустой
     },
     en: {
-      title: 'soft power hoodie',
-      desc:  'oversized, heavy cotton, big hood.',
+      title: 'hoodie «magic is a shift in perception»',
+      desc:  'oversized, big comfortable hood, unlined. lettering on the back.',
       note:  ''
     },
 
     /* Варианты товара. Если вариантов нет — напиши options: [] */
     options: [
       {
-        id: 'size',                       // латиницей — попадает в номер заказа
+        id: 'color',                      // латиницей — попадает в номер заказа
+        ru: 'цвет', en: 'color',
+        values: [
+          /* у цвета можно задать своё фото: оно встанет в карточку,
+             когда покупатель выберет этот цвет */
+          { id: 'graphite', ru: 'графит',   en: 'graphite', photo: 'images/merch-hoodie-graphite.jpg' },
+          { id: 'milk',     ru: 'молочный', en: 'milk',     photo: 'images/merch-hoodie-beige.jpg' }
+        ]
+      },
+      {
+        id: 'size',
         ru: 'размер', en: 'size',
         values: [
           { id: 'sm',  ru: 's/m',  en: 's/m'  },
           { id: 'lxl', ru: 'l/xl', en: 'l/xl' }
         ]
       }
+    ]
+  },
 
-      /* ── ЕСЛИ У ХУДИ БУДЕТ НЕСКОЛЬКО ЦВЕТОВ ──────────────────────────────
-         Раскомментируй блок ниже — убери значки комментария вокруг него —
-         и поправь названия. У каждого цвета можно задать своё фото: оно
-         подставится в карточку, когда покупатель выберет этот цвет.
-         Если фото ещё нет, оставь photo: null.
+  {
+    id: 'tee',
+    price: 75,
+    photo: 'images/merch-tee-white.jpg',
+    hidden: false,
+    sold_out: false,
 
-      ,{
+    ru: {
+      title: 'футболка soft power',
+      desc:  'оверсайз, вышивка soft power на груди. идеальный крой и плотность.',
+      note:  'один размер — оверсайз l/xl'
+    },
+    en: {
+      title: 'soft power tee',
+      desc:  'oversized, soft power embroidered on the chest. perfect cut and weight.',
+      note:  'one size — oversized l/xl'
+    },
+
+    options: [
+      {
         id: 'color',
         ru: 'цвет', en: 'color',
         values: [
-          { id: 'graphite', ru: 'графит',   en: 'graphite', photo: null },
-          { id: 'milk',     ru: 'молочный', en: 'milk',     photo: null }
+          { id: 'white',    ru: 'белая',      en: 'white',    photo: 'images/merch-tee-white.jpg' },
+          { id: 'graphite', ru: 'графитовая', en: 'graphite', photo: 'images/merch-tee-graphite.jpg' }
         ]
       }
-      ──────────────────────────────────────────────────────────────────── */
     ]
+  },
+
+  {
+    id: 'cards',
+    price: 50,
+    photo: 'images/merch-cards.jpg',
+    hidden: false,
+    sold_out: false,
+
+    ru: {
+      title: 'карточки с вопросами',
+      desc:  '50 карточек с глубокими вопросами — для долгих тёплых вечеров в кругу семьи и друзей.',
+      note:  '50 карточек в коробке'
+    },
+    en: {
+      title: 'cards with questions',
+      desc:  '50 cards with deep questions — for long warm evenings with family and friends.',
+      note:  '50 cards in a box'
+    },
+
+    options: []
   }
 
 ];
