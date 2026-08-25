@@ -15,7 +15,7 @@
 var SHOP = {
   live: false,                       // ставится сам, см. askService() ниже
   api: '/api',                       // адрес сервиса магазина
-  telegram: 'https://t.me/kate_ruzi',
+  telegram: 'https://t.me/beloved_dasha',
   thanks: { ru: 'merch-spasibo', en: 'merch-spasibo-en' }
 };
 
