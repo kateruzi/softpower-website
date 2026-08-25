@@ -44,6 +44,8 @@ var SHOP = {
       send: 'отправить заказ', sending: 'отправляю…',
       req: 'заполни это поле',
       cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда и где забрать.',
+      agree: 'оформляя заказ, ты соглашаешься с обработкой персональных данных — ' +
+             '<a href="politika" target="_blank" rel="noopener">политика конфиденциальности</a>',
       err: 'что-то пошло не так. напиши мне в телеграм, и я оформлю заказ руками.',
       demo: 'оплата ещё не подключена',
       demoText: 'сервис магазина пока не запущен, поэтому заказ никуда не ушёл. вот ровно то, что отправится на сервер, когда всё включим:',
@@ -66,6 +68,8 @@ var SHOP = {
       send: 'send order', sending: 'sending…',
       req: 'please fill this in',
       cashFoot: 'you pay when we meet — nothing to pay now. i will write to you about when and where to pick it up.',
+      agree: 'by placing the order you agree to the processing of your personal data — ' +
+             '<a href="politika" target="_blank" rel="noopener">privacy policy</a>',
       err: 'something went wrong. write to me on telegram and i will take the order by hand.',
       demo: 'payments are not connected yet',
       demoText: 'the shop service is not running yet, so nothing was sent. this is exactly what will go to the server once it is on:',
@@ -332,7 +336,8 @@ var SHOP = {
     el('drawerFoot').innerHTML =
       '<div class="sum"><span>' + T.total + '</span><b>' + money(total()) + '</b></div>' +
       '<p class="drawer__note">' + T.cashFoot + '</p>' +
-      '<button class="btn" id="sendOrder" type="button">' + T.send + '</button>';
+      '<button class="btn" id="sendOrder" type="button">' + T.send + '</button>' +
+      '<p class="drawer__agree">' + T.agree + '</p>';
 
     el('backToCart').addEventListener('click', function () { view = 'cart'; renderCart(); });
     el('sendOrder').addEventListener('click', sendOrder);
