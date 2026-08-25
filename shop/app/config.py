@@ -47,18 +47,19 @@ class Config:
         return self.selling and (self.stripe_ready or self.fake_payments)
 
     def _check(self) -> None:
+        """Не даём подняться в состоянии, в котором сервис соврал бы покупателю."""
         if self.env == "prod":
             # Боевое окружение не имеет права принимать деньги понарошку.
             if self.fake_payments:
                 raise RuntimeError("DEV_FAKE_PAYMENTS=1 в prod — так нельзя")
-            if not self.stripe_secret:
-                raise RuntimeError("в prod нужен STRIPE_SECRET_KEY")
+            if self.selling and not self.stripe_secret:
+                raise RuntimeError("в prod с включёнными продажами нужен STRIPE_SECRET_KEY")
             if self.stripe_secret.startswith("sk_test_"):
                 raise RuntimeError("в prod подставлен тестовый ключ stripe")
-        if not self.fake_payments and not self.stripe_secret:
+        if self.selling and not self.fake_payments and not self.stripe_secret:
             raise RuntimeError(
-                "нечем принимать карты: задай STRIPE_SECRET_KEY "
-                "или включи DEV_FAKE_PAYMENTS=1 на staging"
+                "продажи включены, а принимать карты нечем: задай STRIPE_SECRET_KEY, "
+                "включи DEV_FAKE_PAYMENTS=1 на staging или поставь SELLING=0"
             )
 
 
