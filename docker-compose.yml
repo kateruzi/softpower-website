@@ -1,0 +1,47 @@
+# Стек сайта: статика через nginx и сервис магазина с базой.
+# Окружение задаётся файлом .env рядом (COMPOSE_PROJECT_NAME, порты, секреты),
+# поэтому один и тот же файл поднимает и staging, и prod, ничего не смешивая.
+
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: shop
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?нужен пароль базы в .env}
+    volumes:
+      - shop_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shop -d shop"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  shop:
+    build: ./shop
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://shop:${POSTGRES_PASSWORD}@db:5432/shop
+    volumes:
+      # витрина — на чтение: сервис сверяет по ней свой каталог
+      - ./js/merch-catalog.js:/site/js/merch-catalog.js:ro
+      # цены правятся здесь и подхватываются перезапуском, без пересборки
+      - ./shop/catalog.json:/app/catalog.json:ro
+
+  web:
+    image: nginx:alpine
+    restart: unless-stopped
+    depends_on: [shop]
+    ports:
+      - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:?нужен порт сайта в .env}:80"
+    volumes:
+      - ./:/site:ro
+      - ./shop/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+volumes:
+  shop_pgdata:
