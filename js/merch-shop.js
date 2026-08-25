@@ -281,7 +281,8 @@ var SHOP = {
         payRow('card', T.card, T.cardNote) +
         payRow('cash', T.cash, T.cashNote) +
       '</div>' +
-      '<button class="btn" id="goCheckout" type="button">' + T.checkout + '</button>';
+      '<button class="btn" id="goCheckout" type="button">' + T.checkout + '</button>' +
+      '<p class="drawer__agree">' + T.agree + '</p>';
 
     foot.querySelectorAll('.pay__row').forEach(function (row) {
       row.addEventListener('click', function () {
