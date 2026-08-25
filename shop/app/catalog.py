@@ -35,6 +35,25 @@ def parse_sku(sku: str) -> tuple[str, dict[str, str]]:
     return head, chosen
 
 
+def _values(spec: Any) -> list[str]:
+    """Вариант можно описать списком id или словарём id → подпись."""
+    if isinstance(spec, dict):
+        return list(spec.get("values", {}))
+    return list(spec)
+
+
+def _option_label(spec: Any, key: str, locale: str) -> str:
+    if isinstance(spec, dict):
+        return spec.get(locale) or spec.get("ru") or key
+    return key
+
+
+def _value_label(spec: Any, value: str) -> str:
+    if isinstance(spec, dict):
+        return spec.get("values", {}).get(value) or value
+    return value
+
+
 def resolve(sku: str, locale: str) -> dict[str, Any]:
     """Проверяет sku по каталогу и возвращает название и цену в центах."""
     products = load()
@@ -47,7 +66,7 @@ def resolve(sku: str, locale: str) -> dict[str, Any]:
     if set(chosen) != set(options):
         raise CatalogError(f"не те варианты у {product_id}: {sorted(chosen)}")
     for key, value in chosen.items():
-        if value not in options[key]:
+        if value not in _values(options[key]):
             raise CatalogError(f"нет варианта {key}={value} у {product_id}")
 
     if product.get("stock") == 0:
@@ -55,7 +74,10 @@ def resolve(sku: str, locale: str) -> dict[str, Any]:
 
     title = product.get(f"title_{locale}") or product.get("title_ru") or product_id
     if chosen:
-        title += " (" + ", ".join(f"{k}: {v}" for k, v in sorted(chosen.items())) + ")"
+        title += " (" + ", ".join(
+            f"{_option_label(options[k], k, locale)}: {_value_label(options[k], v)}"
+            for k, v in sorted(chosen.items())
+        ) + ")"
 
     return {
         "sku": sku,
@@ -77,10 +99,10 @@ def stock() -> dict[str, int]:
     return out
 
 
-def _skus(product_id: str, options: dict[str, list[str]]) -> list[str]:
+def _skus(product_id: str, options: dict[str, Any]) -> list[str]:
     skus = [product_id]
     for key in sorted(options):
-        skus = [f"{sku}|{key}:{value}" for sku in skus for value in options[key]]
+        skus = [f"{sku}|{key}:{value}" for sku in skus for value in _values(options[key])]
     return skus
 
 
