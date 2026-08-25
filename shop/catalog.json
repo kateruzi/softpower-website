@@ -41,29 +41,6 @@
         }
       },
       "stock": null
-    },
-    "tee": {
-      "title_ru": "футболка soft power",
-      "title_en": "soft power tee",
-      "price_eur": 75,
-      "options": {
-        "color": {
-          "ru": "цвет",
-          "en": "color",
-          "values": {
-            "white": "белая",
-            "graphite": "графитовая"
-          }
-        }
-      },
-      "stock": null
-    },
-    "cards": {
-      "title_ru": "карточки с вопросами",
-      "title_en": "cards with questions",
-      "price_eur": 50,
-      "options": {},
-      "stock": null
     }
   }
 }

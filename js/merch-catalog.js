@@ -71,57 +71,6 @@ var MERCH_CATALOG = [
         ]
       }
     ]
-  },
-
-  {
-    id: 'tee',
-    price: 75,
-    photo: 'images/merch-tee-white.jpg',
-    hidden: false,
-    sold_out: false,
-
-    ru: {
-      title: 'футболка soft power',
-      desc:  'оверсайз, вышивка soft power на груди. идеальный крой и плотность.',
-      note:  'один размер — оверсайз l/xl'
-    },
-    en: {
-      title: 'soft power tee',
-      desc:  'oversized, soft power embroidered on the chest. perfect cut and weight.',
-      note:  'one size — oversized l/xl'
-    },
-
-    options: [
-      {
-        id: 'color',
-        ru: 'цвет', en: 'color',
-        values: [
-          { id: 'white',    ru: 'белая',      en: 'white',    photo: 'images/merch-tee-white.jpg' },
-          { id: 'graphite', ru: 'графитовая', en: 'graphite', photo: 'images/merch-tee-graphite.jpg' }
-        ]
-      }
-    ]
-  },
-
-  {
-    id: 'cards',
-    price: 50,
-    photo: 'images/merch-cards.jpg',
-    hidden: false,
-    sold_out: false,
-
-    ru: {
-      title: 'карточки с вопросами',
-      desc:  '50 карточек с глубокими вопросами — для долгих тёплых вечеров в кругу семьи и друзей.',
-      note:  '50 карточек в коробке'
-    },
-    en: {
-      title: 'cards with questions',
-      desc:  '50 cards with deep questions — for long warm evenings with family and friends.',
-      note:  '50 cards in a box'
-    },
-
-    options: []
   }
 
 ];
