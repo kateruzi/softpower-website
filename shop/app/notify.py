@@ -66,6 +66,9 @@ def order_message(order: dict[str, Any]) -> str:
     for item in order["items"]:
         lines.append(f"• {item['title']} × {item['qty']} — " + _MONEY.format(item["unit_cents"] * item["qty"] / 100))
 
+    if any(item.get("preorder") for item in order["items"]):
+        lines += ["", "предзаказ: изготовление до 4 недель, доставка считается отдельно."]
+
     customer = order.get("customer") or {}
     contacts = [customer.get(k) for k in ("name", "contact", "phone", "email")]
     contacts = [c for c in contacts if c]

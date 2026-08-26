@@ -6,9 +6,9 @@
    (merch.html), и английская (merch-en.html), так что ничего не разъедется.
 
    ── ДОБАВИТЬ ФОТО ─────────────────────────────────────────────────────────
-   1. положи файл в папку images/ — например images/merch-hoodie.jpg
+   1. положи файл в папку images/ — например images/merch-longsleeve.jpg
    2. впиши имя файла в поле photo нужного товара:
-          photo: 'images/merch-hoodie.jpg'
+          photo: 'images/merch-longsleeve.jpg'
    Пока в photo стоит null, на карточке аккуратная заглушка «фото скоро».
 
    ── ПОМЕНЯТЬ ФОТО ─────────────────────────────────────────────────────────
@@ -22,52 +22,58 @@
    ── УБРАТЬ ТОВАР С ВИТРИНЫ ────────────────────────────────────────────────
    hidden: true — карточка исчезает со страницы.
    sold_out: true — карточка остаётся, но с пометкой «закончилось»
-   и без кнопки «в корзину».
+   и без кнопки заказа.
 
    ── ЦЕНЫ ──────────────────────────────────────────────────────────────────
    price — в евро, числом. На сайте цена только показывается: при оплате
-   картой сумму считает сервер по своим stripe price id, поэтому подменить
-   её из браузера нельзя.
+   картой сумму считает сервер по своему shop/catalog.json, поэтому
+   подменить её из браузера нельзя.
+
+   ── СРОКИ И ДОСТАВКА ──────────────────────────────────────────────────────
+   Это дроп с предзаказом: изготовление до четырёх недель, доставка считается
+   отдельно. Тексты про это живут не здесь, а в js/merch-shop.js (корзина)
+   и в самих страницах merch.html / merch-en.html (блок «условия предзаказа»).
    ═══════════════════════════════════════════════════════════════════════ */
 
 var MERCH_CATALOG = [
 
   {
-    id: 'hoodie',        // латиницей, уникально — попадает в номер заказа
+    id: 'longsleeve',    // латиницей, уникально — попадает в номер заказа
     price: 108,
-    photo: 'images/merch-hoodie-graphite.jpg',
+    photo: 'images/merch-longsleeve-pink.jpg',   // подменится, когда выберут цвет
     hidden: false,
     sold_out: false,
 
     ru: {
-      title: 'худи «magic is a shift in perception»',
-      desc:  'оверсайз с большим удобным капюшоном, без подкладки. надпись на спине.',
-      note:  ''          // мелкая строчка под описанием, можно оставить пустой
+      title: 'лонгслив «peace through practice»',
+      desc:  'оверсайз из плотного премиального хлопка 230–250 г/м². на спине печать по кругу, ø 22 см. на манжете левого рукава — вышивка soft power.',
+      note:  'ограниченный тираж · предзаказ до 5 сентября'
     },
     en: {
-      title: 'hoodie «magic is a shift in perception»',
-      desc:  'oversized, big comfortable hood, unlined. lettering on the back.',
-      note:  ''
+      title: '«peace through practice» long sleeve',
+      desc:  'oversized, heavyweight premium cotton 230–250 gsm. circular screen print on the back, ø 22 cm. soft power embroidery on the left cuff.',
+      note:  'limited edition · pre-order till 5 september'
     },
 
     /* Варианты товара. Если вариантов нет — напиши options: [] */
     options: [
       {
         id: 'color',                      // латиницей — попадает в номер заказа
-        ru: 'цвет', en: 'color',
+        ru: 'цвет печати', en: 'print colour',
         values: [
-          /* у цвета можно задать своё фото: оно встанет в карточку,
-             когда покупатель выберет этот цвет */
-          { id: 'graphite', ru: 'графит',   en: 'graphite', photo: 'images/merch-hoodie-graphite.jpg' },
-          { id: 'milk',     ru: 'молочный', en: 'milk',     photo: 'images/merch-hoodie-beige.jpg' }
+          /* у цвета своё фото: оно встаёт в карточку, когда его выбирают */
+          { id: 'pink', ru: 'dusty pink', en: 'dusty pink', photo: 'images/merch-longsleeve-pink.jpg' },
+          { id: 'sage', ru: 'sage',       en: 'sage',       photo: 'images/merch-longsleeve-sage.jpg' },
+          { id: 'navy', ru: 'ink navy',   en: 'ink navy',   photo: 'images/merch-longsleeve-navy.jpg' }
         ]
       },
       {
         id: 'size',
         ru: 'размер', en: 'size',
         values: [
-          { id: 'sm',  ru: 's/m',  en: 's/m'  },
-          { id: 'lxl', ru: 'l/xl', en: 'l/xl' }
+          { id: 'm',  ru: 'm',  en: 'm'  },
+          { id: 'l',  ru: 'l',  en: 'l'  },
+          { id: 'xl', ru: 'xl', en: 'xl' }
         ]
       }
     ]

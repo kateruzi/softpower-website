@@ -14,29 +14,35 @@
     "null значит «не считаем», число 0 покажет на витрине «закончилось».",
     "",
     "В options слева id варианта (как в js/merch-catalog.js), справа подпись —",
-    "она попадёт в письмо о заказе, чтобы было видно «размер: l/xl», а не «size: lxl»."
+    "она попадёт в письмо о заказе, чтобы было видно «размер: l», а не «size: l».",
+    "",
+    "preorder: true — вещь шьётся под заказ. Тогда в алерт о заказе добавляется",
+    "напоминание про сроки и доставку, чтобы не забыть написать покупателю."
   ],
   "currency": "eur",
   "products": {
-    "hoodie": {
-      "title_ru": "худи «magic is a shift in perception»",
-      "title_en": "hoodie «magic is a shift in perception»",
+    "longsleeve": {
+      "title_ru": "лонгслив «peace through practice»",
+      "title_en": "«peace through practice» long sleeve",
       "price_eur": 108,
+      "preorder": true,
       "options": {
         "color": {
-          "ru": "цвет",
-          "en": "color",
+          "ru": "цвет печати",
+          "en": "print colour",
           "values": {
-            "graphite": "графит",
-            "milk": "молочный"
+            "pink": "dusty pink",
+            "sage": "sage",
+            "navy": "ink navy"
           }
         },
         "size": {
           "ru": "размер",
           "en": "size",
           "values": {
-            "sm": "s/m",
-            "lxl": "l/xl"
+            "m": "m",
+            "l": "l",
+            "xl": "xl"
           }
         }
       },
