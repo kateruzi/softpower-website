@@ -100,7 +100,7 @@
   .pcard__foot{margin-top:auto; padding-top:10px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
   .pcard__price{font-family:Georgia,serif; font-size:24px;}
   .pcard__out{font-size:13px; color:var(--faint);}
-  .pcard--out .pcard__img,.pcard--out .pcard__ph{opacity:.45;}
+  .pcard--out .pgal,.pcard--out .pcard__ph{opacity:.45;}
 
   /* одна позиция — широкая карточка, иначе она болтается в пустой сетке */
   .pgrid--1 .pcard{display:grid; grid-template-columns:300px 1fr;}
@@ -133,18 +133,27 @@
   .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
   .faq-item a{color:var(--ink); text-underline-offset:3px;}
 
-  /* ─ факты в шапке: по строке на мысль, чтобы читалось, а не слипалось ─ */
-  .facts{list-style:none; margin:24px 0 0; padding:0;}
-  .facts li{font-size:15.5px; line-height:1.55; color:var(--soft); padding:10px 0; border-top:1px solid var(--line);}
-  .facts li:first-child{border-top:none; padding-top:0; color:var(--ink); font-family:Georgia,serif; font-size:19px;}
+  /* строка под текстом в шапке: до какого числа открыт предзаказ */
+  .until{margin-top:26px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--faint);}
 
-  /* ─ ракурсы товара: спереди, сзади, рукав ─ */
-  .views{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px;}
-  .views img{width:100%; height:auto; display:block; border:1px solid var(--line);}
-  .views figcaption{margin-top:9px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
+  /* ─ листалка внутри карточки ─
+     трек просто прокручивается, поэтому пальцем листается сам,
+     а стрелки и точки только двигают его на кадр */
+  .pgal{position:relative; aspect-ratio:4/5; border-bottom:1px solid var(--line); background:var(--warm);}
+  .pgal__track{display:flex; height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;}
+  .pgal__track::-webkit-scrollbar{display:none;}
+  .pgal__track img{flex:0 0 100%; width:100%; height:100%; object-fit:cover; display:block; scroll-snap-align:start;}
+  .pgal__nav{position:absolute; top:50%; transform:translateY(-50%); width:32px; height:32px; padding:0; border:none; cursor:pointer; background:rgba(251,250,248,.88); color:var(--ink); font:inherit; font-size:17px; line-height:32px; opacity:.6; transition:.2s;}
+  .pgal:hover .pgal__nav{opacity:1;}
+  .pgal__nav:hover{background:var(--bg);}
+  .pgal__nav--prev{left:10px;}
+  .pgal__nav--next{right:10px;}
+  .pgal__dots{position:absolute; left:0; right:0; bottom:12px; display:flex; justify-content:center; gap:6px;}
+  .pgal__dot{width:6px; height:6px; padding:0; border:none; border-radius:50%; background:rgba(20,20,20,.22); cursor:pointer; transition:.2s;}
+  .pgal__dot.on{background:var(--ink);}
 
   /* ссылка, открывающая окно с размерами */
-  .sizes-link{margin-top:24px;}
+  .sizes-link{margin-top:26px;}
   .linkbtn{background:none; border:none; padding:0; font:inherit; font-size:14.5px; color:var(--ink); cursor:pointer; text-decoration:underline; text-underline-offset:4px; transition:.2s;}
   .linkbtn:hover{color:var(--soft);}
 
@@ -240,7 +249,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
-    .shots .wrap,.views{grid-template-columns:1fr;}
+    .shots .wrap{grid-template-columns:1fr;}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -278,23 +287,14 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">написать мне</a>
 </div>
 
-<!-- ── hero ── -->
+<!-- ── hero ──
+     текст дропа стоит первым, как на последней странице спецификации -->
 <header class="phero"><div class="wrap">
-  <div>
-    <div class="kicker">soft power merch · новый дроп</div>
-    <h1>peace<br>through practice</h1>
-    <ul class="facts">
-      <li>лонгслив ограниченного тиража</li>
-      <li>предзаказ открыт до 5 сентября</li>
-      <li>вещь шьётся под заказ, изготовление до 4 недель</li>
-      <li>доставка в цену не входит и считается отдельно</li>
-    </ul>
-    <a class="btn" href="#shop">предзаказ →</a>
-  </div>
-
-  <!-- ФОТО В ШАПКУ: чтобы поменять снимок, впиши другое имя файла из images/.
-       Шапка с фото сама встаёт в две колонки, как на pass. -->
-  <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="лонгслив peace through practice"></div>
+  <div class="kicker">soft power merch · новый дроп</div>
+  <h1>peace<br>through practice</h1>
+  <p class="lead">этот лонгслив будет обнимать тебя всю осень. каждый день он будет напоминать тебе о том, что ежедневная практика и есть верный путь к твоему внутреннему спокойствию и устойчивости.</p>
+  <p class="until">предзаказ открыт до 5 сентября</p>
+  <a class="btn" href="#shop">предзаказ →</a>
 </div></header>
 
 <!-- ── фотографии дропа ──
@@ -309,23 +309,12 @@
 <div class="wrap"><hr class="hr"></div>
 
 <!-- ── витрина ──
-     карточка рисуется из js/merch-catalog.js, там же цены и фото -->
+     три карточки, по одной на цвет печати: они рисуются из js/merch-catalog.js,
+     там же цены, размеры и фотографии -->
 <section id="shop"><div class="wrap">
-  <div class="sec-label">дроп</div>
+  <div class="sec-label">три цвета печати</div>
   <div class="pgrid" id="shopGrid"></div>
-
-  <div class="views">
-    <figure><img src="images/merch-longsleeve-front.jpg" alt="лонгслив спереди"><figcaption>спереди</figcaption></figure>
-    <figure><img src="images/merch-longsleeve-back.jpg" alt="печать по кругу на спине"><figcaption>сзади</figcaption></figure>
-    <figure><img src="images/merch-longsleeve-cuff.jpg" alt="вышивка soft power на манжете"><figcaption>рукав</figcaption></figure>
-  </div>
-
   <p class="sizes-link"><button class="linkbtn" id="sizesOpen" type="button">таблица размеров и как мерить</button></p>
-</div></section>
-
-<!-- ── утверждение ── -->
-<section class="statement"><div class="wrap">
-  <p>этот лонгслив будет обнимать тебя всю осень и каждый день напоминать, что ежедневная практика и есть верный путь к внутреннему спокойствию и устойчивости.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
