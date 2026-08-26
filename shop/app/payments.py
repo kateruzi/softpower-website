@@ -41,6 +41,9 @@ def checkout_url(order: dict[str, Any]) -> str:
         success_url=success_url(order["number"], order["locale"]) + "&session_id={CHECKOUT_SESSION_ID}",
         cancel_url=f"{config.site_url}/{_merch_page(order['locale'])}",
         phone_number_collection={"enabled": True},
+        # Поле «промокод» на странице оплаты. Сами коды заводятся в дашборде
+        # stripe, здесь только разрешение их вводить.
+        allow_promotion_codes=True,
         # Вещь шьётся под заказ и едет почтой, поэтому адрес нужен сразу,
         # а телеграм — потому что дальше переписка идёт именно там.
         billing_address_collection="required",
@@ -82,6 +85,14 @@ def customer_from_session(session: Any) -> dict[str, str]:
         "telegram": _custom_field(session, "telegram"),
     }
     return {k: v for k, v in out.items() if v}
+
+
+def totals_from_session(session: Any) -> tuple[int | None, int]:
+    """Сколько на самом деле заплачено и сколько из этого скинул промокод."""
+    if not isinstance(session, dict):
+        return None, 0
+    details = session.get("total_details") or {}
+    return session.get("amount_total"), int(details.get("amount_discount") or 0)
 
 
 def _one_line(address: Any) -> str:

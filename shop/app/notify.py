@@ -87,6 +87,9 @@ def order_message(order: dict[str, Any]) -> str:
     for item in order["items"]:
         lines.append(f"• {item['title']} × {item['qty']} · " + _MONEY.format(item["unit_cents"] * item["qty"] / 100))
 
+    if order.get("discount_cents"):
+        lines.append("скидка по промокоду: " + _MONEY.format(order["discount_cents"] / 100))
+
     customer = order.get("customer") or {}
     known = [
         (label, str(customer[key]).strip())

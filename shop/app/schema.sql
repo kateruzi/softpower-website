@@ -18,6 +18,10 @@ CREATE TABLE IF NOT EXISTS orders (
     notified_at       TIMESTAMPTZ                  -- когда алерт реально ушёл в телеграм
 );
 
+-- Скидка по промокоду со страницы оплаты. Поле добавлено позже, поэтому
+-- отдельным ALTER: на существующей таблице CREATE TABLE его не заведёт.
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS discount_cents INTEGER NOT NULL DEFAULT 0;
+
 CREATE INDEX IF NOT EXISTS orders_unnotified
     ON orders (created_at) WHERE notified_at IS NULL;
 

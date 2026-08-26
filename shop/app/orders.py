@@ -70,11 +70,15 @@ def get(number: str) -> dict[str, Any] | None:
         return conn.execute("SELECT * FROM orders WHERE number = %s", (number,)).fetchone()
 
 
-def mark_paid(number: str, customer: dict[str, str], session_id: str | None = None) -> dict[str, Any] | None:
+def mark_paid(number: str, customer: dict[str, str], session_id: str | None = None,
+              amount_cents: int | None = None, discount_cents: int = 0) -> dict[str, Any] | None:
     """Отмечает оплату. Возвращает заказ, если это первая оплата, иначе None.
 
     Через эту дверь проходят и вебхук stripe, и тестовый шлюз, поэтому
     повторный вызов по тому же заказу безопасен: второго алерта не будет.
+
+    Сумму пишем ту, что stripe реально списал: с промокодом она меньше той,
+    с которой заказ заводился, и в алерте должна стоять настоящая.
     """
     with pool.connection() as conn:
         row = conn.execute(
@@ -82,10 +86,12 @@ def mark_paid(number: str, customer: dict[str, str], session_id: str | None = No
                   SET status = 'paid',
                       paid_at = now(),
                       stripe_session_id = COALESCE(%s, stripe_session_id),
+                      amount_cents = COALESCE(%s, amount_cents),
+                      discount_cents = %s,
                       customer = customer || %s
                 WHERE number = %s AND status <> 'paid'
             RETURNING *""",
-            (session_id, Jsonb(customer), number),
+            (session_id, amount_cents, discount_cents, Jsonb(customer), number),
         ).fetchone()
     if row is None:
         log.info("заказ %s уже был оплачен — повтор пропущен", number)

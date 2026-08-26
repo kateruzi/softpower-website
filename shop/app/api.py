@@ -202,8 +202,9 @@ def _handle_checkout_event(event: dict[str, Any]) -> None:
 
     if kind in ("checkout.session.completed", "checkout.session.async_payment_succeeded"):
         customer = payments.customer_from_session(session)
+        total, discount = payments.totals_from_session(session)
         if session.get("payment_status") == "paid":
-            changed = orders.mark_paid(number, customer, session.get("id"))
+            changed = orders.mark_paid(number, customer, session.get("id"), total, discount)
         else:
             changed = orders.attach_customer(number, customer, session.get("id"))
         if changed:
@@ -258,6 +259,7 @@ label input{{display:block;width:100%;box-sizing:border-box;font:inherit;font-si
     <label>телефон<input name=phone value="+351 900 000 000"></label>
     <label>адрес<input name=address value="Rua da Prata 10, 1100-052, Lisboa, PT"></label>
     <label>телеграм<input name=telegram value="@test"></label>
+    <label>скидка по промокоду, евро<input name=discount value="0"></label>
     <button type=submit>оплатить</button>
     <button class=cancel formaction="/api/dev/pay/cancel">отменить</button>
   </form>
@@ -273,10 +275,16 @@ async def dev_pay_confirm(request: Request) -> RedirectResponse:
         key: str(form.get(key, "")).strip()
         for key in ("name", "email", "phone", "address", "telegram")
     }
-    paid = orders.mark_paid(number, {k: v for k, v in customer.items() if v}, None)
+    try:
+        discount = max(0, round(float(str(form.get("discount", "0")).replace(",", ".")) * 100))
+    except ValueError:
+        discount = 0
+    found = orders.get(number)
+    total = max(0, found["amount_cents"] - discount) if found else None
+    paid = orders.mark_paid(number, {k: v for k, v in customer.items() if v}, None, total, discount)
     if paid:
         orders.announce(paid)
-    found = paid or orders.get(number)
+    found = paid or found
     if not found:
         raise HTTPException(status_code=404, detail="нет такого заказа")
     return RedirectResponse(payments.success_url(number, found["locale"]) + "&session_id=dev", status_code=303)
