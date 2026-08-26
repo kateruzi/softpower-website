@@ -32,6 +32,7 @@ var SHOP = {
       empty: 'пока пусто. выбери что-нибудь на странице.',
       total: 'итого', remove: 'убрать', soldout: 'закончилось',
       photosoon: 'фото скоро', close: 'закрыть', checkout: 'оформить предзаказ',
+      frame: 'кадр', prev: 'предыдущий кадр', next: 'следующий кадр',
       how: 'как удобно оплатить',
       card: 'картой онлайн',
       cardNote: 'защищённая страница stripe · apple pay и google pay',
@@ -58,6 +59,7 @@ var SHOP = {
       empty: 'empty for now, pick something on the page.',
       total: 'total', remove: 'remove', soldout: 'sold out',
       photosoon: 'photo coming', close: 'close', checkout: 'place pre-order',
+      frame: 'frame', prev: 'previous frame', next: 'next frame',
       how: 'how would you like to pay',
       card: 'card online',
       cardNote: 'secure stripe page · apple pay and google pay',
@@ -114,10 +116,57 @@ var SHOP = {
 
   /* ═══ ВИТРИНА ═══════════════════════════════════════════════════════ */
 
-  function photoBlock(src, alt, cls) {
-    return src
-      ? '<img class="pcard__img ' + cls + '" src="' + esc(src) + '" alt="' + esc(alt) + '">'
-      : '<div class="pcard__ph ' + cls + '">' + T.photosoon + '</div>';
+  /* Кадры карточки: сначала выбранный цвет, потом всё, что лежит в gallery.
+     Первый кадр носит класс pcard__img, потому что именно его подменяет
+     выбор цвета и именно он уезжает миниатюрой в корзину. */
+  function photoBlock(p, alt) {
+    if (!p.photo) return '<div class="pcard__ph">' + T.photosoon + '</div>';
+
+    var rest = p.gallery || [];
+    var slides = '<img class="pcard__img" src="' + esc(p.photo) + '" alt="' + esc(alt) + '">' +
+      rest.map(function (src) {
+        return '<img src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy">';
+      }).join('');
+
+    if (!rest.length) return '<div class="pgal"><div class="pgal__track">' + slides + '</div></div>';
+
+    var dots = [];
+    for (var i = 0; i <= rest.length; i++) {
+      dots.push('<button class="pgal__dot' + (i ? '' : ' on') + '" type="button" data-i="' + i +
+        '" aria-label="' + T.frame + ' ' + (i + 1) + '"></button>');
+    }
+    return '<div class="pgal">' +
+      '<div class="pgal__track">' + slides + '</div>' +
+      '<button class="pgal__nav pgal__nav--prev" type="button" aria-label="' + T.prev + '">‹</button>' +
+      '<button class="pgal__nav pgal__nav--next" type="button" aria-label="' + T.next + '">›</button>' +
+      '<div class="pgal__dots">' + dots.join('') + '</div>' +
+    '</div>';
+  }
+
+  /* Листание: трек просто прокручивается, поэтому пальцем оно работает само,
+     а стрелки и точки только двигают его на кадр. */
+  function wireGallery(card) {
+    var gal = card.querySelector('.pgal');
+    if (!gal) return;
+    var track = gal.querySelector('.pgal__track');
+    var dots = [].slice.call(gal.querySelectorAll('.pgal__dot'));
+    if (!dots.length) return;
+
+    function go(i) {
+      i = Math.max(0, Math.min(dots.length - 1, i));
+      track.scrollTo({ left: track.clientWidth * i, behavior: 'smooth' });
+    }
+    function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+
+    gal.querySelector('.pgal__nav--prev').addEventListener('click', function () { go(current() - 1); });
+    gal.querySelector('.pgal__nav--next').addEventListener('click', function () { go(current() + 1); });
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () { go(+dot.getAttribute('data-i')); });
+    });
+    track.addEventListener('scroll', function () {
+      var now = current();
+      dots.forEach(function (dot, i) { dot.classList.toggle('on', i === now); });
+    });
   }
 
   function renderShop() {
@@ -146,7 +195,7 @@ var SHOP = {
       }).join('');
 
       card.innerHTML =
-        photoBlock(p.photo, t.title, '') +
+        photoBlock(p, t.title) +
         '<div class="pcard__body">' +
           '<h3>' + esc(t.title) + '</h3>' +
           (t.desc ? '<p class="pcard__desc">' + esc(t.desc) + '</p>' : '') +
@@ -168,7 +217,11 @@ var SHOP = {
           chip.classList.add('on');
           var photo = chip.getAttribute('data-photo');
           var img = card.querySelector('.pcard__img');
-          if (photo && img) img.src = photo;
+          if (photo && img) {
+            img.src = photo;
+            var track = card.querySelector('.pgal__track');
+            if (track) track.scrollTo({ left: 0, behavior: 'smooth' });
+          }
           syncCard(p, card);          /* у другого размера может не быть остатка */
         });
       });
@@ -176,6 +229,7 @@ var SHOP = {
       var addBtn = card.querySelector('.add');
       addBtn.addEventListener('click', function () { addToCart(p, card, addBtn); });
 
+      wireGallery(card);
       grid.appendChild(card);
       rendered.push({ p: p, card: card });
       syncCard(p, card);

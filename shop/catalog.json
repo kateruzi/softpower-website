@@ -12,26 +12,52 @@
     "",
     "price_eur — цена в евро, числом. stock — сколько штук осталось:",
     "null значит «не считаем», число 0 покажет на витрине «закончилось».",
+    "Остаток считается на уровне товара, поэтому у каждого цвета он свой.",
     "",
     "В options слева id варианта (как в js/merch-catalog.js), справа подпись —",
-    "она попадёт в письмо о заказе, чтобы было видно «размер: l», а не «size: l»."
+    "она попадёт в алерт о заказе, чтобы было видно «размер: l», а не «size: l»."
   ],
   "currency": "eur",
   "products": {
-    "longsleeve": {
-      "title_ru": "лонгслив «peace through practice»",
-      "title_en": "«peace through practice» long sleeve",
+    "longsleeve-pink": {
+      "title_ru": "лонгслив dusty pink",
+      "title_en": "dusty pink long sleeve",
       "price_eur": 108,
       "options": {
-        "color": {
-          "ru": "цвет печати",
-          "en": "print colour",
+        "size": {
+          "ru": "размер",
+          "en": "size",
           "values": {
-            "pink": "dusty pink",
-            "sage": "sage",
-            "navy": "ink navy"
+            "m": "m",
+            "l": "l",
+            "xl": "xl"
           }
-        },
+        }
+      },
+      "stock": null
+    },
+    "longsleeve-sage": {
+      "title_ru": "лонгслив sage",
+      "title_en": "sage long sleeve",
+      "price_eur": 108,
+      "options": {
+        "size": {
+          "ru": "размер",
+          "en": "size",
+          "values": {
+            "m": "m",
+            "l": "l",
+            "xl": "xl"
+          }
+        }
+      },
+      "stock": null
+    },
+    "longsleeve-navy": {
+      "title_ru": "лонгслив ink navy",
+      "title_en": "ink navy long sleeve",
+      "price_eur": 108,
+      "options": {
         "size": {
           "ru": "размер",
           "en": "size",
