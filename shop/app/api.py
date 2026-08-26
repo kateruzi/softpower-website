@@ -179,13 +179,45 @@ async def stripe_webhook(request: Request) -> dict[str, bool]:
     if not fresh:
         return {"ok": True}                     # это повтор того же события
 
-    if event["type"] == "checkout.session.completed":
-        session = event["data"]["object"]
-        number = session.get("client_reference_id") or (session.get("metadata") or {}).get("order")
-        paid = orders.mark_paid(number, payments.customer_from_session(session), session.get("id"))
-        if paid:
-            orders.announce(paid)
+    _handle_checkout_event(event)
     return {"ok": True}
+
+
+def _handle_checkout_event(event: dict[str, Any]) -> None:
+    """Что stripe рассказывает про оплату — и что из этого следует.
+
+    Отказ карты события не рождает вовсе: сессия просто не завершается,
+    деньги не списываются, покупатель возвращается на страницу мерча.
+    А вот отложенные способы (в португалии stripe любит включать multibanco)
+    завершают сессию раньше денег, поэтому «завершена» и «оплачена» — разное.
+    """
+    kind = event["type"]
+    if not kind.startswith("checkout.session."):
+        return
+    session = event["data"]["object"]
+    number = session.get("client_reference_id") or (session.get("metadata") or {}).get("order")
+    if not number:
+        log.error("вебхук %s без номера заказа", kind)
+        return
+
+    if kind in ("checkout.session.completed", "checkout.session.async_payment_succeeded"):
+        customer = payments.customer_from_session(session)
+        if session.get("payment_status") == "paid":
+            changed = orders.mark_paid(number, customer, session.get("id"))
+        else:
+            changed = orders.attach_customer(number, customer, session.get("id"))
+        if changed:
+            orders.announce(changed)
+
+    elif kind == "checkout.session.async_payment_failed":
+        failed = orders.mark_cancelled(number)
+        if failed:
+            orders.announce(failed)
+
+    elif kind == "checkout.session.expired":
+        # Человек просто закрыл страницу оплаты. Тревожить этим незачем,
+        # но и держать заказ вечно ждущим не надо.
+        orders.mark_cancelled(number)
 
 
 # ── тестовый шлюз оплаты: только staging ────────────────────────────────

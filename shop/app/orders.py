@@ -94,6 +94,40 @@ def mark_paid(number: str, customer: dict[str, str], session_id: str | None = No
     return row
 
 
+def attach_customer(number: str, customer: dict[str, str], session_id: str | None) -> dict[str, Any] | None:
+    """Дописывает контакты к ещё не оплаченному заказу, не трогая статус.
+
+    Так приходят отложенные способы оплаты вроде multibanco: человек уже
+    оставил свои данные и получил реквизиты, а деньги придут через день-два.
+    """
+    with pool.connection() as conn:
+        row = conn.execute(
+            """UPDATE orders
+                  SET stripe_session_id = COALESCE(%s, stripe_session_id),
+                      customer = customer || %s
+                WHERE number = %s AND status = 'awaiting_payment'
+            RETURNING *""",
+            (session_id, Jsonb(customer), number),
+        ).fetchone()
+    if row is not None:
+        log.info("заказ %s ждёт отложенной оплаты", number)
+    return row
+
+
+def mark_cancelled(number: str) -> dict[str, Any] | None:
+    """Оплата не состоялась. Возвращает заказ, если это первая отмена."""
+    with pool.connection() as conn:
+        row = conn.execute(
+            """UPDATE orders SET status = 'cancelled'
+                WHERE number = %s AND status = 'awaiting_payment'
+            RETURNING *""",
+            (number,),
+        ).fetchone()
+    if row is not None:
+        log.info("заказ %s отменён: оплата не прошла", number)
+    return row
+
+
 def announce(order: dict[str, Any]) -> None:
     """Шлёт алерт админу и запоминает, что он ушёл."""
     if notify.send(notify.order_message(order)):

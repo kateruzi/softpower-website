@@ -54,7 +54,9 @@ class Config:
                 raise RuntimeError("DEV_FAKE_PAYMENTS=1 в prod — так нельзя")
             if self.selling and not self.stripe_secret:
                 raise RuntimeError("в prod с включёнными продажами нужен STRIPE_SECRET_KEY")
-            if self.stripe_secret.startswith("sk_test_"):
+            # Ключи бывают обычные (sk_) и ограниченные (rk_), тестовые из них
+            # опознаются по _test_ в середине — этого достаточно.
+            if "_test_" in self.stripe_secret:
                 raise RuntimeError("в prod подставлен тестовый ключ stripe")
         if self.selling and not self.fake_payments and not self.stripe_secret:
             raise RuntimeError(

@@ -24,7 +24,9 @@ _STATUS = {
     "paid": "💶 оплачен картой",
     "cash_pending": "🤝 оплата при встрече",
     "awaiting_payment": "⏳ ждёт оплаты",
+    "cancelled": "❌ оплата не прошла",
 }
+_TITLE = {"cancelled": "заказ отменён", "awaiting_payment": "заказ ждёт оплаты"}
 _METHOD = {"card": "картой онлайн", "cash_pickup": "наличными при встрече"}
 
 # Слева — как поле лежит в customer, справа — как его читать в телеграме.
@@ -77,7 +79,7 @@ def order_message(order: dict[str, Any]) -> str:
     when = (order.get("paid_at") or order["created_at"]).astimezone(_TZ)
 
     lines = [
-        f"[{config.env}] новый заказ {order['number']}",
+        f"[{config.env}] {_TITLE.get(order['status'], 'новый заказ')} {order['number']}",
         _STATUS.get(order["status"], order["status"]) + " · " + _MONEY.format(order["amount_cents"] / 100),
         when.strftime("%d.%m.%Y, %H:%M") + " по лиссабону",
         "",
@@ -98,4 +100,8 @@ def order_message(order: dict[str, Any]) -> str:
 
     if order["status"] == "cash_pending":
         lines += ["", "деньги ещё не получены — напиши покупателю про встречу."]
+    if order["status"] == "awaiting_payment":
+        lines += ["", "способ оплаты отложенный: реквизиты человек получил, деньги придут позже."]
+    if order["status"] == "cancelled":
+        lines += ["", "деньги не списаны. можно написать и предложить оформить заново."]
     return "\n".join(lines)
