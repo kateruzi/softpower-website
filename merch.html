@@ -116,7 +116,8 @@
 
   /* ─ утверждение ─ */
   .statement{text-align:center;}
-  .statement p{font-family:Georgia,serif; font-size:25px; line-height:1.5; max-width:720px; margin:0 auto;}
+  .statement{padding:66px 0 62px;}
+  .statement p{font-family:Georgia,serif; font-size:28px; line-height:1.55; max-width:780px; margin:0 auto;}
 
   /* ─ как это работает ─ */
   .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; max-width:860px;}
@@ -158,13 +159,20 @@
   .linkbtn:hover{color:var(--soft);}
 
   /* ─ лента атмосферных кадров ─
-     листается вбок пальцем или трекпадом. первый кадр выровнен по колонке
-     сайта, а лента уезжает за край: так видно, что дальше есть ещё */
-  .feed{padding:20px 0 8px;}
+     листается вбок. первый кадр выровнен по колонке сайта, а лента уезжает
+     за край: так видно, что дальше есть ещё */
+  .feed{position:relative; padding:20px 0 8px;}
   .feed__track{display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x proximity;
     padding:0 max(24px, calc((100% - 960px) / 2)); scrollbar-width:none; -ms-overflow-style:none;}
   .feed__track::-webkit-scrollbar{display:none;}
   .feed__track img{flex:none; height:560px; width:auto; display:block; scroll-snap-align:center;}
+  .feed__nav{position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:44px; height:44px; padding:0; cursor:pointer; border:1px solid var(--line);
+    background:rgba(251,250,248,.94); color:var(--ink); font:inherit; font-size:20px; line-height:1; transition:.2s;}
+  .feed__nav:hover{border-color:var(--ink);}
+  .feed__nav[disabled]{opacity:.2; cursor:default; border-color:var(--line);}
+  .feed__nav--prev{left:16px;}
+  .feed__nav--next{right:16px;}
 
   /* ─ окно с размерами ─ */
   .modal .modal__box--wide{max-width:960px;}
@@ -260,7 +268,7 @@
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
-    .statement p{font-size:21px;}
+    .statement p{font-size:22px;}
     .drawer{width:100%; border-left:none;}
   }
 </style>
@@ -298,16 +306,21 @@
      текст дропа стоит первым, как на последней странице спецификации -->
 <header class="phero"><div class="wrap">
   <div>
-  <div class="kicker">soft power merch · новый дроп</div>
-  <h1>peace<br>through practice</h1>
-  <p class="lead">этот лонгслив будет обнимать тебя всю осень. каждый день он будет напоминать тебе о том, что ежедневная практика и есть верный путь к твоему внутреннему спокойствию и устойчивости.</p>
-  <p class="until">предзаказ открыт до 5 сентября</p>
-  <a class="btn" href="#shop">предзаказ →</a>
+    <div class="kicker">soft power merch · новый дроп</div>
+    <h1>peace<br>through practice</h1>
+    <p class="until">предзаказ открыт до 5 сентября</p>
+    <a class="btn" href="#shop">предзаказ →</a>
   </div>
+
 
   <!-- ФОТО В ШАПКУ: чтобы поменять снимок, впиши другое имя файла из images/ -->
   <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="лонгслив peace through practice"></div>
 </div></header>
+
+<!-- ── слова дропа: они и есть причина, по которой вещь существует ── -->
+<section class="statement"><div class="wrap">
+  <p>этот лонгслив будет обнимать тебя всю осень. каждый день он будет напоминать тебе о том, что ежедневная практика и есть верный путь к твоему внутреннему спокойствию и устойчивости.</p>
+</div></section>
 
 <div class="wrap"><hr class="hr"></div>
 
@@ -323,26 +336,27 @@
 <div class="wrap"><hr class="hr"></div>
 
 <!-- ── лента атмосферных кадров ──
-     листается вбок. чтобы добавить снимок, положи файл в images/
-     и допиши сюда строку: порядок в разметке и есть порядок в ленте -->
+     листается вбок пальцем, трекпадом или стрелками. чтобы добавить снимок,
+     положи файл в images/ и допиши сюда строку: порядок здесь и есть порядок в ленте -->
 <section class="feed" aria-label="фотографии дропа">
-  <div class="feed__track">
-  <img src="images/merch-feed-01.jpg" alt="лонгслив на лесной дороге" loading="lazy">
-  <img src="images/merch-feed-02.jpg" alt="лонгслив на берегу океана" loading="lazy">
-  <img src="images/merch-feed-03.jpg" alt="манжет с вышивкой soft power" loading="lazy">
-  <img src="images/merch-feed-04.jpg" alt="рукав лонгслива у лица, скала позади" loading="lazy">
-  <img src="images/merch-feed-05.jpg" alt="лонгслив у мшистого камня" loading="lazy">
-  <img src="images/merch-feed-06.jpg" alt="печать на фоне неба" loading="lazy">
-  <img src="images/merch-feed-07.jpg" alt="берег между скал" loading="lazy">
-  <img src="images/merch-feed-08.jpg" alt="печать peace through practice на просвет" loading="lazy">
-  <img src="images/merch-feed-09.jpg" alt="манжет через плечо" loading="lazy">
-  <img src="images/merch-feed-10.jpg" alt="печать крупным планом" loading="lazy">
-  <img src="images/merch-feed-11.jpg" alt="лонгслив, руки в стороны" loading="lazy">
-  <img src="images/merch-feed-12.jpg" alt="ткань и манжет на камне" loading="lazy">
-  <img src="images/merch-feed-13.jpg" alt="лонгслив на рассветном берегу" loading="lazy">
-  <img src="images/merch-feed-14.jpg" alt="пасмурный океан" loading="lazy">
-  <img src="images/merch-feed-15.jpg" alt="лонгслив со спины у воды" loading="lazy">
+  <div class="feed__track" id="feedTrack">
+    <img src="images/merch-feed-01.jpg" alt="лонгслив на лесной дороге" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-02.jpg" alt="лонгслив на берегу океана" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-03.jpg" alt="манжет с вышивкой soft power" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-04.jpg" alt="рукав лонгслива у лица, скала позади" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-05.jpg" alt="лонгслив у мшистого камня" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-06.jpg" alt="печать на фоне неба" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-07.jpg" alt="берег между скал" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-08.jpg" alt="печать peace through practice на просвет" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-09.jpg" alt="манжет через плечо" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-10.jpg" alt="печать крупным планом" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-11.jpg" alt="лонгслив, руки в стороны" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-12.jpg" alt="ткань и манжет на камне" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-13.jpg" alt="лонгслив на рассветном берегу" width="630" height="1120" loading="lazy">
+    <img src="images/merch-feed-14.jpg" alt="лонгслив со спины у воды" width="630" height="1120" loading="lazy">
   </div>
+  <button class="feed__nav feed__nav--prev" id="feedPrev" type="button" aria-label="назад">‹</button>
+  <button class="feed__nav feed__nav--next" id="feedNext" type="button" aria-label="вперёд">›</button>
 </section>
 
 <!-- ── условия предзаказа ── -->
@@ -443,6 +457,25 @@
     closeBtn.addEventListener("click", hideMenu);
     mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+
+
+  /* стрелки у ленты фотографий: двигают её почти на экран и гаснут по краям */
+  (function(){
+    var track=document.getElementById('feedTrack'),
+        prev=document.getElementById('feedPrev'), next=document.getElementById('feedNext');
+    if(!track||!prev||!next) return;
+    function step(){ return Math.round(track.clientWidth * 0.8); }
+    function edges(){
+      prev.disabled = track.scrollLeft < 8;
+      next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 8;
+    }
+    prev.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+    next.addEventListener('click', function(){ track.scrollBy({left: step(), behavior:'smooth'}); });
+    track.addEventListener('scroll', edges);
+    window.addEventListener('resize', edges);
+    window.addEventListener('load', edges);   /* картинки могли ещё не приехать */
+    edges();
   })();
 
   /* окно с размерами: открывается ссылкой в витрине */
