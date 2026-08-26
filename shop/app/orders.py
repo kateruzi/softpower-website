@@ -50,7 +50,7 @@ def create(method: str, locale: str, items: list[dict[str, Any]], customer: dict
     amount = sum(i["unit_cents"] * i["qty"] for i in items)
 
     with pool.connection() as conn:
-        for _ in range(5):                      # номер случайный, изредка бывает занят
+        for _ in range(20):                     # номер случайный: из трёх цифр совпадения чаще
             number = _new_number()
             row = conn.execute(
                 """INSERT INTO orders (number, status, method, locale, amount_cents, items, customer)
@@ -168,5 +168,11 @@ def recent(limit: int = 500) -> list[dict[str, Any]]:
 
 
 def _new_number() -> str:
+    """SP-260826-314: буквы, дата и три случайные цифры.
+
+    Случайные, а не по порядку: порядковый номер рассказывал бы покупателю,
+    сколько всего было заказов, и позволял бы угадать чужие. Совпадения
+    ловит уникальный индекс, create() просто берёт следующий номер.
+    """
     day = dt.datetime.now(dt.timezone.utc).strftime("%y%m%d")
-    return f"SP-{day}-{random.randint(1000, 9999)}"
+    return f"SP-{day}-{random.randint(100, 999)}"
