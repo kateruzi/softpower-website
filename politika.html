@@ -1,78 +1,173 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>политика конфиденциальности — soft power</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>политика конфиденциальности · soft power</title>
+<style>
+  /* ═══ политика конфиденциальности. документ, а не витрина: та же бумага
+     и те же линии, что везде, но колонка уже, чтобы строка читалась.
+     текст перенесён со старого сайта, оригинал в old_website/. ═══ */
+  :root{
+    --ink:#141414; --soft:#6f6f6f; --faint:#a8a8a8;
+    --line:#e7e5e0; --bg:#fbfaf8; --warm:#f3ece4;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg); color:var(--ink); font-size:16px; line-height:1.7;
+    -webkit-font-smoothing:antialiased; display:flex; flex-direction:column; min-height:100vh;
+  }
+  .wrap{max-width:960px; margin:0 auto; padding:0 24px;}
+  h1,h2{font-family:Georgia,"Times New Roman",serif; font-weight:400;}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&family=Inter:wght@300..600&display=swap" rel="stylesheet" />
+  nav{border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
+  nav .name{font-family:Georgia,serif; font-size:17px; letter-spacing:.02em; text-decoration:none; color:var(--ink);}
+  nav .links{display:flex; gap:26px; align-items:center;}
+  nav .links a.lang{border-left:1px solid var(--line); padding-left:26px;}
+  nav a{color:var(--soft); text-decoration:none; font-size:14px;}
+  nav a:hover{color:var(--ink);}
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/page.css" />
+  main{flex:1; padding:72px 0 80px;}
+  main .wrap{max-width:720px;}
+  .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
+  h1{font-size:34px; line-height:1.3;}
+  .date{margin-top:16px; font-size:13.5px; color:var(--faint);}
+
+  section{margin-top:44px;}
+  h2{font-size:20px; line-height:1.4; margin-bottom:14px;}
+  p{color:var(--soft); margin-bottom:12px;}
+  p:last-child{margin-bottom:0;}
+  ul{margin:0 0 12px 0; padding:0; list-style:none;}
+  li{color:var(--soft); padding:7px 0 7px 18px; position:relative;}
+  li::before{content:'·'; position:absolute; left:4px; color:var(--faint);}
+  a{color:var(--ink); text-underline-offset:3px;}
+  .note{margin-top:48px; padding:20px 22px; background:var(--warm); font-size:14.5px; line-height:1.7; color:var(--soft);}
+
+  footer{padding:36px 0; text-align:center; color:var(--faint); font-size:13px; line-height:1.9; border-top:1px solid var(--line);}
+  footer a{color:var(--soft);}
+  @media(max-width:760px){ nav .links{display:none;} h1{font-size:27px;} main{padding:48px 0 56px;} }
+</style>
 </head>
 <body>
 
-  <nav class="nav nav--scrolled" id="nav">
-    <a href="/" class="nav__logo">
-      <img class="nav__logo-img nav__logo-img--white" src="images/logo-white.svg" alt="soft power" />
-      <img class="nav__logo-img nav__logo-img--dark" src="images/logo-dark.svg" alt="soft power" />
-    </a>
-    <ul class="nav__links">
-      <li><a href="praktika">практика</a></li>
-      <li><a href="rabotat-so-mnoy">работать со мной</a></li>
-    </ul>
-    <button class="nav__burger" id="burgerBtn" aria-label="открыть меню" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="nav__mobile" id="mobileMenu">
-    <button class="nav__mobile-close" id="closeMenuBtn" aria-label="закрыть меню">✕</button>
-    <a href="praktika">практика</a>
+<nav><div class="wrap">
+  <a class="name" href="/">даша простова</a>
+  <span class="links">
     <a href="rabotat-so-mnoy">работать со мной</a>
-  </div>
+    <a href="praktika">практиковать со мной</a>
+    <a href="faq">FAQ</a>
+    <a href="merch">мерч</a>
+    <a class="lang" href="politika-en">en</a>
+  </span>
+</div></nav>
 
-  <main class="legal-page">
-    <div class="container">
-      <h1 class="legal-page__title">политика конфиденциальности</h1>
-      <div class="legal-page__content">
-        <!-- placeholder — заменить на актуальный текст политики -->
-        <p>политика конфиденциальности находится в обработке. актуальная версия будет опубликована в ближайшее время.</p>
-        <p>по вопросам: <a href="mailto:hello@softpowerspace.com">hello@softpowerspace.com</a></p>
-      </div>
-    </div>
-  </main>
+<main><div class="wrap">
+  <div class="kicker">soft power</div>
+  <h1>политика конфиденциальности</h1>
+  <p class="date">дата публикации: 26 августа 2026</p>
 
-  <footer class="footer">
-    <div class="footer__inner">
-      <div>
-        <p class="footer__logo">soft power</p>
-        <p class="footer__tagline">пространство устойчивости через тело.<br />лиссабон · весь мир</p>
-      </div>
-      <nav class="footer__nav">
-        <a href="praktika">практика</a>
-        <a href="rabotat-so-mnoy">работать со мной</a>
-        <a href="https://t.me/softpowerspace" target="_blank" rel="noopener">telegram</a>
-        <a href="mailto:hello@softpowerspace.com">написать</a>
-      </nav>
-    </div>
-    <div class="footer__bottom">
-      <span class="footer__copy">© 2026 soft power</span>
-      <a href="politika" class="footer__policy">политика конфиденциальности</a>
-    </div>
-  </footer>
+  <section>
+    <h2>1. общие положения</h2>
+    <p>настоящая политика конфиденциальности регулирует обработку и защиту персональных данных пользователей сайта soft power, softpowerspace.com (далее «сайт»), в соответствии с регламентом европейского союза GDPR и федеральным законом №152-ФЗ «о персональных данных».</p>
+  </section>
 
-  <script>
-    const burgerBtn = document.getElementById('burgerBtn');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('is-open'); document.body.style.overflow = 'hidden'; });
-    function closeMenu() { mobileMenu.classList.remove('is-open'); document.body.style.overflow = ''; }
-    closeMenuBtn.addEventListener('click', closeMenu);
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  </script>
+  <section>
+    <h2>2. оператор персональных данных</h2>
+    <p>оператором персональных данных является DARIA PROSTOVA (далее «оператор»).</p>
+    <p>контактный адрес электронной почты по вопросам, связанным с персональными данными: <a href="mailto:softpower.backup@gmail.com">softpower.backup@gmail.com</a>.</p>
+  </section>
+
+  <section>
+    <h2>3. состав обрабатываемых данных</h2>
+    <p>оператор обрабатывает следующие категории персональных данных:</p>
+    <ul>
+      <li>имя</li>
+      <li>электронная почта</li>
+      <li>номер телефона</li>
+      <li>ник в telegram</li>
+      <li>адрес, если заказ нужно доставить</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. способы сбора данных</h2>
+    <p>персональные данные собираются через:</p>
+    <ul>
+      <li>формы на сайте softpowerspace.com, в том числе форму заказа в магазине</li>
+      <li>страницу оплаты stripe, на которую покупатель переходит с сайта</li>
+      <li>формы google forms</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. цели обработки персональных данных</h2>
+    <p>персональные данные пользователей обрабатываются для следующих целей:</p>
+    <ul>
+      <li>оформление заказа, передача вещи покупателю и связь по поводу доставки</li>
+      <li>отправка материалов по купленным подпискам и товарам</li>
+      <li>организация будущих мероприятий и информирование о них</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>6. правовые основания обработки</h2>
+    <p>обработка данных осуществляется на основании:</p>
+    <ul>
+      <li>согласия пользователя на обработку его персональных данных</li>
+      <li>необходимости исполнения договора или пользовательского соглашения</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>7. передача персональных данных третьим лицам</h2>
+    <p>персональные данные пользователей могут передаваться третьим лицам исключительно для выполнения обязательств перед пользователем и только в объёме, необходимом для этих целей.</p>
+    <p>платёжный сервис stripe получает данные для обработки оплаты товаров и доступа к цифровым продуктам: имя, электронную почту, телефон, платёжные данные, адрес и IP-адрес. обработка персональных данных в stripe осуществляется в соответствии с его политикой конфиденциальности: <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a>.</p>
+    <p>данные передаются только тем третьим лицам, которые обеспечивают достаточные меры защиты персональных данных.</p>
+  </section>
+
+  <section>
+    <h2>8. срок хранения персональных данных</h2>
+    <p>персональные данные хранятся до достижения целей обработки либо до момента отзыва согласия пользователем, если иное не предусмотрено законодательством.</p>
+  </section>
+
+  <section>
+    <h2>9. права пользователя</h2>
+    <p>пользователь имеет право:</p>
+    <ul>
+      <li>запрашивать информацию о своих персональных данных</li>
+      <li>требовать их исправления или удаления</li>
+      <li>ограничить обработку или возразить против неё</li>
+      <li>отозвать согласие на обработку персональных данных</li>
+      <li>обратиться с жалобой в надзорный орган</li>
+    </ul>
+    <p>для реализации своих прав пользователь может написать по адресу <a href="mailto:softpower.backup@gmail.com">softpower.backup@gmail.com</a>.</p>
+  </section>
+
+  <section>
+    <h2>10. меры по защите персональных данных</h2>
+    <p>оператор принимает все необходимые правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, распространения, а также от иных неправомерных действий третьих лиц.</p>
+  </section>
+
+  <section>
+    <h2>11. изменения в политике конфиденциальности</h2>
+    <p>оператор оставляет за собой право вносить изменения в настоящую политику. актуальная версия всегда доступна на сайте.</p>
+  </section>
+
+  <section>
+    <h2>12. возрастные ограничения</h2>
+    <p>сайт предназначен для пользователей, достигших возраста 18 лет.</p>
+  </section>
+
+  <p class="note">если остались вопросы про свои данные, напиши на <a href="mailto:softpower.backup@gmail.com">softpower.backup@gmail.com</a> или в <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">телеграм</a>.</p>
+</div></main>
+
+<footer><div class="wrap">
+  даша простова · лиссабон → мир<br>
+  soft power, мой девиз и имя моих проектов<br>
+  <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
+</div></footer>
 
 </body>
 </html>
