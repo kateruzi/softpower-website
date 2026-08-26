@@ -49,6 +49,10 @@
   footer a{color:var(--soft);}
   @media(max-width:760px){ nav .links{display:none;} h1{font-size:27px;} main{padding:48px 0 56px;} }
 </style>
+<!-- счётчик посещений: свой, без кук и без третьих сторон.
+     живёт в /opt/infra/analytics, отдаётся с этого же домена -->
+<script defer src="/sp-analytics.js" data-website-id="ba8430c9-2553-4988-9077-d5be6fddf369"
+        data-host-url="https://softpowerspace.com/sp-analytics"></script>
 </head>
 <body>
 
@@ -157,6 +161,12 @@
   <section>
     <h2>12. age restrictions</h2>
     <p>the site is intended for users who are 18 years of age or older.</p>
+  </section>
+
+  <section>
+    <h2>13. visit counter</h2>
+    <p>the site counts visits with its own umami counter, running on the same server as the site itself. it sets no cookies, does not follow a person across sites and passes nothing to third parties: there is no google analytics or anything like it here.</p>
+    <p>the counter records anonymous things: which page was opened, which site it was reached from, the country, the device type and the browser, and clicks on the order buttons. a person cannot be identified from this, and it is never joined with the personal data from orders.</p>
   </section>
 
   <p class="note">if you have questions about your data, write to <a href="mailto:softpower.backup@gmail.com">softpower.backup@gmail.com</a> or on <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a>.</p>

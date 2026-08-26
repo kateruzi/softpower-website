@@ -204,7 +204,7 @@ var SHOP = {
           '<div class="pcard__foot">' +
             '<span class="pcard__price">' + money(p.price) + '</span>' +
             '<span class="pcard__out" hidden>' + T.soldout + '</span>' +
-            '<button class="btn btn-sm add" type="button">' + T.add + '</button>' +
+            '<button class="btn btn-sm add" type="button" data-umami-event="preorder-add">' + T.add + '</button>' +
           '</div>' +
         '</div>';
 
@@ -341,7 +341,7 @@ var SHOP = {
         payRow('card', T.card, T.cardNote) +
         payRow('cash', T.cash, T.cashNote) +
       '</div>' +
-      '<button class="btn" id="goCheckout" type="button">' + T.checkout + '</button>' +
+      '<button class="btn" id="goCheckout" type="button" data-umami-event="preorder-checkout">' + T.checkout + '</button>' +
       '<p class="drawer__agree">' + T.agree + '</p>';
 
     foot.querySelectorAll('.pay__row').forEach(function (row) {
@@ -398,7 +398,7 @@ var SHOP = {
       '<div class="sum"><span>' + T.total + '</span><b>' + money(total()) + '</b></div>' +
       '<p class="drawer__pre">' + T.pre + '</p>' +
       '<p class="drawer__note">' + T.cashFoot + '</p>' +
-      '<button class="btn" id="sendOrder" type="button">' + T.send + '</button>' +
+      '<button class="btn" id="sendOrder" type="button" data-umami-event="preorder-cash-send">' + T.send + '</button>' +
       '<p class="drawer__agree">' + T.agree + '</p>';
 
     el('backToCart').addEventListener('click', function () { view = 'cart'; renderCart(); });

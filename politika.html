@@ -49,6 +49,10 @@
   footer a{color:var(--soft);}
   @media(max-width:760px){ nav .links{display:none;} h1{font-size:27px;} main{padding:48px 0 56px;} }
 </style>
+<!-- счётчик посещений: свой, без кук и без третьих сторон.
+     живёт в /opt/infra/analytics, отдаётся с этого же домена -->
+<script defer src="/sp-analytics.js" data-website-id="ba8430c9-2553-4988-9077-d5be6fddf369"
+        data-host-url="https://softpowerspace.com/sp-analytics"></script>
 </head>
 <body>
 
@@ -158,6 +162,12 @@
   <section>
     <h2>12. возрастные ограничения</h2>
     <p>сайт предназначен для пользователей, достигших возраста 18 лет.</p>
+  </section>
+
+  <section>
+    <h2>13. счётчик посещений</h2>
+    <p>сайт считает посещения собственным счётчиком umami, который работает на том же сервере, что и сам сайт. он не ставит куки, не следит за человеком между сайтами и не передаёт ничего третьим лицам: сервисов вроде google analytics на сайте нет.</p>
+    <p>счётчик записывает обезличенное: какую страницу открыли, с какого сайта пришли, страну, тип устройства и браузер, а также нажатия на кнопки заказа. по этим данным нельзя опознать человека, и с персональными данными из заказов они не связываются.</p>
   </section>
 
   <p class="note">если остались вопросы про свои данные, напиши на <a href="mailto:softpower.backup@gmail.com">softpower.backup@gmail.com</a> или в <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">телеграм</a>.</p>
