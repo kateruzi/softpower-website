@@ -157,9 +157,14 @@
   .linkbtn{background:none; border:none; padding:0; font:inherit; font-size:14.5px; color:var(--ink); cursor:pointer; text-decoration:underline; text-underline-offset:4px; transition:.2s;}
   .linkbtn:hover{color:var(--soft);}
 
-  /* ─ полоса фотографий: кадры целиком, без обрезки ─ */
-  .shots .wrap{max-width:1180px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  .shots img{width:100%; height:auto; display:block;}
+  /* ─ лента атмосферных кадров ─
+     листается вбок пальцем или трекпадом. первый кадр выровнен по колонке
+     сайта, а лента уезжает за край: так видно, что дальше есть ещё */
+  .feed{padding:20px 0 8px;}
+  .feed__track{display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x proximity;
+    padding:0 max(24px, calc((100% - 960px) / 2)); scrollbar-width:none; -ms-overflow-style:none;}
+  .feed__track::-webkit-scrollbar{display:none;}
+  .feed__track img{flex:none; height:560px; width:auto; display:block; scroll-snap-align:center;}
 
   /* ─ окно с размерами ─ */
   .modal .modal__box--wide{max-width:960px;}
@@ -206,7 +211,9 @@
   .sum b{font-family:Georgia,serif; font-size:26px; font-weight:400;}
 
   /* выбор способа оплаты */
-  .pay{margin:18px 0 4px;}
+  /* отступ до кнопки заказа такой же, как от подписи до первого способа */
+  .pay{margin:18px 0 10px;}
+  .pay__row:last-child{margin-bottom:0;}
   .pay__label{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
   .pay__row{display:flex; gap:12px; align-items:flex-start; width:100%; text-align:left; background:none; border:1px solid var(--line); padding:13px 15px; font:inherit; cursor:pointer; transition:.2s; margin-bottom:8px;}
   .pay__row:hover{border-color:#c9c5be;}
@@ -249,7 +256,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
-    .shots .wrap{grid-template-columns:1fr;}
+    .feed__track img{height:380px;}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -290,21 +297,17 @@
 <!-- ── hero ──
      текст дропа стоит первым, как на последней странице спецификации -->
 <header class="phero"><div class="wrap">
+  <div>
   <div class="kicker">soft power merch · новый дроп</div>
   <h1>peace<br>through practice</h1>
   <p class="lead">этот лонгслив будет обнимать тебя всю осень. каждый день он будет напоминать тебе о том, что ежедневная практика и есть верный путь к твоему внутреннему спокойствию и устойчивости.</p>
   <p class="until">предзаказ открыт до 5 сентября</p>
   <a class="btn" href="#shop">предзаказ →</a>
-</div></header>
+  </div>
 
-<!-- ── фотографии дропа ──
-     намеренно без заголовка и без обрезки: кадры стоят целиком, как сняты.
-     чтобы поменять, впиши другие имена файлов из images/ -->
-<section class="shots"><div class="wrap">
-  <img src="images/merch-longsleeve-photo-1.jpg" alt="лонгслив на прогулке">
-  <img src="images/merch-longsleeve-photo-2.jpg" alt="рукав с вышивкой soft power">
-  <img src="images/merch-longsleeve-photo-3.jpg" alt="печать peace through practice на фоне неба">
-</div></section>
+  <!-- ФОТО В ШАПКУ: чтобы поменять снимок, впиши другое имя файла из images/ -->
+  <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="лонгслив peace through practice"></div>
+</div></header>
 
 <div class="wrap"><hr class="hr"></div>
 
@@ -318,6 +321,29 @@
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
+
+<!-- ── лента атмосферных кадров ──
+     листается вбок. чтобы добавить снимок, положи файл в images/
+     и допиши сюда строку: порядок в разметке и есть порядок в ленте -->
+<section class="feed" aria-label="фотографии дропа">
+  <div class="feed__track">
+  <img src="images/merch-feed-01.jpg" alt="лонгслив на лесной дороге" loading="lazy">
+  <img src="images/merch-feed-02.jpg" alt="лонгслив на берегу океана" loading="lazy">
+  <img src="images/merch-feed-03.jpg" alt="манжет с вышивкой soft power" loading="lazy">
+  <img src="images/merch-feed-04.jpg" alt="рукав лонгслива у лица, скала позади" loading="lazy">
+  <img src="images/merch-feed-05.jpg" alt="лонгслив у мшистого камня" loading="lazy">
+  <img src="images/merch-feed-06.jpg" alt="печать на фоне неба" loading="lazy">
+  <img src="images/merch-feed-07.jpg" alt="берег между скал" loading="lazy">
+  <img src="images/merch-feed-08.jpg" alt="печать peace through practice на просвет" loading="lazy">
+  <img src="images/merch-feed-09.jpg" alt="манжет через плечо" loading="lazy">
+  <img src="images/merch-feed-10.jpg" alt="печать крупным планом" loading="lazy">
+  <img src="images/merch-feed-11.jpg" alt="лонгслив, руки в стороны" loading="lazy">
+  <img src="images/merch-feed-12.jpg" alt="ткань и манжет на камне" loading="lazy">
+  <img src="images/merch-feed-13.jpg" alt="лонгслив на рассветном берегу" loading="lazy">
+  <img src="images/merch-feed-14.jpg" alt="пасмурный океан" loading="lazy">
+  <img src="images/merch-feed-15.jpg" alt="лонгслив со спины у воды" loading="lazy">
+  </div>
+</section>
 
 <!-- ── условия предзаказа ── -->
 <section><div class="wrap">
