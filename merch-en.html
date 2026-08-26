@@ -133,16 +133,33 @@
   .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
   .faq-item a{color:var(--ink); text-underline-offset:3px;}
 
-  /* ─ размеры ─ */
-  .sizes{width:100%; max-width:640px; border-collapse:collapse; font-size:14.5px;}
-  .sizes caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:14px;}
-  .sizes th,.sizes td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
-  .sizes th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
-  .sizes td:first-child{font-family:Georgia,serif; font-size:18px;}
+  /* ─ факты в шапке: по строке на мысль, чтобы читалось, а не слипалось ─ */
+  .facts{list-style:none; margin:24px 0 0; padding:0;}
+  .facts li{font-size:15.5px; line-height:1.55; color:var(--soft); padding:10px 0; border-top:1px solid var(--line);}
+  .facts li:first-child{border-top:none; padding-top:0; color:var(--ink); font-family:Georgia,serif; font-size:19px;}
 
-  /* ─ полоса фотографий ─ */
-  .shots{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
-  .shots img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+  /* ─ ракурсы товара: спереди, сзади, рукав ─ */
+  .views{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px;}
+  .views img{width:100%; height:auto; display:block; border:1px solid var(--line);}
+  .views figcaption{margin-top:9px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
+
+  /* ссылка, открывающая окно с размерами */
+  .sizes-link{margin-top:24px;}
+  .linkbtn{background:none; border:none; padding:0; font:inherit; font-size:14.5px; color:var(--ink); cursor:pointer; text-decoration:underline; text-underline-offset:4px; transition:.2s;}
+  .linkbtn:hover{color:var(--soft);}
+
+  /* ─ полоса фотографий: кадры целиком, без обрезки ─ */
+  .shots .wrap{max-width:1180px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .shots img{width:100%; height:auto; display:block;}
+
+  /* ─ окно с размерами ─ */
+  .modal .modal__box--wide{max-width:960px;}
+  .merki{width:100%; height:auto; display:block; margin-bottom:26px;}
+  .sizes-table{width:100%; border-collapse:collapse; font-size:14.5px;}
+  .sizes-table caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:16px;}
+  .sizes-table th,.sizes-table td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
+  .sizes-table th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
+  .sizes-table td:first-child{font-family:Georgia,serif; font-size:18px;}
 
   /* ─ корзина ─ */
   .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
@@ -223,7 +240,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
-    .shots{grid-template-columns:repeat(2,1fr);}
+    .shots .wrap,.views{grid-template-columns:1fr;}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -234,8 +251,7 @@
 </head>
 <body>
 
-<!-- навигация: как на остальных страницах, плюс корзина.
-     ссылки «мерч» здесь намеренно нет — страница пока не показывается на сайте -->
+<!-- навигация: как на остальных страницах, плюс корзина -->
 <nav><div class="wrap">
   <a class="name" href="index-en">dasha prostova</a>
   <span class="links">
@@ -264,9 +280,14 @@
 <!-- ── hero ── -->
 <header class="phero"><div class="wrap">
   <div>
-    <div class="kicker">soft power merch</div>
+    <div class="kicker">soft power merch · new drop</div>
     <h1>peace<br>through practice</h1>
-    <p class="lead">a limited-run long sleeve. pre-order is open till 5 september — the piece is made to order, takes up to four weeks, and shipping is counted separately.</p>
+    <ul class="facts">
+      <li>a limited-run long sleeve</li>
+      <li>pre-order is open till 5 september</li>
+      <li>made to order, up to 4 weeks in the making</li>
+      <li>shipping is not included and is counted separately</li>
+    </ul>
     <a class="btn" href="#shop">pre-order →</a>
   </div>
 
@@ -275,18 +296,33 @@
   <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="peace through practice long sleeve"></div>
 </div></header>
 
+<!-- ── фотографии дропа ──
+     намеренно без заголовка и без обрезки: кадры стоят целиком, как сняты -->
+<section class="shots"><div class="wrap">
+  <img src="images/merch-longsleeve-photo-1.jpg" alt="the long sleeve on a walk">
+  <img src="images/merch-longsleeve-photo-2.jpg" alt="the cuff with the soft power embroidery">
+  <img src="images/merch-longsleeve-photo-3.jpg" alt="the peace through practice print against the sky">
+</div></section>
+
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── витрина ──
-     карточки рисуются из js/merch-catalog.js — там же товары, цены и фото -->
+<!-- ── витрина ── -->
 <section id="shop"><div class="wrap">
   <div class="sec-label">the drop</div>
   <div class="pgrid" id="shopGrid"></div>
+
+  <div class="views">
+    <figure><img src="images/merch-longsleeve-front.jpg" alt="the long sleeve from the front"><figcaption>front</figcaption></figure>
+    <figure><img src="images/merch-longsleeve-back.jpg" alt="the circular print on the back"><figcaption>back</figcaption></figure>
+    <figure><img src="images/merch-longsleeve-cuff.jpg" alt="the soft power embroidery on the cuff"><figcaption>sleeve</figcaption></figure>
+  </div>
+
+  <p class="sizes-link"><button class="linkbtn" id="sizesOpen" type="button">size chart and how it is measured</button></p>
 </div></section>
 
 <!-- ── утверждение ── -->
 <section class="statement"><div class="wrap">
-  <p>this long sleeve will hold you through the whole autumn — and remind you every day that a daily practice is the surest way to your own calm and steadiness.</p>
+  <p>this long sleeve will hold you through the whole autumn and remind you every day that a daily practice is the surest way to your own calm and steadiness.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
@@ -301,80 +337,49 @@
     </div>
     <div class="step">
       <h3>made in up to 4 weeks</h3>
-      <p>the print and the embroidery are made to order — that takes up to four weeks. i will write to you as soon as the run is ready.</p>
+      <p>the print and the embroidery are made to order, and that takes up to four weeks. i will write to you as soon as the run is ready.</p>
     </div>
     <div class="step">
       <h3>shipping counted separately</h3>
-      <p>it is not included in the price: we will work it out once we agree how to send it. in lisbon you can pick it up in person — at a practice or however suits you.</p>
+      <p>it is not included in the price: we will work it out once we agree how to send it. in lisbon you can pick it up in person, at a practice or however suits you.</p>
     </div>
   </div>
 </div></section>
 
-<div class="wrap"><hr class="hr"></div>
-
-<!-- ── размеры ──
-     мерки из спецификации дропа: вещь, разложенная на плоскости -->
-<section><div class="wrap">
-  <div class="sec-label">sizes</div>
-  <table class="sizes">
-    <caption>the garment measured flat. the cut is oversized: if you are between two sizes, take the smaller one.</caption>
-    <thead><tr><th>size</th><th>width</th><th>length</th><th>sleeve</th></tr></thead>
-    <tbody>
-      <tr><td>m</td><td>61 cm</td><td>68.5 cm</td><td>59 cm</td></tr>
-      <tr><td>l</td><td>64.75 cm</td><td>71 cm</td><td>59 cm</td></tr>
-      <tr><td>xl</td><td>68.5 cm</td><td>73.5 cm</td><td>59 cm</td></tr>
-    </tbody>
-  </table>
-</div></section>
-
-<div class="wrap"><hr class="hr"></div>
-
-<!-- ── фотографии ──
-     чтобы поменять снимки, впиши другие имена файлов из images/ -->
-<section><div class="wrap">
-  <div class="sec-label">how it lives</div>
-  <div class="shots">
-    <img src="images/merch-longsleeve-life-1.jpg" alt="peace through practice print on the back">
-    <img src="images/merch-longsleeve-life-2.jpg" alt="the long sleeve by the ocean">
-    <img src="images/merch-longsleeve-life-3.jpg" alt="soft power embroidery on the cuff">
-    <img src="images/merch-longsleeve-life-4.jpg" alt="the long sleeve on a walk">
-  </div>
-</div></section>
 <!-- ── вопросы ── -->
 <section><div class="wrap">
   <div class="sec-label">questions</div>
   <div class="faq">
     <div class="faq-item">
       <h3>when will i get my order?</h3>
-      <p>the pre-order is open till 5 september, then the run goes into production. it takes up to four weeks to make — i will write to you as soon as the pieces are with me, and we will agree how to get yours to you.</p>
+      <p>the pre-order is open till 5 september, then the run goes into production. it takes up to four weeks to make. i will write to you as soon as the pieces are with me, and we will agree how to get yours to you.</p>
     </div>
     <div class="faq-item">
       <h3>how much is shipping?</h3>
-      <p>shipping is not included in the price and is counted separately — it depends on the country and the method. tell me where it should go and i will work it out. in lisbon you can pick it up in person, and then there is no shipping at all.</p>
+      <p>shipping is not included in the price and is counted separately: it depends on the country and the method. tell me where it should go and i will work it out. in lisbon you can pick it up in person, and then there is no shipping at all.</p>
     </div>
     <div class="faq-item">
       <h3>what if the size doesn’t fit?</h3>
-      <p>the pieces are made to the orders collected, so there are no spare sizes left over. check the measurements in the table above, and if you are between two sizes — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and i will help you choose.</p>
+      <p>the pieces are made to the orders collected, so there are no spare sizes left over. check the measurements in the size chart, and if you are between two sizes, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and i will help you choose.</p>
     </div>
     <div class="faq-item">
       <h3>is there another way to pay?</h3>
-      <p>you can pay for the pre-order by card on a secure stripe page — card details never pass through this site — or in cash when we meet in lisbon. if neither works for you, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and we’ll find an option that feels right.</p>
+      <p>you can pay for the pre-order by card on a secure stripe page, card details never pass through this site, or in cash when we meet in lisbon. if neither works for you, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and we’ll find an option that feels right.</p>
     </div>
     <div class="faq-item">
       <h3>what happens after i pay?</h3>
-      <p>i’ll write to you at the contact you left with the order, and we’ll agree on shipping or on meeting up. your order number appears on the page right after payment — no need to keep it, i have it too.</p>
+      <p>i’ll write to you at the contact you left with the order, and we’ll agree on shipping or on meeting up. your order number appears on the page right after payment, no need to keep it, i have it too.</p>
     </div>
     <div class="faq-item">
-      <h3>the payment doesn’t go through — what now?</h3>
-      <p>sometimes a bank refuses the payment. nothing is charged when that happens — the order simply isn’t placed. <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me on telegram</a> and i’ll take the order by hand.</p>
+      <h3>the payment doesn’t go through, what now?</h3>
+      <p>sometimes a bank refuses the payment. nothing is charged when that happens, the order simply isn’t placed. <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me on telegram</a> and i’ll take the order by hand.</p>
     </div>
   </div>
 </div></section>
 
-
 <footer><div class="wrap">
   dasha prostova · lisbon → world<br>
-  soft power — my motto and the name of my projects<br>
+  soft power, my motto and the name of my projects<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">email</a> · © 2026
 </div></footer>
 
@@ -390,6 +395,24 @@
 </aside>
 <div class="modal" id="modal"></div>
 
+<!-- ── размеры: схема и таблица из спецификации дропа ── -->
+<div class="modal" id="sizes" role="dialog" aria-modal="true" aria-label="sizes">
+  <div class="modal__box modal__box--wide">
+    <h3>sizes</h3>
+    <img class="merki" src="images/merch-longsleeve-merki.jpg" alt="how the long sleeve is measured: width, length, sleeve">
+    <table class="sizes-table">
+      <caption>the garment measured flat. the cut is oversized: if you are between two sizes, take the smaller one.</caption>
+      <thead><tr><th>size</th><th>width</th><th>length</th><th>sleeve</th></tr></thead>
+      <tbody>
+        <tr><td>m</td><td>61 cm</td><td>68.5 cm</td><td>59 cm</td></tr>
+        <tr><td>l</td><td>64.75 cm</td><td>71 cm</td><td>59 cm</td></tr>
+        <tr><td>xl</td><td>68.5 cm</td><td>73.5 cm</td><td>59 cm</td></tr>
+      </tbody>
+    </table>
+    <button class="btn btn-outline" id="sizesClose" type="button">close</button>
+  </div>
+</div>
+
 <script>
   /* бургер-меню — как на остальных страницах */
   (function(){
@@ -402,6 +425,19 @@
     mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
   })();
+
+  /* окно с размерами: открывается ссылкой в витрине */
+  (function(){
+    var box=document.getElementById('sizes'), open=document.getElementById('sizesOpen'), close=document.getElementById('sizesClose');
+    if(!box||!open) return;
+    function show(){ box.classList.add('on'); document.body.classList.add('no-scroll'); }
+    function hide(){ box.classList.remove('on'); document.body.classList.remove('no-scroll'); }
+    open.addEventListener('click', show);
+    close.addEventListener('click', hide);
+    box.addEventListener('click', function(e){ if(e.target===box) hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+  })();
+
   var MERCH_LANG = 'en';
 </script>
 <script src="js/merch-catalog.js"></script>

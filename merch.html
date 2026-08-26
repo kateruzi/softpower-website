@@ -133,16 +133,33 @@
   .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
   .faq-item a{color:var(--ink); text-underline-offset:3px;}
 
-  /* ─ размеры ─ */
-  .sizes{width:100%; max-width:640px; border-collapse:collapse; font-size:14.5px;}
-  .sizes caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:14px;}
-  .sizes th,.sizes td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
-  .sizes th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
-  .sizes td:first-child{font-family:Georgia,serif; font-size:18px;}
+  /* ─ факты в шапке: по строке на мысль, чтобы читалось, а не слипалось ─ */
+  .facts{list-style:none; margin:24px 0 0; padding:0;}
+  .facts li{font-size:15.5px; line-height:1.55; color:var(--soft); padding:10px 0; border-top:1px solid var(--line);}
+  .facts li:first-child{border-top:none; padding-top:0; color:var(--ink); font-family:Georgia,serif; font-size:19px;}
 
-  /* ─ полоса фотографий ─ */
-  .shots{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
-  .shots img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+  /* ─ ракурсы товара: спереди, сзади, рукав ─ */
+  .views{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:30px;}
+  .views img{width:100%; height:auto; display:block; border:1px solid var(--line);}
+  .views figcaption{margin-top:9px; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint);}
+
+  /* ссылка, открывающая окно с размерами */
+  .sizes-link{margin-top:24px;}
+  .linkbtn{background:none; border:none; padding:0; font:inherit; font-size:14.5px; color:var(--ink); cursor:pointer; text-decoration:underline; text-underline-offset:4px; transition:.2s;}
+  .linkbtn:hover{color:var(--soft);}
+
+  /* ─ полоса фотографий: кадры целиком, без обрезки ─ */
+  .shots .wrap{max-width:1180px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .shots img{width:100%; height:auto; display:block;}
+
+  /* ─ окно с размерами ─ */
+  .modal .modal__box--wide{max-width:960px;}
+  .merki{width:100%; height:auto; display:block; margin-bottom:26px;}
+  .sizes-table{width:100%; border-collapse:collapse; font-size:14.5px;}
+  .sizes-table caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:16px;}
+  .sizes-table th,.sizes-table td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
+  .sizes-table th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
+  .sizes-table td:first-child{font-family:Georgia,serif; font-size:18px;}
 
   /* ─ корзина ─ */
   .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
@@ -223,7 +240,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
-    .shots{grid-template-columns:repeat(2,1fr);}
+    .shots .wrap,.views{grid-template-columns:1fr;}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -266,7 +283,12 @@
   <div>
     <div class="kicker">soft power merch · новый дроп</div>
     <h1>peace<br>through practice</h1>
-    <p class="lead">лонгслив ограниченного тиража. предзаказ открыт до 5 сентября — вещь шьётся под заказ, изготовление до четырёх недель, доставка считается отдельно.</p>
+    <ul class="facts">
+      <li>лонгслив ограниченного тиража</li>
+      <li>предзаказ открыт до 5 сентября</li>
+      <li>вещь шьётся под заказ, изготовление до 4 недель</li>
+      <li>доставка в цену не входит и считается отдельно</li>
+    </ul>
     <a class="btn" href="#shop">предзаказ →</a>
   </div>
 
@@ -275,18 +297,35 @@
   <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="лонгслив peace through practice"></div>
 </div></header>
 
+<!-- ── фотографии дропа ──
+     намеренно без заголовка и без обрезки: кадры стоят целиком, как сняты.
+     чтобы поменять, впиши другие имена файлов из images/ -->
+<section class="shots"><div class="wrap">
+  <img src="images/merch-longsleeve-photo-1.jpg" alt="лонгслив на прогулке">
+  <img src="images/merch-longsleeve-photo-2.jpg" alt="рукав с вышивкой soft power">
+  <img src="images/merch-longsleeve-photo-3.jpg" alt="печать peace through practice на фоне неба">
+</div></section>
+
 <div class="wrap"><hr class="hr"></div>
 
 <!-- ── витрина ──
-     карточки рисуются из js/merch-catalog.js — там же товары, цены и фото -->
+     карточка рисуется из js/merch-catalog.js, там же цены и фото -->
 <section id="shop"><div class="wrap">
   <div class="sec-label">дроп</div>
   <div class="pgrid" id="shopGrid"></div>
+
+  <div class="views">
+    <figure><img src="images/merch-longsleeve-front.jpg" alt="лонгслив спереди"><figcaption>спереди</figcaption></figure>
+    <figure><img src="images/merch-longsleeve-back.jpg" alt="печать по кругу на спине"><figcaption>сзади</figcaption></figure>
+    <figure><img src="images/merch-longsleeve-cuff.jpg" alt="вышивка soft power на манжете"><figcaption>рукав</figcaption></figure>
+  </div>
+
+  <p class="sizes-link"><button class="linkbtn" id="sizesOpen" type="button">таблица размеров и как мерить</button></p>
 </div></section>
 
 <!-- ── утверждение ── -->
 <section class="statement"><div class="wrap">
-  <p>этот лонгслив будет обнимать тебя всю осень — и каждый день напоминать, что ежедневная практика и есть верный путь к внутреннему спокойствию и устойчивости.</p>
+  <p>этот лонгслив будет обнимать тебя всю осень и каждый день напоминать, что ежедневная практика и есть верный путь к внутреннему спокойствию и устойчивости.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
@@ -301,45 +340,15 @@
     </div>
     <div class="step">
       <h3>изготовление до 4 недель</h3>
-      <p>печать и вышивку делают под заказ — на это уходит до четырёх недель. я напишу тебе, как только тираж будет готов.</p>
+      <p>печать и вышивку делают под заказ, на это уходит до четырёх недель. я напишу тебе, как только тираж будет готов.</p>
     </div>
     <div class="step">
       <h3>доставка считается отдельно</h3>
-      <p>в цену она не входит: посчитаем её отдельно, когда договоримся о способе. в лиссабоне можно забрать лично — на практике или как удобно.</p>
+      <p>в цену она не входит: посчитаем её отдельно, когда договоримся о способе. в лиссабоне можно забрать лично, на практике или как удобно.</p>
     </div>
   </div>
 </div></section>
 
-<div class="wrap"><hr class="hr"></div>
-
-<!-- ── размеры ──
-     мерки из спецификации дропа: вещь, разложенная на плоскости -->
-<section><div class="wrap">
-  <div class="sec-label">размеры</div>
-  <table class="sizes">
-    <caption>мерки самой вещи, разложенной на плоскости. крой оверсайз: если сомневаешься между двумя размерами, бери меньший.</caption>
-    <thead><tr><th>размер</th><th>ширина</th><th>длина</th><th>рукав</th></tr></thead>
-    <tbody>
-      <tr><td>m</td><td>61 см</td><td>68,5 см</td><td>59 см</td></tr>
-      <tr><td>l</td><td>64,75 см</td><td>71 см</td><td>59 см</td></tr>
-      <tr><td>xl</td><td>68,5 см</td><td>73,5 см</td><td>59 см</td></tr>
-    </tbody>
-  </table>
-</div></section>
-
-<div class="wrap"><hr class="hr"></div>
-
-<!-- ── фотографии ──
-     чтобы поменять снимки, впиши другие имена файлов из images/ -->
-<section><div class="wrap">
-  <div class="sec-label">как это живёт</div>
-  <div class="shots">
-    <img src="images/merch-longsleeve-life-1.jpg" alt="печать peace through practice на спине лонгслива">
-    <img src="images/merch-longsleeve-life-2.jpg" alt="лонгслив на берегу океана">
-    <img src="images/merch-longsleeve-life-3.jpg" alt="вышивка soft power на манжете">
-    <img src="images/merch-longsleeve-life-4.jpg" alt="лонгслив на прогулке">
-  </div>
-</div></section>
 <!-- ── вопросы ──
      тексты правятся прямо здесь, это обычная разметка -->
 <section><div class="wrap">
@@ -347,35 +356,34 @@
   <div class="faq">
     <div class="faq-item">
       <h3>когда я получу заказ?</h3>
-      <p>предзаказ открыт до 5 сентября, потом тираж уходит в работу. изготовление занимает до четырёх недель — я напишу тебе, как только вещи будут у меня, и мы договоримся о передаче.</p>
+      <p>предзаказ открыт до 5 сентября, потом тираж уходит в работу. изготовление занимает до четырёх недель. я напишу тебе, как только вещи будут у меня, и мы договоримся о передаче.</p>
     </div>
     <div class="faq-item">
       <h3>сколько стоит доставка?</h3>
-      <p>доставка в цену не входит и считается отдельно — она зависит от страны и способа. напиши, куда удобно доставить, и я посчитаю. в лиссабоне можно забрать лично, тогда доставки нет вовсе.</p>
+      <p>доставка в цену не входит и считается отдельно: она зависит от страны и способа. напиши, куда удобно доставить, и я посчитаю. в лиссабоне можно забрать лично, тогда доставки нет вовсе.</p>
     </div>
     <div class="faq-item">
       <h3>а если размер не подойдёт?</h3>
-      <p>вещи шьются под собранные заказы, поэтому лишних размеров не остаётся. сверься с мерками в таблице выше, а если сомневаешься между двумя размерами — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, помогу выбрать.</p>
+      <p>вещи шьются под собранные заказы, поэтому лишних размеров не остаётся. сверься с мерками в таблице размеров, а если сомневаешься между двумя, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, помогу выбрать.</p>
     </div>
     <div class="faq-item">
       <h3>можно ли оплатить по-другому?</h3>
-      <p>предзаказ можно оплатить картой на защищённой странице stripe — данные карты через сайт не проходят — или наличными при встрече в лиссабоне. если ни то, ни другое не подходит, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, и мы найдём вариант.</p>
+      <p>предзаказ можно оплатить картой на защищённой странице stripe, данные карты через сайт не проходят, или наличными при встрече в лиссабоне. если ни то, ни другое не подходит, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, и мы найдём вариант.</p>
     </div>
     <div class="faq-item">
       <h3>что будет после оплаты?</h3>
-      <p>я напишу тебе на тот контакт, который ты оставила при заказе, и мы договоримся о доставке или встрече. номер заказа появится на странице сразу после оплаты — запоминать его не нужно, он есть и у меня.</p>
+      <p>я напишу тебе на тот контакт, который ты оставила при заказе, и мы договоримся о доставке или встрече. номер заказа появится на странице сразу после оплаты, запоминать его не нужно, он есть и у меня.</p>
     </div>
     <div class="faq-item">
       <h3>оплата не проходит, что делать?</h3>
-      <p>бывает, что банк не пропускает платёж. в этом случае деньги не списываются — заказ просто не оформляется. <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне в телеграм</a>, и я оформлю заказ руками.</p>
+      <p>бывает, что банк не пропускает платёж. в этом случае деньги не списываются, заказ просто не оформляется. <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне в телеграм</a>, и я оформлю заказ руками.</p>
     </div>
   </div>
 </div></section>
 
-
 <footer><div class="wrap">
   даша простова · лиссабон → мир<br>
-  soft power — мой девиз и имя моих проектов<br>
+  soft power, мой девиз и имя моих проектов<br>
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
 
@@ -391,6 +399,24 @@
 </aside>
 <div class="modal" id="modal"></div>
 
+<!-- ── размеры: схема и таблица из спецификации дропа ── -->
+<div class="modal" id="sizes" role="dialog" aria-modal="true" aria-label="размеры">
+  <div class="modal__box modal__box--wide">
+    <h3>размеры</h3>
+    <img class="merki" src="images/merch-longsleeve-merki.jpg" alt="как мерить лонгслив: ширина, длина, рукав">
+    <table class="sizes-table">
+      <caption>мерки самой вещи, разложенной на плоскости. крой оверсайз: если сомневаешься между двумя размерами, бери меньший.</caption>
+      <thead><tr><th>размер</th><th>ширина</th><th>длина</th><th>рукав</th></tr></thead>
+      <tbody>
+        <tr><td>m</td><td>61 см</td><td>68,5 см</td><td>59 см</td></tr>
+        <tr><td>l</td><td>64,75 см</td><td>71 см</td><td>59 см</td></tr>
+        <tr><td>xl</td><td>68,5 см</td><td>73,5 см</td><td>59 см</td></tr>
+      </tbody>
+    </table>
+    <button class="btn btn-outline" id="sizesClose" type="button">закрыть</button>
+  </div>
+</div>
+
 <script>
   /* бургер-меню — как на остальных страницах */
   (function(){
@@ -403,6 +429,19 @@
     mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
   })();
+
+  /* окно с размерами: открывается ссылкой в витрине */
+  (function(){
+    var box=document.getElementById('sizes'), open=document.getElementById('sizesOpen'), close=document.getElementById('sizesClose');
+    if(!box||!open) return;
+    function show(){ box.classList.add('on'); document.body.classList.add('no-scroll'); }
+    function hide(){ box.classList.remove('on'); document.body.classList.remove('no-scroll'); }
+    open.addEventListener('click', show);
+    close.addEventListener('click', hide);
+    box.addEventListener('click', function(e){ if(e.target===box) hide(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') hide(); });
+  })();
+
   var MERCH_LANG = 'ru';
 </script>
 <script src="js/merch-catalog.js"></script>
