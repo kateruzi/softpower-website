@@ -28,23 +28,25 @@ var SHOP = {
   /* ── тексты интерфейса ──────────────────────────────────────────────── */
   var T = {
     ru: {
-      cart: 'корзина', add: 'в корзину', added: 'добавлено',
+      cart: 'корзина', add: 'предзаказ', added: 'добавлено',
       empty: 'пока пусто. выбери что-нибудь на странице.',
       total: 'итого', remove: 'убрать', soldout: 'закончилось',
-      photosoon: 'фото скоро', close: 'закрыть', checkout: 'оформить заказ',
+      photosoon: 'фото скоро', close: 'закрыть', checkout: 'оформить предзаказ',
       how: 'как удобно оплатить',
       card: 'картой онлайн',
       cardNote: 'защищённая страница stripe · apple pay и google pay',
       cash: 'наличными при встрече',
-      cashNote: 'заберёшь у меня в лиссабоне — на практике или как договоримся',
+      cashNote: 'заберёшь у меня в лиссабоне, когда тираж будет готов',
       order: 'оформление', back: '← вернуться в корзину',
       fName: 'как тебя зовут', fContact: 'телеграм или почта',
       fPhone: 'телефон, если удобно', fComment: 'что-то важное про заказ',
       optional: 'необязательно',
-      send: 'отправить заказ', sending: 'отправляю…',
+      send: 'отправить предзаказ', sending: 'отправляю…',
       req: 'заполни это поле',
-      cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда и где забрать.',
-      agree: 'оформляя заказ, ты соглашаешься с обработкой персональных данных — ' +
+      cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда тираж будет готов.',
+      pre: 'это предзаказ: вещь шьётся под тебя, изготовление занимает до 4 недель. '+
+           'доставка в стоимость не входит и считается отдельно — я напишу тебе, и мы договоримся, как удобнее передать.',
+      agree: 'оформляя предзаказ, ты соглашаешься с обработкой персональных данных — ' +
              '<a href="politika" target="_blank" rel="noopener">политика конфиденциальности</a>',
       err: 'что-то пошло не так. напиши мне в телеграм, и я оформлю заказ руками.',
       demo: 'оплата ещё не подключена',
@@ -52,22 +54,24 @@ var SHOP = {
       demoTg: 'написать в телеграм'
     },
     en: {
-      cart: 'cart', add: 'add to cart', added: 'added',
+      cart: 'cart', add: 'pre-order', added: 'added',
       empty: 'empty for now — pick something on the page.',
       total: 'total', remove: 'remove', soldout: 'sold out',
-      photosoon: 'photo coming', close: 'close', checkout: 'place order',
+      photosoon: 'photo coming', close: 'close', checkout: 'place pre-order',
       how: 'how would you like to pay',
       card: 'card online',
       cardNote: 'secure stripe page · apple pay and google pay',
       cash: 'cash when we meet',
-      cashNote: 'pick it up from me in lisbon — at a practice or as we agree',
+      cashNote: 'pick it up from me in lisbon once the run is ready',
       order: 'your details', back: '← back to cart',
       fName: 'your name', fContact: 'telegram or email',
       fPhone: 'phone, if convenient', fComment: 'anything important about the order',
       optional: 'optional',
-      send: 'send order', sending: 'sending…',
+      send: 'send pre-order', sending: 'sending…',
       req: 'please fill this in',
-      cashFoot: 'you pay when we meet — nothing to pay now. i will write to you about when and where to pick it up.',
+      cashFoot: 'you pay when we meet — nothing to pay now. i will write to you once the run is ready.',
+      pre: 'this is a pre-order: the piece is made for you and takes up to 4 weeks. '+
+           'shipping is not included and is calculated separately — i will write to you, and we will agree on the best way to get it to you.',
       agree: 'by placing the order you agree to the processing of your personal data — ' +
              '<a href="politika" target="_blank" rel="noopener">privacy policy</a>',
       err: 'something went wrong. write to me on telegram and i will take the order by hand.',
@@ -277,6 +281,7 @@ var SHOP = {
 
     foot.innerHTML =
       '<div class="sum"><span>' + T.total + '</span><b>' + money(total()) + '</b></div>' +
+      '<p class="drawer__pre">' + T.pre + '</p>' +
       '<div class="pay"><span class="pay__label">' + T.how + '</span>' +
         payRow('card', T.card, T.cardNote) +
         payRow('cash', T.cash, T.cashNote) +
@@ -336,6 +341,7 @@ var SHOP = {
       '</div>';
     el('drawerFoot').innerHTML =
       '<div class="sum"><span>' + T.total + '</span><b>' + money(total()) + '</b></div>' +
+      '<p class="drawer__pre">' + T.pre + '</p>' +
       '<p class="drawer__note">' + T.cashFoot + '</p>' +
       '<button class="btn" id="sendOrder" type="button">' + T.send + '</button>' +
       '<p class="drawer__agree">' + T.agree + '</p>';

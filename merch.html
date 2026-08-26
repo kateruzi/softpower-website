@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>soft power merch</title>
-<meta name="robots" content="noindex, nofollow">
+<title>soft power merch · peace through practice</title>
 <style>
   /* ═══ страница «soft power merch». дизайн-система целиком из pass.html:
      тёплая бумага, волосяные линии, georgia в заголовках, чёрные
@@ -133,6 +132,17 @@
   .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
   .faq-item a{color:var(--ink); text-underline-offset:3px;}
 
+  /* ─ размеры ─ */
+  .sizes{width:100%; max-width:640px; border-collapse:collapse; font-size:14.5px;}
+  .sizes caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:14px;}
+  .sizes th,.sizes td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
+  .sizes th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
+  .sizes td:first-child{font-family:Georgia,serif; font-size:18px;}
+
+  /* ─ полоса фотографий ─ */
+  .shots{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+  .shots img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
   /* ─ корзина ─ */
   .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
   .scrim.on{opacity:1; visibility:visible;}
@@ -143,6 +153,7 @@
   .drawer__close{background:none; border:none; font-size:22px; line-height:1; color:var(--ink); cursor:pointer; padding:0;}
   .drawer__body{flex:1; overflow-y:auto; padding:0 26px;}
   .drawer__foot{border-top:1px solid var(--line); padding:20px 26px 26px;}
+  .drawer__pre{margin-top:14px; padding:13px 15px; background:var(--warm); font-size:12.5px; line-height:1.6; color:var(--soft);}
   .drawer__note{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:10px;}
   .drawer__agree{margin-top:12px; font-size:11px; line-height:1.5; color:var(--faint); text-align:center;}
   .drawer__agree a{color:inherit; text-decoration:underline;}
@@ -211,6 +222,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
+    .shots{grid-template-columns:repeat(2,1fr);}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -250,15 +262,15 @@
 <!-- ── hero ── -->
 <header class="phero"><div class="wrap">
   <div>
-    <div class="kicker">soft power merch</div>
-    <h1>вещи, в которых<br>остаётся тепло</h1>
-    <p class="lead">небольшой тираж, плотный хлопок и надписи, которые хочется перечитывать.</p>
-    <a class="btn" href="#shop">посмотреть →</a>
+    <div class="kicker">soft power merch · новый дроп</div>
+    <h1>peace<br>through practice</h1>
+    <p class="lead">лонгслив ограниченного тиража. предзаказ открыт до 5 сентября — вещь шьётся под заказ, изготовление до четырёх недель, доставка считается отдельно.</p>
+    <a class="btn" href="#shop">предзаказ →</a>
   </div>
 
   <!-- ФОТО В ШАПКУ: чтобы поменять снимок, впиши другое имя файла из images/.
        Шапка с фото сама встаёт в две колонки, как на pass. -->
-  <div><img class="phero__img" src="images/merch-hoodie-graphite.jpg" alt="soft power merch"></div>
+  <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="лонгслив peace through practice"></div>
 </div></header>
 
 <div class="wrap"><hr class="hr"></div>
@@ -266,33 +278,64 @@
 <!-- ── витрина ──
      карточки рисуются из js/merch-catalog.js — там же товары, цены и фото -->
 <section id="shop"><div class="wrap">
-  <div class="sec-label">что есть сейчас</div>
+  <div class="sec-label">дроп</div>
   <div class="pgrid" id="shopGrid"></div>
 </div></section>
 
 <!-- ── утверждение ── -->
 <section class="statement"><div class="wrap">
-  <p>каждая вещь передаётся из рук в руки — упакованной вручную, с запиской.</p>
+  <p>этот лонгслив будет обнимать тебя всю осень — и каждый день напоминать, что ежедневная практика и есть верный путь к внутреннему спокойствию и устойчивости.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── как это работает ── -->
+<!-- ── условия предзаказа ── -->
 <section><div class="wrap">
-  <div class="sec-label">как это работает</div>
+  <div class="sec-label">условия предзаказа</div>
   <div class="steps">
     <div class="step">
-      <h3>оплата</h3>
-      <p>картой на защищённой странице stripe — или наличными при встрече, если так удобнее. данные карты через сайт не проходят.</p>
+      <h3>предзаказ до 5 сентября</h3>
+      <p>тираж ограничен и шьётся под собранные заказы. после 5 сентября предзаказ закрывается.</p>
     </div>
     <div class="step">
-      <h3>как забрать</h3>
-      <p>лично в лиссабоне — на практике или как договоримся. я напишу тебе сразу после заказа.</p>
+      <h3>изготовление до 4 недель</h3>
+      <p>печать и вышивку делают под заказ — на это уходит до четырёх недель. я напишу тебе, как только тираж будет готов.</p>
     </div>
     <div class="step">
-      <h3>если ты не в лиссабоне</h3>
-      <p><a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, и мы придумаем, как передать.</p>
+      <h3>доставка считается отдельно</h3>
+      <p>в цену она не входит: посчитаем её отдельно, когда договоримся о способе. в лиссабоне можно забрать лично — на практике или как удобно.</p>
     </div>
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── размеры ──
+     мерки из спецификации дропа: вещь, разложенная на плоскости -->
+<section><div class="wrap">
+  <div class="sec-label">размеры</div>
+  <table class="sizes">
+    <caption>мерки самой вещи, разложенной на плоскости. крой оверсайз: если сомневаешься между двумя размерами, бери меньший.</caption>
+    <thead><tr><th>размер</th><th>ширина</th><th>длина</th><th>рукав</th></tr></thead>
+    <tbody>
+      <tr><td>m</td><td>61 см</td><td>68,5 см</td><td>59 см</td></tr>
+      <tr><td>l</td><td>64,75 см</td><td>71 см</td><td>59 см</td></tr>
+      <tr><td>xl</td><td>68,5 см</td><td>73,5 см</td><td>59 см</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── фотографии ──
+     чтобы поменять снимки, впиши другие имена файлов из images/ -->
+<section><div class="wrap">
+  <div class="sec-label">как это живёт</div>
+  <div class="shots">
+    <img src="images/merch-longsleeve-life-1.jpg" alt="печать peace through practice на спине лонгслива">
+    <img src="images/merch-longsleeve-life-2.jpg" alt="лонгслив на берегу океана">
+    <img src="images/merch-longsleeve-life-3.jpg" alt="вышивка soft power на манжете">
+    <img src="images/merch-longsleeve-life-4.jpg" alt="лонгслив на прогулке">
   </div>
 </div></section>
 <!-- ── вопросы ──
@@ -301,12 +344,24 @@
   <div class="sec-label">вопросы</div>
   <div class="faq">
     <div class="faq-item">
+      <h3>когда я получу заказ?</h3>
+      <p>предзаказ открыт до 5 сентября, потом тираж уходит в работу. изготовление занимает до четырёх недель — я напишу тебе, как только вещи будут у меня, и мы договоримся о передаче.</p>
+    </div>
+    <div class="faq-item">
+      <h3>сколько стоит доставка?</h3>
+      <p>доставка в цену не входит и считается отдельно — она зависит от страны и способа. напиши, куда удобно доставить, и я посчитаю. в лиссабоне можно забрать лично, тогда доставки нет вовсе.</p>
+    </div>
+    <div class="faq-item">
+      <h3>а если размер не подойдёт?</h3>
+      <p>вещи шьются под собранные заказы, поэтому лишних размеров не остаётся. сверься с мерками в таблице выше, а если сомневаешься между двумя размерами — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, помогу выбрать.</p>
+    </div>
+    <div class="faq-item">
       <h3>можно ли оплатить по-другому?</h3>
-      <p>если тебе неудобен способ оплаты на сайте — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, и мы найдём подходящий вариант.</p>
+      <p>предзаказ можно оплатить картой на защищённой странице stripe — данные карты через сайт не проходят — или наличными при встрече в лиссабоне. если ни то, ни другое не подходит, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">напиши мне</a>, и мы найдём вариант.</p>
     </div>
     <div class="faq-item">
       <h3>что будет после оплаты?</h3>
-      <p>я напишу тебе на тот контакт, который ты оставила при заказе, и мы договоримся, когда и где удобно забрать. номер заказа появится на странице сразу после оплаты — запоминать его не нужно, он есть и у меня.</p>
+      <p>я напишу тебе на тот контакт, который ты оставила при заказе, и мы договоримся о доставке или встрече. номер заказа появится на странице сразу после оплаты — запоминать его не нужно, он есть и у меня.</p>
     </div>
     <div class="faq-item">
       <h3>оплата не проходит, что делать?</h3>

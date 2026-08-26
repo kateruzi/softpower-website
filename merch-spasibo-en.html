@@ -31,6 +31,7 @@
   .kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:20px;}
   h1{font-size:34px; line-height:1.3;}
   .lead{margin-top:22px; font-size:18px; font-family:Georgia,serif; line-height:1.6;}
+  .terms{margin-top:26px; padding:18px 20px; background:var(--warm); font-size:14px; line-height:1.7; color:var(--soft); max-width:560px;}
   .num{display:inline-block; margin-top:26px; border:1px solid var(--line); background:var(--warm); padding:11px 20px; font-size:14px; letter-spacing:.04em;}
   .num b{font-weight:400; font-family:ui-monospace,SFMono-Regular,Menlo,monospace;}
   .back{display:inline-block; margin-top:32px; font-size:14px; color:var(--soft); text-decoration:none;}
@@ -49,8 +50,11 @@
 
 <main><div class="wrap">
   <div class="kicker">soft power merch</div>
-  <h1>thank you, i have your order</h1>
-  <p class="lead" id="lead">i will write to you shortly, and we will agree on when and where to pick it up.</p>
+  <h1>thank you, i have your pre-order</h1>
+  <p class="lead" id="lead">i will write to you shortly.</p>
+  <p class="terms">this is a pre-order: it takes up to four weeks to make.
+    shipping is not included in the price — we will work it out separately once we agree how to send it.
+    in lisbon you can pick it up in person.</p>
   <p class="num" id="num" hidden>order <b></b></p>
   <br>
   <a class="back" href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me on telegram →</a>
@@ -74,7 +78,7 @@
     }
     if(q.get('session_id')){
       document.getElementById('lead').textContent =
-        'payment went through. i will write to you shortly, and we will agree on when and where to pick it up.';
+        'payment went through. i will write to you shortly.';
     }
   })();
 </script>

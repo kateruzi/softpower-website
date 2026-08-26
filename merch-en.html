@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>soft power merch</title>
-<meta name="robots" content="noindex, nofollow">
+<title>soft power merch · peace through practice</title>
 <style>
   /* ═══ страница «soft power merch». дизайн-система целиком из pass.html:
      тёплая бумага, волосяные линии, georgia в заголовках, чёрные
@@ -133,6 +132,17 @@
   .faq-item p{font-size:14.5px; color:var(--soft); line-height:1.7;}
   .faq-item a{color:var(--ink); text-underline-offset:3px;}
 
+  /* ─ размеры ─ */
+  .sizes{width:100%; max-width:640px; border-collapse:collapse; font-size:14.5px;}
+  .sizes caption{caption-side:bottom; text-align:left; font-size:12.5px; color:var(--faint); line-height:1.6; padding-top:14px;}
+  .sizes th,.sizes td{text-align:left; padding:12px 16px 12px 0; border-bottom:1px solid var(--line);}
+  .sizes th{font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); font-weight:400;}
+  .sizes td:first-child{font-family:Georgia,serif; font-size:18px;}
+
+  /* ─ полоса фотографий ─ */
+  .shots{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+  .shots img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block;}
+
   /* ─ корзина ─ */
   .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
   .scrim.on{opacity:1; visibility:visible;}
@@ -143,6 +153,7 @@
   .drawer__close{background:none; border:none; font-size:22px; line-height:1; color:var(--ink); cursor:pointer; padding:0;}
   .drawer__body{flex:1; overflow-y:auto; padding:0 26px;}
   .drawer__foot{border-top:1px solid var(--line); padding:20px 26px 26px;}
+  .drawer__pre{margin-top:14px; padding:13px 15px; background:var(--warm); font-size:12.5px; line-height:1.6; color:var(--soft);}
   .drawer__note{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:10px;}
   .drawer__agree{margin-top:12px; font-size:11px; line-height:1.5; color:var(--faint); text-align:center;}
   .drawer__agree a{color:inherit; text-decoration:underline;}
@@ -211,6 +222,7 @@
     .phero h1{font-size:30px;}
     .phero .wrap:has(.phero__img){grid-template-columns:1fr; gap:32px;}
     .pgrid,.pgrid--1,.pgrid--2,.steps{grid-template-columns:1fr;}
+    .shots{grid-template-columns:repeat(2,1fr);}
     .pgrid--1 .pcard{display:flex;}
     .pgrid--1 .pcard__img,.pgrid--1 .pcard__ph{min-height:0; aspect-ratio:4/5; border-right:none; border-bottom:1px solid var(--line);}
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
@@ -250,14 +262,14 @@
 <header class="phero"><div class="wrap">
   <div>
     <div class="kicker">soft power merch</div>
-    <h1>things that hold<br>the warmth</h1>
-    <p class="lead">a small run, heavy cotton and words you want to read again.</p>
-    <a class="btn" href="#shop">have a look →</a>
+    <h1>peace<br>through practice</h1>
+    <p class="lead">a limited-run long sleeve. pre-order is open till 5 september — the piece is made to order, takes up to four weeks, and shipping is counted separately.</p>
+    <a class="btn" href="#shop">pre-order →</a>
   </div>
 
   <!-- ФОТО В ШАПКУ: чтобы поменять снимок, впиши другое имя файла из images/.
        Шапка с фото сама встаёт в две колонки, как на pass. -->
-  <div><img class="phero__img" src="images/merch-hoodie-graphite.jpg" alt="soft power merch"></div>
+  <div><img class="phero__img" src="images/merch-longsleeve-hero.jpg" alt="peace through practice long sleeve"></div>
 </div></header>
 
 <div class="wrap"><hr class="hr"></div>
@@ -265,33 +277,64 @@
 <!-- ── витрина ──
      карточки рисуются из js/merch-catalog.js — там же товары, цены и фото -->
 <section id="shop"><div class="wrap">
-  <div class="sec-label">what there is right now</div>
+  <div class="sec-label">the drop</div>
   <div class="pgrid" id="shopGrid"></div>
 </div></section>
 
 <!-- ── утверждение ── -->
 <section class="statement"><div class="wrap">
-  <p>every piece is handed over in person — packed by hand, with a note inside.</p>
+  <p>this long sleeve will hold you through the whole autumn — and remind you every day that a daily practice is the surest way to your own calm and steadiness.</p>
 </div></section>
 
 <div class="wrap"><hr class="hr"></div>
 
-<!-- ── как это работает ── -->
+<!-- ── условия предзаказа ── -->
 <section><div class="wrap">
-  <div class="sec-label">how it works</div>
+  <div class="sec-label">pre-order terms</div>
   <div class="steps">
     <div class="step">
-      <h3>payment</h3>
-      <p>by card on a secure stripe page — or in cash when we meet, if that suits you better. card details never pass through this site.</p>
+      <h3>pre-order till 5 september</h3>
+      <p>the run is limited and is made to the orders collected. after 5 september the pre-order closes.</p>
     </div>
     <div class="step">
-      <h3>picking it up</h3>
-      <p>in person in lisbon — at a practice or however we agree. i will write to you right after the order.</p>
+      <h3>made in up to 4 weeks</h3>
+      <p>the print and the embroidery are made to order — that takes up to four weeks. i will write to you as soon as the run is ready.</p>
     </div>
     <div class="step">
-      <h3>if you are not in lisbon</h3>
-      <p><a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and we will find a way to get it to you.</p>
+      <h3>shipping counted separately</h3>
+      <p>it is not included in the price: we will work it out once we agree how to send it. in lisbon you can pick it up in person — at a practice or however suits you.</p>
     </div>
+  </div>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── размеры ──
+     мерки из спецификации дропа: вещь, разложенная на плоскости -->
+<section><div class="wrap">
+  <div class="sec-label">sizes</div>
+  <table class="sizes">
+    <caption>the garment measured flat. the cut is oversized: if you are between two sizes, take the smaller one.</caption>
+    <thead><tr><th>size</th><th>width</th><th>length</th><th>sleeve</th></tr></thead>
+    <tbody>
+      <tr><td>m</td><td>61 cm</td><td>68.5 cm</td><td>59 cm</td></tr>
+      <tr><td>l</td><td>64.75 cm</td><td>71 cm</td><td>59 cm</td></tr>
+      <tr><td>xl</td><td>68.5 cm</td><td>73.5 cm</td><td>59 cm</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<div class="wrap"><hr class="hr"></div>
+
+<!-- ── фотографии ──
+     чтобы поменять снимки, впиши другие имена файлов из images/ -->
+<section><div class="wrap">
+  <div class="sec-label">how it lives</div>
+  <div class="shots">
+    <img src="images/merch-longsleeve-life-1.jpg" alt="peace through practice print on the back">
+    <img src="images/merch-longsleeve-life-2.jpg" alt="the long sleeve by the ocean">
+    <img src="images/merch-longsleeve-life-3.jpg" alt="soft power embroidery on the cuff">
+    <img src="images/merch-longsleeve-life-4.jpg" alt="the long sleeve on a walk">
   </div>
 </div></section>
 <!-- ── вопросы ── -->
@@ -299,12 +342,24 @@
   <div class="sec-label">questions</div>
   <div class="faq">
     <div class="faq-item">
+      <h3>when will i get my order?</h3>
+      <p>the pre-order is open till 5 september, then the run goes into production. it takes up to four weeks to make — i will write to you as soon as the pieces are with me, and we will agree how to get yours to you.</p>
+    </div>
+    <div class="faq-item">
+      <h3>how much is shipping?</h3>
+      <p>shipping is not included in the price and is counted separately — it depends on the country and the method. tell me where it should go and i will work it out. in lisbon you can pick it up in person, and then there is no shipping at all.</p>
+    </div>
+    <div class="faq-item">
+      <h3>what if the size doesn’t fit?</h3>
+      <p>the pieces are made to the orders collected, so there are no spare sizes left over. check the measurements in the table above, and if you are between two sizes — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and i will help you choose.</p>
+    </div>
+    <div class="faq-item">
       <h3>is there another way to pay?</h3>
-      <p>if the payment method on the site doesn’t work for you — <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a>, and we’ll find an option that feels right.</p>
+      <p>you can pay for the pre-order by card on a secure stripe page — card details never pass through this site — or in cash when we meet in lisbon. if neither works for you, <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">write to me</a> and we’ll find an option that feels right.</p>
     </div>
     <div class="faq-item">
       <h3>what happens after i pay?</h3>
-      <p>i’ll write to you at the contact you left with the order, and we’ll agree when and where to pick it up. your order number appears on the page right after payment — no need to keep it, i have it too.</p>
+      <p>i’ll write to you at the contact you left with the order, and we’ll agree on shipping or on meeting up. your order number appears on the page right after payment — no need to keep it, i have it too.</p>
     </div>
     <div class="faq-item">
       <h3>the payment doesn’t go through — what now?</h3>
