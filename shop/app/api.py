@@ -6,6 +6,7 @@
 
 import asyncio
 import collections
+import hmac
 import logging
 import pathlib
 import time
@@ -15,7 +16,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
-from . import catalog, db, notify, orders, payments
+from . import catalog, db, notify, orders, payments, summary
 from .config import config
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
@@ -123,6 +124,34 @@ def health() -> dict[str, Any]:
 @app.get("/api/stock")
 def stock() -> dict[str, int]:
     return catalog.stock()
+
+
+# ── сводка заказов для дашборда ─────────────────────────────────────────
+def _admin_or_403(request: Request) -> None:
+    """Пускаем только по токену. Нет токена в окружении — адреса нет вовсе.
+
+    Отдаём отсюда имена, телефоны и адреса покупателей, поэтому сравнение
+    постоянное по времени, а сам токен нигде не логируется.
+    """
+    if not config.admin_token:
+        raise HTTPException(status_code=404, detail="not found")
+    got = request.query_params.get("token", "")
+    if not got:
+        header = request.headers.get("authorization", "")
+        if header.lower().startswith("bearer "):
+            got = header[7:]
+    if not hmac.compare_digest(got, config.admin_token):
+        log.warning("сводка заказов: неверный токен с адреса %s",
+                    request.client.host if request.client else "?")
+        raise HTTPException(status_code=403, detail="forbidden")
+
+
+@app.get("/api/admin/orders")
+def admin_orders(request: Request, limit: int = 500) -> dict[str, Any]:
+    """Всё, что нужно, чтобы посмотреть продажи мерча в одном месте."""
+    _admin_or_403(request)
+    limit = max(1, min(limit, 2000))
+    return summary.build(orders.recent(limit))
 
 
 # ── оплата картой ───────────────────────────────────────────────────────

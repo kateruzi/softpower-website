@@ -159,6 +159,14 @@ def resend_missed(older_than_seconds: int = 60) -> int:
     return len(rows)
 
 
+def recent(limit: int = 500) -> list[dict[str, Any]]:
+    """Заказы для сводки: свежие сверху. Всё, что есть, включая неоплаченные."""
+    with pool.connection() as conn:
+        return conn.execute(
+            "SELECT * FROM orders ORDER BY created_at DESC LIMIT %s", (limit,)
+        ).fetchall()
+
+
 def _new_number() -> str:
     day = dt.datetime.now(dt.timezone.utc).strftime("%y%m%d")
     return f"SP-{day}-{random.randint(1000, 9999)}"
