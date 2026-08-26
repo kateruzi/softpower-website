@@ -41,8 +41,23 @@ def checkout_url(order: dict[str, Any]) -> str:
         success_url=success_url(order["number"], order["locale"]) + "&session_id={CHECKOUT_SESSION_ID}",
         cancel_url=f"{config.site_url}/{_merch_page(order['locale'])}",
         phone_number_collection={"enabled": True},
+        # Вещь шьётся под заказ и едет почтой, поэтому адрес нужен сразу,
+        # а телеграм — потому что дальше переписка идёт именно там.
+        billing_address_collection="required",
+        custom_fields=[{
+            "key": "telegram",
+            "label": {"type": "custom", "custom": _TELEGRAM_LABEL[order["locale"]]},
+            "type": "text",
+            "optional": True,
+        }],
     )
     return session.url
+
+
+_TELEGRAM_LABEL = {
+    "ru": "телеграм, если удобно",
+    "en": "telegram, if that suits you",
+}
 
 
 def success_url(number: str, locale: str) -> str:
@@ -56,13 +71,33 @@ def _merch_page(locale: str) -> str:
 
 def customer_from_session(session: Any) -> dict[str, str]:
     """Контакты, которые stripe собрал на своей странице."""
-    details = (session.get("customer_details") or {}) if isinstance(session, dict) else {}
+    if not isinstance(session, dict):
+        return {}
+    details = session.get("customer_details") or {}
     out = {
         "name": details.get("name") or "",
         "email": details.get("email") or "",
         "phone": details.get("phone") or "",
+        "address": _one_line(details.get("address")),
+        "telegram": _custom_field(session, "telegram"),
     }
     return {k: v for k, v in out.items() if v}
+
+
+def _one_line(address: Any) -> str:
+    """Адрес stripe отдаёт по частям, а читать его в телеграме — одной строкой."""
+    if not isinstance(address, dict):
+        return ""
+    parts = [address.get(k) for k in ("line1", "line2", "postal_code", "city", "state", "country")]
+    return ", ".join(p for p in parts if p)
+
+
+def _custom_field(session: dict[str, Any], key: str) -> str:
+    """Значение поля, которое мы сами добавили на страницу оплаты."""
+    for field in session.get("custom_fields") or []:
+        if isinstance(field, dict) and field.get("key") == key:
+            return (field.get("text") or {}).get("value") or ""
+    return ""
 
 
 def verify_webhook(payload: bytes, signature: str) -> Any:

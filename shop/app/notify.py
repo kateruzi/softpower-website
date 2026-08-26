@@ -10,6 +10,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from .config import config
 
@@ -17,6 +18,27 @@ log = logging.getLogger("shop.notify")
 
 _API = "https://api.telegram.org/bot{token}/sendMessage"
 _MONEY = "{:.2f} €"
+_TZ = ZoneInfo("Europe/Lisbon")
+
+_STATUS = {
+    "paid": "💶 оплачен картой",
+    "cash_pending": "🤝 оплата при встрече",
+    "awaiting_payment": "⏳ ждёт оплаты",
+}
+_METHOD = {"card": "картой онлайн", "cash_pickup": "наличными при встрече"}
+
+# Слева — как поле лежит в customer, справа — как его читать в телеграме.
+# Часть полей приходит из формы на сайте, часть со страницы оплаты stripe,
+# поэтому в одном заказе набор один, в другом другой — печатаем что есть.
+_CUSTOMER_FIELDS = (
+    ("name", "имя"),
+    ("contact", "связь"),
+    ("telegram", "телеграм"),
+    ("email", "почта"),
+    ("phone", "телефон"),
+    ("address", "адрес"),
+    ("comment", "комментарий"),
+)
 
 
 def enabled() -> bool:
@@ -52,30 +74,27 @@ def send(text: str) -> bool:
 
 
 def order_message(order: dict[str, Any]) -> str:
-    head = {
-        "paid": "💶 оплачен картой",
-        "cash_pending": "🤝 оплата при встрече",
-        "awaiting_payment": "⏳ ждёт оплаты",
-    }.get(order["status"], order["status"])
+    when = (order.get("paid_at") or order["created_at"]).astimezone(_TZ)
 
     lines = [
         f"[{config.env}] новый заказ {order['number']}",
-        head + " · " + _MONEY.format(order["amount_cents"] / 100),
+        _STATUS.get(order["status"], order["status"]) + " · " + _MONEY.format(order["amount_cents"] / 100),
+        when.strftime("%d.%m.%Y, %H:%M") + " по лиссабону",
         "",
     ]
     for item in order["items"]:
         lines.append(f"• {item['title']} × {item['qty']} — " + _MONEY.format(item["unit_cents"] * item["qty"] / 100))
 
-    if any(item.get("preorder") for item in order["items"]):
-        lines += ["", "предзаказ: изготовление до 4 недель, доставка считается отдельно."]
-
     customer = order.get("customer") or {}
-    contacts = [customer.get(k) for k in ("name", "contact", "phone", "email")]
-    contacts = [c for c in contacts if c]
-    if contacts:
-        lines += ["", "покупатель: " + " · ".join(contacts)]
-    if customer.get("comment"):
-        lines.append("комментарий: " + customer["comment"])
+    known = [
+        (label, str(customer[key]).strip())
+        for key, label in _CUSTOMER_FIELDS
+        if str(customer.get(key) or "").strip()
+    ]
+    lines += ["", "покупатель"]
+    lines += [f"{label}: {value}" for label, value in known] or ["контактов пока нет — их соберёт страница оплаты"]
+
+    lines += ["", "оплата: " + _METHOD.get(order["method"], order["method"]) + " · страница: " + order["locale"]]
 
     if order["status"] == "cash_pending":
         lines += ["", "деньги ещё не получены — напиши покупателю про встречу."]

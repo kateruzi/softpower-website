@@ -83,8 +83,6 @@ def resolve(sku: str, locale: str) -> dict[str, Any]:
         "sku": sku,
         "title": title,
         "unit_cents": int(round(float(product["price_eur"]) * 100)),
-        # Вещь шьётся под заказ: это едет в алерт, чтобы не забыть про сроки.
-        "preorder": bool(product.get("preorder")),
     }
 
 

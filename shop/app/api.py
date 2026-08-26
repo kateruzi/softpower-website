@@ -210,7 +210,10 @@ def dev_pay_page(order: str) -> HTMLResponse:
 .box{{background:#fff;padding:32px;border-radius:14px;max-width:420px;box-shadow:0 8px 30px #0001}}
 b{{font-size:22px}} ul{{padding-left:18px}} a,button{{font:inherit}}
 button{{padding:12px 18px;border:0;border-radius:8px;background:#111;color:#fff;cursor:pointer}}
-.cancel{{background:none;color:#888;text-decoration:underline}}</style>
+.cancel{{background:none;color:#888;text-decoration:underline}}
+label{{display:block;margin:10px 0;font-size:13px;color:#666}}
+label input{{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:14px;
+  padding:8px 10px;margin-top:4px;border:1px solid #ddd;border-radius:6px}}</style>
 <div class=box>
   <p style="color:#c00">это не stripe, а тестовый шлюз staging</p>
   <p>заказ <b>{order}</b></p>
@@ -218,6 +221,11 @@ button{{padding:12px 18px;border:0;border-radius:8px;background:#111;color:#fff;
   <p>к оплате <b>{total}</b></p>
   <form method=post action="/api/dev/pay/confirm">
     <input type=hidden name=order value="{order}">
+    <label>имя<input name=name value="тестовый покупатель"></label>
+    <label>почта<input name=email value="test@example.com"></label>
+    <label>телефон<input name=phone value="+351 900 000 000"></label>
+    <label>адрес<input name=address value="Rua da Prata 10, 1100-052, Lisboa, PT"></label>
+    <label>телеграм<input name=telegram value="@test"></label>
     <button type=submit>оплатить</button>
     <button class=cancel formaction="/api/dev/pay/cancel">отменить</button>
   </form>
@@ -229,7 +237,11 @@ async def dev_pay_confirm(request: Request) -> RedirectResponse:
     _dev_only()
     form = await request.form()
     number = str(form.get("order", ""))
-    paid = orders.mark_paid(number, {"name": "тестовый покупатель", "email": "test@example.com"}, None)
+    customer = {
+        key: str(form.get(key, "")).strip()
+        for key in ("name", "email", "phone", "address", "telegram")
+    }
+    paid = orders.mark_paid(number, {k: v for k, v in customer.items() if v}, None)
     if paid:
         orders.announce(paid)
     found = paid or orders.get(number)
