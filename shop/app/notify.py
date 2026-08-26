@@ -85,7 +85,7 @@ def order_message(order: dict[str, Any]) -> str:
         "",
     ]
     for item in order["items"]:
-        lines.append(f"• {item['title']} × {item['qty']} — " + _MONEY.format(item["unit_cents"] * item["qty"] / 100))
+        lines.append(f"• {item['title']} × {item['qty']} · " + _MONEY.format(item["unit_cents"] * item["qty"] / 100))
 
     customer = order.get("customer") or {}
     known = [
@@ -94,12 +94,12 @@ def order_message(order: dict[str, Any]) -> str:
         if str(customer.get(key) or "").strip()
     ]
     lines += ["", "покупатель"]
-    lines += [f"{label}: {value}" for label, value in known] or ["контактов пока нет — их соберёт страница оплаты"]
+    lines += [f"{label}: {value}" for label, value in known] or ["контактов пока нет, их соберёт страница оплаты"]
 
     lines += ["", "оплата: " + _METHOD.get(order["method"], order["method"]) + " · страница: " + order["locale"]]
 
     if order["status"] == "cash_pending":
-        lines += ["", "деньги ещё не получены — напиши покупателю про встречу."]
+        lines += ["", "деньги ещё не получены, напиши покупателю про встречу."]
     if order["status"] == "awaiting_payment":
         lines += ["", "способ оплаты отложенный: реквизиты человек получил, деньги придут позже."]
     if order["status"] == "cancelled":
