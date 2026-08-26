@@ -63,10 +63,10 @@ var MERCH_CATALOG = [
     photo: 'images/merch-longsleeve-pink.jpg',
     /* спереди вещь у всех цветов одна и та же, манжет розовый только здесь */
     gallery: [
-      'images/merch-longsleeve-pink-2.jpg',
-      'images/merch-longsleeve-pink-3.jpg',
       'images/merch-longsleeve-front.jpg',
-      'images/merch-longsleeve-cuff.jpg'
+      'images/merch-longsleeve-cuff.jpg',
+      'images/merch-longsleeve-pink-2.jpg',
+      'images/merch-longsleeve-pink-3.jpg'
     ],
     hidden: false,
     sold_out: false,
@@ -80,9 +80,9 @@ var MERCH_CATALOG = [
     price: 108,
     photo: 'images/merch-longsleeve-sage.jpg',
     gallery: [
+      'images/merch-longsleeve-front.jpg',
       'images/merch-longsleeve-sage-2.jpg',
-      'images/merch-longsleeve-sage-3.jpg',
-      'images/merch-longsleeve-front.jpg'
+      'images/merch-longsleeve-sage-3.jpg'
     ],
     hidden: false,
     sold_out: false,
