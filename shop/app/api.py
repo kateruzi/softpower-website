@@ -34,7 +34,7 @@ class Line(BaseModel):
 
 class Customer(BaseModel):
     name: str = Field(default="", max_length=200)
-    contact: str = Field(default="", max_length=200)
+    telegram: str = Field(default="", max_length=200)
     phone: str = Field(default="", max_length=60)
     comment: str = Field(default="", max_length=2000)
 
@@ -148,8 +148,8 @@ def checkout(body: CheckoutIn, request: Request) -> dict[str, str]:
 @app.post("/api/order")
 def order(body: OrderIn, request: Request) -> dict[str, str]:
     _selling_or_503()
-    if not body.customer.name or not body.customer.contact:
-        raise HTTPException(status_code=400, detail="нужны имя и контакт")
+    if not body.customer.name or not body.customer.telegram:
+        raise HTTPException(status_code=400, detail="нужны имя и телеграм")
     try:
         items = orders.build_items([line.model_dump() for line in body.items], body.locale)
     except orders.OrderError as e:

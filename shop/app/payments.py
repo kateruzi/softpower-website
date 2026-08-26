@@ -44,22 +44,23 @@ def checkout_url(order: dict[str, Any]) -> str:
         # Поле «промокод» на странице оплаты. Сами коды заводятся в дашборде
         # stripe, здесь только разрешение их вводить.
         allow_promotion_codes=True,
-        # Вещь шьётся под заказ и едет почтой, поэтому адрес нужен сразу,
-        # а телеграм — потому что дальше переписка идёт именно там.
+        # Вещь шьётся под заказ и едет почтой, поэтому адрес нужен сразу.
+        # Телеграм обязателен: вся переписка про сроки и передачу идёт там,
+        # и без него заказ некуда вести дальше.
         billing_address_collection="required",
         custom_fields=[{
             "key": "telegram",
             "label": {"type": "custom", "custom": _TELEGRAM_LABEL[order["locale"]]},
             "type": "text",
-            "optional": True,
+            "optional": False,
         }],
     )
     return session.url
 
 
 _TELEGRAM_LABEL = {
-    "ru": "телеграм, если удобно",
-    "en": "telegram, if that suits you",
+    "ru": "телеграм для связи",
+    "en": "telegram to reach you",
 }
 
 

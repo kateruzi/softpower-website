@@ -39,7 +39,7 @@ var SHOP = {
       cash: 'наличными при встрече',
       cashNote: 'заберёшь у меня в лиссабоне, когда тираж будет готов',
       order: 'оформление', back: '← вернуться в корзину',
-      fName: 'как тебя зовут', fContact: 'телеграм или почта',
+      fName: 'как тебя зовут', fTelegram: 'телеграм',
       fPhone: 'телефон, если удобно', fComment: 'что-то важное про заказ',
       optional: 'необязательно',
       send: 'отправить предзаказ', sending: 'отправляю…',
@@ -66,7 +66,7 @@ var SHOP = {
       cash: 'cash when we meet',
       cashNote: 'pick it up from me in lisbon once the run is ready',
       order: 'your details', back: '← back to cart',
-      fName: 'your name', fContact: 'telegram or email',
+      fName: 'your name', fTelegram: 'telegram',
       fPhone: 'phone, if convenient', fComment: 'anything important about the order',
       optional: 'optional',
       send: 'send pre-order', sending: 'sending…',
@@ -390,7 +390,7 @@ var SHOP = {
       '<button class="backlink" id="backToCart" type="button">' + T.back + '</button>' +
       '<div class="form">' +
         field('fName', T.fName, 'text', true) +
-        field('fContact', T.fContact, 'text', true) +
+        field('fTelegram', T.fTelegram, 'text', true) +
         field('fPhone', T.fPhone, 'tel', false) +
         field('fComment', T.fComment, 'textarea', false) +
       '</div>';
@@ -416,7 +416,7 @@ var SHOP = {
 
   function sendOrder() {
     var vals = {}, ok = true;
-    [['fName', true], ['fContact', true], ['fPhone', false], ['fComment', false]]
+    [['fName', true], ['fTelegram', true], ['fPhone', false], ['fComment', false]]
       .forEach(function (f) {
         var input = el(f[0]);
         var v = input.value.trim();
@@ -436,7 +436,7 @@ var SHOP = {
     var payload = {
       items: lines(), locale: LANG, method: 'cash_pickup',
       customer: {
-        name: vals.fName, contact: vals.fContact,
+        name: vals.fName, telegram: vals.fTelegram,
         phone: vals.fPhone, comment: vals.fComment
       }
     };
