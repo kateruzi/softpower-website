@@ -64,6 +64,7 @@ var MERCH_CATALOG = [
     /* спереди вещь у всех цветов одна и та же, манжет розовый только здесь */
     gallery: [
       'images/merch-longsleeve-pink-2.jpg',
+      'images/merch-longsleeve-pink-3.jpg',
       'images/merch-longsleeve-front.jpg',
       'images/merch-longsleeve-cuff.jpg'
     ],
@@ -78,7 +79,11 @@ var MERCH_CATALOG = [
     id: 'longsleeve-sage',
     price: 108,
     photo: 'images/merch-longsleeve-sage.jpg',
-    gallery: ['images/merch-longsleeve-sage-2.jpg', 'images/merch-longsleeve-front.jpg'],
+    gallery: [
+      'images/merch-longsleeve-sage-2.jpg',
+      'images/merch-longsleeve-sage-3.jpg',
+      'images/merch-longsleeve-front.jpg'
+    ],
     hidden: false,
     sold_out: false,
     ru: { title: 'лонгслив sage', desc: LONGSLEEVE.ru.desc, note: LONGSLEEVE.ru.note },
