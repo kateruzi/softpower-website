@@ -186,7 +186,9 @@
   /* ─ корзина ─ */
   .scrim{position:fixed; inset:0; background:var(--scrim); z-index:70; opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s;}
   .scrim.on{opacity:1; visibility:visible;}
-  .drawer{position:fixed; top:0; right:0; height:100%; width:400px; max-width:100%; background:var(--bg); border-left:1px solid var(--line); z-index:80; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .3s ease;}
+  /* 100dvh, а не 100%: в мобильных браузерах адресная строка съедает часть
+     экрана, и ящик высотой в «весь экран» уезжает нижним краем за него */
+  .drawer{position:fixed; top:0; right:0; height:100%; height:100dvh; width:400px; max-width:100%; background:var(--bg); border-left:1px solid var(--line); z-index:80; display:flex; flex-direction:column; transform:translateX(100%); transition:transform .3s ease;}
   .drawer.on{transform:translateX(0);}
   .drawer__head{display:flex; align-items:center; justify-content:space-between; padding:22px 26px; border-bottom:1px solid var(--line);}
   .drawer__head h3{font-size:20px;}
@@ -195,6 +197,7 @@
   .drawer__foot{border-top:1px solid var(--line); padding:20px 26px 26px;}
   .drawer__pre{margin-top:14px; padding:13px 15px; background:var(--warm); font-size:12.5px; line-height:1.6; color:var(--soft);}
   .drawer__note{font-size:12.5px; color:var(--faint); line-height:1.6; margin-top:10px;}
+  .drawer__note + .btn{margin-top:10px;}
   .drawer__agree{margin-top:12px; font-size:11px; line-height:1.5; color:var(--faint); text-align:center;}
   .drawer__agree a{color:inherit; text-decoration:underline;}
   .empty{padding:48px 0; color:var(--faint); font-size:14.5px;}
@@ -222,7 +225,9 @@
   /* отступ до кнопки заказа такой же, как от подписи до первого способа */
   .pay{margin:18px 0 10px;}
   .pay__row:last-child{margin-bottom:0;}
-  .pay__label{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
+  /* line-height:1 — чтобы строка подписи не была выше своих же букв:
+     иначе под ней visually получается на три пикселя больше, чем над кнопкой */
+  .pay__label{display:block; font-size:10.5px; line-height:1; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
   .pay__row{display:flex; gap:12px; align-items:flex-start; width:100%; text-align:left; background:none; border:1px solid var(--line); padding:13px 15px; font:inherit; cursor:pointer; transition:.2s; margin-bottom:8px;}
   .pay__row:hover{border-color:#c9c5be;}
   .pay__row.on{border-color:var(--ink);}
@@ -238,7 +243,7 @@
   .fld{display:block;}
   .fld__l{display:block; font-size:10.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--faint); margin-bottom:7px;}
   .fld__l i{font-style:normal; text-transform:none; letter-spacing:0;}
-  .fld input,.fld textarea{width:100%; background:var(--card); border:1px solid var(--line); padding:11px 13px; font:inherit; font-size:15px; color:var(--ink); resize:vertical;}
+  .fld input,.fld textarea{width:100%; background:var(--card); border:1px solid var(--line); padding:11px 13px; font:inherit; font-size:16px; color:var(--ink); resize:vertical;}
   .fld input:focus,.fld textarea:focus{outline:none; border-color:var(--ink);}
   .fld__e{display:block; font-size:12px; color:var(--faint); margin-top:5px;}
   .fld.bad input,.fld.bad textarea{border-color:#b4544b;}
@@ -277,6 +282,21 @@
     .pgrid--1 .pcard__body{padding:26px 26px 28px;}
     .statement p{font-size:22px;}
     .drawer{width:100%; border-left:none;}
+    /* на телефоне подвал корзины съедал две трети экрана, и товар сверху
+       обрезался пополам. поджимаем всё, что в подвале, товару остаётся место */
+    .drawer__head{padding:16px 20px;}
+    .drawer__body{padding:0 20px;}
+    .drawer__foot{padding:14px 20px 18px;}
+    .drawer__pre{margin-top:10px; padding:10px 12px; font-size:11.5px; line-height:1.5;}
+    .drawer__note{font-size:11.5px; margin-top:8px;}
+    .drawer__agree{margin-top:9px; font-size:10px;}
+    .sum b{font-size:23px;}
+    .pay{margin:13px 0 10px;}
+    .pay__label{margin-bottom:8px;}
+    .pay__row{padding:10px 12px; margin-bottom:6px;}
+    .pay__n{font-size:11px; line-height:1.4;}
+    .citem{padding:15px 0;}
+    .btn{padding:13px 24px;}
   }
 </style>
 </head>
