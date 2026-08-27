@@ -61,7 +61,9 @@ var MERCH_CATALOG = [
     id: 'longsleeve-pink',
     price: 108,
     photo: 'images/merch-longsleeve-pink.jpg',
-    /* спереди вещь у всех цветов одна и та же, манжет розовый только здесь */
+    /* спереди вещь у всех цветов одна и та же; крупный кадр манжета розовый и
+       стоит только здесь, а на общем кадре у sage и navy вышивка перекрашена —
+       front-sage.jpg и front-navy.jpg */
     gallery: [
       'images/merch-longsleeve-front.jpg',
       'images/merch-longsleeve-cuff.jpg',
@@ -80,7 +82,7 @@ var MERCH_CATALOG = [
     price: 108,
     photo: 'images/merch-longsleeve-sage.jpg',
     gallery: [
-      'images/merch-longsleeve-front.jpg',
+      'images/merch-longsleeve-front-sage.jpg',
       'images/merch-longsleeve-sage-2.jpg',
       'images/merch-longsleeve-sage-3.jpg'
     ],
@@ -95,7 +97,7 @@ var MERCH_CATALOG = [
     id: 'longsleeve-navy',
     price: 108,
     photo: 'images/merch-longsleeve-navy.jpg',
-    gallery: ['images/merch-longsleeve-front.jpg'],
+    gallery: ['images/merch-longsleeve-front-navy.jpg'],
     hidden: false,
     sold_out: false,
     ru: { title: 'лонгслив ink navy', desc: LONGSLEEVE.ru.desc, note: LONGSLEEVE.ru.note },
