@@ -36,11 +36,11 @@
    поправишь здесь — поменяется сразу во всех карточках. */
 var LONGSLEEVE = {
   ru: {
-    desc: 'оверсайз из плотного премиального хлопка 230–250 г/м². на спине печать по кругу, ø 22 см. на манжете левого рукава вышивка soft power.',
+    desc: 'унисекс, оверсайз, из плотного премиального хлопка 230–250 г/м². на спине печать по кругу, ø 22 см. на манжете левого рукава вышивка soft power',
     note: 'ограниченный тираж · предзаказ до 5 сентября'
   },
   en: {
-    desc: 'oversized, heavyweight premium cotton 230–250 gsm. circular screen print on the back, ø 22 cm. soft power embroidery on the left cuff.',
+    desc: 'unisex, oversized, heavyweight premium cotton 230–250 gsm. circular screen print on the back, ø 22 cm. soft power embroidery on the left cuff',
     note: 'limited edition · pre-order till 5 september'
   },
   /* размеры одинаковые у всех цветов */

@@ -29,7 +29,7 @@ var SHOP = {
   var T = {
     ru: {
       cart: 'корзина', add: 'предзаказ', added: 'добавлено',
-      empty: 'пока пусто. выбери что-нибудь на странице.',
+      empty: 'пока пусто. выбери что-нибудь на странице',
       total: 'итого', remove: 'убрать', soldout: 'закончилось',
       photosoon: 'фото скоро', close: 'закрыть', checkout: 'оформить предзаказ',
       frame: 'кадр', prev: 'предыдущий кадр', next: 'следующий кадр',
@@ -44,19 +44,19 @@ var SHOP = {
       optional: 'необязательно',
       send: 'отправить предзаказ', sending: 'отправляю…',
       req: 'заполни это поле',
-      cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда тираж будет готов.',
+      cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда тираж будет готов',
       pre: 'это предзаказ: вещь шьётся под тебя, изготовление занимает до 4 недель. '+
-           'доставка в стоимость не входит и считается отдельно: я напишу тебе, и мы договоримся, как удобнее передать.',
+           'доставка в стоимость не входит и считается отдельно: я напишу тебе, и мы договоримся об удобном способе доставки',
       agree: 'оформляя предзаказ, ты соглашаешься с обработкой персональных данных, ' +
              '<a href="politika" target="_blank" rel="noopener">политика конфиденциальности</a>',
-      err: 'что-то пошло не так. напиши мне в телеграм, и я оформлю заказ руками.',
+      err: 'что-то пошло не так. напиши мне в телеграм, и я оформлю заказ руками',
       demo: 'оплата ещё не подключена',
       demoText: 'сервис магазина пока не запущен, поэтому заказ никуда не ушёл. вот ровно то, что отправится на сервер, когда всё включим:',
       demoTg: 'написать в телеграм'
     },
     en: {
       cart: 'cart', add: 'pre-order', added: 'added',
-      empty: 'empty for now, pick something on the page.',
+      empty: 'empty for now, pick something on the page',
       total: 'total', remove: 'remove', soldout: 'sold out',
       photosoon: 'photo coming', close: 'close', checkout: 'place pre-order',
       frame: 'frame', prev: 'previous frame', next: 'next frame',
@@ -71,12 +71,12 @@ var SHOP = {
       optional: 'optional',
       send: 'send pre-order', sending: 'sending…',
       req: 'please fill this in',
-      cashFoot: 'you pay when we meet, nothing to pay now. i will write to you once the run is ready.',
+      cashFoot: 'you pay when we meet, nothing to pay now. i will write to you once the run is ready',
       pre: 'this is a pre-order: the piece is made for you and takes up to 4 weeks. '+
-           'shipping is not included and is calculated separately: i will write to you, and we will agree on the best way to get it to you.',
+           'shipping is not included and is calculated separately: i will write to you, and we will agree on a delivery option that suits you',
       agree: 'by placing the order you agree to the processing of your personal data, ' +
              '<a href="politika-en" target="_blank" rel="noopener">privacy policy</a>',
-      err: 'something went wrong. write to me on telegram and i will take the order by hand.',
+      err: 'something went wrong. write to me on telegram and i will take the order by hand',
       demo: 'payments are not connected yet',
       demoText: 'the shop service is not running yet, so nothing was sent. this is exactly what will go to the server once it is on:',
       demoTg: 'write on telegram'
