@@ -104,6 +104,23 @@
     .paths{grid-template-columns:1fr;}
     nav .links{display:none;} .mtools{display:flex;} .burger{display:block;}
   }
+
+  /* ─ всплывашка «бесплатное приложение»: карточка в углу, не окно поверх сайта.
+       появляется, когда прокрутили 30% страницы; закрыли или перешли — на этом
+       устройстве не показываем 30 дней ─ */
+  .apop{position:fixed; right:24px; bottom:24px; z-index:40; width:340px; max-width:calc(100% - 32px);
+        background:var(--card); border:1px solid var(--line); box-shadow:0 12px 40px rgba(20,20,20,.12);
+        padding:26px 26px 24px; opacity:0; transform:translateY(16px); pointer-events:none;
+        transition:opacity .35s ease, transform .35s ease;}
+  .apop.on{opacity:1; transform:none; pointer-events:auto;}
+  .apop__kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
+  .apop h3{font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:22px; line-height:1.3; margin-bottom:10px; padding-right:24px;}
+  .apop p{font-size:14.5px; color:var(--soft); line-height:1.6; margin-bottom:18px;}
+  .apop__close{position:absolute; top:12px; right:12px; width:32px; height:32px; background:none; border:0; font-size:17px; color:var(--soft); cursor:pointer;}
+  .apop__close:hover{color:var(--ink);}
+  body.mnav-open .apop{display:none;}
+  @media(max-width:760px){ .apop{right:16px; left:16px; bottom:16px; width:auto; max-width:none; padding:22px 20px 20px;} }
+  @media(prefers-reduced-motion:reduce){ .apop{transition:none; transform:none;} }
 </style>
 <!-- счётчик посещений: свой, без кук и без третьих сторон.
      живёт в /opt/infra/analytics, отдаётся с этого же домена -->
@@ -269,6 +286,14 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">почта</a> · © 2026
 </div></footer>
 
+<aside class="apop" id="apop" role="dialog" aria-labelledby="apopTitle" hidden>
+  <button class="apop__close" type="button" aria-label="закрыть">✕</button>
+  <div class="apop__kicker">бесплатно</div>
+  <h3 id="apopTitle">бесплатное приложение soft power</h3>
+  <p>держи, это подарок: больше 50 видео- и аудиопрактик — йога, дыхание и медитации. попробуй</p>
+  <a class="btn" href="https://app.softpowerspace.com/space/" target="_blank" rel="noopener">начать практику</a>
+</aside>
+
 <script>
   (function(){
     var burger=document.getElementById('burger'), mnav=document.getElementById('mnav'), closeBtn=document.getElementById('mnavClose');
@@ -279,6 +304,22 @@
     closeBtn.addEventListener("click", hideMenu);
     mnav.querySelectorAll("a").forEach(function(a){ a.addEventListener("click", hideMenu); });
     document.addEventListener("keydown", function(e){ if(e.key==="Escape") hideMenu(); });
+  })();
+  (function(){
+    var pop=document.getElementById('apop'); if(!pop) return;
+    var KEY='sp_app_popup_closed', DAYS=30, shown=false;
+    try{ var t=+localStorage.getItem(KEY); if(t && Date.now()-t < DAYS*864e5) return; }catch(e){}
+    function remember(){ try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){} }
+    function close(){ pop.classList.remove('on'); remember(); window.removeEventListener('scroll', onScroll); }
+    function onScroll(){
+      if(shown) return;
+      var max=document.documentElement.scrollHeight-window.innerHeight;
+      if(max>0 && window.scrollY/max >= .3){ shown=true; pop.hidden=false; requestAnimationFrame(function(){ pop.classList.add('on'); }); }
+    }
+    pop.querySelector('.apop__close').addEventListener('click', close);
+    pop.querySelector('.btn').addEventListener('click', remember);
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && pop.classList.contains('on')) close(); });
+    window.addEventListener('scroll', onScroll, {passive:true});
   })();
 </script>
 </body>
