@@ -95,22 +95,26 @@
     nav .links{display:none;} .mtools{display:flex;} .burger{display:block;}
   }
 
-  /* ─ всплывашка «бесплатное приложение»: карточка в углу, не окно поверх сайта.
-       появляется, когда прокрутили 30% страницы; закрыли или перешли — на этом
-       устройстве не показываем 30 дней ─ */
-  .apop{position:fixed; right:24px; bottom:24px; z-index:40; width:340px; max-width:calc(100% - 32px);
-        background:var(--card); border:1px solid var(--line); box-shadow:0 12px 40px rgba(20,20,20,.12);
-        padding:26px 26px 24px; opacity:0; transform:translateY(16px); pointer-events:none;
-        transition:opacity .35s ease, transform .35s ease;}
-  .apop.on{opacity:1; transform:none; pointer-events:auto;}
-  .apop__kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:10px;}
-  .apop h3{font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:22px; line-height:1.3; margin-bottom:10px; padding-right:24px;}
-  .apop p{font-size:14.5px; color:var(--soft); line-height:1.6; margin-bottom:18px;}
-  .apop__close{position:absolute; top:12px; right:12px; width:32px; height:32px; background:none; border:0; font-size:17px; color:var(--soft); cursor:pointer;}
-  .apop__close:hover{color:var(--ink);}
-  body.mnav-open .apop{display:none;}
-  @media(max-width:760px){ .apop{right:16px; left:16px; bottom:16px; width:auto; max-width:none; padding:22px 20px 20px;} }
-  @media(prefers-reduced-motion:reduce){ .apop{transition:none; transform:none;} }
+  /* ─ всплывашка «бесплатное приложение»: окно по центру поверх затемнённого сайта,
+       как попап подписки на рассылку. появляется, когда прокрутили 30% страницы;
+       закрыли или перешли — на этом устройстве не показываем 30 дней ─ */
+  .apop{position:fixed; inset:0; z-index:70; display:flex; align-items:center; justify-content:center; padding:16px;
+        background:rgba(20,20,20,.55); opacity:0; pointer-events:none; transition:opacity .3s ease;}
+  .apop.on{opacity:1; pointer-events:auto;}
+  .apop__box{position:relative; width:100%; max-width:440px; max-height:calc(100vh - 32px); overflow-y:auto;
+        background:var(--bg); transform:translateY(14px) scale(.98); transition:transform .3s ease;}
+  .apop.on .apop__box{transform:none;}
+  .apop__img{display:block; width:100%; aspect-ratio:16/10; object-fit:cover;}
+  .apop__body{padding:28px 32px 32px; text-align:center;}
+  .apop__kicker{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--faint); margin-bottom:12px;}
+  .apop h3{font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:26px; line-height:1.28; margin-bottom:12px;}
+  .apop p{font-size:15px; color:var(--soft); line-height:1.6; margin-bottom:22px;}
+  .apop__close{position:absolute; top:10px; right:10px; width:36px; height:36px; border:0; border-radius:50%;
+        background:rgba(251,250,248,.9); font-size:16px; color:var(--ink); cursor:pointer;}
+  .apop__box:focus{outline:none;}
+  body.apop-open{overflow:hidden;}
+  @media(max-width:760px){ .apop__body{padding:24px 22px 26px;} .apop h3{font-size:23px;} }
+  @media(prefers-reduced-motion:reduce){ .apop, .apop__box{transition:none;} }
 </style>
 <!-- счётчик посещений: свой, без кук и без третьих сторон.
      живёт в /opt/infra/analytics, отдаётся с этого же домена -->
@@ -264,13 +268,18 @@
   <a href="https://t.me/beloved_dasha" target="_blank" rel="noopener">telegram</a> · <a href="https://www.instagram.com/prostova_daria" target="_blank" rel="noopener">instagram</a> · <a href="https://www.linkedin.com/in/daria-prostova-61605021b/" target="_blank" rel="noopener">linkedin</a> · <a href="mailto:softpower.backup@gmail.com">email</a> · © 2026
 </div></footer>
 
-<aside class="apop" id="apop" role="dialog" aria-labelledby="apopTitle" hidden>
-  <button class="apop__close" type="button" aria-label="close">✕</button>
-  <div class="apop__kicker">free</div>
-  <h3 id="apopTitle">free soft power app</h3>
-  <p>a gift for you: more than 50 video and audio practices — yoga, breathwork and meditations. the app is in russian. give it a try</p>
-  <a class="btn" href="https://app.softpowerspace.com/space/" target="_blank" rel="noopener">start practicing</a>
-</aside>
+<div class="apop" id="apop" hidden>
+  <div class="apop__box" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="apopTitle">
+    <button class="apop__close" type="button" aria-label="close">✕</button>
+    <img class="apop__img" src="images/practice-connection.jpg" alt="" loading="lazy">
+    <div class="apop__body">
+      <div class="apop__kicker">free</div>
+      <h3 id="apopTitle">free soft&nbsp;power app</h3>
+      <p>a gift for you: more than 50 video and audio practices — yoga, breathwork and meditations. the app is in russian. give it a try</p>
+      <a class="btn" href="https://app.softpowerspace.com/space/" target="_blank" rel="noopener">start practicing</a>
+    </div>
+  </div>
+</div>
 
 <script>
   (function(){
@@ -285,17 +294,28 @@
   })();
   (function(){
     var pop=document.getElementById('apop'); if(!pop) return;
-    var KEY='sp_app_popup_closed', DAYS=30, shown=false;
+    var KEY='sp_app_popup_closed', DAYS=30, shown=false, back=null;
     try{ var t=+localStorage.getItem(KEY); if(t && Date.now()-t < DAYS*864e5) return; }catch(e){}
     function remember(){ try{ localStorage.setItem(KEY, String(Date.now())); }catch(e){} }
-    function close(){ pop.classList.remove('on'); remember(); window.removeEventListener('scroll', onScroll); }
+    function close(){
+      pop.classList.remove('on'); document.body.classList.remove('apop-open'); remember();
+      setTimeout(function(){ pop.hidden=true; }, 300);
+      if(back) back.focus();
+    }
+    function open(){
+      if(document.body.classList.contains('mnav-open')) return;
+      shown=true; window.removeEventListener('scroll', onScroll);
+      back=document.activeElement; pop.hidden=false; document.body.classList.add('apop-open');
+      requestAnimationFrame(function(){ pop.classList.add('on'); pop.querySelector('.apop__box').focus({preventScroll:true}); });
+    }
     function onScroll(){
       if(shown) return;
       var max=document.documentElement.scrollHeight-window.innerHeight;
-      if(max>0 && window.scrollY/max >= .3){ shown=true; pop.hidden=false; requestAnimationFrame(function(){ pop.classList.add('on'); }); }
+      if(max>0 && window.scrollY/max >= .3) open();
     }
     pop.querySelector('.apop__close').addEventListener('click', close);
-    pop.querySelector('.btn').addEventListener('click', remember);
+    pop.addEventListener('click', function(e){ if(e.target===pop) close(); });
+    pop.querySelector('.btn').addEventListener('click', function(){ remember(); close(); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape' && pop.classList.contains('on')) close(); });
     window.addEventListener('scroll', onScroll, {passive:true});
   })();
