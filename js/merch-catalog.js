@@ -48,8 +48,6 @@ var LONGSLEEVE = {
     id: 'size',
     ru: 'размер', en: 'size',
     values: [
-      { id: 'm',  ru: 'm',  en: 'm'  },
-      { id: 'l',  ru: 'l',  en: 'l'  },
       { id: 'xl', ru: 'xl', en: 'xl' }
     ]
   }
