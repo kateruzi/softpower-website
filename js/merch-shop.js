@@ -45,7 +45,7 @@ var SHOP = {
       send: 'отправить предзаказ', sending: 'отправляю…',
       req: 'заполни это поле',
       cashFoot: 'оплата при встрече, ничего платить сейчас не нужно. я напишу тебе, когда тираж будет готов',
-      pre: 'это предзаказ: вещь шьётся под тебя, изготовление занимает до 4 недель. '+
+      pre: 'это предзаказ: вещь шьётся под тебя, изготовление занимает 3 недели. '+
            'доставка в стоимость не входит и считается отдельно: я напишу тебе, и мы договоримся об удобном способе доставки',
       agree: 'оформляя предзаказ, ты соглашаешься с обработкой персональных данных, ' +
              '<a href="politika" target="_blank" rel="noopener">политика конфиденциальности</a>',
@@ -72,7 +72,7 @@ var SHOP = {
       send: 'send pre-order', sending: 'sending…',
       req: 'please fill this in',
       cashFoot: 'you pay when we meet, nothing to pay now. i will write to you once the run is ready',
-      pre: 'this is a pre-order: the piece is made for you and takes up to 4 weeks. '+
+      pre: 'this is a pre-order: the piece is made for you and takes 3 weeks. '+
            'shipping is not included and is calculated separately: i will write to you, and we will agree on a delivery option that suits you',
       agree: 'by placing the order you agree to the processing of your personal data, ' +
              '<a href="politika-en" target="_blank" rel="noopener">privacy policy</a>',

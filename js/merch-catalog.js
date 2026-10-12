@@ -37,11 +37,11 @@
 var LONGSLEEVE = {
   ru: {
     desc: 'unisex, оверсайз, one size, из плотного премиального хлопка 230–250 г/м². на спине печать по кругу, ø 22 см. на манжете левого рукава вышивка soft power',
-    note: 'ограниченный тираж · предзаказ до 5 сентября'
+    note: 'ограниченный тираж · предзаказ'
   },
   en: {
     desc: 'unisex, oversized, one size, heavyweight premium cotton 230–250 gsm. circular screen print on the back, ø 22 cm. soft power embroidery on the left cuff',
-    note: 'limited edition · pre-order till 5 september'
+    note: 'limited edition · pre-order'
   },
   /* размеры одинаковые у всех цветов */
   sizes: {
