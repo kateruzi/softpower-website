@@ -107,6 +107,11 @@ var SHOP = {
   var view = 'cart';        // 'cart' | 'form'
   var products = (typeof MERCH_CATALOG !== 'undefined' ? MERCH_CATALOG : [])
     .filter(function (p) { return !p.hidden; });
+  /* то, что убрали с витрины, уходит и из сохранённой корзины */
+  cart = cart.filter(function (i) {
+    var id = String(i.sku).split('|')[0];
+    return products.some(function (p) { return p.id === id; });
+  });
   var rendered = [];           // пары {товар, карточка} — чтобы обновлять их на месте
   var STOCK = null;            // остатки по sku с сервера; null — пока не знаем
 
